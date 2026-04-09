@@ -1,0 +1,26 @@
+# DevCore — robots.txt
+# https://devcore.kz
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /tmp/
+
+# Sitemaps
+Sitemap: https://devcore.kz/sitemap.xml
+
+# Crawl-delay (optional, for polite bots)
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Yandex specific
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Host: https://devcore.kz

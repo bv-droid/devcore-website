@@ -1,0 +1,20 @@
+{
+    "name": "DevCore — Цифрлық шешімдердің өзегі",
+    "short_name": "DevCore",
+    "description": "IT Solutions, FinTech, Logistics — технологиялық серіктесіңіз",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#00AEEF",
+    "orientation": "portrait-primary",
+    "lang": "kk",
+    "categories": ["business", "technology"],
+    "icons": [
+        {
+            "src": "/assets/logo/DevCore_Black.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ]
+}
