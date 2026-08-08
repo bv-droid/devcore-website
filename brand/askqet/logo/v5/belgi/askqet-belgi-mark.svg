@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#0C0D0F"/>
+  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
+  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
+
+</svg>

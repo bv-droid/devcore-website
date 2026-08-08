@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — итерация 4: уйти от границ.
+Собирает brand/askqet/index.html — итерация 5: пять концепций без фигуры.
 
-Запуск:  python3 tools/build_page.py   (после build.py, build_v3.py, build_v4.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v5.py)
 """
 
 import os
@@ -24,9 +24,10 @@ def embed(match):
     return read_svg(match.group(1))
 
 
-def sizes(big, small):
-    return [("s96", read_svg(big), "96"), ("s48", read_svg(big), "48"),
-            ("s24", read_svg(small), "24")]
+def sizes(big, small=None):
+    small = small or big
+    return [("a", read_svg(big), "88"), ("b", read_svg(big), "44"),
+            ("c", read_svg(small), "24")]
 
 
 PAGE = r"""<meta charset="utf-8">
@@ -256,15 +257,15 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 4 — уйти от границ</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 5 — без круга и квадрата</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Три захода подряд знак сидел в одной и той же рамке.
-      Здесь каждая концепция <em>ломает одну из них</em><span class="caret"></span></p>
+    <p class="mast__thesis">Главный сдвиг пяти лет: знак перестал быть картинкой.
+      Он стал <em>буквой, поведением или жестом</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>КОНЦЕПЦИЙ<b>3</b></div>
-      <div>СЛОМАНО ГРАНИЦ<b>рамка · шов · контур</b></div>
-      <div>МАКС. РАЗРЫВ ЦВЕТА<b>ΔEok 0.408</b></div>
-      <div>ЦЕНА<b>указана у каждой</b></div>
+      <div>КОНЦЕПЦИЙ<b>5</b></div>
+      <div>ФИГУР В ОСНОВЕ<b>ноль</b></div>
+      <div>ИЗУЧЕНО<b>ребрендинги 2020–2026</b></div>
+      <div>ЛОГИК ЦВЕТА<b>5 разных</b></div>
     </div>
   </div>
 </header>
@@ -274,33 +275,64 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Какие границы держали знак</h2></div>
+      <h2>Что случилось с логотипами за пять лет</h2></div>
     <div class="col">
-      <p class="lede">Прошлые итерации отличались идеей, но жили по одним и тем же
-        негласным правилам. Их три, и они сильнее любой из концепций — именно
-        поэтому все варианты были похожи друг на друга сильнее, чем должны были.</p>
+      <p class="lede">Если выложить рядом заметные ребрендинги 2020–2026, видно
+        одно движение: <strong>символ уступил место буквам</strong>. Nokia (2023)
+        разобрала собственное имя на деформированные литеры. X (2023) заменила птицу
+        монограммой. Pepsi (2023) вернулась к жирным капителям. Burberry (2023)
+        достала из архива засечный шрифт. Jaguar (2024) построила ребрендинг на
+        типографике под лозунгом «Copy Nothing». OpenAI в 2025-м провела первый в
+        своей истории ребрендинг — и центральным активом стал не знак, а шрифт
+        OpenAI Sans.</p>
+      <p>Второе движение — внутри самой ИИ-категории. Она разошлась на две школы:
+        «магическую», с градиентными шарами и свечением, и «незаметную», которая
+        сознательно отказывается от градиентов. Anthropic и Perplexity стоят во
+        второй — и именно поэтому выделяются на фоне первой.</p>
+      <p>Вывод для нас прямой. Круг с квадратом — приём из предыдущей эпохи, когда
+        логотип должен был быть <em>картинкой</em>. Ниже пять концепций, где основой
+        служит буква, интонация, жест или поступок — но ни одна не строится на
+        фигуре.</p>
     </div>
-    <div class="frames">
-      <div class="frame"><h4>Рамка поля</h4>
-        <p>Знак всегда целиком внутри квадрата 128 с отступом 16. Он никогда не
-          касался края и никогда не выходил за него.</p></div>
-      <div class="frame"><h4>Шов между объектами</h4>
-        <p>Круг и курсор всегда оставались двумя телами: пересекались, вырезали друг
-          друга, соприкасались — но не сливались.</p></div>
-      <div class="frame"><h4>Контур</h4>
-        <p>У каждой фигуры был жёсткий край. Форма задавалась силуэтом — всегда
-          плоская заливка или штрих постоянной толщины.</p></div>
+
+    <div class="shift">
+      <div><h4>Пиктограмма → буква</h4>
+        <p>Символ перестал быть обязательным. Wordmark сам по себе стал полноценной
+          айдентикой, а главным активом — шрифт.</p><em>Nokia · X · Jaguar · OpenAI</em></div>
+      <div><h4>Оттенок → поведение</h4>
+        <p>Узнаваемость переехала с формы на то, что бренд делает с чужим
+          контентом: как размечает, как выделяет, как двигается.</p><em>школа сдержанности</em></div>
+      <div><h4>Геометрия → рука</h4>
+        <p>Когда рынок утонул в окружностях, рукописное вернулось как способ
+          выглядеть человеком.</p><em>Johnson &amp; Johnson · Jaguar script</em></div>
+      <div><h4>Один алфавит → два</h4>
+        <p>Казахстан десятый год идёт с кириллицы на латиницу. Бренд, который
+          стартует сейчас, обязан работать в обеих.</p><em>указ 2017, сроки сдвигались</em></div>
     </div>
-    <div class="col" style="margin-top:var(--s3)">
-      <p>Ниже — по одной концепции на каждую границу. Каждая честно платит за свою
-        свободу, и цена написана прямо под ней: без этого выбор невозможен.</p>
+
+    <div class="col">
+      <p class="src">Источники:
+        <a href="https://designshack.net/articles/graphics/rebrand-examples/">Design
+        Shack — Best &amp; Worst Rebrands of 2023 &amp; 2024</a>,
+        <a href="https://brandsthatpunch.com/blogs/top-10-rebrands-of-2024">Brands That
+        Punch — Top 10 Rebrands of 2024</a>,
+        <a href="https://www.wallpaper.com/tech/openai-has-undergone-its-first-ever-rebrand-giving-fresh-life-to-chatgpt-interactions">Wallpaper*
+        — OpenAI’s first ever rebrand</a>,
+        <a href="https://www.creativereview.co.uk/openai-brand-refresh/">Creative Review
+        — OpenAI brand refresh</a>,
+        <a href="https://news.designrush.com/openai-refreshes-its-visual-brand-identity-with-new-logo-typeface">DesignRush
+        — OpenAI new logo &amp; typeface</a>,
+        <a href="https://d1s1.com/blog/ai-branding-invisible-vs-magical">D1S1 — Two
+        Schools of AI Branding</a>,
+        <a href="https://thediplomat.com/2024/09/the-latinization-of-kazakhstan-language-modernization-and-geopolitics/">The
+        Diplomat — The Latinization of Kazakhstan</a>.</p>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span><h2>Три концепции</h2></div>
+    <div class="sec__head"><span class="sec__num">02</span><h2>Пять концепций</h2></div>
     {CONCEPTS}
   </div>
 </section>
@@ -308,7 +340,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span><h2>Проверка</h2></div>
-    <div class="col"><p class="lede">Переключатель применяется ко всем трём знакам
+    <div class="col"><p class="lede">Переключатель применяется ко всем пяти
       сразу.</p></div>
     <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
       <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
@@ -317,33 +349,46 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
       <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
     </div>
-    <div class="dirs" id="dirs" style="display:grid;
-         grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--s2)">
-      <div class="art">⟦logo/v4/sheksiz/askqet-sheksiz.svg⟧</div>
-      <div class="art">⟦logo/v4/quyma/askqet-quyma.svg⟧</div>
-      <div class="art">⟦logo/v4/oris/askqet-oris.svg⟧</div>
+    <div id="dirs" style="display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:var(--s2)">
+      <div class="art">⟦logo/v5/quyryq/askqet-quyryq-mark.svg⟧</div>
+      <div class="art">⟦logo/v5/ekijazu/askqet-ekijazu.svg⟧</div>
+      <div class="art">⟦logo/v5/yn/askqet-yn.svg⟧</div>
+      <div class="art">⟦logo/v5/qol/askqet-qol.svg⟧</div>
+      <div class="art">⟦logo/v5/belgi/askqet-belgi-mark.svg⟧</div>
     </div>
-    <div class="col"><p class="cvd-note">SHEKSIZ и ÓRIS держатся: обе пары стоят на
-      сине-жёлтой оси, которая при протанопии и дейтеранопии сохраняется. QUYMA
-      теряет больше всех — пурпурный конец перелива сближается с синим, и градиент
-      сплющивается в один тон. Для него это не косметика: перелив и есть содержание.</p></div>
+    <div class="col"><p class="cvd-note">Четыре из пяти не зависят от цвета вообще:
+      QUYRYQ, EKI JAZU, QOL и BELGI держатся формой, и симуляция им ничего не
+      делает. Единственный, кто теряет содержание, — ÝN: там цвет размечает
+      направление, и без него подъём и падение сливаются в одну дугу.</p></div>
 
     <div class="scroll">
-      <table><thead><tr><th>Концепция</th><th>24 px</th><th>На светлом</th>
-        <th>В печать</th><th>В одну краску</th></tr></thead>
+      <table><thead><tr><th>Концепция</th><th>24 px</th><th>Одна краска</th>
+        <th>Кириллица</th><th>Что мешает</th></tr></thead>
       <tbody>
-        <tr><td>SHEKSIZ</td><td><span class="tag tag--warn">нужна собранная версия</span></td>
+        <tr><td>QUYRYQ</td><td><span class="tag tag--pass">да</span></td>
           <td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--pass">Қ несёт тот же хвост</span></td>
+          <td class="note">компактная форма абстрактна — первое время нужна рядом
+            со словом</td></tr>
+        <tr><td>EKI JAZU</td><td><span class="tag tag--pass">да</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">да</span></td></tr>
-        <tr><td>QUYMA</td><td><span class="tag tag--warn">нужен плашечный дубль</span></td>
+          <td><span class="tag tag--pass">она и есть содержание</span></td>
+          <td class="note">чтение Қ требует объяснения при первом контакте</td></tr>
+        <tr><td>ÝN</td><td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--warn">теряет смысл</span></td>
+          <td><span class="tag tag--pass">вне алфавита</span></td>
+          <td class="note">без цвета подъём и падение неразличимы</td></tr>
+        <tr><td>QOL</td><td><span class="tag tag--warn">упрощённый дубль</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--warn">после обводки в кривые</span></td>
-          <td><span class="tag tag--warn">теряет перелив</span></td></tr>
-        <tr><td>ÓRIS</td><td><span class="tag tag--warn">нужен плашечный дубль</span></td>
-          <td><span class="tag tag--fail">нет</span></td>
-          <td><span class="tag tag--fail">нет</span></td>
-          <td><span class="tag tag--fail">нет</span></td></tr>
+          <td><span class="tag tag--warn">нужен второй жест</span></td>
+          <td class="note">жест нельзя перерисовать «чуть иначе» — любая правка
+            видна</td></tr>
+        <tr><td>BELGI</td><td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--pass">маркер ложится на любой текст</span></td>
+          <td class="note">без слова знака нет — нужен минимум один носитель
+            с текстом</td></tr>
       </tbody></table>
     </div>
   </div>
@@ -353,40 +398,46 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>SHEKSIZ.</strong> Единственная из трёх, где свобода
-        ничего не ломает технически: знак остаётся плоским, печатается, режется,
-        живёт в одну краску. Он ломает не материал, а привычку ставить логотип в
-        рамку — и это самая дешёвая по цене и самая заметная по эффекту свобода
-        из трёх.</p>
-      <p>И у него есть довод, которого нет у остальных: кадрирование даёт
-        <strong>бесконечное число законных состояний</strong> одного знака. Обложка,
-        сторис, борт машины, экран загрузки — везде круг срезан по-своему, а система
-        одна.</p>
+      <p class="lede"><strong>BELGI.</strong> Из пяти это единственная, где бренд
+        описывается глаголом, а не существительным. Продукт находит ответ — знак
+        отмечает найденное. Одна и та же механика работает в интерфейсе, в рекламе,
+        в документе и на витрине, и её невозможно скопировать, не скопировав саму
+        мысль.</p>
+      <p>И у неё лучшая экономика внимания: <code>ask</code> открыт, <code>qet</code> под маркером —
+        человек читает всё имя целиком и одновременно видит обещание. Ни одна из
+        остальных четырёх не объясняет продукт за одно касание.</p>
+      <p><strong>Вторая — QUYRYQ.</strong> Если нужен именно классический,
+        «взрослый» логотип, который ляжет на договор и на фасад, берите хвост: он
+        такой же типографический, но спокойнее и работает в трёх алфавитах.</p>
     </div>
     <div style="margin-top:var(--s3)">
-      <div class="pick">{P_SHEKSIZ}
-        <div><h4>SHEKSIZ<span class="flag flag--ok">беру</span></h4>
-          <p>Ломает рамку, не ломая производство. Работает от фавикона до фасада.</p></div></div>
-      <div class="pick">{P_QUYMA}
-        <div><h4>QUYMA</h4>
-          <p>Самая красивая и самая живая форма пакета. Берите, если продукт —
-            консьюмерский и экранный, и вы готовы вести два файла: слитый и
-            плашечный.</p></div></div>
-      <div class="pick">{P_ORIS}
-        <div><h4>ÓRIS<span class="flag flag--risk">только экран</span></h4>
-          <p>Сильнее всех как заставка и как состояние генерации. Но как основной
-            знак он не годится: не печатается и не живёт на белом.</p></div></div>
+      <div class="pick">{P_BELGI}
+        <div><h4>BELGI · Белгі<span class="flag flag--ok">беру</span></h4>
+          <p>Бренд как действие. Объясняет продукт мгновенно, переносится куда угодно.</p></div></div>
+      <div class="pick">{P_QUYRYQ}
+        <div><h4>QUYRYQ · Құйрық</h4>
+          <p>Хвост вместо знака. Самая «взрослая» и самая универсальная из пяти.</p></div></div>
+      <div class="pick">{P_EKIJAZU}
+        <div><h4>EKI JAZU · Екі жазу</h4>
+          <p>Сильнейшая идея для местного рынка: два алфавита в одном глифе.</p></div></div>
+      <div class="pick">{P_QOL}
+        <div><h4>QOL · Қол</h4>
+          <p>Человек в машинной категории. Самая тёплая и самая рискованная.</p></div></div>
+      <div class="pick">{P_YN}
+        <div><h4>ÝN · Үн<span class="flag flag--risk">зависит от цвета</span></h4>
+          <p>Схема разговора вместо иллюстрации интеллекта. Красиво, но без цвета
+            разваливается.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать концепцию — дальше разворачиваю пакет: правило кадрирования,
-        фавикон, анимация курсора, токены.<br>
-        2. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42.<br>
-        3. Для SHEKSIZ написать гайд на обрез: где проходит центр круга относительно
-        кадра и на сколько курсор отступает от края. Без этого знак развалится в
-        чужих руках.</p>
+      <p>1. Выбрать концепцию — дальше собираю полный пакет: шрифт, токены, правила
+        применения, анимация, носители.<br>
+        2. Для BELGI и QUYRYQ обязательно лицензировать наборный шрифт с казахской
+        латиницей и кириллицей: обе концепции держатся на буквах, и рисованных
+        контуров тут не хватит.<br>
+        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+        товарный знак по классам 9, 35, 42.</p>
     </div>
   </div>
 </section>
@@ -397,10 +448,9 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
       имени и контекста DevCore. Предыдущие итерации остались в репозитории:
-      <code>logo/01-jaryq</code>, <code>logo/v2</code>, <code>logo/v3</code>. Всё
-      пересобирается командой <code>python3 tools/build.py &amp;&amp; python3
-      tools/build_v3.py &amp;&amp; python3 tools/build_v4.py &amp;&amp; python3
-      tools/build_page.py</code>.</p>
+      <code>logo/01-jaryq</code>, <code>logo/v2</code>, <code>logo/v3</code>,
+      <code>logo/v4</code>. Всё пересобирается командой <code>python3 tools/build.py
+      &amp;&amp; python3 tools/build_v5.py &amp;&amp; python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -428,27 +478,26 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 """
 
 
+V5 = "logo/v5/"
+ORDER = [
+    ("quyryq", V5 + "quyryq/askqet-quyryq-mark.svg", None,
+     V5 + "quyryq/askqet-quyryq-lockup.svg"),
+    ("ekijazu", V5 + "ekijazu/askqet-ekijazu.svg", None,
+     V5 + "ekijazu/askqet-ekijazu-lockup.svg"),
+    ("yn", V5 + "yn/askqet-yn.svg", None, V5 + "yn/askqet-yn-lockup.svg"),
+    ("qol", V5 + "qol/askqet-qol.svg", None, V5 + "qol/askqet-qol-lockup.svg"),
+    ("belgi", V5 + "belgi/askqet-belgi-mark.svg", None,
+     V5 + "belgi/askqet-belgi-lockup.svg"),
+]
+
+
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
-    blocks = [
-        concept_block("sheksiz", read_svg("logo/v4/sheksiz/askqet-sheksiz.svg"),
-                      sizes("logo/v4/sheksiz/askqet-sheksiz.svg",
-                            "logo/v4/sheksiz/askqet-sheksiz-safe.svg"),
-                      read_svg("logo/v4/sheksiz/askqet-sheksiz-lockup.svg"), 1),
-        concept_block("quyma", read_svg("logo/v4/quyma/askqet-quyma.svg"),
-                      sizes("logo/v4/quyma/askqet-quyma.svg",
-                            "logo/v4/quyma/askqet-quyma-solid.svg"),
-                      read_svg("logo/v4/quyma/askqet-quyma-lockup.svg"), 2),
-        concept_block("oris", read_svg("logo/v4/oris/askqet-oris.svg"),
-                      sizes("logo/v4/oris/askqet-oris.svg",
-                            "logo/v4/oris/askqet-oris-solid.svg"),
-                      read_svg("logo/v4/oris/askqet-oris-lockup.svg"), 3),
-    ]
+    blocks = [concept_block(k, read_svg(art), sizes(art, small), read_svg(lk), i)
+              for i, (k, art, small, lk) in enumerate(ORDER, start=1)]
     html = html.replace("{CONCEPTS}", "\n".join(blocks))
-    for key, rel in (("SHEKSIZ", "logo/v4/sheksiz/askqet-sheksiz.svg"),
-                     ("QUYMA", "logo/v4/quyma/askqet-quyma.svg"),
-                     ("ORIS", "logo/v4/oris/askqet-oris.svg")):
-        html = html.replace("{P_" + key + "}", read_svg(rel))
+    for k, art, _, _ in ORDER:
+        html = html.replace("{P_" + k.upper() + "}", read_svg(art))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
