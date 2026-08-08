@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — ten / SIGNAL · Сигнал / duo</title>
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
+
+</svg>

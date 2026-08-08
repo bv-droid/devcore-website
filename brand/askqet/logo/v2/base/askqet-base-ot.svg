@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — base / OT · От — огонь / duo</title>
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><clipPath id="v1003a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#FF0A78"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFC400"/>
+  <g clip-path="url(#v1003a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FF6B2E"/></g>
+
+</svg>

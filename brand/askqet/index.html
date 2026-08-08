@@ -207,6 +207,48 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     transition-duration:.001ms !important}
   .caret{opacity:1}
 }
+
+.matrix{display:grid; grid-template-columns:78px repeat(4,minmax(0,1fr)) 62px;
+  gap:var(--s1); align-items:center; margin:var(--s3) 0}
+.matrix__h{font-family:var(--mono); font-size:11px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3); text-align:center}
+.matrix__row-label{font-family:var(--mono); font-size:12.5px; color:var(--ink)}
+.matrix svg{display:block; width:100%; height:auto; border-radius:5px}
+.matrix .tiny{width:44px; margin:0 auto}
+
+.dirs{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:var(--s3); margin:var(--s3) 0}
+.dir{border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  background:var(--surface); display:flex; flex-direction:column}
+.dir__art svg{display:block; width:100%; height:auto}
+.dir__body{padding:var(--s2) var(--s3) var(--s3)}
+.dir__name{font-family:var(--mono); font-size:12px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
+.dir__idea{font-size:14.5px; color:var(--ink-2); margin:0 0 var(--s2)}
+.dir__ramp{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:var(--s2)}
+.dir__ramp div{padding:.5rem .55rem .6rem; font-family:var(--mono); font-size:10.5px;
+  line-height:1.5; min-height:72px; display:flex; flex-direction:column;
+  justify-content:flex-end}
+.dir__ramp b{font-size:11.5px; font-weight:500; display:block}
+.dir__meta{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); line-height:1.7}
+.dir__meta i{font-style:normal; color:var(--ink-2)}
+
+.verdict-list{display:grid; gap:var(--s2); margin-top:var(--s3)}
+.vrow{display:grid; grid-template-columns:96px minmax(0,1fr); gap:var(--s3);
+  align-items:center; border:1px solid var(--line); border-radius:6px;
+  padding:var(--s2); background:var(--surface)}
+.vrow svg{display:block; width:100%; height:auto; border-radius:5px}
+.vrow h4{margin:0 0 .25em}
+.vrow p{margin:0; font-size:14.5px; color:var(--ink-2)}
+.flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
+  border-radius:3px; border:1px solid currentColor; margin-left:.5em}
+.flag--ok{color:var(--pass)} .flag--risk{color:var(--fail)}
+@media (max-width:760px){
+  .matrix{grid-template-columns:1fr; gap:var(--s2)}
+  .matrix__h,.matrix .tiny{display:none}
+  .vrow{grid-template-columns:1fr}
+}
+
 </style>
 
 <svg class="filters" aria-hidden="true" style="position:absolute;width:0;height:0">
@@ -224,18 +266,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · бренд-пакет · исследование и графическая концепция</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 2 — круг и квадрат</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Имя называет не продукт, а сделку: спросил&nbsp;— <em>получил</em>.
-      Значит и знак должен быть не предметом, а переходом<span class="caret"></span></p>
+    <p class="mast__thesis">Одна конструкция: круг — вопрос, курсор — <em>ответ</em>.
+      Четыре способа их свести и три цвета, в которых это живёт<span class="caret"></span></p>
     <div class="mast__meta">
-      <div>ГИПОТЕЗА<b>диалоговый продукт</b></div>
-      <div>КОНЦЕПЦИЙ<b>3 стратегии</b></div>
-      <div>ПАЛИТРА<b>двухполюсная</b></div>
-      <div>АССЕТОВ<b>27 SVG</b></div>
+      <div>ПОСТРОЕНИЙ<b>4</b></div>
+      <div>ЦВЕТОВЫХ НАПРАВЛЕНИЙ<b>3</b></div>
+      <div>СРЕДНЯЯ ХРОМА<b>0.158 — 0.237</b></div>
+      <div>БЫЛО<b>0.140</b></div>
     </div>
   </div>
 </header>
@@ -244,55 +286,488 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">01</span><h2>Имя</h2></div>
+    <div class="sec__head"><span class="sec__num">01</span><h2>Цвет</h2></div>
     <div class="col">
-      <p class="lede"><code>askqet</code> = <b>ASK</b> + <b>GET</b>, где G заменена
-        на <b>Q</b>. В казахской латинице Q кодирует звук <b>Қ</b>. Двуязычность зашита
-        не переводом и не доменом .kz, а подменой одной буквы внутри английского
-        слова.</p>
-      <p>Приём редкий и дорогой по узнаваемости: имя читается и как международное, и как
-        местное, без потери смысла. Фонетически — два закрытых слога, взрывной «к»
-        дважды. Слово щёлкает, как клавиша.</p>
-
-      <h3>Что имя диктует дизайну</h3>
-      <p>Бренд назван не продуктом, а транзакцией. Айдентика, построенная вокруг одного
-        объекта — иконки, монограммы, метафоры, — имя недоигрывает. Системе нужны
-        <strong>два полюса и переход между ними</strong>: в цвете, в знаке, в анимации.
-        Дальше это проведено насквозь — холодный вопрос и тёплый ответ, круг и курсор,
-        шум и один блок.</p>
-
-      <h3>Риск, который нужно закрыть заранее</h3>
-      <p>В кириллице <code>askqet</code> естественно транслитерируется в «аскет» — слово с
-        сильным и посторонним значением. Либо принять его (аскетизм = минимализм, что
-        айдентике даже на руку), либо запретить транслитерацию. Рекомендую зафиксировать
-        три написания и не плодить четвёртое.</p>
+      <p class="lede">Претензия справедливая, и она измеряется. Первая пара сидела на
+        средней хроме <b>C 0.140</b> — середина диапазона sRGB, «приличный
+        корпоративный» уровень. Новые направления идут по <b>0.158 — 0.237</b> при
+        потолке sRGB около 0.26.</p>
+      <p>Одна честная оговорка: у SIGNAL хрома всего 0.158, потому что голубой в sRGB
+        физически не бывает насыщеннее — на этих светлотах ему некуда идти. Его
+        прибавка идёт по <strong>светлоте</strong>: 0.636 → 0.814. Он ярче, а не
+        сочнее. Реальный скачок по хроме дают ULTRA (0.237) и OT (0.215).</p>
+      <p>Направления отличаются не оттенком, а <strong>логикой пересечения</strong> —
+        тем самым третьим цветом, ради которого в брифе была ссылка на Mastercard.
+        Свет, чернила или смесь: три разных физических объяснения одного жеста.</p>
     </div>
+
+    <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
+      <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
+      <button type="button" data-cvd="deut" aria-pressed="false">ДЕЙТЕРАНОПИЯ</button>
+      <button type="button" data-cvd="prot" aria-pressed="false">ПРОТАНОПИЯ</button>
+      <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
+      <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
+    </div>
+    <div class="dirs" id="dirs"><article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1011a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+
+</svg></div><div class="dir__body"><p class="dir__name">SIGNAL · Сигнал</p><p class="dir__idea">Холод против тепла на максимальной яркости. Пересечение — чистый свет: вопрос и машина складываются, получается ответ.</p><div class="dir__ramp"><div style="background:#00D8FF;color:#0B0C0E"><b>#00D8FF</b>круг · вопрос<br>C 0.145 · H 217°</div><div style="background:#FFB300;color:#0B0C0E"><b>#FFB300</b>курсор · ответ<br>C 0.171 · H 78°</div><div style="background:#FFFFFF;color:#0B0C0E"><b>#FFFFFF</b>пересечение<br>C 0.000 · H 90°</div></div><p class="dir__meta">средняя хрома <i>C 0.158</i><br>ближайший чужой бренд <i>DevCore, ΔEok 0.115</i><span class="flag flag--ok">поле чистое</span></p></div></article>
+<article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><mask id="v1012a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1012a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
+
+</svg></div><div class="dir__body"><p class="dir__name">ULTRA · Ультра</p><p class="dir__idea">Ультрамарин и кислотный лайм на светлой подложке. Здесь перевёрнута не только оптика Mastercard, но и фон: пересечение уходит в чернила, разрыв по светлоте почти предельный.</p><div class="dir__ramp"><div style="background:#2B2BE0;color:#F6F2E8"><b>#2B2BE0</b>круг · вопрос<br>C 0.257 · H 270°</div><div style="background:#D4FF2E;color:#0B0C0E"><b>#D4FF2E</b>курсор · ответ<br>C 0.216 · H 122°</div><div style="background:#0B0B1A;color:#F6F2E8"><b>#0B0B1A</b>пересечение<br>C 0.031 · H 282°</div></div><p class="dir__meta">средняя хрома <i>C 0.237</i><br>ближайший чужой бренд <i>Gemini, ΔEok 0.199</i><span class="flag flag--ok">поле чистое</span></p></div></article>
+<article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><mask id="v1013a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1013a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
+
+</svg></div><div class="dir__body"><p class="dir__name">OT · От — огонь</p><p class="dir__idea">Тёплая триада без холодного полюса — ровно логика Mastercard: пересечение не светлее, а смешаннее обоих цветов. Красный взят не алый, а пунцовый: чистый алый в Казахстане неотличим от Kaspi.</p><div class="dir__ramp"><div style="background:#FF0A78;color:#0B0C0E"><b>#FF0A78</b>круг · вопрос<br>C 0.256 · H 5°</div><div style="background:#FFC400;color:#0B0C0E"><b>#FFC400</b>курсор · ответ<br>C 0.174 · H 87°</div><div style="background:#FF6B2E;color:#0B0C0E"><b>#FF6B2E</b>пересечение<br>C 0.194 · H 41°</div></div><p class="dir__meta">средняя хрома <i>C 0.215</i><br>ближайший чужой бренд <i>Kaspi, ΔEok 0.109</i><span class="flag flag--ok">поле чистое</span></p></div></article></div>
+
+    <div class="col">
+      <p class="cvd-note">Переключите симуляцию: под дейтеранопией и протанопией
+        (около 8 % мужчин) SIGNAL и ULTRA держат различие — обе пары лежат на
+        сине-жёлтой оси. У OT пунцовый и золото сближаются: если бренд массовый,
+        это довод против него.</p>
+    </div>
+
+    <h3>Две коллизии, которые нашлись при замере</h3>
+    <div class="cols2">
+      <div><h4>Алый в Казахстане занят</h4>
+        <p>Первый вариант тёплой триады был на алом <code>#FF2D20</code> — <b>ΔEok
+          0.032 до Kaspi</b>. Это ниже порога различения: на витрине и в сторе знак
+          читался бы как «что-то от Kaspi». Красный сдвинут в пунцовый
+          <code>#FF0A78</code> — ΔEok до Kaspi стал <b>0.109</b>, поле чистое.</p></div>
+      <div><h4>Голубой упирался в сам DevCore</h4>
+        <p>Первая версия SIGNAL шла на <code>#00B4FF</code> — <b>ΔEok 0.026 до
+          DevCore</b> <code>#00AEEF</code>. Для суббренда это может быть намеренным
+          родством; для самостоятельного бренда — потеря лица. Взят
+          <code>#00D8FF</code>, ΔEok <b>0.115</b>. Вернуть родство — правка одного
+          токена.</p></div>
+    </div>
+
+    <h3>Контраст на собственной подложке</h3>
     <div class="scroll">
-      <table><thead><tr><th>Контекст</th><th>Написание</th></tr></thead><tbody>
-        <tr><td>логотип, интерфейс, домен</td><td class="num">askqet</td></tr>
-        <tr><td>текст, документы, юр. лицо</td><td class="num">AskQet</td></tr>
-        <tr><td>казахский и русский текст</td><td class="num">AskQet — без транслитерации</td></tr>
-      </tbody></table>
+      <table><thead><tr><th>Направление и роль</th><th>Hex</th><th>WCAG 2.1</th>
+        <th>Статус</th></tr></thead><tbody><tr><td><span class="pair" style="background:#05070C;color:#00D8FF">Aa</span>SIGNAL · вопрос</td><td class="num">#00D8FF</td><td class="num">11.77:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#05070C;color:#FFB300">Aa</span>SIGNAL · ответ</td><td class="num">#FFB300</td><td class="num">11.23:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#EDEDE7;color:#2B2BE0">Aa</span>ULTRA · вопрос</td><td class="num">#2B2BE0</td><td class="num">7.08:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#EDEDE7;color:#D4FF2E">Aa</span>ULTRA · ответ</td><td class="num">#D4FF2E</td><td class="num">1.02:1</td><td><span class="tag tag--fail">крупно</span></td></tr>
+<tr><td><span class="pair" style="background:#0C050A;color:#FF0A78">Aa</span>OT · вопрос</td><td class="num">#FF0A78</td><td class="num">5.34:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#0C050A;color:#FFC400">Aa</span>OT · ответ</td><td class="num">#FFC400</td><td class="num">12.62:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#0B0C0E;color:#2C93D4">Aa</span>ALTYN · вопрос</td><td class="num">#2C93D4</td><td class="num">5.81:1</td><td><span class="tag tag--pass">годен</span></td></tr>
+<tr><td><span class="pair" style="background:#0B0C0E;color:#F2A93B">Aa</span>ALTYN · ответ</td><td class="num">#F2A93B</td><td class="num">9.80:1</td><td><span class="tag tag--pass">годен</span></td></tr></tbody></table>
     </div>
+    <div class="col"><p class="note">Кислотный лайм ULTRA на светлой подложке даёт
+      1.02:1 — как заливка рядом с ультрамарином он работает, но текстом или тонкой
+      линией не бывает никогда. Это записано в правило, а не оставлено на вкус.</p></div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Палеография: круг и квадрат — это этимология, а не приём</h2></div>
+      <h2>Четыре построения одной конструкции</h2></div>
+    <div class="col"><p class="lede">Круг и квадрат остаются. Меняется только то,
+      как они встречаются: величина перекрытия, наличие контрформы и то, чем
+      отмечена граница. Крайняя колонка — тот же знак в 16 px.</p></div>
+
+    <div class="matrix"><div></div><div class="matrix__h">SIGNAL</div><div class="matrix__h">ULTRA</div><div class="matrix__h">OT</div><div class="matrix__h">исходный</div><div class="matrix__h">16 px</div>
+<div class="matrix__row-label">BASE</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><clipPath id="v1002a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#2B2BE0"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#D4FF2E"/>
+  <g clip-path="url(#v1002a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#0B0B1A"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><clipPath id="v1003a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#FF0A78"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFC400"/>
+  <g clip-path="url(#v1003a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FF6B2E"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><clipPath id="v1004a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
+  <g clip-path="url(#v1004a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
+
+</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
+
+</svg></div>
+<div class="matrix__row-label">TEŇ</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><clipPath id="v1007a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#2B2BE0"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#D4FF2E"/>
+  <g clip-path="url(#v1007a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#0B0B1A"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><clipPath id="v1008a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#FF0A78"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFC400"/>
+  <g clip-path="url(#v1008a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FF6B2E"/></g>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><clipPath id="v1009a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#F2A93B"/>
+  <g clip-path="url(#v1009a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFF3DC"/></g>
+
+</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
+
+</svg></div>
+<div class="matrix__row-label">OYYQ</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1011a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><mask id="v1012a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1012a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><mask id="v1013a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1013a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><mask id="v1014a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1014a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#F2A93B"/>
+
+</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1011a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+
+</svg></div>
+<div class="matrix__row-label">QABAT</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1016a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><mask id="v1017a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1017a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#D4FF2E"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0C050A"/>
+  <defs><mask id="v1018a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1018a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFC400"/>
+
+</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><mask id="v1019a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1019a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#F2A93B"/>
+
+</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1016a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
+
+</svg></div></div>
+
+    <div class="cols2"><div><h4>BASE · исходное</h4><p>Курсор вынесен на 1.34 R. Перекрытие 48 % стороны — хвост Q читается, чаша цела.</p><p class="dir__meta" style="margin-top:.6em">перекрытие 48 % стороны</p></div>
+<div><h4>TEŇ · равные</h4><p>Круг и квадрат одного визуального веса, перекрытие 66 %. Максимально близко к логике Mastercard: не знак с хвостом, а система из двух равных.</p><p class="dir__meta" style="margin-top:.6em">перекрытие 67 % стороны</p></div>
+<div><h4>OYYQ · вырез</h4><p>Чаша — кольцо, курсор пробивает его насквозь и выходит наружу. Самое сильное чтение Q и лучшая иконка: контрформа держит знак даже в 16 px.</p><p class="dir__meta" style="margin-top:.6em">кольцо, перекрытия нет</p></div>
+<div><h4>QABAT · слой</h4><p>Курсор лежит поверх круга, и круг обрывается за 5 единиц до его края — очерчивание вместо третьего цвета. Единственное построение, которое полностью работает в одну краску.</p><p class="dir__meta" style="margin-top:.6em">кольцо, перекрытия нет</p></div></div>
+
+    <div class="builder">
+      <div class="builder__stage">
+        <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
+          <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+          <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
+          <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
+          <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
+            height="44" rx="3" fill="#FFFFFF"/></g>
+        </svg>
+      </div>
+      <div>
+        <label for="offset">Вынос курсора по диагонали 45°</label>
+        <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
+        <p class="readout" id="readout"></p>
+      </div>
+    </div>
+    <div class="col" style="margin-top:var(--s2)">
+      <p class="note">BASE стоит на 19.8, TEŇ — на 2.8. Ниже 22 % перекрытия связь
+        рвётся, выше 72 % чаша съедается: рабочий коридор узкий, и обе принятые
+        версии стоят по его краям намеренно.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">03</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede">Бриф просит знак, где круг и квадрат-курсор вместе дают Q. Такая
-        конструкция не иллюстрирует букву — она её реконструирует.</p>
+      <p class="lede">Знак — <strong>OYYQ</strong>, цвет — <strong>SIGNAL</strong>.
+        Это не компромисс: OYYQ единственный из четырёх, кто выживает в 16 px, потому
+        что его держит контрформа, а не силуэт. SIGNAL единственный, кто одновременно
+        яркий, свободный от чужих брендов и целый под дальтонизмом.</p>
     </div>
 
+    <div class="verdict-list">
+      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1011a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+
+</svg>
+        <div><h4>OYYQ — основной<span class="flag flag--ok">беру</span></h4>
+          <p>Самое сильное чтение Q. Кольцо + прорезь + блок — такой формы в категории
+            ни у кого нет. Работает в одну краску и в 16 px.</p></div></div>
+      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
+
+</svg>
+        <div><h4>TEŇ — если нужен ровно Mastercard</h4>
+          <p>Два равных объекта и большой третий цвет в пересечении — максимально
+            близко к референсу из брифа. Проигрывает в мелком размере.</p></div></div>
+      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><mask id="v1016a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
+
+</svg>
+        <div><h4>QABAT — если нужна одна краска</h4>
+          <p>Очерчивание вместо третьего цвета. Единственное построение, полностью
+            рабочее в один цвет: тиснение, гравировка, шелкография.</p></div></div>
+      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#05070C"/>
+  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
+  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
+
+</svg>
+        <div><h4>BASE — исходное, остаётся для сравнения</h4>
+          <p>Ровно то, что было в первой итерации, в новом цвете. Держу в пакете как
+            точку отсчёта.</p></div></div>
+    </div>
+
+    <h3>Локапы в трёх направлениях</h3>
+    <div class="lockups">
+      <div class="plate" style="background:#05070C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#05070C"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1021a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1021a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div>
+      <div class="plate plate--light" style="background:#EDEDE7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#EDEDE7"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1022a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1022a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div>
+      <div class="plate" style="background:#0C050A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#0C050A"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1023a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1023a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div>
+    </div>
+
+    <h3>Что дальше</h3>
+    <div class="col">
+      <p>1. Выбрать построение и направление — дальше пакет разворачивается за один
+        проход: тиснение, очерчивание, app-иконка, анимация курсора.<br>
+        2. Если AskQet позиционируется как продукт DevCore, вернуть голубой к
+        <code>#00AEEF</code> — родство станет читаемым.<br>
+        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+        товарный знак по классам 9, 35, 42.<br>
+        4. Свести цвета по вееру Pantone на реальной бумаге: пунцовый и кислотный лайм
+        в офсете сядут заметно тусклее, чем на экране.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">04</span>
+      <h2>Основание конструкции</h2></div>
+    <div class="col">
+      <p class="lede">Круг и квадрат — не приём, а этимология буквы. Финикийская
+        <b>qōp</b> (XI в. до н. э.) — окружность с отростком вниз. Греческая
+        <b>коппа</b> держит ту же схему и через этрусков доходит до латинской
+        <b>Q</b>, где отросток становится росчерком вправо-вниз.</p>
+    </div>
     <div class="lineage">
       <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <g stroke="#F2A93B" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="64" cy="48" r="26"/><path d="M64,34 L64,116"/></g>
 
 </svg>
-        <figcaption>Финикийская <b>𐤒 qōp · XI в. до н. э.</b></figcaption></figure>
+        <figcaption>Финикийская <b>𐤒 qōp</b></figcaption></figure>
       <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <g stroke="#F2A93B" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="64" cy="52" r="28"/><path d="M64,80 L64,112"/></g>
@@ -304,7 +779,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <g stroke="#F2A93B" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="60" cy="58" r="34"/><path d="M74,72 L106,108"/></g>
 
 </svg>
-        <figcaption>Латинская <b>Q · через этрусков</b></figcaption></figure>
+        <figcaption>Латинская <b>Q</b></figcaption></figure>
       <figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <circle cx="56" cy="56" r="30" fill="#2C93D4"/>
@@ -313,873 +788,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 </svg>
         <figcaption>askqet <b>круг + курсор</b></figcaption></figure>
     </div>
-
-    <div class="col">
-      <p>Финикийская <b>qōp</b> — окружность с отростком вниз. Значение имени спорно
-        («обезьяна», «игольное ушко», «затылок»), но графика однозначна: замкнутая форма
-        плюс отдельный элемент. Греческая <b>коппа</b> держит ту же схему; в аттическом
-        алфавите её вытеснила каппа, но в западных вариантах она уцелела и через
-        этрусков дошла до латинской <b>Q</b>, где отросток уехал вправо-вниз и стал
-        росчерком.</p>
-    </div>
-
     <blockquote>Q — единственная буква латиницы, которая с рождения устроена как
       «круг + отдельный элемент».</blockquote>
-
     <div class="cols2">
-      <div>
-        <h4>Хвост Q — переменный штрих</h4>
-        <p>В римской капитальной эпиграфике (<i>capitalis monumentalis</i>, колонна
-          Траяна, 113 г.) длина и угол хвоста Q менялись от резчика к резчику, тогда как
-          остальные буквы держали жёсткий канон. У буквы исторически есть свободный
-          параметр — прямое основание для концепта <b>TIRI</b>, где знак живой.</p>
-      </div>
-      <div>
-        <h4>Резьба — это две фаски, а не контур</h4>
-        <p>Римские надписи размечались кистью (<i>ordinatio</i>), затем вырубались
-          V-образным резом и заливались пигментом. Значит, честный «резной» логотип —
-          не обводка, а две фаски, по-разному ловящие свет, плюс цвет пигмента в
-          глубине. Отсюда врез в концепте <b>BITIKTAS</b>.</p>
-      </div>
-      <div>
-        <h4>Орхон: форму диктует резец</h4>
-        <p>Орхоно-енисейское письмо (VIII в., стелы Кюль-тегина и Бильге-кагана) —
-          прямые, углы кратные 45°, минимум кривых, крупные просветы. Поэтому чаша во
-          втором концепте — восьмигранник: минимум, при котором окружность ещё читается
-          как окружность, а рез — как рез.</p>
-      </div>
-      <div>
-        <h4>Тамга: местная традиция логотипа</h4>
-        <p>Родовой знак — два-пять штрихов, полная абстракция, читаемость на тавре,
-          камне, войлоке и серебре. Ровно те требования, которые сегодня предъявляются
-          к app-иконке в 40 px. «Знак, высеченный на камне», здесь не экзотика, а
-          базовый культурный код.</p>
-      </div>
+      <div><h4>Имя диктует два полюса</h4>
+        <p><code>askqet</code> = ASK + GET, где G заменена на <b>Q</b> — букву
+          казахской латиницы для звука <b>Қ</b>. Бренд назван не продуктом, а
+          сделкой, поэтому у знака и у палитры два полюса: вопрос и ответ.</p></div>
+      <div><h4>Хвост Q исторически переменный</h4>
+        <p>В римской капитальной эпиграфике длина и угол хвоста Q менялись от резчика
+          к резчику, тогда как остальные буквы держали жёсткий канон. Поэтому вынос
+          курсора — законный параметр, а не произвол.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Поле и цвет</h2></div>
-    <div class="col">
-      <p class="lede">Синий и сине-фиолетовый градиент — самая занятая территория в
-        категории ИИ. В Казахстане красный занят Kaspi, зелёный — Halyk, синий — Freedom,
-        госсервисами и самим DevCore.</p>
-      <p>Свободно и при этом культурно заряжено — <strong>золото</strong>: второй цвет
-        флага РК, цвет солнца и беркута. В цифровой категории Казахстана его никто не
-        держит; в мировой ИИ-категории тёплый спектр занимает только Anthropic — и другим
-        тоном.</p>
-    </div>
-
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Бренд</th><th>Hex</th><th>ΔH до altyn</th><th>ΔEok</th>
-          <th>Комментарий</th></tr></thead>
-        <tbody><tr><td><span class="chip" style="background:#FEC50C"></span>Флаг РК, золото</td><td class="num">#FEC50C</td><td class="num">14°</td><td class="num">0.079</td><td class="note">государственный код, не конкурент</td></tr>
-<tr><td><span class="chip" style="background:#FF7000"></span>Mistral</td><td class="num">#FF7000</td><td class="num">26°</td><td class="num">0.121</td><td class="note">ближайший сосед в категории</td></tr>
-<tr><td><span class="chip" style="background:#D97757"></span>Claude</td><td class="num">#D97757</td><td class="num">34°</td><td class="num">0.142</td><td class="note">единственный тёплый ИИ-бренд</td></tr>
-<tr><td><span class="chip" style="background:#F14635"></span>Kaspi</td><td class="num">#F14635</td><td class="num">43°</td><td class="num">0.206</td><td class="note">владеет красным в Казахстане</td></tr>
-<tr><td><span class="chip" style="background:#009B77"></span>Halyk</td><td class="num">#009B77</td><td class="num">96°</td><td class="num">0.266</td><td class="note"></td></tr>
-<tr><td><span class="chip" style="background:#00AEEF"></span>DevCore</td><td class="num">#00AEEF</td><td class="num">161°</td><td class="num">0.303</td><td class="note">материнский бренд</td></tr>
-<tr><td><span class="chip" style="background:#20808D"></span>Perplexity</td><td class="num">#20808D</td><td class="num">136°</td><td class="num">0.320</td><td class="note"></td></tr>
-<tr><td><span class="chip" style="background:#4285F4"></span>Gemini</td><td class="num">#4285F4</td><td class="num">173°</td><td class="num">0.362</td><td class="note">самая занятая зона категории</td></tr></tbody>
-      </table>
-    </div>
-    <div class="col"><p class="note">ΔEok — перцептивная дистанция в OKLab; порог
-      уверенного различения ≈ 0.08. Ближайший сосед — Mistral (0.121): различие
-      уверенное, рынки не пересекаются, но при выходе на глобальную ИИ-аудиторию это
-      единственная пара, которую стоит держать в поле зрения.</p></div>
-
-    <h3>Двухполюсная палитра</h3>
-    <div class="col">
-      <p>Продукт — это переход, поэтому палитра построена как два полюса.
-        <strong style="color:var(--cool)">kök</strong> — вопрос: холодный, H ≈ 242°, небо
-        и ещё не решённое. <strong style="color:var(--accent)">altyn</strong> — ответ:
-        тёплый, H ≈ 73°, солнце и найденное. Между ними 168.8° по тону и ΔEok 0.317 —
-        почти комплементарная пара, максимальный перцептивный щелчок в момент, когда
-        интерфейс отдаёт ответ.</p>
-    </div>
-
-    <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
-      <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
-      <button type="button" data-cvd="deut" aria-pressed="false">ДЕЙТЕРАНОПИЯ</button>
-      <button type="button" data-cvd="prot" aria-pressed="false">ПРОТАНОПИЯ</button>
-      <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
-      <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
-    </div>
-    <div class="palette" id="palette"><figure class="sw" style="background:#0B0C0E;color:#F6F2E8"><span class="sw__name">tas-950</span><span class="sw__hex">#0B0C0E</span><span class="sw__ok">L 0.15 · C 0.005 · H 264°</span></figure>
-<figure class="sw" style="background:#121418;color:#F6F2E8"><span class="sw__name">tas-900</span><span class="sw__hex">#121418</span><span class="sw__ok">L 0.19 · C 0.009 · H 264°</span></figure>
-<figure class="sw" style="background:#1B1E23;color:#F6F2E8"><span class="sw__name">tas-800</span><span class="sw__hex">#1B1E23</span><span class="sw__ok">L 0.23 · C 0.011 · H 261°</span></figure>
-<figure class="sw" style="background:#2A2F36;color:#F6F2E8"><span class="sw__name">tas-700</span><span class="sw__hex">#2A2F36</span><span class="sw__ok">L 0.30 · C 0.014 · H 257°</span></figure>
-<figure class="sw" style="background:#7E8794;color:#0B0C0E"><span class="sw__name">tas-400</span><span class="sw__hex">#7E8794</span><span class="sw__ok">L 0.62 · C 0.022 · H 257°</span></figure>
-<figure class="sw" style="background:#F6F2E8;color:#0B0C0E"><span class="sw__name">sut-100</span><span class="sw__hex">#F6F2E8</span><span class="sw__ok">L 0.96 · C 0.014 · H 89°</span></figure>
-<figure class="sw" style="background:#EDE7DA;color:#0B0C0E"><span class="sw__name">aktas-100</span><span class="sw__hex">#EDE7DA</span><span class="sw__ok">L 0.93 · C 0.019 · H 86°</span></figure>
-<figure class="sw" style="background:#DED5C4;color:#0B0C0E"><span class="sw__name">aktas-200</span><span class="sw__hex">#DED5C4</span><span class="sw__ok">L 0.88 · C 0.025 · H 83°</span></figure>
-<figure class="sw" style="background:#7A4B0E;color:#F6F2E8"><span class="sw__name">altyn-800</span><span class="sw__hex">#7A4B0E</span><span class="sw__ok">L 0.46 · C 0.095 · H 67°</span></figure>
-<figure class="sw" style="background:#A96A16;color:#0B0C0E"><span class="sw__name">altyn-700</span><span class="sw__hex">#A96A16</span><span class="sw__ok">L 0.58 · C 0.121 · H 67°</span></figure>
-<figure class="sw" style="background:#F2A93B;color:#0B0C0E"><span class="sw__name">altyn-500</span><span class="sw__hex">#F2A93B</span><span class="sw__ok">L 0.79 · C 0.147 · H 73°</span></figure>
-<figure class="sw" style="background:#F5BC5E;color:#0B0C0E"><span class="sw__name">altyn-400</span><span class="sw__hex">#F5BC5E</span><span class="sw__ok">L 0.83 · C 0.129 · H 78°</span></figure>
-<figure class="sw" style="background:#F9DCA4;color:#0B0C0E"><span class="sw__name">altyn-200</span><span class="sw__hex">#F9DCA4</span><span class="sw__ok">L 0.91 · C 0.079 · H 84°</span></figure>
-<figure class="sw" style="background:#155A87;color:#F6F2E8"><span class="sw__name">kok-700</span><span class="sw__hex">#155A87</span><span class="sw__ok">L 0.45 · C 0.098 · H 243°</span></figure>
-<figure class="sw" style="background:#2C93D4;color:#0B0C0E"><span class="sw__name">kok-500</span><span class="sw__hex">#2C93D4</span><span class="sw__ok">L 0.64 · C 0.133 · H 242°</span></figure>
-<figure class="sw" style="background:#7FC4EC;color:#0B0C0E"><span class="sw__name">kok-300</span><span class="sw__hex">#7FC4EC</span><span class="sw__ok">L 0.79 · C 0.090 · H 235°</span></figure>
-<figure class="sw" style="background:#C0522E;color:#F6F2E8"><span class="sw__name">oher-500</span><span class="sw__hex">#C0522E</span><span class="sw__ok">L 0.57 · C 0.150 · H 38°</span></figure>
-<figure class="sw" style="background:#FFF3DC;color:#0B0C0E"><span class="sw__name">jaryq</span><span class="sw__hex">#FFF3DC</span><span class="sw__ok">L 0.97 · C 0.033 · H 84°</span></figure>
-<figure class="sw" style="background:#3FA46E;color:#0B0C0E"><span class="sw__name">jasyl-500</span><span class="sw__hex">#3FA46E</span><span class="sw__ok">L 0.65 · C 0.125 · H 157°</span></figure>
-<figure class="sw" style="background:#D9463C;color:#0B0C0E"><span class="sw__name">qyzyl-500</span><span class="sw__hex">#D9463C</span><span class="sw__ok">L 0.60 · C 0.185 · H 28°</span></figure></div>
-    <div class="col"><p class="cvd-note">Пара синий/жёлтый различается по S-конусной оси,
-      которая при протанопии и дейтеранопии (около 8 % мужчин) сохраняется —
-      красно-зелёная пара в этой роли развалилась бы. Тританопия (&lt; 0.01 %) —
-      единственный риск, и там различие держит светлота: ΔL(kök, altyn) = 0.151.
-      Матрицы — стандартные линейные аппроксимации, для сдачи проверять на реальных
-      симуляторах.</p></div>
-
-    <h3>Четыре решения, которые требуют объяснения</h3>
-    <div class="cols2">
-      <div><h4>Текст не чисто-белый</h4>
-        <p><code>#FFFFFF</code> на почти чёрном даёт гало: хроматическая аберрация глаза
-          плюс свечение субпикселей размывает край. <code>sut-100</code> — L 0.962 с
-          минимальной тёплой хромой: контраст 17.5:1 сохраняется, край мягче.</p></div>
-      <div><h4>Нейтраль сдвинута в синеву</h4>
-        <p><code>tas-950</code> имеет H 264° при C 0.005. На нейтрально-сером фоне
-          симультанный контраст тянет фон в зелень и пачкает золото. Микроскопический
-          синий сдвиг держит акцент чистым.</p></div>
-      <div><h4>Золото на светлом — плашка, не текст</h4>
-        <p><code>altyn-500</code> на <code>aktas-100</code> даёт 1.62:1. На светлой
-          подложке акцентный текст опускается до <code>altyn-800</code> (6.00:1), а
-          золото остаётся заливкой с <code>tas-950</code> поверх (9.80:1).</p></div>
-      <div><h4>Печать проверять по вееру</h4>
-        <p>Ориентир: <code>altyn-500</code> — зона Pantone 143 C / 1235 C,
-          <code>kök-500</code> — зона 2925 C. Это ориентир, а не подбор. Для тиснения —
-          отдельная проба фольги: золото на глянце уходит в зелень.</p></div>
-    </div>
-
-    <h3>Контраст — проверенные пары</h3>
-    <div class="scroll">
-      <table><thead><tr><th>Пара</th><th>WCAG 2.1</th><th>Статус</th>
-        <th>Применение</th></tr></thead><tbody><tr><td><span class="pair" style="background:#0B0C0E;color:#F6F2E8">Aa</span><code>sut-100</code> на <code>tas-950</code></td><td class="num">17.50:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">основной текст на тёмном</td></tr>
-<tr><td><span class="pair" style="background:#0B0C0E;color:#F2A93B">Aa</span><code>altyn-500</code> на <code>tas-950</code></td><td class="num">9.80:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">акцент на тёмном</td></tr>
-<tr><td><span class="pair" style="background:#F2A93B;color:#0B0C0E">Aa</span><code>tas-950</code> на <code>altyn-500</code></td><td class="num">9.80:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">текст на золотой плашке</td></tr>
-<tr><td><span class="pair" style="background:#0B0C0E;color:#2C93D4">Aa</span><code>kok-500</code> на <code>tas-950</code></td><td class="num">5.81:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">вторичный на тёмном</td></tr>
-<tr><td><span class="pair" style="background:#EDE7DA;color:#121418">Aa</span><code>tas-900</code> на <code>aktas-100</code></td><td class="num">14.96:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">основной текст на светлом</td></tr>
-<tr><td><span class="pair" style="background:#EDE7DA;color:#7A4B0E">Aa</span><code>altyn-800</code> на <code>aktas-100</code></td><td class="num">6.00:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">акцент-текст на светлом</td></tr>
-<tr><td><span class="pair" style="background:#EDE7DA;color:#155A87">Aa</span><code>kok-700</code> на <code>aktas-100</code></td><td class="num">5.99:1</td><td><span class="tag tag--pass">AA</span></td><td class="note">вторичный на светлом</td></tr>
-<tr><td><span class="pair" style="background:#EDE7DA;color:#A96A16">Aa</span><code>altyn-700</code> на <code>aktas-100</code></td><td class="num">3.58:1</td><td><span class="tag tag--warn">AA large</span></td><td class="note">только кегль ≥ 24 px</td></tr></tbody></table>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Три концепции</h2></div>
-    <div class="col"><p class="lede">Это не три эскиза одного знака, а три
-      стратегические позиции: дуальность, наследие, процесс. Все построены на одной
-      палитре и одном скелете букв, поэтому их можно взять по отдельности или выстроить
-      в иерархию.</p></div>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <defs><clipPath id="aq1-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#aq1-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
-
-</svg></div>
-        <div>
-          <p class="concept__id">Концепция 01</p>
-          <h3 class="concept__title" style="margin-top:0">JARYQ · Жарық — свет</h3>
-          <p class="concept__sub">дуальность · круг + курсор = Q</p>
-          <p>От Mastercard взята <strong>логика</strong> — два самостоятельных объекта и
-            третий цвет в пересечении. Но <strong>оптика перевёрнута</strong>: у
-            Mastercard пересечение темнее обоих исходных цветов, здесь — светлее. Смысл
-            прямой: вопрос и машина накладываются, и в месте наложения возникает свет.</p>
-          <p>Круг — «О», открытый вопрос, небо. Квадрат — курсор: и текстовая каретка, и
-            блок ответа. Пересечение — <code>jaryq</code>, самое светлое значение
-            системы.</p>
-        </div>
-      </div>
-
-      <div class="builder">
-        <div class="builder__stage">
-          <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
-            <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-            <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
-            <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-            <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
-              height="44" rx="3" fill="#FFF3DC"/></g>
-          </svg>
-        </div>
-        <div>
-          <label for="offset">Вынос курсора по диагонали 45°</label>
-          <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
-          <p class="readout" id="readout"></p>
-        </div>
-      </div>
-
-      <h4>Исполнения</h4>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <defs><mask id="aq2-m">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="68" y="68" width="44" height="44" rx="3" fill="white"/>
-    <g clip-path="url(#aq2-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="black"/></g>
-  </mask>
-  <clipPath id="aq2-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <rect width="128" height="128" fill="#F2A93B" mask="url(#aq2-m)"/>
-
-</svg></div>
-          <figcaption>mono · вырез по маске</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <defs><mask id="aq3-gap">
-    <rect width="128" height="128" fill="white"/>
-    <rect x="68" y="68" width="44" height="44" rx="3" stroke="black" stroke-width="18" fill="none"/>
-  </mask></defs>
-  <g mask="url(#aq3-gap)"><circle cx="54" cy="54" r="38" stroke="#2C93D4" stroke-width="7"/></g>
-  <rect x="68" y="68" width="44" height="44" rx="3" stroke="#F2A93B" stroke-width="7"/>
-
-</svg></div>
-          <figcaption>outline · очерчивание</figcaption></figure>
-        <figure class="exec"><div class="plate plate--light">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDE7DA"/>
-  <defs><clipPath id="aq4-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <g opacity="0.85" fill="#8C7F6A"><circle cx="57" cy="57" r="38"/><rect x="71" y="71" width="44" height="44" rx="3"/></g>
-  <g opacity="1" fill="#FFFFFF"><circle cx="51" cy="51" r="38"/><rect x="65" y="65" width="44" height="44" rx="3"/></g>
-  <circle cx="54" cy="54" r="38" fill="#EDE7DA"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#EDE7DA"/>
-  <g clip-path="url(#aq4-bowl)"><rect x="66" y="66" width="44" height="44" rx="3" fill="#FFFFFF"/><rect x="69.5" y="69.5" width="44" height="44" rx="3" fill="#C9BDA6" opacity="0.8"/><rect x="68" y="68" width="44" height="44" rx="3" fill="#EDE7DA"/></g>
-
-</svg></div>
-          <figcaption>emboss · слепое тиснение</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" rx="28.634" fill="#0B0C0E"/>
-  <g transform="translate(20.48,20.48) scale(0.68) translate(-16,-16) scale(1)">  <defs><clipPath id="aq9-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#aq9-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
-</g>
-
-</svg></div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#0B0C0E"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><clipPath id="aq7-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#aq7-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 339.5 118" fill="none">
-  
-  <rect width="339.5" height="118" fill="#0B0C0E"/>
-  <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g fill="none" stroke-width="9" stroke-linejoin="round"><circle cx="23" cy="-23" r="18.5" stroke="#2C93D4"/><rect x="28" y="-6" width="28" height="28" rx="2.5" stroke="#F2A93B"/></g></g><g transform="translate(231.5,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(289.5,0)"><g stroke="#F6F2E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
-</svg></div>
-        <div class="plate plate--light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#EDE7DA"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><clipPath id="aq8-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#aq8-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#121418" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p><b>Анимация.</b> Квадрат — курсор, и он мигает: 1.06 с, ступенчатая кривая, без
-          плавности. В момент ответа квадрат съезжает по диагонали внутрь круга,
-          пересечение вспыхивает до <code>jaryq</code> и оседает.</p>
-        <p><b>Кому.</b> Массовому продукту. Читается за долю секунды, живёт на 16 px,
-          печатается в одну краску, тиснится.</p>
-      </div>
-    </article>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate plate--light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#DED5C4"/>
-  <g transform="translate(1.7,1.7)" stroke="#C4B9A3" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.9">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(-1.4,-1.4)" stroke="#8E8371" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.85">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(0,0)" stroke="#C0522E" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-
-</svg></div>
-        <div>
-          <p class="concept__id">Концепция 02</p>
-          <h3 class="concept__title" style="margin-top:0">BITIKTAS · Бітіктас — камень
-            с надписью</h3>
-          <p class="concept__sub">наследие · врез, а не заливка</p>
-          <p>Тот же Q, собранный по логике резца: восьмигранная чаша, прямой хвост под
-            45°, монолинейный штрих, срезанные терминалы и поперечная засечка — след
-            зубила — на конце хвоста.</p>
-          <p>Основное исполнение — <strong>врез</strong>: тёмная фаска сверху слева,
-            светлая снизу справа. Именно так ведёт себя V-образный рез в камне при
-            источнике под 315°. Инверсия этих двух фасок превращает врез в рельеф — та же
-            геометрия, другой физический смысл.</p>
-        </div>
-      </div>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#121418"/>
-  <g transform="translate(-1.6,-1.6)" stroke="#F6F2E8" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.5">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(1.6,1.6)" stroke="#0B0C0E" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.8">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(0,0)" stroke="#DED5C4" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-
-</svg></div>
-          <figcaption>relief · рельеф</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <g transform="translate(0,0)" stroke="#F2A93B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-
-</svg></div>
-          <figcaption>flat · экран</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M8,20 L20,8 L108,8 L120,20 L120,120 L8,120 Z" stroke="#C4B9A3" stroke-width="3.2" opacity="0.55" fill="none"/>
-  <path d="M15,23 L23,15 L105,15 L113,23 L113,113 L15,113 Z" stroke="#C4B9A3" stroke-width="1.6" opacity="0.35" fill="none"/>
-  <g transform="translate(64,68) scale(0.74) translate(-58,-56)">
-  <g transform="translate(0,0)" stroke="#F2A93B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  </g>
-
-</svg></div>
-          <figcaption>stele · поле надписи</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" rx="28.634" fill="#0B0C0E"/>
-  <g transform="translate(20.48,20.48) scale(0.68) translate(-16,-16) scale(1)">  <g transform="translate(0,0)" stroke="#F2A93B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-</g>
-
-</svg></div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#0B0C0E"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <g transform="translate(0,0)" stroke="#F2A93B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M40.092,-15.92 30.08,-5.908 15.92,-5.908 5.908,-15.92 5.908,-30.08 15.92,-40.092 30.08,-40.092 40.092,-30.08Z"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M30.5,-32.2 26.692,-38.705 17.5,-41.4 8.308,-38.705 4.5,-32.2 8.308,-25.695 17.5,-23"/><path d="M17.5,-23 26.692,-20.305 30.5,-13.8 26.692,-7.295 17.5,-4.6 8.308,-7.295 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M40.092,-15.92 30.08,-5.908 15.92,-5.908 5.908,-15.92 5.908,-30.08 15.92,-40.092 30.08,-40.092 40.092,-30.08Z"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M41.5,-23 35.917,-36.244 22.539,-41.494 9.439,-35.583 4.523,-22.078 10.759,-9.129 24.383,-4.552 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#DED5C4" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-        <div class="plate plate--light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#DED5C4"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <g transform="translate(1.7,1.7)" stroke="#C4B9A3" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.9">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(-1.4,-1.4)" stroke="#8E8371" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.85">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(0,0)" stroke="#C0522E" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M40.092,-15.92 30.08,-5.908 15.92,-5.908 5.908,-15.92 5.908,-30.08 15.92,-40.092 30.08,-40.092 40.092,-30.08Z"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M30.5,-32.2 26.692,-38.705 17.5,-41.4 8.308,-38.705 4.5,-32.2 8.308,-25.695 17.5,-23"/><path d="M17.5,-23 26.692,-20.305 30.5,-13.8 26.692,-7.295 17.5,-4.6 8.308,-7.295 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M40.092,-15.92 30.08,-5.908 15.92,-5.908 5.908,-15.92 5.908,-30.08 15.92,-40.092 30.08,-40.092 40.092,-30.08Z"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M41.5,-23 35.917,-36.244 22.539,-41.494 9.439,-35.583 4.523,-22.078 10.759,-9.129 24.383,-4.552 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#6E6355" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p>Словесный знак здесь другой: те же скелеты букв, но кривые заменены гранями,
-          торцы прямые. Получается семейство, а не два разных логотипа.</p>
-        <p><b>Кому.</b> Премиальному и государственному слою: карты с тиснением, упаковка,
-          награды, гравировка. На 16 px живёт плохо — это его осознанное ограничение.</p>
-      </div>
-    </article>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.262" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="62.124" y2="13.407" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="67.653" y2="16.314" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="72.75" y2="19.324" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="76.862" y2="23.538" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="84.698" y2="22.881" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="88.612" y2="27.741" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="90.311" y2="33.95" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="93.27" y2="38.979" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="94.557" y2="44.679" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.186" y2="51.085" opacity="0.784"/>
-    <line x1="87" y1="56" x2="91.688" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.829" y2="60.72" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.785" y2="89.283" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="89.388" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.524" y2="94.086" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="43.662" y2="98.019" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.145" y2="90.718" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.603" y2="92.406" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="31.462" y2="84.319" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="22.246" y2="85.248" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="24.292" y2="76.377" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="20.283" y2="72.311" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="16.32" y2="67.651" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="16.908" y2="61.621" opacity="1"/>
-    <line x1="25" y1="56" x2="16.159" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="15.005" y2="50.106" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="20.414" y2="45.551" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="17.726" y2="38.521" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="18.037" y2="31.603" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="27.006" y2="30.877" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="30.794" y2="26.911" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="32.519" y2="19.463" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="37.675" y2="15.873" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="44.145" y2="15.626" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.769" y2="19.615" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-
-</svg></div>
-        <div>
-          <p class="concept__id">Концепция 03</p>
-          <h3 class="concept__title" style="margin-top:0">TIRI · Тірі — живой</h3>
-          <p class="concept__sub">процесс · знак-параметр</p>
-          <p>Чаша Q — сплошное кольцо. Вокруг — 44 радиальных тика разной длины:
-            распределение вероятных ответов. В секторе 45° тики гаснут, и на их месте
-            стоит один сплошной квадрат — выбранный ответ, он же хвост Q. Шум сходится
-            в ответ.</p>
-          <p>Длины тиков задаёт сид. Канонический локап использует фиксированный, но
-            система допускает бесконечное число законных экземпляров: сид может быть
-            хешем запроса, датой, номером релиза.</p>
-        </div>
-      </div>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.523" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="62.032" y2="14.047" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="68.288" y2="14.15" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="70.963" y2="23.236" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="78.252" y2="21.376" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="82.316" y2="25.63" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="86.473" y2="29.595" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="91.049" y2="33.475" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="94.807" y2="38.277" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="92.698" y2="45.225" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.084" y2="51.099" opacity="0.784"/>
-    <line x1="87" y1="56" x2="92.457" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.872" y2="60.726" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.821" y2="89.53" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="93.064" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.25" y2="95.995" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="44.711" y2="94.447" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="37.313" y2="96.919" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.032" y2="93.294" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="31.086" y2="84.752" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="28.034" y2="80.232" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="24.911" y2="75.98" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="20.303" y2="72.302" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="19.937" y2="66.589" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="20.295" y2="61.134" opacity="1"/>
-    <line x1="25" y1="56" x2="13.025" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="13.903" y2="49.947" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="18.25" y2="44.916" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="16.885" y2="38.137" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="21.277" y2="33.685" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="28.731" y2="32.372" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="28.715" y2="24.511" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="33.437" y2="20.891" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="38.879" y2="18.511" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="43.725" y2="14.194" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.554" y2="18.124" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-
-</svg></div>
-          <figcaption>экземпляр 1</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.84" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="61.668" y2="16.577" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="66.26" y2="21.056" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="71.945" y2="21.086" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="77.827" y2="22.037" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="80.612" y2="27.597" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="87.3" y2="28.878" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="93.995" y2="31.582" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="92.178" y2="39.478" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="97.506" y2="43.813" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.934" y2="50.977" opacity="0.784"/>
-    <line x1="87" y1="56" x2="89.59" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.913" y2="60.732" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.743" y2="88.989" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="89.552" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.582" y2="93.684" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="44.617" y2="94.768" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.964" y2="88.924" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="36.094" y2="86.974" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="28.653" y2="87.56" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="26.008" y2="81.988" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="20.049" y2="79.105" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="22.065" y2="71.498" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="14.686" y2="68.131" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="14.251" y2="62.003" opacity="1"/>
-    <line x1="25" y1="56" x2="16.279" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="18.756" y2="50.645" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="18.611" y2="45.022" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="21.566" y2="40.274" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="24.661" y2="35.859" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="26.907" y2="30.791" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="26.245" y2="21.661" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="35.61" y2="24.273" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="38.315" y2="17.275" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="45.083" y2="18.819" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.083" y2="14.848" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-
-</svg></div>
-          <figcaption>экземпляр 2</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="12.716" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="61.821" y2="15.516" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="67.488" y2="16.874" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="72.364" y2="20.169" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="79.162" y2="19.959" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="83.978" y2="23.712" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="87.805" y2="28.441" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="92.991" y2="32.228" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="90.608" y2="40.195" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="92.528" y2="45.274" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="91.733" y2="50.862" opacity="0.784"/>
-    <line x1="87" y1="56" x2="89.615" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.672" y2="60.698" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.67" y2="88.483" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="93.21" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.748" y2="92.527" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="45.825" y2="90.653" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.285" y2="90.411" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.621" y2="92.379" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="29.739" y2="86.307" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="22.226" y2="85.265" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="18.695" y2="79.975" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="18.224" y2="73.252" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="16.696" y2="67.541" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="19.992" y2="61.177" opacity="1"/>
-    <line x1="25" y1="56" x2="12.393" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="17.7" y2="50.493" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="14.797" y2="43.902" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="18.287" y2="38.777" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="18.3" y2="31.772" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="27.686" y2="31.466" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="30.509" y2="26.582" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="35.075" y2="23.44" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="37.187" y2="14.806" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="43.25" y2="12.578" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.064" y2="14.712" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-
-</svg></div>
-          <figcaption>экземпляр 3</figcaption></figure>
-        <figure class="exec"><div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" rx="28.634" fill="#0B0C0E"/>
-  <g transform="translate(20.48,20.48) scale(0.68) translate(-16,-16) scale(1)">  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.262" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="62.124" y2="13.407" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="67.653" y2="16.314" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="72.75" y2="19.324" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="76.862" y2="23.538" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="84.698" y2="22.881" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="88.612" y2="27.741" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="90.311" y2="33.95" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="93.27" y2="38.979" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="94.557" y2="44.679" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.186" y2="51.085" opacity="0.784"/>
-    <line x1="87" y1="56" x2="91.688" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.829" y2="60.72" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.785" y2="89.283" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="89.388" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.524" y2="94.086" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="43.662" y2="98.019" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.145" y2="90.718" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.603" y2="92.406" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="31.462" y2="84.319" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="22.246" y2="85.248" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="24.292" y2="76.377" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="20.283" y2="72.311" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="16.32" y2="67.651" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="16.908" y2="61.621" opacity="1"/>
-    <line x1="25" y1="56" x2="16.159" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="15.005" y2="50.106" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="20.414" y2="45.551" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="17.726" y2="38.521" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="18.037" y2="31.603" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="27.006" y2="30.877" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="30.794" y2="26.911" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="32.519" y2="19.463" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="37.675" y2="15.873" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="44.145" y2="15.626" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.769" y2="19.615" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-</g>
-
-</svg></div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 466 118" fill="none">
-  
-  <rect width="466" height="118" fill="#0B0C0E"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(1) translate(-16,-16)">  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.262" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="62.124" y2="13.407" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="67.653" y2="16.314" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="72.75" y2="19.324" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="76.862" y2="23.538" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="84.698" y2="22.881" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="88.612" y2="27.741" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="90.311" y2="33.95" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="93.27" y2="38.979" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="94.557" y2="44.679" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.186" y2="51.085" opacity="0.784"/>
-    <line x1="87" y1="56" x2="91.688" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.829" y2="60.72" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.785" y2="89.283" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="89.388" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.524" y2="94.086" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="43.662" y2="98.019" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.145" y2="90.718" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.603" y2="92.406" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="31.462" y2="84.319" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="22.246" y2="85.248" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="24.292" y2="76.377" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="20.283" y2="72.311" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="16.32" y2="67.651" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="16.908" y2="61.621" opacity="1"/>
-    <line x1="25" y1="56" x2="16.159" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="15.005" y2="50.106" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="20.414" y2="45.551" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="17.726" y2="38.521" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="18.037" y2="31.603" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="27.006" y2="30.877" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="30.794" y2="26.911" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="32.519" y2="19.463" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="37.675" y2="15.873" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="44.145" y2="15.626" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.769" y2="19.615" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-</g><g transform="translate(136,0)"><rect x="9" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="18" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="27" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="9" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="18" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="27" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="0" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="36" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="61.2" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="70.2" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="79.2" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="88.2" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="52.2" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="52.2" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="61.2" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="70.2" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="79.2" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="88.2" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="88.2" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="52.2" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="61.2" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="70.2" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="79.2" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="140.4" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="131.4" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="122.4" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="113.4" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="122.4" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="131.4" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="104.4" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="140.4" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="165.6" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="174.6" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="183.6" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="156.6" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="192.6" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="156.6" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="192.6" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="156.6" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="192.6" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="156.6" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="174.6" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="192.6" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="156.6" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="183.6" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="165.6" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="174.6" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="192.6" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="165.6" y="0" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="165.6" y="9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="217.8" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="226.8" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="235.8" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="244.8" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="217.8" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="226.8" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="235.8" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="208.8" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="217.8" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="226.8" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="235.8" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="244.8" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="261" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="270" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="288" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="297" y="-63" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-54" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-45" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-36" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-27" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-18" width="7.6" height="7.6" fill="#F6F2E8"/><rect x="279" y="-9" width="7.6" height="7.6" fill="#F6F2E8"/></g></g>
-</svg></div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p>Основание у этого не мода на генеративные айдентики, а свойство самой буквы:
-          у Q хвост исторически был переменным штрихом. Словесный знак — модульный, из
-          квадратов на сетке 5×7: буква как курсор, набранный из знакомест.</p>
-        <p><b>Кому.</b> Продуктовому и коммуникационному слою: экраны загрузки, состояния
-          генерации, соцсети, титры. Требует поддержки в коде — это не статичный файл.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">05</span><h2>Рекомендация</h2></div>
-    <div class="col">
-      <p class="lede">Основной — <strong>01 JARYQ</strong>. Он один отвечает всем
-        требованиям сразу: читается мгновенно, выживает на 16 px и на тиснении,
-        печатается в одну краску, разворачивается в анимацию и буквально проговаривает
-        имя: ask → get, круг → курсор, вопрос → ответ.</p>
-      <p>02 и 03 сильнее не как альтернативы, а как слои одной системы. Все три построены
-        на общей палитре и общем скелете букв, поэтому иерархия не разваливается. Если
-        нужен ровно один знак — берите 01 и не разворачивайте остальные.</p>
-    </div>
-    <div class="layers">
-      <div class="layer">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-
-</svg></div>
-        <div><h4>01 JARYQ — основной знак</h4>
-          <p>Продукт, сайт, приложение, документы, реклама. Работает всегда и везде.</p></div>
-      </div>
-      <div class="layer">
-        <div class="plate plate--light"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#DED5C4"/>
-  <g transform="translate(1.7,1.7)" stroke="#C4B9A3" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.9">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(-1.4,-1.4)" stroke="#8E8371" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.85">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-  <g transform="translate(0,0)" stroke="#C0522E" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
-    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
-    <path d="M72,70 L108,106"/>
-    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
-  </g>
-
-</svg></div>
-        <div><h4>02 BITIKTAS — церемониальный слой</h4>
-          <p>Тиснение, металл, упаковка, официальные документы. Появляется редко и потому
-            дорого выглядит.</p></div>
-      </div>
-      <div class="layer">
-        <div class="plate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <circle cx="56" cy="56" r="26" fill="none" stroke="#F6F2E8" stroke-width="9"/>
-  <g stroke="#F6F2E8" stroke-width="4.2" stroke-linecap="butt">
-    <line x1="56" y1="25" x2="56" y2="18.262" opacity="1"/>
-    <line x1="60.412" y1="25.316" x2="62.124" y2="13.407" opacity="1"/>
-    <line x1="64.734" y1="26.256" x2="67.653" y2="16.314" opacity="1"/>
-    <line x1="68.878" y1="27.801" x2="72.75" y2="19.324" opacity="1"/>
-    <line x1="72.76" y1="29.921" x2="76.862" y2="23.538" opacity="1"/>
-    <line x1="76.301" y1="32.572" x2="84.698" y2="22.881" opacity="1"/>
-    <line x1="79.428" y1="35.699" x2="88.612" y2="27.741" opacity="1"/>
-    <line x1="82.079" y1="39.24" x2="90.311" y2="33.95" opacity="1"/>
-    <line x1="84.199" y1="43.122" x2="93.27" y2="38.979" opacity="1"/>
-    <line x1="85.744" y1="47.266" x2="94.557" y2="44.679" opacity="0.947"/>
-    <line x1="86.684" y1="51.588" x2="90.186" y2="51.085" opacity="0.784"/>
-    <line x1="87" y1="56" x2="91.688" y2="56" opacity="0.62"/>
-    <line x1="86.684" y1="60.412" x2="88.829" y2="60.72" opacity="0.456"/>
-    <line x1="60.412" y1="86.684" x2="60.785" y2="89.283" opacity="0.456"/>
-    <line x1="56" y1="87" x2="56" y2="89.388" opacity="0.62"/>
-    <line x1="51.588" y1="86.684" x2="50.524" y2="94.086" opacity="0.784"/>
-    <line x1="47.266" y1="85.744" x2="43.662" y2="98.019" opacity="0.947"/>
-    <line x1="43.122" y1="84.199" x2="40.145" y2="90.718" opacity="1"/>
-    <line x1="39.24" y1="82.079" x2="32.603" y2="92.406" opacity="1"/>
-    <line x1="35.699" y1="79.428" x2="31.462" y2="84.319" opacity="1"/>
-    <line x1="32.572" y1="76.301" x2="22.246" y2="85.248" opacity="1"/>
-    <line x1="29.921" y1="72.76" x2="24.292" y2="76.377" opacity="1"/>
-    <line x1="27.801" y1="68.878" x2="20.283" y2="72.311" opacity="1"/>
-    <line x1="26.256" y1="64.734" x2="16.32" y2="67.651" opacity="1"/>
-    <line x1="25.316" y1="60.412" x2="16.908" y2="61.621" opacity="1"/>
-    <line x1="25" y1="56" x2="16.159" y2="56" opacity="1"/>
-    <line x1="25.316" y1="51.588" x2="15.005" y2="50.106" opacity="1"/>
-    <line x1="26.256" y1="47.266" x2="20.414" y2="45.551" opacity="1"/>
-    <line x1="27.801" y1="43.122" x2="17.726" y2="38.521" opacity="1"/>
-    <line x1="29.921" y1="39.24" x2="18.037" y2="31.603" opacity="1"/>
-    <line x1="32.572" y1="35.699" x2="27.006" y2="30.877" opacity="1"/>
-    <line x1="35.699" y1="32.572" x2="30.794" y2="26.911" opacity="1"/>
-    <line x1="39.24" y1="29.921" x2="32.519" y2="19.463" opacity="1"/>
-    <line x1="43.122" y1="27.801" x2="37.675" y2="15.873" opacity="1"/>
-    <line x1="47.266" y1="26.256" x2="44.145" y2="15.626" opacity="1"/>
-    <line x1="51.588" y1="25.316" x2="50.769" y2="19.615" opacity="1"/>
-  </g>
-  <rect x="74" y="74" width="38" height="38" rx="2" fill="#F2A93B"/>
-
-</svg></div>
-        <div><h4>03 TIRI — живой слой</h4>
-          <p>Загрузка, генерация, соцсети, motion, конференц-графика.</p></div>
-      </div>
-    </div>
-
-    <h3>Что делать дальше</h3>
-    <div class="col">
-      <p>1. Подтвердить или поправить гипотезу о продукте — от неё зависит только
-        семантика и вторичный цвет; конструкция знаков и типографика переживут смену
-        позиционирования.<br>
-        2. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42.<br>
-        3. Лицензировать наборный шрифт с казахской кириллицей <b>и</b> латиницей с
-        <code>Q Ә Ң Ө Ұ Ү Һ І</code>. Словесные знаки здесь нарисованы контурами и
-        самодостаточны, но интерфейсу нужен текстовый шрифт.<br>
-        4. Проба тиснения на реальном картоне и сведение золота по вееру Pantone.<br>
-        5. Motion-спецификация для 01 и генеративный модуль для 03.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">06</span><h2>Состав пакета</h2></div>
-    <div class="col"><p>Всё воспроизводится одной командой:
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_page.py</code>.
-      Геометрия, палитра и колориметрия живут в коде, а не в слоях макета.</p></div>
-    <pre class="files">brand/askqet/
-├─ <b>README.md</b>                  исследование целиком
-├─ <b>index.html</b>                 эта страница
-├─ tools/build.py               генератор знаков, палитры и колориметрии
-├─ tools/build_page.py          сборка страницы
-├─ tokens/askqet-tokens.css     CSS-переменные, включая светлую подложку
-├─ tokens/askqet-tokens.json    те же значения + геометрия знаков
-├─ tokens/palette.svg           выкраска с OKLCH
-├─ diagram/lineage-*.svg        родословная буквы Q
-└─ logo/
-   ├─ <b>01-jaryq/</b>     duo · mono · outline · emboss · solid · duo-flat
-   │                  lockup ×2 · q-swap · appicon · favicon
-   ├─ <b>02-bitiktas/</b>  intaglio · relief · flat · stele · lockup ×2 · appicon
-   └─ <b>03-tiri/</b>      signal · variant ×3 · lockup · appicon</pre>
   </div>
 </section>
 
@@ -1187,11 +807,12 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Открытых данных о продукте AskQet нет: домены не отвечают, в стартап-базах
-      Казахстана следов нет, в репозитории <code>devcore-website</code> название не
-      упоминается. Позиционирование выше реконструировано из имени, из контекста DevCore
-      и из подсказки в брифе — «квадрат (курсор)». Если продукт про другое, меняются
-      семантика и вторичный цвет; геометрия и типографика остаются.</p>
+    <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
+      имени и контекста DevCore. Первая итерация с концепциями BITIKTAS и TIRI снята
+      по решению заказчика; файлы остались в репозитории в <code>logo/02-bitiktas</code>
+      и <code>logo/03-tiri</code>. Всё в этой странице пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v2.py &amp;&amp;
+      python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -1200,13 +821,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   var root=document.documentElement, btn=document.getElementById('themeBtn');
   btn.addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    if(!cur){
-      cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-    }
+    if(!cur){cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
 
-  var pal=document.getElementById('palette');
+  var dirs=document.getElementById('dirs');
   var map={none:'',deut:'url(#cvd-deut)',prot:'url(#cvd-prot)',
            trit:'url(#cvd-trit)',mono:'url(#cvd-mono)'};
   document.querySelectorAll('[data-cvd]').forEach(function(b){
@@ -1214,7 +833,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       document.querySelectorAll('[data-cvd]').forEach(function(o){
         o.setAttribute('aria-pressed', String(o===b));
       });
-      pal.style.filter=map[b.dataset.cvd];
+      dirs.style.filter=map[b.dataset.cvd];
     });
   });
 
@@ -1222,21 +841,17 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   var sq=document.getElementById('stageSq'), lens=document.getElementById('stageLens'),
       out=document.getElementById('readout'), rng=document.getElementById('offset');
   function draw(){
-    var d=parseFloat(rng.value), k=d/Math.SQRT2;
-    var x=CX+k, y=CY+k;
+    var d=parseFloat(rng.value), k=d/Math.SQRT2, x=CX+k, y=CY+k;
     sq.setAttribute('x',x); sq.setAttribute('y',y);
     lens.setAttribute('x',x); lens.setAttribute('y',y);
-    // где окружность пересекает верхнюю грань квадрата
     var dy=y-CY, overlap=0;
     if(Math.abs(dy)<R){ overlap=Math.min(SIDE, CX+Math.sqrt(R*R-dy*dy)-x); }
-    overlap=Math.max(0,overlap);
-    var pct=Math.round(overlap/SIDE*100);
+    var pct=Math.round(Math.max(0,overlap)/SIDE*100);
     var verdict = pct>72 ? 'чаша съедается — Q не читается'
                 : pct<22 ? 'связи нет — распадается на два объекта'
-                : 'рабочий диапазон: хвост Q читается, чаша цела';
-    var centreR=Math.SQRT2*(k+SIDE/2)/R;
+                : 'рабочий коридор: хвост Q читается, чаша цела';
     out.innerHTML='вынос <b>'+d.toFixed(1)+'</b> ед. · перекрытие стороны <b>'+pct+
-      ' %</b> · центр квадрата на <b>'+centreR.toFixed(2)+
+      ' %</b> · центр квадрата на <b>'+(Math.SQRT2*(k+SIDE/2)/R).toFixed(2)+
       ' R</b> от центра круга<span class="verdict">'+verdict+'</span>';
   }
   rng.addEventListener('input',draw); draw();

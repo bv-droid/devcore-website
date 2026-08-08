@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — ten / ULTRA · Ультра / duo</title>
+  <rect width="128" height="128" fill="#EDEDE7"/>
+  <defs><clipPath id="v1007a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <circle cx="54" cy="54" r="38" fill="#2B2BE0"/>
+  <rect x="52" y="52" width="60" height="60" rx="3" fill="#D4FF2E"/>
+  <g clip-path="url(#v1007a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#0B0B1A"/></g>
+
+</svg>

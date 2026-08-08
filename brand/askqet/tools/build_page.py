@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — презентацию исследования и концепций.
+Собирает brand/askqet/index.html — вторая итерация.
+Только конструкция «круг + квадрат-курсор = Q»: четыре построения
+и три цветовых направления.
 
-SVG вставляются инлайном: страница самодостаточна, внешних запросов нет.
-Плейсхолдер вида ⟦путь/к/файлу.svg⟧ заменяется содержимым файла.
+SVG вставляются инлайном. Плейсхолдер ⟦путь.svg⟧ заменяется файлом.
 
-Запуск:  python3 tools/build_page.py      (после tools/build.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v2.py)
 """
 
 import os
@@ -14,91 +15,23 @@ import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build import ROOT, C, oklch, wcag  # noqa: E402
+from build import ROOT  # noqa: E402
+from page_body import (EXTRA_CSS, directions, build_rows, build_notes,  # noqa: E402
+                       contrast_rows)
 
 
-def embed(match):
-    path = os.path.join(ROOT, match.group(1))
-    with open(path, encoding="utf-8") as f:
+def read_svg(rel):
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
         return re.sub(r"<title>.*?</title>", "", f.read(), flags=re.S).strip()
 
 
-# ── данные для таблиц ───────────────────────────────────────────────────────
-
-RIVALS = [
-    ("Флаг РК, золото", "#FEC50C", "государственный код, не конкурент"),
-    ("Mistral", "#FF7000", "ближайший сосед в категории"),
-    ("Claude", "#D97757", "единственный тёплый ИИ-бренд"),
-    ("Kaspi", "#F14635", "владеет красным в Казахстане"),
-    ("Halyk", "#009B77", ""),
-    ("DevCore", "#00AEEF", "материнский бренд"),
-    ("Perplexity", "#20808D", ""),
-    ("Gemini", "#4285F4", "самая занятая зона категории"),
-]
-
-TOKENS = ["tas-950", "tas-900", "tas-800", "tas-700", "tas-400",
-          "sut-100", "aktas-100", "aktas-200",
-          "altyn-800", "altyn-700", "altyn-500", "altyn-400", "altyn-200",
-          "kok-700", "kok-500", "kok-300",
-          "oher-500", "jaryq", "jasyl-500", "qyzyl-500"]
-
-CONTRAST = [
-    ("sut-100", "tas-950", "основной текст на тёмном"),
-    ("altyn-500", "tas-950", "акцент на тёмном"),
-    ("tas-950", "altyn-500", "текст на золотой плашке"),
-    ("kok-500", "tas-950", "вторичный на тёмном"),
-    ("tas-900", "aktas-100", "основной текст на светлом"),
-    ("altyn-800", "aktas-100", "акцент-текст на светлом"),
-    ("kok-700", "aktas-100", "вторичный на светлом"),
-    ("altyn-700", "aktas-100", "только кегль ≥ 24 px"),
-]
+def embed(match):
+    return read_svg(match.group(1))
 
 
-def de_ok_hue(hexv):
-    from build import de_ok
-    h_ref = oklch(C["altyn-500"])[2]
-    h = oklch(hexv)[2]
-    dh = abs(h - h_ref)
-    return min(dh, 360 - dh), de_ok(hexv, C["altyn-500"])
-
-
-def rival_rows():
-    out = []
-    for name, hexv, note in RIVALS:
-        dh, de = de_ok_hue(hexv)
-        out.append(
-            f'<tr><td><span class="chip" style="background:{hexv}"></span>{name}</td>'
-            f'<td class="num">{hexv}</td><td class="num">{dh:.0f}°</td>'
-            f'<td class="num">{de:.3f}</td><td class="note">{note}</td></tr>')
-    return "\n".join(out)
-
-
-def swatches():
-    out = []
-    for k in TOKENS:
-        L, ch, h = oklch(C[k])
-        ink = max(("#F6F2E8", "#0B0C0E"), key=lambda t: wcag(t, C[k]))
-        out.append(
-            f'<figure class="sw" style="background:{C[k]};color:{ink}">'
-            f'<span class="sw__name">{k}</span>'
-            f'<span class="sw__hex">{C[k].upper()}</span>'
-            f'<span class="sw__ok">L {L:.2f} · C {ch:.3f} · H {h:.0f}°</span></figure>')
-    return "\n".join(out)
-
-
-def contrast_rows():
-    out = []
-    for fg, bg, note in CONTRAST:
-        v = wcag(C[fg], C[bg])
-        state = "pass" if v >= 4.5 else ("warn" if v >= 3 else "fail")
-        label = {"pass": "AA", "warn": "AA large", "fail": "—"}[state]
-        out.append(
-            f'<tr><td><span class="pair" style="background:{C[bg]};color:{C[fg]}">Aa</span>'
-            f'<code>{fg}</code> на <code>{bg}</code></td>'
-            f'<td class="num">{v:.2f}:1</td>'
-            f'<td><span class="tag tag--{state}">{label}</span></td>'
-            f'<td class="note">{note}</td></tr>')
-    return "\n".join(out)
+def v2(build, pal, raw=False):
+    svg = read_svg(f"logo/v2/{build}/askqet-{build}-{pal}.svg")
+    return svg if raw else f"<div>{svg}</div>"
 
 
 PAGE = r"""<meta charset="utf-8">
@@ -310,6 +243,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     transition-duration:.001ms !important}
   .caret{opacity:1}
 }
+{EXTRA_CSS}
 </style>
 
 <svg class="filters" aria-hidden="true" style="position:absolute;width:0;height:0">
@@ -327,15 +261,15 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · бренд-пакет · исследование и графическая концепция</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 2 — круг и квадрат</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Имя называет не продукт, а сделку: спросил&nbsp;— <em>получил</em>.
-      Значит и знак должен быть не предметом, а переходом<span class="caret"></span></p>
+    <p class="mast__thesis">Одна конструкция: круг — вопрос, курсор — <em>ответ</em>.
+      Четыре способа их свести и три цвета, в которых это живёт<span class="caret"></span></p>
     <div class="mast__meta">
-      <div>ГИПОТЕЗА<b>диалоговый продукт</b></div>
-      <div>КОНЦЕПЦИЙ<b>3 стратегии</b></div>
-      <div>ПАЛИТРА<b>двухполюсная</b></div>
-      <div>АССЕТОВ<b>27 SVG</b></div>
+      <div>ПОСТРОЕНИЙ<b>4</b></div>
+      <div>ЦВЕТОВЫХ НАПРАВЛЕНИЙ<b>3</b></div>
+      <div>СРЕДНЯЯ ХРОМА<b>0.158 — 0.237</b></div>
+      <div>БЫЛО<b>0.140</b></div>
     </div>
   </div>
 </header>
@@ -344,137 +278,19 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">01</span><h2>Имя</h2></div>
+    <div class="sec__head"><span class="sec__num">01</span><h2>Цвет</h2></div>
     <div class="col">
-      <p class="lede"><code>askqet</code> = <b>ASK</b> + <b>GET</b>, где G заменена
-        на <b>Q</b>. В казахской латинице Q кодирует звук <b>Қ</b>. Двуязычность зашита
-        не переводом и не доменом .kz, а подменой одной буквы внутри английского
-        слова.</p>
-      <p>Приём редкий и дорогой по узнаваемости: имя читается и как международное, и как
-        местное, без потери смысла. Фонетически — два закрытых слога, взрывной «к»
-        дважды. Слово щёлкает, как клавиша.</p>
-
-      <h3>Что имя диктует дизайну</h3>
-      <p>Бренд назван не продуктом, а транзакцией. Айдентика, построенная вокруг одного
-        объекта — иконки, монограммы, метафоры, — имя недоигрывает. Системе нужны
-        <strong>два полюса и переход между ними</strong>: в цвете, в знаке, в анимации.
-        Дальше это проведено насквозь — холодный вопрос и тёплый ответ, круг и курсор,
-        шум и один блок.</p>
-
-      <h3>Риск, который нужно закрыть заранее</h3>
-      <p>В кириллице <code>askqet</code> естественно транслитерируется в «аскет» — слово с
-        сильным и посторонним значением. Либо принять его (аскетизм = минимализм, что
-        айдентике даже на руку), либо запретить транслитерацию. Рекомендую зафиксировать
-        три написания и не плодить четвёртое.</p>
-    </div>
-    <div class="scroll">
-      <table><thead><tr><th>Контекст</th><th>Написание</th></tr></thead><tbody>
-        <tr><td>логотип, интерфейс, домен</td><td class="num">askqet</td></tr>
-        <tr><td>текст, документы, юр. лицо</td><td class="num">AskQet</td></tr>
-        <tr><td>казахский и русский текст</td><td class="num">AskQet — без транслитерации</td></tr>
-      </tbody></table>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Палеография: круг и квадрат — это этимология, а не приём</h2></div>
-    <div class="col">
-      <p class="lede">Бриф просит знак, где круг и квадрат-курсор вместе дают Q. Такая
-        конструкция не иллюстрирует букву — она её реконструирует.</p>
-    </div>
-
-    <div class="lineage">
-      <figure>⟦diagram/lineage-1-qop.svg⟧
-        <figcaption>Финикийская <b>𐤒 qōp · XI в. до н. э.</b></figcaption></figure>
-      <figure>⟦diagram/lineage-2-koppa.svg⟧
-        <figcaption>Греческая <b>Ϙ коппа</b></figcaption></figure>
-      <figure>⟦diagram/lineage-3-q.svg⟧
-        <figcaption>Латинская <b>Q · через этрусков</b></figcaption></figure>
-      <figure>⟦diagram/lineage-4-askqet.svg⟧
-        <figcaption>askqet <b>круг + курсор</b></figcaption></figure>
-    </div>
-
-    <div class="col">
-      <p>Финикийская <b>qōp</b> — окружность с отростком вниз. Значение имени спорно
-        («обезьяна», «игольное ушко», «затылок»), но графика однозначна: замкнутая форма
-        плюс отдельный элемент. Греческая <b>коппа</b> держит ту же схему; в аттическом
-        алфавите её вытеснила каппа, но в западных вариантах она уцелела и через
-        этрусков дошла до латинской <b>Q</b>, где отросток уехал вправо-вниз и стал
-        росчерком.</p>
-    </div>
-
-    <blockquote>Q — единственная буква латиницы, которая с рождения устроена как
-      «круг + отдельный элемент».</blockquote>
-
-    <div class="cols2">
-      <div>
-        <h4>Хвост Q — переменный штрих</h4>
-        <p>В римской капитальной эпиграфике (<i>capitalis monumentalis</i>, колонна
-          Траяна, 113 г.) длина и угол хвоста Q менялись от резчика к резчику, тогда как
-          остальные буквы держали жёсткий канон. У буквы исторически есть свободный
-          параметр — прямое основание для концепта <b>TIRI</b>, где знак живой.</p>
-      </div>
-      <div>
-        <h4>Резьба — это две фаски, а не контур</h4>
-        <p>Римские надписи размечались кистью (<i>ordinatio</i>), затем вырубались
-          V-образным резом и заливались пигментом. Значит, честный «резной» логотип —
-          не обводка, а две фаски, по-разному ловящие свет, плюс цвет пигмента в
-          глубине. Отсюда врез в концепте <b>BITIKTAS</b>.</p>
-      </div>
-      <div>
-        <h4>Орхон: форму диктует резец</h4>
-        <p>Орхоно-енисейское письмо (VIII в., стелы Кюль-тегина и Бильге-кагана) —
-          прямые, углы кратные 45°, минимум кривых, крупные просветы. Поэтому чаша во
-          втором концепте — восьмигранник: минимум, при котором окружность ещё читается
-          как окружность, а рез — как рез.</p>
-      </div>
-      <div>
-        <h4>Тамга: местная традиция логотипа</h4>
-        <p>Родовой знак — два-пять штрихов, полная абстракция, читаемость на тавре,
-          камне, войлоке и серебре. Ровно те требования, которые сегодня предъявляются
-          к app-иконке в 40 px. «Знак, высеченный на камне», здесь не экзотика, а
-          базовый культурный код.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Поле и цвет</h2></div>
-    <div class="col">
-      <p class="lede">Синий и сине-фиолетовый градиент — самая занятая территория в
-        категории ИИ. В Казахстане красный занят Kaspi, зелёный — Halyk, синий — Freedom,
-        госсервисами и самим DevCore.</p>
-      <p>Свободно и при этом культурно заряжено — <strong>золото</strong>: второй цвет
-        флага РК, цвет солнца и беркута. В цифровой категории Казахстана его никто не
-        держит; в мировой ИИ-категории тёплый спектр занимает только Anthropic — и другим
-        тоном.</p>
-    </div>
-
-    <div class="scroll">
-      <table>
-        <thead><tr><th>Бренд</th><th>Hex</th><th>ΔH до altyn</th><th>ΔEok</th>
-          <th>Комментарий</th></tr></thead>
-        <tbody>{RIVALS}</tbody>
-      </table>
-    </div>
-    <div class="col"><p class="note">ΔEok — перцептивная дистанция в OKLab; порог
-      уверенного различения ≈ 0.08. Ближайший сосед — Mistral (0.121): различие
-      уверенное, рынки не пересекаются, но при выходе на глобальную ИИ-аудиторию это
-      единственная пара, которую стоит держать в поле зрения.</p></div>
-
-    <h3>Двухполюсная палитра</h3>
-    <div class="col">
-      <p>Продукт — это переход, поэтому палитра построена как два полюса.
-        <strong style="color:var(--cool)">kök</strong> — вопрос: холодный, H ≈ 242°, небо
-        и ещё не решённое. <strong style="color:var(--accent)">altyn</strong> — ответ:
-        тёплый, H ≈ 73°, солнце и найденное. Между ними 168.8° по тону и ΔEok 0.317 —
-        почти комплементарная пара, максимальный перцептивный щелчок в момент, когда
-        интерфейс отдаёт ответ.</p>
+      <p class="lede">Претензия справедливая, и она измеряется. Первая пара сидела на
+        средней хроме <b>C 0.140</b> — середина диапазона sRGB, «приличный
+        корпоративный» уровень. Новые направления идут по <b>0.158 — 0.237</b> при
+        потолке sRGB около 0.26.</p>
+      <p>Одна честная оговорка: у SIGNAL хрома всего 0.158, потому что голубой в sRGB
+        физически не бывает насыщеннее — на этих светлотах ему некуда идти. Его
+        прибавка идёт по <strong>светлоте</strong>: 0.636 → 0.814. Он ярче, а не
+        сочнее. Реальный скачок по хроме дают ULTRA (0.237) и OT (0.215).</p>
+      <p>Направления отличаются не оттенком, а <strong>логикой пересечения</strong> —
+        тем самым третьим цветом, ради которого в брифе была ссылка на Mastercard.
+        Свет, чернила или смесь: три разных физических объяснения одного жеста.</p>
     </div>
 
     <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
@@ -484,256 +300,159 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
       <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
     </div>
-    <div class="palette" id="palette">{SWATCHES}</div>
-    <div class="col"><p class="cvd-note">Пара синий/жёлтый различается по S-конусной оси,
-      которая при протанопии и дейтеранопии (около 8 % мужчин) сохраняется —
-      красно-зелёная пара в этой роли развалилась бы. Тританопия (&lt; 0.01 %) —
-      единственный риск, и там различие держит светлота: ΔL(kök, altyn) = 0.151.
-      Матрицы — стандартные линейные аппроксимации, для сдачи проверять на реальных
-      симуляторах.</p></div>
+    <div class="dirs" id="dirs">{DIRECTIONS}</div>
 
-    <h3>Четыре решения, которые требуют объяснения</h3>
+    <div class="col">
+      <p class="cvd-note">Переключите симуляцию: под дейтеранопией и протанопией
+        (около 8 % мужчин) SIGNAL и ULTRA держат различие — обе пары лежат на
+        сине-жёлтой оси. У OT пунцовый и золото сближаются: если бренд массовый,
+        это довод против него.</p>
+    </div>
+
+    <h3>Две коллизии, которые нашлись при замере</h3>
     <div class="cols2">
-      <div><h4>Текст не чисто-белый</h4>
-        <p><code>#FFFFFF</code> на почти чёрном даёт гало: хроматическая аберрация глаза
-          плюс свечение субпикселей размывает край. <code>sut-100</code> — L 0.962 с
-          минимальной тёплой хромой: контраст 17.5:1 сохраняется, край мягче.</p></div>
-      <div><h4>Нейтраль сдвинута в синеву</h4>
-        <p><code>tas-950</code> имеет H 264° при C 0.005. На нейтрально-сером фоне
-          симультанный контраст тянет фон в зелень и пачкает золото. Микроскопический
-          синий сдвиг держит акцент чистым.</p></div>
-      <div><h4>Золото на светлом — плашка, не текст</h4>
-        <p><code>altyn-500</code> на <code>aktas-100</code> даёт 1.62:1. На светлой
-          подложке акцентный текст опускается до <code>altyn-800</code> (6.00:1), а
-          золото остаётся заливкой с <code>tas-950</code> поверх (9.80:1).</p></div>
-      <div><h4>Печать проверять по вееру</h4>
-        <p>Ориентир: <code>altyn-500</code> — зона Pantone 143 C / 1235 C,
-          <code>kök-500</code> — зона 2925 C. Это ориентир, а не подбор. Для тиснения —
-          отдельная проба фольги: золото на глянце уходит в зелень.</p></div>
+      <div><h4>Алый в Казахстане занят</h4>
+        <p>Первый вариант тёплой триады был на алом <code>#FF2D20</code> — <b>ΔEok
+          0.032 до Kaspi</b>. Это ниже порога различения: на витрине и в сторе знак
+          читался бы как «что-то от Kaspi». Красный сдвинут в пунцовый
+          <code>#FF0A78</code> — ΔEok до Kaspi стал <b>0.109</b>, поле чистое.</p></div>
+      <div><h4>Голубой упирался в сам DevCore</h4>
+        <p>Первая версия SIGNAL шла на <code>#00B4FF</code> — <b>ΔEok 0.026 до
+          DevCore</b> <code>#00AEEF</code>. Для суббренда это может быть намеренным
+          родством; для самостоятельного бренда — потеря лица. Взят
+          <code>#00D8FF</code>, ΔEok <b>0.115</b>. Вернуть родство — правка одного
+          токена.</p></div>
     </div>
 
-    <h3>Контраст — проверенные пары</h3>
+    <h3>Контраст на собственной подложке</h3>
     <div class="scroll">
-      <table><thead><tr><th>Пара</th><th>WCAG 2.1</th><th>Статус</th>
-        <th>Применение</th></tr></thead><tbody>{CONTRAST}</tbody></table>
+      <table><thead><tr><th>Направление и роль</th><th>Hex</th><th>WCAG 2.1</th>
+        <th>Статус</th></tr></thead><tbody>{CONTRAST}</tbody></table>
+    </div>
+    <div class="col"><p class="note">Кислотный лайм ULTRA на светлой подложке даёт
+      1.02:1 — как заливка рядом с ультрамарином он работает, но текстом или тонкой
+      линией не бывает никогда. Это записано в правило, а не оставлено на вкус.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">02</span>
+      <h2>Четыре построения одной конструкции</h2></div>
+    <div class="col"><p class="lede">Круг и квадрат остаются. Меняется только то,
+      как они встречаются: величина перекрытия, наличие контрформы и то, чем
+      отмечена граница. Крайняя колонка — тот же знак в 16 px.</p></div>
+
+    <div class="matrix">{MATRIX}</div>
+
+    <div class="cols2">{NOTES}</div>
+
+    <div class="builder">
+      <div class="builder__stage">
+        <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
+          <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
+          <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
+          <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
+          <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
+            height="44" rx="3" fill="#FFFFFF"/></g>
+        </svg>
+      </div>
+      <div>
+        <label for="offset">Вынос курсора по диагонали 45°</label>
+        <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
+        <p class="readout" id="readout"></p>
+      </div>
+    </div>
+    <div class="col" style="margin-top:var(--s2)">
+      <p class="note">BASE стоит на 19.8, TEŇ — на 2.8. Ниже 22 % перекрытия связь
+        рвётся, выше 72 % чаша съедается: рабочий коридор узкий, и обе принятые
+        версии стоят по его краям намеренно.</p>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Три концепции</h2></div>
-    <div class="col"><p class="lede">Это не три эскиза одного знака, а три
-      стратегические позиции: дуальность, наследие, процесс. Все построены на одной
-      палитре и одном скелете букв, поэтому их можно взять по отдельности или выстроить
-      в иерархию.</p></div>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate">⟦logo/01-jaryq/askqet-mark-duo.svg⟧</div>
-        <div>
-          <p class="concept__id">Концепция 01</p>
-          <h3 class="concept__title" style="margin-top:0">JARYQ · Жарық — свет</h3>
-          <p class="concept__sub">дуальность · круг + курсор = Q</p>
-          <p>От Mastercard взята <strong>логика</strong> — два самостоятельных объекта и
-            третий цвет в пересечении. Но <strong>оптика перевёрнута</strong>: у
-            Mastercard пересечение темнее обоих исходных цветов, здесь — светлее. Смысл
-            прямой: вопрос и машина накладываются, и в месте наложения возникает свет.</p>
-          <p>Круг — «О», открытый вопрос, небо. Квадрат — курсор: и текстовая каретка, и
-            блок ответа. Пересечение — <code>jaryq</code>, самое светлое значение
-            системы.</p>
-        </div>
-      </div>
-
-      <div class="builder">
-        <div class="builder__stage">
-          <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
-            <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-            <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
-            <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-            <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
-              height="44" rx="3" fill="#FFF3DC"/></g>
-          </svg>
-        </div>
-        <div>
-          <label for="offset">Вынос курсора по диагонали 45°</label>
-          <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
-          <p class="readout" id="readout"></p>
-        </div>
-      </div>
-
-      <h4>Исполнения</h4>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate">⟦logo/01-jaryq/askqet-mark-mono.svg⟧</div>
-          <figcaption>mono · вырез по маске</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/01-jaryq/askqet-mark-outline.svg⟧</div>
-          <figcaption>outline · очерчивание</figcaption></figure>
-        <figure class="exec"><div class="plate plate--light">
-          ⟦logo/01-jaryq/askqet-mark-emboss.svg⟧</div>
-          <figcaption>emboss · слепое тиснение</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/01-jaryq/askqet-appicon.svg⟧</div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate">⟦logo/01-jaryq/askqet-lockup-h.svg⟧</div>
-        <div class="plate">⟦logo/01-jaryq/askqet-wordmark-qswap.svg⟧</div>
-        <div class="plate plate--light">⟦logo/01-jaryq/askqet-lockup-h-light.svg⟧</div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p><b>Анимация.</b> Квадрат — курсор, и он мигает: 1.06 с, ступенчатая кривая, без
-          плавности. В момент ответа квадрат съезжает по диагонали внутрь круга,
-          пересечение вспыхивает до <code>jaryq</code> и оседает.</p>
-        <p><b>Кому.</b> Массовому продукту. Читается за долю секунды, живёт на 16 px,
-          печатается в одну краску, тиснится.</p>
-      </div>
-    </article>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate plate--light">⟦logo/02-bitiktas/askqet-mark-intaglio.svg⟧</div>
-        <div>
-          <p class="concept__id">Концепция 02</p>
-          <h3 class="concept__title" style="margin-top:0">BITIKTAS · Бітіктас — камень
-            с надписью</h3>
-          <p class="concept__sub">наследие · врез, а не заливка</p>
-          <p>Тот же Q, собранный по логике резца: восьмигранная чаша, прямой хвост под
-            45°, монолинейный штрих, срезанные терминалы и поперечная засечка — след
-            зубила — на конце хвоста.</p>
-          <p>Основное исполнение — <strong>врез</strong>: тёмная фаска сверху слева,
-            светлая снизу справа. Именно так ведёт себя V-образный рез в камне при
-            источнике под 315°. Инверсия этих двух фасок превращает врез в рельеф — та же
-            геометрия, другой физический смысл.</p>
-        </div>
-      </div>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate">⟦logo/02-bitiktas/askqet-mark-relief.svg⟧</div>
-          <figcaption>relief · рельеф</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/02-bitiktas/askqet-mark-flat.svg⟧</div>
-          <figcaption>flat · экран</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/02-bitiktas/askqet-mark-stele.svg⟧</div>
-          <figcaption>stele · поле надписи</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/02-bitiktas/askqet-appicon.svg⟧</div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate">⟦logo/02-bitiktas/askqet-lockup-h.svg⟧</div>
-        <div class="plate plate--light">⟦logo/02-bitiktas/askqet-lockup-h-stone.svg⟧</div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p>Словесный знак здесь другой: те же скелеты букв, но кривые заменены гранями,
-          торцы прямые. Получается семейство, а не два разных логотипа.</p>
-        <p><b>Кому.</b> Премиальному и государственному слою: карты с тиснением, упаковка,
-          награды, гравировка. На 16 px живёт плохо — это его осознанное ограничение.</p>
-      </div>
-    </article>
-
-    <article class="concept">
-      <div class="concept__top">
-        <div class="plate">⟦logo/03-tiri/askqet-mark-signal.svg⟧</div>
-        <div>
-          <p class="concept__id">Концепция 03</p>
-          <h3 class="concept__title" style="margin-top:0">TIRI · Тірі — живой</h3>
-          <p class="concept__sub">процесс · знак-параметр</p>
-          <p>Чаша Q — сплошное кольцо. Вокруг — 44 радиальных тика разной длины:
-            распределение вероятных ответов. В секторе 45° тики гаснут, и на их месте
-            стоит один сплошной квадрат — выбранный ответ, он же хвост Q. Шум сходится
-            в ответ.</p>
-          <p>Длины тиков задаёт сид. Канонический локап использует фиксированный, но
-            система допускает бесконечное число законных экземпляров: сид может быть
-            хешем запроса, датой, номером релиза.</p>
-        </div>
-      </div>
-      <div class="grid-exec">
-        <figure class="exec"><div class="plate">⟦logo/03-tiri/askqet-mark-variant-1.svg⟧</div>
-          <figcaption>экземпляр 1</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/03-tiri/askqet-mark-variant-2.svg⟧</div>
-          <figcaption>экземпляр 2</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/03-tiri/askqet-mark-variant-3.svg⟧</div>
-          <figcaption>экземпляр 3</figcaption></figure>
-        <figure class="exec"><div class="plate">⟦logo/03-tiri/askqet-appicon.svg⟧</div>
-          <figcaption>app-иконка</figcaption></figure>
-      </div>
-      <div class="lockups">
-        <div class="plate">⟦logo/03-tiri/askqet-lockup-h.svg⟧</div>
-      </div>
-      <div class="col" style="margin-top:var(--s3)">
-        <p>Основание у этого не мода на генеративные айдентики, а свойство самой буквы:
-          у Q хвост исторически был переменным штрихом. Словесный знак — модульный, из
-          квадратов на сетке 5×7: буква как курсор, набранный из знакомест.</p>
-        <p><b>Кому.</b> Продуктовому и коммуникационному слою: экраны загрузки, состояния
-          генерации, соцсети, титры. Требует поддержки в коде — это не статичный файл.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">05</span><h2>Рекомендация</h2></div>
+    <div class="sec__head"><span class="sec__num">03</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede">Основной — <strong>01 JARYQ</strong>. Он один отвечает всем
-        требованиям сразу: читается мгновенно, выживает на 16 px и на тиснении,
-        печатается в одну краску, разворачивается в анимацию и буквально проговаривает
-        имя: ask → get, круг → курсор, вопрос → ответ.</p>
-      <p>02 и 03 сильнее не как альтернативы, а как слои одной системы. Все три построены
-        на общей палитре и общем скелете букв, поэтому иерархия не разваливается. Если
-        нужен ровно один знак — берите 01 и не разворачивайте остальные.</p>
-    </div>
-    <div class="layers">
-      <div class="layer">
-        <div class="plate">⟦logo/01-jaryq/askqet-favicon.svg⟧</div>
-        <div><h4>01 JARYQ — основной знак</h4>
-          <p>Продукт, сайт, приложение, документы, реклама. Работает всегда и везде.</p></div>
-      </div>
-      <div class="layer">
-        <div class="plate plate--light">⟦logo/02-bitiktas/askqet-mark-intaglio.svg⟧</div>
-        <div><h4>02 BITIKTAS — церемониальный слой</h4>
-          <p>Тиснение, металл, упаковка, официальные документы. Появляется редко и потому
-            дорого выглядит.</p></div>
-      </div>
-      <div class="layer">
-        <div class="plate">⟦logo/03-tiri/askqet-mark-signal.svg⟧</div>
-        <div><h4>03 TIRI — живой слой</h4>
-          <p>Загрузка, генерация, соцсети, motion, конференц-графика.</p></div>
-      </div>
+      <p class="lede">Знак — <strong>OYYQ</strong>, цвет — <strong>SIGNAL</strong>.
+        Это не компромисс: OYYQ единственный из четырёх, кто выживает в 16 px, потому
+        что его держит контрформа, а не силуэт. SIGNAL единственный, кто одновременно
+        яркий, свободный от чужих брендов и целый под дальтонизмом.</p>
     </div>
 
-    <h3>Что делать дальше</h3>
+    <div class="verdict-list">
+      <div class="vrow">{V_OYYQ}
+        <div><h4>OYYQ — основной<span class="flag flag--ok">беру</span></h4>
+          <p>Самое сильное чтение Q. Кольцо + прорезь + блок — такой формы в категории
+            ни у кого нет. Работает в одну краску и в 16 px.</p></div></div>
+      <div class="vrow">{V_TEN}
+        <div><h4>TEŇ — если нужен ровно Mastercard</h4>
+          <p>Два равных объекта и большой третий цвет в пересечении — максимально
+            близко к референсу из брифа. Проигрывает в мелком размере.</p></div></div>
+      <div class="vrow">{V_QABAT}
+        <div><h4>QABAT — если нужна одна краска</h4>
+          <p>Очерчивание вместо третьего цвета. Единственное построение, полностью
+            рабочее в один цвет: тиснение, гравировка, шелкография.</p></div></div>
+      <div class="vrow">{V_BASE}
+        <div><h4>BASE — исходное, остаётся для сравнения</h4>
+          <p>Ровно то, что было в первой итерации, в новом цвете. Держу в пакете как
+            точку отсчёта.</p></div></div>
+    </div>
+
+    <h3>Локапы в трёх направлениях</h3>
+    <div class="lockups">
+      <div class="plate" style="background:#05070C">⟦logo/v2/lockup-oyyq-signal.svg⟧</div>
+      <div class="plate plate--light" style="background:#EDEDE7">⟦logo/v2/lockup-oyyq-ultra.svg⟧</div>
+      <div class="plate" style="background:#0C050A">⟦logo/v2/lockup-oyyq-ot.svg⟧</div>
+    </div>
+
+    <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Подтвердить или поправить гипотезу о продукте — от неё зависит только
-        семантика и вторичный цвет; конструкция знаков и типографика переживут смену
-        позиционирования.<br>
-        2. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+      <p>1. Выбрать построение и направление — дальше пакет разворачивается за один
+        проход: тиснение, очерчивание, app-иконка, анимация курсора.<br>
+        2. Если AskQet позиционируется как продукт DevCore, вернуть голубой к
+        <code>#00AEEF</code> — родство станет читаемым.<br>
+        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
         товарный знак по классам 9, 35, 42.<br>
-        3. Лицензировать наборный шрифт с казахской кириллицей <b>и</b> латиницей с
-        <code>Q Ә Ң Ө Ұ Ү Һ І</code>. Словесные знаки здесь нарисованы контурами и
-        самодостаточны, но интерфейсу нужен текстовый шрифт.<br>
-        4. Проба тиснения на реальном картоне и сведение золота по вееру Pantone.<br>
-        5. Motion-спецификация для 01 и генеративный модуль для 03.</p>
+        4. Свести цвета по вееру Pantone на реальной бумаге: пунцовый и кислотный лайм
+        в офсете сядут заметно тусклее, чем на экране.</p>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">06</span><h2>Состав пакета</h2></div>
-    <div class="col"><p>Всё воспроизводится одной командой:
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_page.py</code>.
-      Геометрия, палитра и колориметрия живут в коде, а не в слоях макета.</p></div>
-    <pre class="files">brand/askqet/
-├─ <b>README.md</b>                  исследование целиком
-├─ <b>index.html</b>                 эта страница
-├─ tools/build.py               генератор знаков, палитры и колориметрии
-├─ tools/build_page.py          сборка страницы
-├─ tokens/askqet-tokens.css     CSS-переменные, включая светлую подложку
-├─ tokens/askqet-tokens.json    те же значения + геометрия знаков
-├─ tokens/palette.svg           выкраска с OKLCH
-├─ diagram/lineage-*.svg        родословная буквы Q
-└─ logo/
-   ├─ <b>01-jaryq/</b>     duo · mono · outline · emboss · solid · duo-flat
-   │                  lockup ×2 · q-swap · appicon · favicon
-   ├─ <b>02-bitiktas/</b>  intaglio · relief · flat · stele · lockup ×2 · appicon
-   └─ <b>03-tiri/</b>      signal · variant ×3 · lockup · appicon</pre>
+    <div class="sec__head"><span class="sec__num">04</span>
+      <h2>Основание конструкции</h2></div>
+    <div class="col">
+      <p class="lede">Круг и квадрат — не приём, а этимология буквы. Финикийская
+        <b>qōp</b> (XI в. до н. э.) — окружность с отростком вниз. Греческая
+        <b>коппа</b> держит ту же схему и через этрусков доходит до латинской
+        <b>Q</b>, где отросток становится росчерком вправо-вниз.</p>
+    </div>
+    <div class="lineage">
+      <figure>⟦diagram/lineage-1-qop.svg⟧
+        <figcaption>Финикийская <b>𐤒 qōp</b></figcaption></figure>
+      <figure>⟦diagram/lineage-2-koppa.svg⟧
+        <figcaption>Греческая <b>Ϙ коппа</b></figcaption></figure>
+      <figure>⟦diagram/lineage-3-q.svg⟧
+        <figcaption>Латинская <b>Q</b></figcaption></figure>
+      <figure>⟦diagram/lineage-4-askqet.svg⟧
+        <figcaption>askqet <b>круг + курсор</b></figcaption></figure>
+    </div>
+    <blockquote>Q — единственная буква латиницы, которая с рождения устроена как
+      «круг + отдельный элемент».</blockquote>
+    <div class="cols2">
+      <div><h4>Имя диктует два полюса</h4>
+        <p><code>askqet</code> = ASK + GET, где G заменена на <b>Q</b> — букву
+          казахской латиницы для звука <b>Қ</b>. Бренд назван не продуктом, а
+          сделкой, поэтому у знака и у палитры два полюса: вопрос и ответ.</p></div>
+      <div><h4>Хвост Q исторически переменный</h4>
+        <p>В римской капитальной эпиграфике длина и угол хвоста Q менялись от резчика
+          к резчику, тогда как остальные буквы держали жёсткий канон. Поэтому вынос
+          курсора — законный параметр, а не произвол.</p></div>
+    </div>
   </div>
 </section>
 
@@ -741,11 +460,12 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Открытых данных о продукте AskQet нет: домены не отвечают, в стартап-базах
-      Казахстана следов нет, в репозитории <code>devcore-website</code> название не
-      упоминается. Позиционирование выше реконструировано из имени, из контекста DevCore
-      и из подсказки в брифе — «квадрат (курсор)». Если продукт про другое, меняются
-      семантика и вторичный цвет; геометрия и типографика остаются.</p>
+    <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
+      имени и контекста DevCore. Первая итерация с концепциями BITIKTAS и TIRI снята
+      по решению заказчика; файлы остались в репозитории в <code>logo/02-bitiktas</code>
+      и <code>logo/03-tiri</code>. Всё в этой странице пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v2.py &amp;&amp;
+      python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -754,13 +474,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   var root=document.documentElement, btn=document.getElementById('themeBtn');
   btn.addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    if(!cur){
-      cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
-    }
+    if(!cur){cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
 
-  var pal=document.getElementById('palette');
+  var dirs=document.getElementById('dirs');
   var map={none:'',deut:'url(#cvd-deut)',prot:'url(#cvd-prot)',
            trit:'url(#cvd-trit)',mono:'url(#cvd-mono)'};
   document.querySelectorAll('[data-cvd]').forEach(function(b){
@@ -768,7 +486,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       document.querySelectorAll('[data-cvd]').forEach(function(o){
         o.setAttribute('aria-pressed', String(o===b));
       });
-      pal.style.filter=map[b.dataset.cvd];
+      dirs.style.filter=map[b.dataset.cvd];
     });
   });
 
@@ -776,21 +494,17 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   var sq=document.getElementById('stageSq'), lens=document.getElementById('stageLens'),
       out=document.getElementById('readout'), rng=document.getElementById('offset');
   function draw(){
-    var d=parseFloat(rng.value), k=d/Math.SQRT2;
-    var x=CX+k, y=CY+k;
+    var d=parseFloat(rng.value), k=d/Math.SQRT2, x=CX+k, y=CY+k;
     sq.setAttribute('x',x); sq.setAttribute('y',y);
     lens.setAttribute('x',x); lens.setAttribute('y',y);
-    // где окружность пересекает верхнюю грань квадрата
     var dy=y-CY, overlap=0;
     if(Math.abs(dy)<R){ overlap=Math.min(SIDE, CX+Math.sqrt(R*R-dy*dy)-x); }
-    overlap=Math.max(0,overlap);
-    var pct=Math.round(overlap/SIDE*100);
+    var pct=Math.round(Math.max(0,overlap)/SIDE*100);
     var verdict = pct>72 ? 'чаша съедается — Q не читается'
                 : pct<22 ? 'связи нет — распадается на два объекта'
-                : 'рабочий диапазон: хвост Q читается, чаша цела';
-    var centreR=Math.SQRT2*(k+SIDE/2)/R;
+                : 'рабочий коридор: хвост Q читается, чаша цела';
     out.innerHTML='вынос <b>'+d.toFixed(1)+'</b> ед. · перекрытие стороны <b>'+pct+
-      ' %</b> · центр квадрата на <b>'+centreR.toFixed(2)+
+      ' %</b> · центр квадрата на <b>'+(Math.SQRT2*(k+SIDE/2)/R).toFixed(2)+
       ' R</b> от центра круга<span class="verdict">'+verdict+'</span>';
   }
   rng.addEventListener('input',draw); draw();
@@ -800,9 +514,16 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 
 def main():
-    html = PAGE.replace("{RIVALS}", rival_rows())
-    html = html.replace("{SWATCHES}", swatches())
+    html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
+    html = html.replace("{DIRECTIONS}", directions({
+        k: read_svg(f"logo/v2/oyyq/askqet-oyyq-{k}.svg")
+        for k in ("signal", "ultra", "ot")}))
+    html = html.replace("{MATRIX}", build_rows(v2))
+    html = html.replace("{NOTES}", build_notes())
     html = html.replace("{CONTRAST}", contrast_rows())
+    for key in ("oyyq", "ten", "qabat", "base"):
+        html = html.replace("{V_" + key.upper() + "}",
+                            v2(key, "signal", raw=True))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
     path = os.path.join(ROOT, "index.html")
     with open(path, "w", encoding="utf-8") as f:

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — qabat / ALTYN · исходный / duo</title>
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><mask id="v1019a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1019a)"/>
+  <rect x="66" y="66" width="46" height="46" rx="3" fill="#F2A93B"/>
+
+</svg>

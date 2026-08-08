@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — oyyq / ALTYN · исходный / duo</title>
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <defs><mask id="v1014a">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="55" cy="55" r="39" fill="white"/>
+    <circle cx="55" cy="55" r="21" fill="black"/>
+    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1014a)"/>
+  <rect x="70" y="70" width="42" height="42" rx="3" fill="#F2A93B"/>
+
+</svg>
