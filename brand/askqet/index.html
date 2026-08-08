@@ -208,46 +208,58 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
-.matrix{display:grid; grid-template-columns:78px repeat(4,minmax(0,1fr)) 62px;
-  gap:var(--s1); align-items:center; margin:var(--s3) 0}
-.matrix__h{font-family:var(--mono); font-size:11px; letter-spacing:.09em;
-  text-transform:uppercase; color:var(--ink-3); text-align:center}
-.matrix__row-label{font-family:var(--mono); font-size:12.5px; color:var(--ink)}
-.matrix svg{display:block; width:100%; height:auto; border-radius:5px}
-.matrix .tiny{width:44px; margin:0 auto}
+.concept{padding-top:var(--s6); border-top:1px solid var(--line); margin-top:var(--s5)}
+.concept:first-of-type{padding-top:0; border-top:0; margin-top:0}
+.concept__top{display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr);
+  gap:var(--s4); align-items:start}
+.concept__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 .6em}
+.concept__title{font-size:clamp(24px,3vw,34px); letter-spacing:-.03em; margin:0 0 .35em;
+  font-weight:680}
+.concept__sub{font-family:var(--mono); font-size:12.5px; color:var(--ink-3);
+  letter-spacing:.04em; margin:0 0 var(--s3)}
+.art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.art svg{display:block; width:100%; height:auto}
 
-.dirs{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:var(--s3); margin:var(--s3) 0}
-.dir{border:1px solid var(--line); border-radius:6px; overflow:hidden;
-  background:var(--surface); display:flex; flex-direction:column}
-.dir__art svg{display:block; width:100%; height:auto}
-.dir__body{padding:var(--s2) var(--s3) var(--s3)}
-.dir__name{font-family:var(--mono); font-size:12px; letter-spacing:.13em;
-  text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.dir__idea{font-size:14.5px; color:var(--ink-2); margin:0 0 var(--s2)}
-.dir__ramp{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:var(--s2)}
-.dir__ramp div{padding:.5rem .55rem .6rem; font-family:var(--mono); font-size:10.5px;
-  line-height:1.5; min-height:72px; display:flex; flex-direction:column;
+.sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3);
+  flex-wrap:wrap}
+.sizes figure{margin:0; text-align:center}
+.sizes svg{display:block; border-radius:4px}
+.sizes .s128 svg{width:128px} .sizes .s48 svg{width:48px} .sizes .s16 svg{width:16px}
+.sizes figcaption{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);
+  margin-top:.5em; letter-spacing:.06em}
+
+.logic{border:1px solid var(--line); border-radius:6px; background:var(--surface);
+  padding:var(--s3); margin-top:var(--s3)}
+.logic__name{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 .6em}
+.logic p{font-size:14.5px; color:var(--ink-2)}
+.strip{display:flex; margin:var(--s2) 0 0; border-radius:4px; overflow:hidden}
+.strip div{flex:1; height:46px}
+.chips{display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); gap:2px;
+  margin-top:var(--s2)}
+.chips div{padding:.45rem .5rem .55rem; font-family:var(--mono); font-size:10.5px;
+  line-height:1.45; min-height:58px; display:flex; flex-direction:column;
   justify-content:flex-end}
-.dir__ramp b{font-size:11.5px; font-weight:500; display:block}
-.dir__meta{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); line-height:1.7}
-.dir__meta i{font-style:normal; color:var(--ink-2)}
+.chips b{font-size:11.5px; font-weight:500}
+.meta{font-family:var(--mono); font-size:11.5px; color:var(--ink-3); line-height:1.75;
+  margin-top:var(--s2)}
+.meta i{font-style:normal; color:var(--ink-2)}
 
-.verdict-list{display:grid; gap:var(--s2); margin-top:var(--s3)}
-.vrow{display:grid; grid-template-columns:96px minmax(0,1fr); gap:var(--s3);
+.lockup-row{margin-top:var(--s3); border:1px solid var(--line); border-radius:6px;
+  overflow:hidden}
+.lockup-row svg{display:block; width:100%; height:auto}
+
+.pick{display:grid; grid-template-columns:96px minmax(0,1fr); gap:var(--s3);
   align-items:center; border:1px solid var(--line); border-radius:6px;
   padding:var(--s2); background:var(--surface)}
-.vrow svg{display:block; width:100%; height:auto; border-radius:5px}
-.vrow h4{margin:0 0 .25em}
-.vrow p{margin:0; font-size:14.5px; color:var(--ink-2)}
+.pick + .pick{margin-top:var(--s2)}
+.pick svg{display:block; width:100%; height:auto; border-radius:5px}
+.pick h4{margin:0 0 .25em} .pick p{margin:0; font-size:14.5px; color:var(--ink-2)}
 .flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
   border-radius:3px; border:1px solid currentColor; margin-left:.5em}
 .flag--ok{color:var(--pass)} .flag--risk{color:var(--fail)}
-@media (max-width:760px){
-  .matrix{grid-template-columns:1fr; gap:var(--s2)}
-  .matrix__h,.matrix .tiny{display:none}
-  .vrow{grid-template-columns:1fr}
-}
+@media (max-width:760px){ .concept__top,.pick{grid-template-columns:1fr} }
 
 </style>
 
@@ -266,18 +278,19 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 2 — круг и квадрат</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 3 — три концепции</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Одна конструкция: круг — вопрос, курсор — <em>ответ</em>.
-      Четыре способа их свести и три цвета, в которых это живёт<span class="caret"></span></p>
+    <p class="mast__thesis">Круг и курсор остаются. Меняется то, <em>чем они друг
+      другу приходятся</em> — и цвет следует за идеей, а не наоборот<span
+      class="caret"></span></p>
     <div class="mast__meta">
-      <div>ПОСТРОЕНИЙ<b>4</b></div>
-      <div>ЦВЕТОВЫХ НАПРАВЛЕНИЙ<b>3</b></div>
-      <div>СРЕДНЯЯ ХРОМА<b>0.158 — 0.237</b></div>
-      <div>БЫЛО<b>0.140</b></div>
+      <div>КОНЦЕПЦИЙ<b>3</b></div>
+      <div>ЛОГИК ЦВЕТА<b>3, не палитры</b></div>
+      <div>МАКС. ХРОМА<b>0.276</b></div>
+      <div>ПРОВЕРКА<b>16 px и дальтонизм</b></div>
     </div>
   </div>
 </header>
@@ -286,20 +299,394 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">01</span><h2>Цвет</h2></div>
+    <div class="sec__head"><span class="sec__num">01</span><h2>Три концепции</h2></div>
     <div class="col">
-      <p class="lede">Претензия справедливая, и она измеряется. Первая пара сидела на
-        средней хроме <b>C 0.140</b> — середина диапазона sRGB, «приличный
-        корпоративный» уровень. Новые направления идут по <b>0.158 — 0.237</b> при
-        потолке sRGB около 0.26.</p>
-      <p>Одна честная оговорка: у SIGNAL хрома всего 0.158, потому что голубой в sRGB
-        физически не бывает насыщеннее — на этих светлотах ему некуда идти. Его
-        прибавка идёт по <strong>светлоте</strong>: 0.636 → 0.814. Он ярче, а не
-        сочнее. Реальный скачок по хроме дают ULTRA (0.237) и OT (0.215).</p>
-      <p>Направления отличаются не оттенком, а <strong>логикой пересечения</strong> —
-        тем самым третьим цветом, ради которого в брифе была ссылка на Mastercard.
-        Свет, чернила или смесь: три разных физических объяснения одного жеста.</p>
+      <p class="lede">Прошлый заход был про геометрию: как далеко отодвинуть квадрат.
+        Этот — про смысл: сложение, вычитание и непрерывность. Три разных ответа на
+        вопрос, чем круг приходится курсору.</p>
+      <p>Цвет здесь не палитра, а <strong>правило</strong>. В первой концепции он
+        вычисляется, во второй — сменный, в третьей — направленный. Поэтому каждую
+        нельзя перекрасить в чужую логику, не сломав идею.</p>
     </div>
+
+    <article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#08080C"/>
+  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
+
+</svg></div><div><p class="concept__id">Концепция 1</p><h3 class="concept__title">TOR · Тор — сетка</h3><p class="concept__sub">цветовая логика — спектр</p><p>Круг набран из знакомест: вопрос — это множество вариантов, разложенное по спектру. Один квадрат выходит из сетки и вырастает в курсор — ответ единственный и он крупнее всех вариантов, из которых выбран.</p><p class="note">Кольцо — 15 × 15 сетка с шагом 8, модуль 6.2. Цвет каждого знакоместа вычисляется из его угла, поэтому логотип нельзя «перекрасить неправильно». Ниже 24 px сетка рассыпается — там система переключается на сплошное кольцо.</p><div class="sizes"><figure class="s128"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#08080C"/>
+  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
+
+</svg><figcaption>128</figcaption></figure><figure class="s48"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#08080C"/>
+  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
+
+</svg><figcaption>48</figcaption></figure><figure class="s16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#08080C"/>
+  <defs><mask id="ts1">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="56" cy="56" r="35" fill="none" stroke="white" stroke-width="18"/>
+    <rect x="74" y="74" width="38" height="38" rx="4" fill="black"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB300" mask="url(#ts1)"/>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
+
+</svg><figcaption>16</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">СПЕКТР</p><p>Цвет не назначен, а вычислен: кольцо идёт по тону от вопроса к ответу, курсор берёт последнее значение. Палитра — не список, а функция от угла.</p><div class="strip"><div style="background:#7B2CFF"></div><div style="background:#7636FF"></div><div style="background:#713EFF"></div><div style="background:#6B46FF"></div><div style="background:#654CFF"></div><div style="background:#5E52FF"></div><div style="background:#5658FF"></div><div style="background:#4E5EFF"></div><div style="background:#4463FF"></div><div style="background:#3767FF"></div><div style="background:#2A6EFF"></div><div style="background:#267BFF"></div><div style="background:#2187FF"></div><div style="background:#1D92FF"></div><div style="background:#189DFF"></div><div style="background:#12A8FF"></div><div style="background:#0DB3FF"></div><div style="background:#07BEFF"></div><div style="background:#03C8FF"></div><div style="background:#01D3FF"></div><div style="background:#12DAF8"></div><div style="background:#27DDE9"></div><div style="background:#35E0D9"></div><div style="background:#41E3C9"></div><div style="background:#4CE6B9"></div><div style="background:#56E8A7"></div><div style="background:#60EA94"></div><div style="background:#69EC7F"></div><div style="background:#71EE67"></div><div style="background:#7AF047"></div><div style="background:#8CEC39"></div><div style="background:#9FE635"></div><div style="background:#AFE131"></div><div style="background:#BDDB2D"></div><div style="background:#CAD528"></div><div style="background:#D6CE23"></div><div style="background:#E1C81D"></div><div style="background:#ECC116"></div><div style="background:#F6BA0D"></div><div style="background:#FFB300"></div></div><p class="meta">пять опорных точек, между ними интерполяция в <i>OKLab</i> — не через sRGB, иначе середина уходит в грязь<br>диапазон светлоты <i>L 0.544 → 0.818</i>, хрома до <i>0.276</i></div><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#08080C"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F2F3F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div></article>
+<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
+
+</svg></div><div><p class="concept__id">Концепция 2</p><h3 class="concept__title">IZ · Із — оттиск</h3><p class="concept__sub">цветовая логика — флекс</p><p>Знака нет — есть поверхность и то, что из неё вынуто. Q существует только как пустота: круг и квадрат прорезают сплошное поле и вместе дают букву. Ответ — это форма, оставшаяся после того, как лишнее убрали.</p><p class="note">Родное состояние — квадрат 96 × 96 со скруглением 20: знак рождается сразу как иконка приложения, вырубка, тиснение или трафарет. Работает в любой одной краске.</p><div class="sizes"><figure class="s128"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
+
+</svg><figcaption>128</figcaption></figure><figure class="s48"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
+
+</svg><figcaption>48</figcaption></figure><figure class="s16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
+
+</svg><figcaption>16</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">ФЛЕКС</p><p>Бренд держит не цвет, а правило: сплошная поверхность и вырезанный в ней знак. Поверхность может быть любой из пяти — узнаётся пустота, а не оттенок.</p><div class="chips"><div style="background:#FF3D6E;color:#0B0C0E"><b>#FF3D6E</b>C 0.228 · H 12°<br>5.78:1</div><div style="background:#2B2BE0;color:#F6F2E8"><b>#2B2BE0</b>C 0.257 · H 270°<br>2.38:1</div><div style="background:#00D8FF;color:#0B0C0E"><b>#00D8FF</b>C 0.145 · H 217°<br>11.54:1</div><div style="background:#FFB300;color:#0B0C0E"><b>#FFB300</b>C 0.171 · H 78°<br>11.01:1</div><div style="background:#14D990;color:#0B0C0E"><b>#14D990</b>C 0.175 · H 160°<br>10.69:1</div></div><p class="meta">узнаётся <i>пустота</i>, а не оттенок — поэтому поверхность можно менять под контекст<br>ультрамарин даёт <i>2.38:1</i> к тёмному фону: только на светлом носителе</div><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#0A0A0E"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="iz7">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz7)"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F4F6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div></article>
+<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+
+</svg></div><div><p class="concept__id">Концепция 3</p><h3 class="concept__title">SYZYQ · Сызық — линия</h3><p class="concept__sub">цветовая логика — градиент</p><p>Круг и курсор — не два объекта, а один жест. Линия обходит окружность, срывается по диагонали и заканчивается квадратом. Вопрос и ответ связаны непрерывностью штриха, а не наложением.</p><p class="note">Хвост стартует внутри чаши и пересекает кольцо — именно это отличает Q от иконки поиска. Монолиния 11 единиц: единственный знак со светлым весом, рядом с набором он не спорит с текстом. Градиент задаёт направление чтения.</p><div class="sizes"><figure class="s128"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+
+</svg><figcaption>128</figcaption></figure><figure class="s48"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+
+</svg><figcaption>48</figcaption></figure><figure class="s16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+
+</svg><figcaption>16</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">ГРАДИЕНТ</p><p>Один штрих и один переход: линия стартует холодной там, где задан вопрос, и приходит тёплой в квадратный терминал. Цвет показывает направление чтения.</p><div class="strip"><div style="background:#5B6BFF"></div><div style="background:#5A71FF"></div><div style="background:#5878FF"></div><div style="background:#577EFF"></div><div style="background:#5584FF"></div><div style="background:#538AFF"></div><div style="background:#518FFF"></div><div style="background:#4F95FF"></div><div style="background:#4D9BFF"></div><div style="background:#4AA0FF"></div><div style="background:#47A6FF"></div><div style="background:#44ABFF"></div><div style="background:#41B0FF"></div><div style="background:#3DB6FF"></div><div style="background:#38BBFF"></div><div style="background:#33C0FF"></div><div style="background:#2DC6FF"></div><div style="background:#26CBFF"></div><div style="background:#1CD0FF"></div><div style="background:#0DD5FF"></div><div style="background:#24D8FB"></div><div style="background:#42D9F3"></div><div style="background:#56DAEB"></div><div style="background:#66DAE3"></div><div style="background:#74DBDB"></div><div style="background:#81DBD3"></div><div style="background:#8CDBCA"></div><div style="background:#97DBC1"></div><div style="background:#A2DBB8"></div><div style="background:#ABDBAF"></div><div style="background:#B5DBA6"></div><div style="background:#BEDB9C"></div><div style="background:#C7DA91"></div><div style="background:#CFDA86"></div><div style="background:#D8D97A"></div><div style="background:#E0D86D"></div><div style="background:#E8D75E"></div><div style="background:#F0D64D"></div><div style="background:#F7D535"></div><div style="background:#FFD400"></div></div><p class="meta">концы штриха: <i>#5B6BFF</i> → <i>#FFD400</i>, между ними <i>ΔEok 0.488</i> — переход виден даже в 24 px<br>терминал всегда сплошной: градиент не должен размывать точку ответа</div><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  
+  <rect width="440.06" height="118" fill="#07080D"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><linearGradient id="sy10" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy10)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F1F3F8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div></article>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">02</span><h2>Проверка цветом</h2></div>
+    <div class="col"><p class="lede">Переключатель применяется ко всем трём знакам
+      сразу — видно, что переживает потерю цветовосприятия, а что нет.</p></div>
 
     <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
       <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
@@ -308,321 +695,116 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
       <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
     </div>
-    <div class="dirs" id="dirs"><article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="dirs" id="dirs" style="display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--s2)">
+      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1011a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+  <rect width="128" height="128" fill="#08080C"/>
+  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
 
-</svg></div><div class="dir__body"><p class="dir__name">SIGNAL · Сигнал</p><p class="dir__idea">Холод против тепла на максимальной яркости. Пересечение — чистый свет: вопрос и машина складываются, получается ответ.</p><div class="dir__ramp"><div style="background:#00D8FF;color:#0B0C0E"><b>#00D8FF</b>круг · вопрос<br>C 0.145 · H 217°</div><div style="background:#FFB300;color:#0B0C0E"><b>#FFB300</b>курсор · ответ<br>C 0.171 · H 78°</div><div style="background:#FFFFFF;color:#0B0C0E"><b>#FFFFFF</b>пересечение<br>C 0.000 · H 90°</div></div><p class="dir__meta">средняя хрома <i>C 0.158</i><br>ближайший чужой бренд <i>DevCore, ΔEok 0.115</i><span class="flag flag--ok">поле чистое</span></p></div></article>
-<article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#EDEDE7"/>
-  <defs><mask id="v1012a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1012a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
 
-</svg></div><div class="dir__body"><p class="dir__name">ULTRA · Ультра</p><p class="dir__idea">Ультрамарин и кислотный лайм на светлой подложке. Здесь перевёрнута не только оптика Mastercard, но и фон: пересечение уходит в чернила, разрыв по светлоте почти предельный.</p><div class="dir__ramp"><div style="background:#2B2BE0;color:#F6F2E8"><b>#2B2BE0</b>круг · вопрос<br>C 0.257 · H 270°</div><div style="background:#D4FF2E;color:#0B0C0E"><b>#D4FF2E</b>курсор · ответ<br>C 0.216 · H 122°</div><div style="background:#0B0B1A;color:#F6F2E8"><b>#0B0B1A</b>пересечение<br>C 0.031 · H 282°</div></div><p class="dir__meta">средняя хрома <i>C 0.237</i><br>ближайший чужой бренд <i>Gemini, ΔEok 0.199</i><span class="flag flag--ok">поле чистое</span></p></div></article>
-<article class="dir"><div class="dir__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0C050A"/>
-  <defs><mask id="v1013a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1013a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
 
-</svg></div><div class="dir__body"><p class="dir__name">OT · От — огонь</p><p class="dir__idea">Тёплая триада без холодного полюса — ровно логика Mastercard: пересечение не светлее, а смешаннее обоих цветов. Красный взят не алый, а пунцовый: чистый алый в Казахстане неотличим от Kaspi.</p><div class="dir__ramp"><div style="background:#FF0A78;color:#0B0C0E"><b>#FF0A78</b>круг · вопрос<br>C 0.256 · H 5°</div><div style="background:#FFC400;color:#0B0C0E"><b>#FFC400</b>курсор · ответ<br>C 0.174 · H 87°</div><div style="background:#FF6B2E;color:#0B0C0E"><b>#FF6B2E</b>пересечение<br>C 0.194 · H 41°</div></div><p class="dir__meta">средняя хрома <i>C 0.215</i><br>ближайший чужой бренд <i>Kaspi, ΔEok 0.109</i><span class="flag flag--ok">поле чистое</span></p></div></article></div>
-
-    <div class="col">
-      <p class="cvd-note">Переключите симуляцию: под дейтеранопией и протанопией
-        (около 8 % мужчин) SIGNAL и ULTRA держат различие — обе пары лежат на
-        сине-жёлтой оси. У OT пунцовый и золото сближаются: если бренд массовый,
-        это довод против него.</p>
+</svg></div>
     </div>
+    <div class="col"><p class="cvd-note">TOR теряет больше всех: спектр — это и есть
+      его содержание, без цвета остаётся просто пиксельное кольцо (для этого и сделан
+      сплошной фолбэк). IZ не теряет ничего: он держится формой пустоты. SYZYQ
+      сохраняет направление за счёт разницы светлоты между концами штриха —
+      0.600 против 0.881.</p></div>
 
-    <h3>Две коллизии, которые нашлись при замере</h3>
-    <div class="cols2">
-      <div><h4>Алый в Казахстане занят</h4>
-        <p>Первый вариант тёплой триады был на алом <code>#FF2D20</code> — <b>ΔEok
-          0.032 до Kaspi</b>. Это ниже порога различения: на витрине и в сторе знак
-          читался бы как «что-то от Kaspi». Красный сдвинут в пунцовый
-          <code>#FF0A78</code> — ΔEok до Kaspi стал <b>0.109</b>, поле чистое.</p></div>
-      <div><h4>Голубой упирался в сам DevCore</h4>
-        <p>Первая версия SIGNAL шла на <code>#00B4FF</code> — <b>ΔEok 0.026 до
-          DevCore</b> <code>#00AEEF</code>. Для суббренда это может быть намеренным
-          родством; для самостоятельного бренда — потеря лица. Взят
-          <code>#00D8FF</code>, ΔEok <b>0.115</b>. Вернуть родство — правка одного
-          токена.</p></div>
-    </div>
-
-    <h3>Контраст на собственной подложке</h3>
+    <h3>Спектр TOR — вычисленные значения</h3>
     <div class="scroll">
-      <table><thead><tr><th>Направление и роль</th><th>Hex</th><th>WCAG 2.1</th>
-        <th>Статус</th></tr></thead><tbody><tr><td><span class="pair" style="background:#05070C;color:#00D8FF">Aa</span>SIGNAL · вопрос</td><td class="num">#00D8FF</td><td class="num">11.77:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#05070C;color:#FFB300">Aa</span>SIGNAL · ответ</td><td class="num">#FFB300</td><td class="num">11.23:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#EDEDE7;color:#2B2BE0">Aa</span>ULTRA · вопрос</td><td class="num">#2B2BE0</td><td class="num">7.08:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#EDEDE7;color:#D4FF2E">Aa</span>ULTRA · ответ</td><td class="num">#D4FF2E</td><td class="num">1.02:1</td><td><span class="tag tag--fail">крупно</span></td></tr>
-<tr><td><span class="pair" style="background:#0C050A;color:#FF0A78">Aa</span>OT · вопрос</td><td class="num">#FF0A78</td><td class="num">5.34:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#0C050A;color:#FFC400">Aa</span>OT · ответ</td><td class="num">#FFC400</td><td class="num">12.62:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#0B0C0E;color:#2C93D4">Aa</span>ALTYN · вопрос</td><td class="num">#2C93D4</td><td class="num">5.81:1</td><td><span class="tag tag--pass">годен</span></td></tr>
-<tr><td><span class="pair" style="background:#0B0C0E;color:#F2A93B">Aa</span>ALTYN · ответ</td><td class="num">#F2A93B</td><td class="num">9.80:1</td><td><span class="tag tag--pass">годен</span></td></tr></tbody></table>
+      <table><thead><tr><th>t</th><th>Цвет</th><th>L</th><th>C</th><th>H</th>
+        <th>На фоне</th></tr></thead><tbody><tr><td class="num">0.00</td><td><span class="chip" style="background:#7B2CFF"></span><code>#7B2CFF</code></td><td class="num">0.544</td><td class="num">0.276</td><td class="num">291°</td><td class="num">3.47:1</td></tr>
+<tr><td class="num">0.17</td><td><span class="chip" style="background:#525BFF"></span><code>#525BFF</code></td><td class="num">0.568</td><td class="num">0.238</td><td class="num">273°</td><td class="num">4.09:1</td></tr>
+<tr><td class="num">0.33</td><td><span class="chip" style="background:#1D92FF"></span><code>#1D92FF</code></td><td class="num">0.656</td><td class="num">0.188</td><td class="num">252°</td><td class="num">6.29:1</td></tr>
+<tr><td class="num">0.50</td><td><span class="chip" style="background:#00D8FF"></span><code>#00D8FF</code></td><td class="num">0.814</td><td class="num">0.145</td><td class="num">217°</td><td class="num">11.68:1</td></tr>
+<tr><td class="num">0.67</td><td><span class="chip" style="background:#60EA94"></span><code>#60EA94</code></td><td class="num">0.840</td><td class="num">0.171</td><td class="num">153°</td><td class="num">13.04:1</td></tr>
+<tr><td class="num">0.83</td><td><span class="chip" style="background:#B6DE2F"></span><code>#B6DE2F</code></td><td class="num">0.843</td><td class="num">0.192</td><td class="num">122°</td><td class="num">12.83:1</td></tr>
+<tr><td class="num">1.00</td><td><span class="chip" style="background:#FFB300"></span><code>#FFB300</code></td><td class="num">0.818</td><td class="num">0.171</td><td class="num">78°</td><td class="num">11.14:1</td></tr></tbody></table>
     </div>
-    <div class="col"><p class="note">Кислотный лайм ULTRA на светлой подложке даёт
-      1.02:1 — как заливка рядом с ультрамарином он работает, но текстом или тонкой
-      линией не бывает никогда. Это записано в правило, а не оставлено на вкус.</p></div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре построения одной конструкции</h2></div>
-    <div class="col"><p class="lede">Круг и квадрат остаются. Меняется только то,
-      как они встречаются: величина перекрытия, наличие контрформы и то, чем
-      отмечена граница. Крайняя колонка — тот же знак в 16 px.</p></div>
-
-    <div class="matrix"><div></div><div class="matrix__h">SIGNAL</div><div class="matrix__h">ULTRA</div><div class="matrix__h">OT</div><div class="matrix__h">исходный</div><div class="matrix__h">16 px</div>
-<div class="matrix__row-label">BASE</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDEDE7"/>
-  <defs><clipPath id="v1002a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2B2BE0"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#D4FF2E"/>
-  <g clip-path="url(#v1002a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#0B0B1A"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C050A"/>
-  <defs><clipPath id="v1003a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#FF0A78"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFC400"/>
-  <g clip-path="url(#v1003a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FF6B2E"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><clipPath id="v1004a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#v1004a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFF3DC"/></g>
-
-</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
-
-</svg></div>
-<div class="matrix__row-label">TEŇ</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDEDE7"/>
-  <defs><clipPath id="v1007a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2B2BE0"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#D4FF2E"/>
-  <g clip-path="url(#v1007a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#0B0B1A"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C050A"/>
-  <defs><clipPath id="v1008a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#FF0A78"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFC400"/>
-  <g clip-path="url(#v1008a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FF6B2E"/></g>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><clipPath id="v1009a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#2C93D4"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#F2A93B"/>
-  <g clip-path="url(#v1009a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFF3DC"/></g>
-
-</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
-
-</svg></div>
-<div class="matrix__row-label">OYYQ</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1011a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDEDE7"/>
-  <defs><mask id="v1012a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1012a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C050A"/>
-  <defs><mask id="v1013a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1013a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="v1014a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1014a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#F2A93B"/>
-
-</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1011a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
-
-</svg></div>
-<div class="matrix__row-label">QABAT</div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1016a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDEDE7"/>
-  <defs><mask id="v1017a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1017a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#D4FF2E"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C050A"/>
-  <defs><mask id="v1018a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1018a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFC400"/>
-
-</svg></div><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="v1019a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#2C93D4" mask="url(#v1019a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#F2A93B"/>
-
-</svg></div><div class="tiny"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1016a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
-
-</svg></div></div>
-
-    <div class="cols2"><div><h4>BASE · исходное</h4><p>Курсор вынесен на 1.34 R. Перекрытие 48 % стороны — хвост Q читается, чаша цела.</p><p class="dir__meta" style="margin-top:.6em">перекрытие 48 % стороны</p></div>
-<div><h4>TEŇ · равные</h4><p>Круг и квадрат одного визуального веса, перекрытие 66 %. Максимально близко к логике Mastercard: не знак с хвостом, а система из двух равных.</p><p class="dir__meta" style="margin-top:.6em">перекрытие 67 % стороны</p></div>
-<div><h4>OYYQ · вырез</h4><p>Чаша — кольцо, курсор пробивает его насквозь и выходит наружу. Самое сильное чтение Q и лучшая иконка: контрформа держит знак даже в 16 px.</p><p class="dir__meta" style="margin-top:.6em">кольцо, перекрытия нет</p></div>
-<div><h4>QABAT · слой</h4><p>Курсор лежит поверх круга, и круг обрывается за 5 единиц до его края — очерчивание вместо третьего цвета. Единственное построение, которое полностью работает в одну краску.</p><p class="dir__meta" style="margin-top:.6em">кольцо, перекрытия нет</p></div></div>
-
-    <div class="builder">
-      <div class="builder__stage">
-        <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
-          <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-          <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
-          <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
-          <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
-            height="44" rx="3" fill="#FFFFFF"/></g>
-        </svg>
-      </div>
-      <div>
-        <label for="offset">Вынос курсора по диагонали 45°</label>
-        <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
-        <p class="readout" id="readout"></p>
-      </div>
-    </div>
-    <div class="col" style="margin-top:var(--s2)">
-      <p class="note">BASE стоит на 19.8, TEŇ — на 2.8. Ниже 22 % перекрытия связь
-        рвётся, выше 72 % чаша съедается: рабочий коридор узкий, и обе принятые
-        версии стоят по его краям намеренно.</p>
-    </div>
+    <div class="col"><p class="note">Интерполяция идёт в OKLab, а не в sRGB: линейный
+      переход в sRGB между фиолетовым и жёлтым проваливается через серо-зелёную
+      грязь в середине. Здесь середина остаётся звонкой — это видно на полосе выше.</p></div>
   </div>
 </section>
 
@@ -630,123 +812,118 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede">Знак — <strong>OYYQ</strong>, цвет — <strong>SIGNAL</strong>.
-        Это не компромисс: OYYQ единственный из четырёх, кто выживает в 16 px, потому
-        что его держит контрформа, а не силуэт. SIGNAL единственный, кто одновременно
-        яркий, свободный от чужих брендов и целый под дальтонизмом.</p>
+      <p class="lede"><strong>IZ.</strong> Единственная из трёх, где знак не зависит
+        ни от цвета, ни от размера: узнаётся форма пустоты. Родное состояние — квадрат
+        со скруглением, то есть логотип рождается сразу иконкой приложения, вырубкой и
+        штампом, а не адаптируется в них потом.</p>
     </div>
-
-    <div class="verdict-list">
-      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div style="margin-top:var(--s3)">
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1011a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz2">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1011a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#FF3D6E" mask="url(#iz2)"/>
 
-</svg>
-        <div><h4>OYYQ — основной<span class="flag flag--ok">беру</span></h4>
-          <p>Самое сильное чтение Q. Кольцо + прорезь + блок — такой формы в категории
-            ни у кого нет. Работает в одну краску и в 16 px.</p></div></div>
-      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><div><h4>IZ · Із — оттиск<span class="flag flag--ok">беру</span></h4>
+        <p>Держится в 16 px, в одну краску, без цвета вообще. Пять поверхностей дают
+          гибкость без потери узнавания.</p></div></div>
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1006a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="52" y="52" width="60" height="60" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1006a)"><rect x="52" y="52" width="60" height="60" rx="3" fill="#FFFFFF"/></g>
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
 
-</svg>
-        <div><h4>TEŇ — если нужен ровно Mastercard</h4>
-          <p>Два равных объекта и большой третий цвет в пересечении — максимально
-            близко к референсу из брифа. Проигрывает в мелком размере.</p></div></div>
-      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><div><h4>SYZYQ · Сызық — линия</h4>
+        <p>Самый лёгкий по весу и единственный, где вопрос и ответ связаны
+          непрерывностью, а не наложением. Берите, если продукт должен читаться
+          спокойным и дорогим.</p></div></div>
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><mask id="v1016a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="54" cy="54" r="38" fill="white"/>
-    <rect x="61" y="61" width="56" height="56" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1016a)"/>
-  <rect x="66" y="66" width="46" height="46" rx="3" fill="#FFB300"/>
+  <rect width="128" height="128" fill="#08080C"/>
+  <g>
+    <rect x="36.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#6E42FF"/>
+    <rect x="44.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#674AFF"/>
+    <rect x="52.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#5659FF"/>
+    <rect x="68.9" y="12.9" width="6.2" height="6.2" rx="1" fill="#4B5FFF"/>
+    <rect x="28.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#7735FF"/>
+    <rect x="36.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#713EFF"/>
+    <rect x="44.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#6948FF"/>
+    <rect x="52.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#5F52FF"/>
+    <rect x="60.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#535AFF"/>
+    <rect x="68.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#4661FF"/>
+    <rect x="76.9" y="20.9" width="6.2" height="6.2" rx="1" fill="#3967FF"/>
+    <rect x="20.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#F7B90B"/>
+    <rect x="28.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7B2CFF"/>
+    <rect x="36.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#7538FF"/>
+    <rect x="68.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#3D65FF"/>
+    <rect x="76.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2B6BFF"/>
+    <rect x="84.9" y="28.9" width="6.2" height="6.2" rx="1" fill="#2776FF"/>
+    <rect x="12.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#E6C51A"/>
+    <rect x="20.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#ECC116"/>
+    <rect x="28.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#F3BC0F"/>
+    <rect x="76.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#267AFF"/>
+    <rect x="84.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#2284FF"/>
+    <rect x="92.9" y="36.9" width="6.2" height="6.2" rx="1" fill="#208AFF"/>
+    <rect x="12.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DACC21"/>
+    <rect x="20.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#DDCA1F"/>
+    <rect x="84.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1C93FF"/>
+    <rect x="92.9" y="44.9" width="6.2" height="6.2" rx="1" fill="#1B97FF"/>
+    <rect x="12.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="20.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#CCD428"/>
+    <rect x="84.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="92.9" y="52.9" width="6.2" height="6.2" rx="1" fill="#14A4FF"/>
+    <rect x="12.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#BCDB2D"/>
+    <rect x="20.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#B8DD2F"/>
+    <rect x="84.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0CB5FF"/>
+    <rect x="92.9" y="60.9" width="6.2" height="6.2" rx="1" fill="#0EB2FF"/>
+    <rect x="12.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#ABE232"/>
+    <rect x="20.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#A3E534"/>
+    <rect x="28.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#95E937"/>
+    <rect x="76.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#02CBFF"/>
+    <rect x="84.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#05C3FF"/>
+    <rect x="92.9" y="68.9" width="6.2" height="6.2" rx="1" fill="#07BEFF"/>
+    <rect x="20.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#8FEB39"/>
+    <rect x="28.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#7CF03C"/>
+    <rect x="36.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#72EE66"/>
+    <rect x="68.9" y="76.9" width="6.2" height="6.2" rx="1" fill="#22DCED"/>
+    <rect x="28.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#75EF5C"/>
+    <rect x="36.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#6BED79"/>
+    <rect x="44.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#5FEA96"/>
+    <rect x="52.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#3FE3CC"/>
+    <rect x="68.9" y="84.9" width="6.2" height="6.2" rx="1" fill="#2EDFE1"/>
+    <rect x="36.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#66EC85"/>
+    <rect x="44.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#5CE99C"/>
+    <rect x="52.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#50E7B2"/>
+    <rect x="60.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#43E4C7"/>
+    <rect x="68.9" y="92.9" width="6.2" height="6.2" rx="1" fill="#35E0D9"/>
+  </g>
+  <rect x="78" y="78" width="30" height="30" rx="2.5" fill="#FFB300"/>
 
-</svg>
-        <div><h4>QABAT — если нужна одна краска</h4>
-          <p>Очерчивание вместо третьего цвета. Единственное построение, полностью
-            рабочее в один цвет: тиснение, гравировка, шелкография.</p></div></div>
-      <div class="vrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#05070C"/>
-  <defs><clipPath id="v1001a"><circle cx="54" cy="54" r="38"/></clipPath></defs>
-  <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-  <rect x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
-  <g clip-path="url(#v1001a)"><rect x="68" y="68" width="44" height="44" rx="3" fill="#FFFFFF"/></g>
-
-</svg>
-        <div><h4>BASE — исходное, остаётся для сравнения</h4>
-          <p>Ровно то, что было в первой итерации, в новом цвете. Держу в пакете как
-            точку отсчёта.</p></div></div>
-    </div>
-
-    <h3>Локапы в трёх направлениях</h3>
-    <div class="lockups">
-      <div class="plate" style="background:#05070C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#05070C"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1021a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#00D8FF" mask="url(#v1021a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFB300"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F2F6FA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-      <div class="plate plate--light" style="background:#EDEDE7"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#EDEDE7"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1022a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#2B2BE0" mask="url(#v1022a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#D4FF2E"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#12121A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-      <div class="plate" style="background:#0C050A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#0C050A"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="v1023a">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="55" cy="55" r="39" fill="white"/>
-    <circle cx="55" cy="55" r="21" fill="black"/>
-    <rect x="64" y="64" width="54" height="54" rx="3" fill="black"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FF0A78" mask="url(#v1023a)"/>
-  <rect x="70" y="70" width="42" height="42" rx="3" fill="#FFC400"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#FBEFF4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
+</svg><div><h4>TOR · Тор — сетка
+        <span class="flag flag--risk">требует фолбэка</span></h4>
+        <p>Самый содержательный: спектр буквально показывает множество вариантов.
+          Но ниже 24 px рассыпается и без цвета теряет смысл — нужен второй знак
+          для мелких размеров.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать построение и направление — дальше пакет разворачивается за один
-        проход: тиснение, очерчивание, app-иконка, анимация курсора.<br>
-        2. Если AskQet позиционируется как продукт DevCore, вернуть голубой к
-        <code>#00AEEF</code> — родство станет читаемым.<br>
-        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+      <p>1. Выбрать концепцию — дальше разворачиваю полный пакет: тиснение, вырубка,
+        app-иконка, фавикон, анимация курсора, токены.<br>
+        2. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
         товарный знак по классам 9, 35, 42.<br>
-        4. Свести цвета по вееру Pantone на реальной бумаге: пунцовый и кислотный лайм
-        в офсете сядут заметно тусклее, чем на экране.</p>
+        3. Свести по вееру Pantone: спектр и градиент в офсете сядут заметно тусклее —
+        для печати понадобится сокращённая версия каждой логики.</p>
     </div>
   </div>
 </section>
@@ -754,9 +931,9 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span>
-      <h2>Основание конструкции</h2></div>
+      <h2>Почему круг и квадрат</h2></div>
     <div class="col">
-      <p class="lede">Круг и квадрат — не приём, а этимология буквы. Финикийская
+      <p class="lede">Основание конструкции не в референсе, а в этимологии. Финикийская
         <b>qōp</b> (XI в. до н. э.) — окружность с отростком вниз. Греческая
         <b>коппа</b> держит ту же схему и через этрусков доходит до латинской
         <b>Q</b>, где отросток становится росчерком вправо-вниз.</p>
@@ -790,15 +967,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     </div>
     <blockquote>Q — единственная буква латиницы, которая с рождения устроена как
       «круг + отдельный элемент».</blockquote>
-    <div class="cols2">
-      <div><h4>Имя диктует два полюса</h4>
-        <p><code>askqet</code> = ASK + GET, где G заменена на <b>Q</b> — букву
-          казахской латиницы для звука <b>Қ</b>. Бренд назван не продуктом, а
-          сделкой, поэтому у знака и у палитры два полюса: вопрос и ответ.</p></div>
-      <div><h4>Хвост Q исторически переменный</h4>
-        <p>В римской капитальной эпиграфике длина и угол хвоста Q менялись от резчика
-          к резчику, тогда как остальные буквы держали жёсткий канон. Поэтому вынос
-          курсора — законный параметр, а не произвол.</p></div>
+    <div class="col">
+      <p>Отсюда же практическое правило, которое стоило одной переделки: хвост Q должен
+        <strong>пересекать</strong> чашу, а не касаться её снаружи. Первая версия SYZYQ
+        выводила линию по касательной — и знак читался как иконка поиска. Хвост уведён
+        внутрь чаши, и Q вернулась.</p>
     </div>
   </div>
 </section>
@@ -808,10 +981,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <footer class="foot">
   <div class="wrap">
     <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
-      имени и контекста DevCore. Первая итерация с концепциями BITIKTAS и TIRI снята
-      по решению заказчика; файлы остались в репозитории в <code>logo/02-bitiktas</code>
-      и <code>logo/03-tiri</code>. Всё в этой странице пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v2.py &amp;&amp;
+      имени и контекста DevCore. Итерации 1 и 2 остались в репозитории:
+      <code>logo/01-jaryq</code>, <code>logo/02-bitiktas</code>,
+      <code>logo/03-tiri</code>, <code>logo/v2</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v3.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
@@ -824,7 +997,6 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     if(!cur){cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
-
   var dirs=document.getElementById('dirs');
   var map={none:'',deut:'url(#cvd-deut)',prot:'url(#cvd-prot)',
            trit:'url(#cvd-trit)',mono:'url(#cvd-mono)'};
@@ -836,24 +1008,5 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       dirs.style.filter=map[b.dataset.cvd];
     });
   });
-
-  var CX=54, CY=54, R=38, SIDE=44;
-  var sq=document.getElementById('stageSq'), lens=document.getElementById('stageLens'),
-      out=document.getElementById('readout'), rng=document.getElementById('offset');
-  function draw(){
-    var d=parseFloat(rng.value), k=d/Math.SQRT2, x=CX+k, y=CY+k;
-    sq.setAttribute('x',x); sq.setAttribute('y',y);
-    lens.setAttribute('x',x); lens.setAttribute('y',y);
-    var dy=y-CY, overlap=0;
-    if(Math.abs(dy)<R){ overlap=Math.min(SIDE, CX+Math.sqrt(R*R-dy*dy)-x); }
-    var pct=Math.round(Math.max(0,overlap)/SIDE*100);
-    var verdict = pct>72 ? 'чаша съедается — Q не читается'
-                : pct<22 ? 'связи нет — распадается на два объекта'
-                : 'рабочий коридор: хвост Q читается, чаша цела';
-    out.innerHTML='вынос <b>'+d.toFixed(1)+'</b> ед. · перекрытие стороны <b>'+pct+
-      ' %</b> · центр квадрата на <b>'+(Math.SQRT2*(k+SIDE/2)/R).toFixed(2)+
-      ' R</b> от центра круга<span class="verdict">'+verdict+'</span>';
-  }
-  rng.addEventListener('input',draw); draw();
 })();
 </script>

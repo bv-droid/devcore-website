@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — вторая итерация.
-Только конструкция «круг + квадрат-курсор = Q»: четыре построения
-и три цветовых направления.
+Собирает brand/askqet/index.html — итерация 3.
+Три концепции внутри «круг + квадрат-курсор», у каждой своя логика цвета.
 
-SVG вставляются инлайном. Плейсхолдер ⟦путь.svg⟧ заменяется файлом.
-
-Запуск:  python3 tools/build_page.py   (после build.py и build_v2.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v3.py)
 """
 
 import os
@@ -16,8 +13,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from page_body import (EXTRA_CSS, directions, build_rows, build_notes,  # noqa: E402
-                       contrast_rows)
+from page_body import EXTRA_CSS, concept_block, spectrum_table  # noqa: E402
 
 
 def read_svg(rel):
@@ -29,9 +25,9 @@ def embed(match):
     return read_svg(match.group(1))
 
 
-def v2(build, pal, raw=False):
-    svg = read_svg(f"logo/v2/{build}/askqet-{build}-{pal}.svg")
-    return svg if raw else f"<div>{svg}</div>"
+def sizes(big, small):
+    return [("s128", read_svg(big), "128"), ("s48", read_svg(big), "48"),
+            ("s16", read_svg(small), "16")]
 
 
 PAGE = r"""<meta charset="utf-8">
@@ -261,15 +257,16 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 2 — круг и квадрат</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 3 — три концепции</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Одна конструкция: круг — вопрос, курсор — <em>ответ</em>.
-      Четыре способа их свести и три цвета, в которых это живёт<span class="caret"></span></p>
+    <p class="mast__thesis">Круг и курсор остаются. Меняется то, <em>чем они друг
+      другу приходятся</em> — и цвет следует за идеей, а не наоборот<span
+      class="caret"></span></p>
     <div class="mast__meta">
-      <div>ПОСТРОЕНИЙ<b>4</b></div>
-      <div>ЦВЕТОВЫХ НАПРАВЛЕНИЙ<b>3</b></div>
-      <div>СРЕДНЯЯ ХРОМА<b>0.158 — 0.237</b></div>
-      <div>БЫЛО<b>0.140</b></div>
+      <div>КОНЦЕПЦИЙ<b>3</b></div>
+      <div>ЛОГИК ЦВЕТА<b>3, не палитры</b></div>
+      <div>МАКС. ХРОМА<b>0.276</b></div>
+      <div>ПРОВЕРКА<b>16 px и дальтонизм</b></div>
     </div>
   </div>
 </header>
@@ -278,20 +275,25 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">01</span><h2>Цвет</h2></div>
+    <div class="sec__head"><span class="sec__num">01</span><h2>Три концепции</h2></div>
     <div class="col">
-      <p class="lede">Претензия справедливая, и она измеряется. Первая пара сидела на
-        средней хроме <b>C 0.140</b> — середина диапазона sRGB, «приличный
-        корпоративный» уровень. Новые направления идут по <b>0.158 — 0.237</b> при
-        потолке sRGB около 0.26.</p>
-      <p>Одна честная оговорка: у SIGNAL хрома всего 0.158, потому что голубой в sRGB
-        физически не бывает насыщеннее — на этих светлотах ему некуда идти. Его
-        прибавка идёт по <strong>светлоте</strong>: 0.636 → 0.814. Он ярче, а не
-        сочнее. Реальный скачок по хроме дают ULTRA (0.237) и OT (0.215).</p>
-      <p>Направления отличаются не оттенком, а <strong>логикой пересечения</strong> —
-        тем самым третьим цветом, ради которого в брифе была ссылка на Mastercard.
-        Свет, чернила или смесь: три разных физических объяснения одного жеста.</p>
+      <p class="lede">Прошлый заход был про геометрию: как далеко отодвинуть квадрат.
+        Этот — про смысл: сложение, вычитание и непрерывность. Три разных ответа на
+        вопрос, чем круг приходится курсору.</p>
+      <p>Цвет здесь не палитра, а <strong>правило</strong>. В первой концепции он
+        вычисляется, во второй — сменный, в третьей — направленный. Поэтому каждую
+        нельзя перекрасить в чужую логику, не сломав идею.</p>
     </div>
+
+    {CONCEPTS}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">02</span><h2>Проверка цветом</h2></div>
+    <div class="col"><p class="lede">Переключатель применяется ко всем трём знакам
+      сразу — видно, что переживает потерю цветовосприятия, а что нет.</p></div>
 
     <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
       <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
@@ -300,74 +302,26 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
       <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
     </div>
-    <div class="dirs" id="dirs">{DIRECTIONS}</div>
-
-    <div class="col">
-      <p class="cvd-note">Переключите симуляцию: под дейтеранопией и протанопией
-        (около 8 % мужчин) SIGNAL и ULTRA держат различие — обе пары лежат на
-        сине-жёлтой оси. У OT пунцовый и золото сближаются: если бренд массовый,
-        это довод против него.</p>
+    <div class="dirs" id="dirs" style="display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--s2)">
+      <div class="art">⟦logo/v3/tor/askqet-tor.svg⟧</div>
+      <div class="art">⟦logo/v3/iz/askqet-iz-1.svg⟧</div>
+      <div class="art">⟦logo/v3/syzyq/askqet-syzyq.svg⟧</div>
     </div>
+    <div class="col"><p class="cvd-note">TOR теряет больше всех: спектр — это и есть
+      его содержание, без цвета остаётся просто пиксельное кольцо (для этого и сделан
+      сплошной фолбэк). IZ не теряет ничего: он держится формой пустоты. SYZYQ
+      сохраняет направление за счёт разницы светлоты между концами штриха —
+      0.600 против 0.881.</p></div>
 
-    <h3>Две коллизии, которые нашлись при замере</h3>
-    <div class="cols2">
-      <div><h4>Алый в Казахстане занят</h4>
-        <p>Первый вариант тёплой триады был на алом <code>#FF2D20</code> — <b>ΔEok
-          0.032 до Kaspi</b>. Это ниже порога различения: на витрине и в сторе знак
-          читался бы как «что-то от Kaspi». Красный сдвинут в пунцовый
-          <code>#FF0A78</code> — ΔEok до Kaspi стал <b>0.109</b>, поле чистое.</p></div>
-      <div><h4>Голубой упирался в сам DevCore</h4>
-        <p>Первая версия SIGNAL шла на <code>#00B4FF</code> — <b>ΔEok 0.026 до
-          DevCore</b> <code>#00AEEF</code>. Для суббренда это может быть намеренным
-          родством; для самостоятельного бренда — потеря лица. Взят
-          <code>#00D8FF</code>, ΔEok <b>0.115</b>. Вернуть родство — правка одного
-          токена.</p></div>
-    </div>
-
-    <h3>Контраст на собственной подложке</h3>
+    <h3>Спектр TOR — вычисленные значения</h3>
     <div class="scroll">
-      <table><thead><tr><th>Направление и роль</th><th>Hex</th><th>WCAG 2.1</th>
-        <th>Статус</th></tr></thead><tbody>{CONTRAST}</tbody></table>
+      <table><thead><tr><th>t</th><th>Цвет</th><th>L</th><th>C</th><th>H</th>
+        <th>На фоне</th></tr></thead><tbody>{SPECTRUM}</tbody></table>
     </div>
-    <div class="col"><p class="note">Кислотный лайм ULTRA на светлой подложке даёт
-      1.02:1 — как заливка рядом с ультрамарином он работает, но текстом или тонкой
-      линией не бывает никогда. Это записано в правило, а не оставлено на вкус.</p></div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре построения одной конструкции</h2></div>
-    <div class="col"><p class="lede">Круг и квадрат остаются. Меняется только то,
-      как они встречаются: величина перекрытия, наличие контрформы и то, чем
-      отмечена граница. Крайняя колонка — тот же знак в 16 px.</p></div>
-
-    <div class="matrix">{MATRIX}</div>
-
-    <div class="cols2">{NOTES}</div>
-
-    <div class="builder">
-      <div class="builder__stage">
-        <svg viewBox="0 0 128 128" id="stage" fill="none" aria-hidden="true">
-          <circle cx="54" cy="54" r="38" fill="#00D8FF"/>
-          <clipPath id="stageBowl"><circle cx="54" cy="54" r="38"/></clipPath>
-          <rect id="stageSq" x="68" y="68" width="44" height="44" rx="3" fill="#FFB300"/>
-          <g clip-path="url(#stageBowl)"><rect id="stageLens" x="68" y="68" width="44"
-            height="44" rx="3" fill="#FFFFFF"/></g>
-        </svg>
-      </div>
-      <div>
-        <label for="offset">Вынос курсора по диагонали 45°</label>
-        <input type="range" id="offset" min="0" max="60" value="19.8" step="0.2">
-        <p class="readout" id="readout"></p>
-      </div>
-    </div>
-    <div class="col" style="margin-top:var(--s2)">
-      <p class="note">BASE стоит на 19.8, TEŇ — на 2.8. Ниже 22 % перекрытия связь
-        рвётся, выше 72 % чаша съедается: рабочий коридор узкий, и обе принятые
-        версии стоят по его краям намеренно.</p>
-    </div>
+    <div class="col"><p class="note">Интерполяция идёт в OKLab, а не в sRGB: линейный
+      переход в sRGB между фиолетовым и жёлтым проваливается через серо-зелёную
+      грязь в середине. Здесь середина остаётся звонкой — это видно на полосе выше.</p></div>
   </div>
 </section>
 
@@ -375,48 +329,34 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede">Знак — <strong>OYYQ</strong>, цвет — <strong>SIGNAL</strong>.
-        Это не компромисс: OYYQ единственный из четырёх, кто выживает в 16 px, потому
-        что его держит контрформа, а не силуэт. SIGNAL единственный, кто одновременно
-        яркий, свободный от чужих брендов и целый под дальтонизмом.</p>
+      <p class="lede"><strong>IZ.</strong> Единственная из трёх, где знак не зависит
+        ни от цвета, ни от размера: узнаётся форма пустоты. Родное состояние — квадрат
+        со скруглением, то есть логотип рождается сразу иконкой приложения, вырубкой и
+        штампом, а не адаптируется в них потом.</p>
     </div>
-
-    <div class="verdict-list">
-      <div class="vrow">{V_OYYQ}
-        <div><h4>OYYQ — основной<span class="flag flag--ok">беру</span></h4>
-          <p>Самое сильное чтение Q. Кольцо + прорезь + блок — такой формы в категории
-            ни у кого нет. Работает в одну краску и в 16 px.</p></div></div>
-      <div class="vrow">{V_TEN}
-        <div><h4>TEŇ — если нужен ровно Mastercard</h4>
-          <p>Два равных объекта и большой третий цвет в пересечении — максимально
-            близко к референсу из брифа. Проигрывает в мелком размере.</p></div></div>
-      <div class="vrow">{V_QABAT}
-        <div><h4>QABAT — если нужна одна краска</h4>
-          <p>Очерчивание вместо третьего цвета. Единственное построение, полностью
-            рабочее в один цвет: тиснение, гравировка, шелкография.</p></div></div>
-      <div class="vrow">{V_BASE}
-        <div><h4>BASE — исходное, остаётся для сравнения</h4>
-          <p>Ровно то, что было в первой итерации, в новом цвете. Держу в пакете как
-            точку отсчёта.</p></div></div>
-    </div>
-
-    <h3>Локапы в трёх направлениях</h3>
-    <div class="lockups">
-      <div class="plate" style="background:#05070C">⟦logo/v2/lockup-oyyq-signal.svg⟧</div>
-      <div class="plate plate--light" style="background:#EDEDE7">⟦logo/v2/lockup-oyyq-ultra.svg⟧</div>
-      <div class="plate" style="background:#0C050A">⟦logo/v2/lockup-oyyq-ot.svg⟧</div>
+    <div style="margin-top:var(--s3)">
+      <div class="pick">{P_IZ}<div><h4>IZ · Із — оттиск<span class="flag flag--ok">беру</span></h4>
+        <p>Держится в 16 px, в одну краску, без цвета вообще. Пять поверхностей дают
+          гибкость без потери узнавания.</p></div></div>
+      <div class="pick">{P_SYZYQ}<div><h4>SYZYQ · Сызық — линия</h4>
+        <p>Самый лёгкий по весу и единственный, где вопрос и ответ связаны
+          непрерывностью, а не наложением. Берите, если продукт должен читаться
+          спокойным и дорогим.</p></div></div>
+      <div class="pick">{P_TOR}<div><h4>TOR · Тор — сетка
+        <span class="flag flag--risk">требует фолбэка</span></h4>
+        <p>Самый содержательный: спектр буквально показывает множество вариантов.
+          Но ниже 24 px рассыпается и без цвета теряет смысл — нужен второй знак
+          для мелких размеров.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать построение и направление — дальше пакет разворачивается за один
-        проход: тиснение, очерчивание, app-иконка, анимация курсора.<br>
-        2. Если AskQet позиционируется как продукт DevCore, вернуть голубой к
-        <code>#00AEEF</code> — родство станет читаемым.<br>
-        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+      <p>1. Выбрать концепцию — дальше разворачиваю полный пакет: тиснение, вырубка,
+        app-иконка, фавикон, анимация курсора, токены.<br>
+        2. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
         товарный знак по классам 9, 35, 42.<br>
-        4. Свести цвета по вееру Pantone на реальной бумаге: пунцовый и кислотный лайм
-        в офсете сядут заметно тусклее, чем на экране.</p>
+        3. Свести по вееру Pantone: спектр и градиент в офсете сядут заметно тусклее —
+        для печати понадобится сокращённая версия каждой логики.</p>
     </div>
   </div>
 </section>
@@ -424,9 +364,9 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span>
-      <h2>Основание конструкции</h2></div>
+      <h2>Почему круг и квадрат</h2></div>
     <div class="col">
-      <p class="lede">Круг и квадрат — не приём, а этимология буквы. Финикийская
+      <p class="lede">Основание конструкции не в референсе, а в этимологии. Финикийская
         <b>qōp</b> (XI в. до н. э.) — окружность с отростком вниз. Греческая
         <b>коппа</b> держит ту же схему и через этрусков доходит до латинской
         <b>Q</b>, где отросток становится росчерком вправо-вниз.</p>
@@ -443,15 +383,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     </div>
     <blockquote>Q — единственная буква латиницы, которая с рождения устроена как
       «круг + отдельный элемент».</blockquote>
-    <div class="cols2">
-      <div><h4>Имя диктует два полюса</h4>
-        <p><code>askqet</code> = ASK + GET, где G заменена на <b>Q</b> — букву
-          казахской латиницы для звука <b>Қ</b>. Бренд назван не продуктом, а
-          сделкой, поэтому у знака и у палитры два полюса: вопрос и ответ.</p></div>
-      <div><h4>Хвост Q исторически переменный</h4>
-        <p>В римской капитальной эпиграфике длина и угол хвоста Q менялись от резчика
-          к резчику, тогда как остальные буквы держали жёсткий канон. Поэтому вынос
-          курсора — законный параметр, а не произвол.</p></div>
+    <div class="col">
+      <p>Отсюда же практическое правило, которое стоило одной переделки: хвост Q должен
+        <strong>пересекать</strong> чашу, а не касаться её снаружи. Первая версия SYZYQ
+        выводила линию по касательной — и знак читался как иконка поиска. Хвост уведён
+        внутрь чаши, и Q вернулась.</p>
     </div>
   </div>
 </section>
@@ -461,10 +397,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <footer class="foot">
   <div class="wrap">
     <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
-      имени и контекста DevCore. Первая итерация с концепциями BITIKTAS и TIRI снята
-      по решению заказчика; файлы остались в репозитории в <code>logo/02-bitiktas</code>
-      и <code>logo/03-tiri</code>. Всё в этой странице пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v2.py &amp;&amp;
+      имени и контекста DevCore. Итерации 1 и 2 остались в репозитории:
+      <code>logo/01-jaryq</code>, <code>logo/02-bitiktas</code>,
+      <code>logo/03-tiri</code>, <code>logo/v2</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v3.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
@@ -477,7 +413,6 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     if(!cur){cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
   });
-
   var dirs=document.getElementById('dirs');
   var map={none:'',deut:'url(#cvd-deut)',prot:'url(#cvd-prot)',
            trit:'url(#cvd-trit)',mono:'url(#cvd-mono)'};
@@ -489,25 +424,6 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       dirs.style.filter=map[b.dataset.cvd];
     });
   });
-
-  var CX=54, CY=54, R=38, SIDE=44;
-  var sq=document.getElementById('stageSq'), lens=document.getElementById('stageLens'),
-      out=document.getElementById('readout'), rng=document.getElementById('offset');
-  function draw(){
-    var d=parseFloat(rng.value), k=d/Math.SQRT2, x=CX+k, y=CY+k;
-    sq.setAttribute('x',x); sq.setAttribute('y',y);
-    lens.setAttribute('x',x); lens.setAttribute('y',y);
-    var dy=y-CY, overlap=0;
-    if(Math.abs(dy)<R){ overlap=Math.min(SIDE, CX+Math.sqrt(R*R-dy*dy)-x); }
-    var pct=Math.round(Math.max(0,overlap)/SIDE*100);
-    var verdict = pct>72 ? 'чаша съедается — Q не читается'
-                : pct<22 ? 'связи нет — распадается на два объекта'
-                : 'рабочий коридор: хвост Q читается, чаша цела';
-    out.innerHTML='вынос <b>'+d.toFixed(1)+'</b> ед. · перекрытие стороны <b>'+pct+
-      ' %</b> · центр квадрата на <b>'+(Math.SQRT2*(k+SIDE/2)/R).toFixed(2)+
-      ' R</b> от центра круга<span class="verdict">'+verdict+'</span>';
-  }
-  rng.addEventListener('input',draw); draw();
 })();
 </script>
 """
@@ -515,18 +431,28 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
-    html = html.replace("{DIRECTIONS}", directions({
-        k: read_svg(f"logo/v2/oyyq/askqet-oyyq-{k}.svg")
-        for k in ("signal", "ultra", "ot")}))
-    html = html.replace("{MATRIX}", build_rows(v2))
-    html = html.replace("{NOTES}", build_notes())
-    html = html.replace("{CONTRAST}", contrast_rows())
-    for key in ("oyyq", "ten", "qabat", "base"):
-        html = html.replace("{V_" + key.upper() + "}",
-                            v2(key, "signal", raw=True))
+    blocks = [
+        concept_block("tor", read_svg("logo/v3/tor/askqet-tor.svg"),
+                      sizes("logo/v3/tor/askqet-tor.svg",
+                            "logo/v3/tor/askqet-tor-small.svg"),
+                      read_svg("logo/v3/tor/askqet-tor-lockup.svg"), 1),
+        concept_block("iz", read_svg("logo/v3/iz/askqet-iz-1.svg"),
+                      sizes("logo/v3/iz/askqet-iz-1.svg",
+                            "logo/v3/iz/askqet-iz-1.svg"),
+                      read_svg("logo/v3/iz/askqet-iz-lockup.svg"), 2),
+        concept_block("syzyq", read_svg("logo/v3/syzyq/askqet-syzyq.svg"),
+                      sizes("logo/v3/syzyq/askqet-syzyq.svg",
+                            "logo/v3/syzyq/askqet-syzyq.svg"),
+                      read_svg("logo/v3/syzyq/askqet-syzyq-lockup.svg"), 3),
+    ]
+    html = html.replace("{CONCEPTS}", "\n".join(blocks))
+    html = html.replace("{SPECTRUM}", spectrum_table())
+    for key, rel in (("IZ", "logo/v3/iz/askqet-iz-1.svg"),
+                     ("SYZYQ", "logo/v3/syzyq/askqet-syzyq.svg"),
+                     ("TOR", "logo/v3/tor/askqet-tor.svg")):
+        html = html.replace("{P_" + key + "}", read_svg(rel))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
-    path = os.path.join(ROOT, "index.html")
-    with open(path, "w", encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
     print(f"✓ index.html — {len(html) // 1024} КБ")
 

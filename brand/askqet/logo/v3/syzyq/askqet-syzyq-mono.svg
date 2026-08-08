@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title></title>
+  <g color="#FFD400">  <g fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="currentColor"/>
+</g>
+</svg>

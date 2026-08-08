@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#0A0A0E"/>
+  <defs><mask id="iz3">
+    <rect x="16" y="16" width="96" height="96" rx="20" fill="white"/>
+    <circle cx="52" cy="52" r="30" fill="black"/>
+    <rect x="64" y="64" width="26" height="26" rx="2" fill="black"/>
+  </mask></defs>
+  <rect x="16" y="16" width="96" height="96" rx="20" fill="#2B2BE0" mask="url(#iz3)"/>
+
+</svg>

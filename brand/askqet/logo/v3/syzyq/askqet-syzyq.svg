@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#07080D"/>
+  <defs><linearGradient id="sy8" x1="18" y1="18" x2="106" y2="106" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5B6BFF"/><stop offset="0.25" stop-color="#48A4FF"/><stop offset="0.5" stop-color="#00D8FF"/><stop offset="0.75" stop-color="#AEDBAD"/><stop offset="1" stop-color="#FFD400"/></linearGradient></defs>
+  <g fill="none" stroke="url(#sy8)" stroke-width="11" stroke-linecap="butt">
+    <circle cx="51" cy="51" r="35"/>
+    <path d="M63.4,63.4 L90,90"/>
+  </g>
+  <rect x="84" y="84" width="28" height="28" rx="2.5" fill="#FFD400"/>
+
+</svg>
