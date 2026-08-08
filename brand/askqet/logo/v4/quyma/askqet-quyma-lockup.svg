@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+  <title>AskQet</title>
+  <rect width="440.06" height="118" fill="#08060E"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs>
+    <linearGradient id="qg4005" x1="16" y1="16" x2="108" y2="108" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FF00A8"/><stop offset="0.25" stop-color="#BC3AD5"/><stop offset="0.5" stop-color="#7B2CFF"/><stop offset="0.75" stop-color="#6584FF"/><stop offset="1" stop-color="#00C2FF"/></linearGradient>
+    <filter id="qf4006" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6.2" result="b"/>
+      <feColorMatrix in="b" type="matrix" values="
+        1 0 0 0 0   0 1 0 0 0   0 0 1 0 0   0 0 0 26 -12"/>
+    </filter>
+  </defs>
+  <g filter="url(#qf4006)" fill="url(#qg4005)">
+    <circle cx="50" cy="52" r="33"/>
+    <rect x="68" y="70" width="38" height="38" rx="3"/>
+  </g>
+</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F3EFFA" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg>

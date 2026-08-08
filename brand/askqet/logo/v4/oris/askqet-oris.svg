@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#05060E"/>
+  <defs>
+    <radialGradient id="og4007">
+      <stop offset="0" stop-color="#2E5BFF" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#2E5BFF" stop-opacity="0.55"/>
+      <stop offset="0.72" stop-color="#00E5FF" stop-opacity="1"/>
+      <stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="oh4008">
+      <stop offset="0" stop-color="#FFE04D" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FFE04D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g style="mix-blend-mode:screen">
+    <circle cx="52" cy="52" r="47" fill="url(#og4007)"/>
+    <circle cx="91" cy="91" r="45.9" fill="url(#oh4008)"/>
+  </g>
+  <rect x="74" y="74" width="34" height="34" rx="2.5" fill="#FFE04D"/>
+
+</svg>
