@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — JARYQ / mono</title>
+  <defs><mask id="aq2-m">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="54" cy="54" r="38" fill="white"/>
+    <rect x="68" y="68" width="44" height="44" rx="3" fill="white"/>
+    <g clip-path="url(#aq2-bowl)"><rect x="68" y="68" width="44" height="44" rx="3" fill="black"/></g>
+  </mask>
+  <clipPath id="aq2-bowl"><circle cx="54" cy="54" r="38"/></clipPath></defs>
+  <rect width="128" height="128" fill="#F2A93B" mask="url(#aq2-m)"/>
+
+</svg>

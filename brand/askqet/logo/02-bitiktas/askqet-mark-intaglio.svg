@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — BITIKTAS / intaglio</title>
+  <rect width="128" height="128" fill="#DED5C4"/>
+  <g transform="translate(1.7,1.7)" stroke="#C4B9A3" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.9">
+    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
+    <path d="M72,70 L108,106"/>
+    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
+  </g>
+  <g transform="translate(-1.4,-1.4)" stroke="#8E8371" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none" opacity="0.85">
+    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
+    <path d="M72,70 L108,106"/>
+    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
+  </g>
+  <g transform="translate(0,0)" stroke="#C0522E" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt" fill="none">
+    <path d="M94.955,71.307 73.307,92.955 42.693,92.955 21.045,71.307 21.045,40.693 42.693,19.045 73.307,19.045 94.955,40.693Z"/>
+    <path d="M72,70 L108,106"/>
+    <path d="M100.56,113.44 L115.44,98.56" stroke-width="6"/>
+  </g>
+
+</svg>

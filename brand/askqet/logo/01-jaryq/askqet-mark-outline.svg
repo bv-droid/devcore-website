@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — JARYQ / outline</title>
+  <defs><mask id="aq3-gap">
+    <rect width="128" height="128" fill="white"/>
+    <rect x="68" y="68" width="44" height="44" rx="3" stroke="black" stroke-width="18" fill="none"/>
+  </mask></defs>
+  <g mask="url(#aq3-gap)"><circle cx="54" cy="54" r="38" stroke="#2C93D4" stroke-width="7"/></g>
+  <rect x="68" y="68" width="44" height="44" rx="3" stroke="#F2A93B" stroke-width="7"/>
+
+</svg>

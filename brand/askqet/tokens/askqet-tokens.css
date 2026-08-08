@@ -1,0 +1,56 @@
+:root {
+  --aq-tas-950: #0B0C0E; /* oklch(0.154 0.005 264.4) */
+  --aq-tas-900: #121418; /* oklch(0.191 0.009 264.3) */
+  --aq-tas-800: #1B1E23; /* oklch(0.234 0.011 260.7) */
+  --aq-tas-700: #2A2F36; /* oklch(0.303 0.014 256.8) */
+  --aq-tas-600: #3C434C; /* oklch(0.380 0.018 254.7) */
+  --aq-tas-400: #7E8794; /* oklch(0.620 0.022 257.5) */
+  --aq-tas-300: #A6AEB9; /* oklch(0.748 0.018 256.3) */
+  --aq-sut-100: #F6F2E8; /* oklch(0.962 0.014 88.7) */
+  --aq-sut-200: #E7E0D1; /* oklch(0.908 0.021 85.9) */
+  --aq-sut-300: #CFC6B4; /* oklch(0.829 0.027 84.6) */
+  --aq-altyn-200: #F9DCA4; /* oklch(0.905 0.079 83.6) */
+  --aq-altyn-400: #F5BC5E; /* oklch(0.829 0.129 77.9) */
+  --aq-altyn-500: #F2A93B; /* oklch(0.787 0.147 73.0) */
+  --aq-altyn-600: #D98E22; /* oklch(0.707 0.144 69.6) */
+  --aq-altyn-700: #A96A16; /* oklch(0.580 0.121 67.0) */
+  --aq-altyn-800: #7A4B0E; /* oklch(0.457 0.095 66.5) */
+  --aq-kok-300: #7FC4EC; /* oklch(0.789 0.090 235.0) */
+  --aq-kok-500: #2C93D4; /* oklch(0.636 0.133 241.8) */
+  --aq-kok-600: #1E77B0; /* oklch(0.547 0.119 242.7) */
+  --aq-kok-700: #155A87; /* oklch(0.449 0.098 243.1) */
+  --aq-oher-500: #C0522E; /* oklch(0.575 0.150 38.2) */
+  --aq-oher-300: #DE8C6C; /* oklch(0.718 0.110 42.0) */
+  --aq-aktas-100: #EDE7DA; /* oklch(0.929 0.019 86.1) */
+  --aq-aktas-200: #DED5C4; /* oklch(0.876 0.025 83.4) */
+  --aq-aktas-300: #C4B9A3; /* oklch(0.789 0.033 84.6) */
+  --aq-jasyl-500: #3FA46E; /* oklch(0.645 0.125 156.7) */
+  --aq-qyzyl-500: #D9463C; /* oklch(0.601 0.185 27.9) */
+  --aq-jaryq: #FFF3DC; /* oklch(0.968 0.033 83.7) */
+
+  /* Роли */
+  --aq-bg: var(--aq-tas-950);
+  --aq-surface: var(--aq-tas-900);
+  --aq-elevated: var(--aq-tas-800);
+  --aq-line: var(--aq-tas-700);
+  --aq-text: var(--aq-sut-100);
+  --aq-text-muted: var(--aq-tas-400);
+  --aq-accent: var(--aq-altyn-500);
+  --aq-accent-hover: var(--aq-altyn-400);
+  --aq-accent-press: var(--aq-altyn-600);
+  --aq-ask: var(--aq-kok-500);
+  --aq-answer: var(--aq-altyn-500);
+  --aq-light: var(--aq-jaryq);
+  --aq-success: var(--aq-jasyl-500);
+  --aq-danger: var(--aq-qyzyl-500);
+}
+
+/* Светлая подложка: золото темнеет до altyn-700, иначе не проходит контраст. */
+[data-theme="light"], :root:not([data-theme="dark"]) .aq-light-ground {
+  --aq-bg: var(--aq-aktas-100);
+  --aq-surface: #FFFFFF;
+  --aq-text: var(--aq-tas-900);
+  --aq-text-muted: #5C6470;
+  --aq-accent: var(--aq-altyn-700);
+  --aq-line: rgba(11,12,14,0.12);
+}
