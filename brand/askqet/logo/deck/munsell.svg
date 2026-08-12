@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 282" fill="none">
+  <title>Шкала Манселла</title>
+  <rect x="60" y="132" width="38.695" height="46" fill="rgb(0,0,0)"/>
+  <rect x="98.095" y="132" width="38.695" height="46" fill="rgb(17,17,17)"/>
+  <rect x="136.19" y="132" width="38.695" height="46" fill="rgb(28,28,28)"/>
+  <rect x="174.286" y="132" width="38.695" height="46" fill="rgb(38,38,38)"/>
+  <rect x="212.381" y="132" width="38.695" height="46" fill="rgb(49,49,49)"/>
+  <rect x="250.476" y="132" width="38.695" height="46" fill="rgb(60,60,60)"/>
+  <rect x="288.571" y="132" width="38.695" height="46" fill="rgb(72,72,72)"/>
+  <rect x="326.667" y="132" width="38.695" height="46" fill="rgb(84,84,84)"/>
+  <rect x="364.762" y="132" width="38.695" height="46" fill="rgb(96,96,96)"/>
+  <rect x="402.857" y="132" width="38.695" height="46" fill="rgb(109,109,109)"/>
+  <rect x="440.952" y="132" width="38.695" height="46" fill="rgb(121,121,121)"/>
+  <rect x="479.048" y="132" width="38.695" height="46" fill="rgb(134,134,134)"/>
+  <rect x="517.143" y="132" width="38.695" height="46" fill="rgb(147,147,147)"/>
+  <rect x="555.238" y="132" width="38.695" height="46" fill="rgb(160,160,160)"/>
+  <rect x="593.333" y="132" width="38.695" height="46" fill="rgb(173,173,173)"/>
+  <rect x="631.429" y="132" width="38.695" height="46" fill="rgb(187,187,187)"/>
+  <rect x="669.524" y="132" width="38.695" height="46" fill="rgb(200,200,200)"/>
+  <rect x="707.619" y="132" width="38.695" height="46" fill="rgb(213,213,213)"/>
+  <rect x="745.714" y="132" width="38.695" height="46" fill="rgb(227,227,227)"/>
+  <rect x="783.81" y="132" width="38.695" height="46" fill="rgb(241,241,241)"/>
+  <rect x="821.905" y="132" width="38.695" height="46" fill="rgb(255,255,255)"/>
+  <rect x="60" y="132" width="200" height="46" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.75"/>
+  <text x="160" y="234" fill="currentColor" font-size="13" text-anchor="middle" opacity="0.85">глаз называет это чёрным</text>
+  <path d="M60,178 V218 M260,178 V218 M60,218 H260" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.7"/>
+  <path d="M60,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="60" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">0</text>
+  <path d="M140,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="140" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">1</text>
+  <path d="M220,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="220" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">2</text>
+  <path d="M300,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="300" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">3</text>
+  <path d="M380,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="380" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">4</text>
+  <path d="M460,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="460" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">5</text>
+  <path d="M540,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="540" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">6</text>
+  <path d="M620,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="620" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">7</text>
+  <path d="M700,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="700" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">8</text>
+  <path d="M780,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="780" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">9</text>
+  <path d="M860,178 V185" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <text x="860" y="202" fill="currentColor" font-size="12" text-anchor="middle" opacity="0.6">10</text>
+  <text x="60" y="258" fill="currentColor" font-size="12" opacity="0.6">ступень Манселла — светлота поверхности, шкала равномерна по восприятию</text>
+  <path d="M220.8,132 V98" stroke="currentColor" stroke-width="1.2"/>
+  <circle cx="213.3" cy="155" r="7.5" fill="#FFFFFF"/>
+  <circle cx="213.3" cy="155" r="5.5" fill="#2E3136"/>
+  <circle cx="228.3" cy="155" r="7.5" fill="#FFFFFF"/>
+  <circle cx="228.3" cy="155" r="5.5" fill="#3B2F27"/>
+  <text x="220.8" y="92" fill="currentColor" font-size="13" text-anchor="middle">ГРАФИТ 2.00 и КОФЕ 2.02 — отданы как «не чёрные»</text>
+  <path d="M347.819,132 V122" stroke="currentColor" stroke-width="1.2"/>
+  <circle cx="347.819" cy="155" r="7.5" fill="#FFFFFF"/>
+  <circle cx="347.819" cy="155" r="5.5" fill="#575653"/>
+  <text x="347.819" y="116" fill="currentColor" font-size="13" text-anchor="middle">серые чернила сейчас</text>
+
+</svg>
