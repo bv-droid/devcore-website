@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — построение</title>
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <g opacity="0.45"><path d="M8,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M16,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M24,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M32,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M40,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M48,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M56,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M64,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M72,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M80,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M88,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M96,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M104,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M112,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M120,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,8 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,16 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,24 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,32 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,40 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,48 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,56 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,64 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,72 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,80 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,88 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,96 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,104 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,112 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,120 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/></g>
+  <circle cx="60" cy="56" r="42" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <circle cx="60" cy="56" r="26" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M11,56 H113" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M60,7 V111" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M34,53.5 V58.5" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="35.6" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">R 26</text>
+  <path d="M18,53.5 V58.5" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="19.6" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">R 42</text>
+  <path d="M60,56 L110,56" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <path d="M60,56 L60,106" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="105" y="53.6" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">0°</text>
+  <text x="62.5" y="108" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">90°</text>
+  <path d="M102,69 V74 H107" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <path d="M64,112 L108,68" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="110" y="65" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">45°</text>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#111111" stroke-width="0.9" stroke-linejoin="round"/>
+  <circle cx="60" cy="56" r="1" fill="#6E6E6E"/>
+  <text x="62.5" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">O</text>
+  <text x="5" y="119" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">полоса 16 · просвет 4.5 · катет 40 · стержень 26</text>
+  <text x="5" y="125" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">хвост 28 · сетка 8 · поле 128 × 128</text>
+
+</svg>

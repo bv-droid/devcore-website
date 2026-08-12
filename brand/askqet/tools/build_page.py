@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — итерация 9: кольцо и стрелка, эмаль.
+Собирает brand/askqet/index.html — итерация 10: форма без цвета.
 
-Запуск:  python3 tools/build_page.py   (после build.py и build_v9.py)
+Запуск:  python3 tools/build_page.py
+         (после build.py, build_v10.py и node tools/measure_v10.js)
 """
 
 import os
@@ -12,7 +13,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from page_body import EXTRA_CSS, tier_block, materials, specs_block  # noqa: E402
+from page_body import (EXTRA_CSS, axis, ladder, spec_block, summary_table,
+                       terminals_split)  # noqa: E402
 
 
 def read_svg(rel):
@@ -240,16 +242,15 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 9 — кольцо и стрелка</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 10 — форма без цвета</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Мастер один, материалов — сколько нужно.
-      Эмаль и золото собраны <em>вектором, а не рендером</em><span
-      class="caret"></span></p>
+    <p class="mast__thesis">Цвет отложен. Знак разобран
+      <em>как силуэт</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>УРОВНЕЙ ИСПОЛНЕНИЯ<b>3</b></div>
+      <div>ОСЕЙ РАЗБОРА<b>3</b></div>
+      <div>ВАРИАНТОВ<b>14</b></div>
       <div>ПРОСВЕТ<b>4.5 по контуру</b></div>
-      <div>КАНТ<b>1.4 равномерно</b></div>
-      <div>ΔEok ЭМАЛЬ ↔ ЗОЛОТО<b>0.332</b></div>
+      <div>ТЕРМИНАЛЫ<b>0° и 90°</b></div>
     </div>
   </div>
 </header>
@@ -259,90 +260,159 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Как прочитаны два референса</h2></div>
+      <h2>Почему чёрное на белом</h2></div>
     <div class="col">
-      <p class="lede">Вы прислали не два варианта, а <strong>две разные
-        вещи</strong>. Чёрный силуэт — это мастер-форма, сам знак. Зелёно-золотой
-        рендер — материальное исполнение той же формы. Их нельзя путать: мастер
-        один и он неизменен, а материалов у бренда может быть сколько угодно.</p>
-      <p>Форма стала лучше, чем в прошлой итерации: стрелка теперь не остриё, а
-        полноценная <strong>стрелка с прямым углом в вершине</strong> — голова с
-        двумя катетами и стержень по оси 45°. За счёт прямого угла знак держит
-        квадратное поле и не заваливается, а разрыв кольца стал осмысленным:
-        стрелка входит в него и выходит наружу.</p>
-      <p>Материальное исполнение я собрал не рендером, а слоями SVG: градиент
-        эмали, кант равномерной ширины, гильоше сеткой под 45° и одна мягкая
-        тень. Разница принципиальная — такой файл масштабируется без потерь,
-        уходит в печать и в резку, и его можно править, а не перерисовывать.</p>
+      <p class="lede">Цвет — сильный анестетик. Он держит внимание на себе и
+        прощает форме то, чего прощать нельзя: неровный просвет, полосу,
+        которая сходит на нет, разрыв не на своём месте. Поэтому знак разобран
+        <strong>без цвета вообще</strong> — одной заливкой на белом.</p>
+      <p>Разбор идёт по трём осям, а не по одной. <strong>Пропорции</strong> —
+        толщина кольца, размер стрелки, ширина просвета. <strong>Посадка</strong> —
+        насколько глубоко стрелка входит в кольцо; именно она решает, читается
+        знак как Q или как значок обновления. <strong>Терминалы</strong> — чем
+        заканчивается полоса кольца на разрыве; здесь и обнаружился главный
+        дефект прошлой формы.</p>
+      <p>Каждый вариант обмерен, а не оценён на глаз: силуэт растрируется в
+        512 × 512, и с растра снимаются залитая площадь, габарит, число связных
+        частей и фактическая толщина полосы. Угол разрыва берётся из геометрии —
+        обходом средней окружности с шагом 0.25°.</p>
     </div>
 
-    <div class="build">
-      <div class="build__art">⟦logo/v9/askqet-construction.svg⟧</div>
-      <div>{SPECS}</div>
+    <div class="hero">
+      <div>⟦logo/v10/var/askqet-radial.svg⟧</div>
+      <div>⟦logo/v10/var/askqet-radial-invert.svg⟧</div>
     </div>
+    <p class="note col">Форма, к которой пришёл разбор: базовые пропорции,
+      базовая посадка, радиальный рез терминалов. Прямая и вывороченная —
+      знак работает в обе стороны без правок.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Три уровня исполнения</h2></div>
-    <div class="col"><p class="lede">Одна форма, три степени материальности.
-      Каждый уровень отвечает за свой круг носителей, и переходы между ними
-      заданы размером, а не вкусом.</p></div>
-    {TIERS}
+      <h2>Построение</h2></div>
+    <div class="col"><p class="lede">Ни одной величины «на глаз». Кольцо
+      задано двумя радиусами, стрелка — осью 45° и прямым углом в вершине,
+      просвет одинаков по всему контуру, терминалы стоят на осях кольца.</p></div>
+    <div class="build">
+      <div class="build__art">⟦logo/v10/askqet-construction.svg⟧</div>
+      <div>{SPECS}</div>
+    </div>
+    <p class="note col">Центр кольца поднят на 8 единиц выше центра поля: хвост
+      стрелки уходит вниз, и без этого сдвига знак сидел бы в квадрате низко.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span>
-      <h2>Материалы и правила</h2></div>
-    <div class="col"><p class="lede">Шесть значений: три ступени эмали и три
-      ступени золота. Больше не нужно — градиенты строятся из них.</p></div>
-    {MATERIALS}
-
-    <div class="rules">
-      <div><h4>Кант — не украшение</h4>
-        <p>Эмаль <code>#0E7C3A</code> на чёрном даёт всего <b>3.74:1</b> —
-          сама по себе она на тёмном тонет. Золотой кант вокруг неё поднимает
-          контур до <b>11.19:1</b>. Именно он делает знак читаемым, поэтому
-          на тёмных носителях кант обязателен, а не опционален.</p></div>
-      <div><h4>Золото — заливка, не текст</h4>
-        <p>На бумаге золото даёт <b>1.58:1</b>. Им заливают стрелку и плашки,
-          но им нельзя набрать ни строки и нельзя провести тонкую линию.
-          Всё читаемое идёт эмалью или чёрным.</p></div>
-      <div><h4>Зелёный в Казахстане не пустой</h4>
-        <p>ΔEok до Halyk <code>#009B77</code> — <b>0.108</b>. Это выше порога
-          различения, цвета разные, но оба зелёные и оба на одном рынке.
-          Рекомендую проверить пару на реальных носителях рядом с Halyk
-          прежде, чем фиксировать.</p></div>
-      <div><h4>Гильоше имеет нижний предел</h4>
-        <p>Сетка с шагом 3.6 единицы ниже 48 px превращается в муар и грязь.
-          Это не дефект файла, а свойство любого гильоше — поэтому переход
-          на плоское дуо задан размером.</p></div>
+      <h2>Ось A · пропорции</h2></div>
+    <div class="axis">
+      <span class="axis__id">ЧТО МЕНЯЕТСЯ</span>
+      <p class="axis__q">Толщина полосы кольца, размер стрелки, ширина
+        просвета. Всё остальное — центр, радиус, ось, посадка — заморожено.</p>
     </div>
+    {AXIS_A}
+    <p class="note col" style="margin-top:var(--s3)">Просвет — единственный
+      параметр, который прямо задаёт нижнюю границу применения: чтобы он не
+      затёк, ему нужен минимум один пиксель, то есть размер не меньше
+      128 / просвет. Отсюда 29 px у базы, 52 px у узкого и 19 px
+      у широкого.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Что дальше</h2></div>
+    <div class="sec__head"><span class="sec__num">04</span>
+      <h2>Ось B · посадка стрелки</h2></div>
+    <div class="axis">
+      <span class="axis__id">ЧТО МЕНЯЕТСЯ</span>
+      <p class="axis__q">Стрелка целиком двигается по своей оси 45° и по
+        нормали к ней. Сама она не меняется — меняется только то, как глубоко
+        она сидит в кольце.</p>
+    </div>
+    {AXIS_B}
+    <p class="note col" style="margin-top:var(--s3)">Это самая опасная ось.
+      Сдвиг на 9 единиц внутрь раскрывает разрыв с 75° до 105° — и знак
+      перестаёт читаться как Q, превращаясь в значок обновления. Сдвиг на те же
+      9 наружу сжимает разрыв до 33°, но хвост перестаёт пересекать чашу, и
+      знак распадается на кольцо и стрелку рядом. Базовая посадка —
+      единственная, где хвост входит в чашу, а кольцо остаётся кольцом.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">05</span>
+      <h2>Ось C · терминалы</h2></div>
     <div class="col">
-      <p class="lede">Форма и материал сошлись. Осталось довести до
-        производственного пакета.</p>
-      <p>1. <b>Размерный ряд с порогами:</b> 16 / 20 / 24 — мастер; 24 / 32 — дуо;
-        от 48 — премиум. Пороги прописать в гайде числом, а не словами.<br>
-        2. <b>Кривые под материал:</b> контур под вырубку и тиснение, отдельный
-        контур под гравировку, версия под вышивку с упрощённым кантом.<br>
-        3. <b>Pantone:</b> свести эмаль и золото по вееру на реальной бумаге.
-        Золото на глянце уходит в зелень — для него нужна проба фольги, а не
-        триадная имитация.<br>
-        4. <b>Анимация:</b> кольцо дорисовывается по часовой за 480 мс, стрелка
-        выходит из разрыва наружу за 260 мс, блик по канту проходит за 200 мс.<br>
-        5. Проверить <code>askqet.kz</code> / <code>.com</code> /
-        <code>.ai</code> и товарный знак по классам 9, 35, 42 — заявку подавать
-        на мастер-форму, а не на премиум.</p>
+      <p class="lede">Здесь чёрное на белом показало то, чего не было видно
+        в цвете. Если полосу режет только сама стрелка, нижний терминал
+        <strong>вырождается в иглу</strong>: полоса плавно сходит на нет
+        и заканчивается точкой.</p>
+      <p>Игла — это не стилистика, это дефект производства. Она не выживает
+        ни в тиснении, ни в гравировке, ни в вышивке, ни на экране в мелком
+        кегле: тонкий конец просто пропадает, и терминал каждый раз оказывается
+        разной длины. Обмер даёт цену вопроса точно: <strong>171 кв. ед.,
+        6.3 % площади кольца</strong> — та часть, которая уходит в ноль.</p>
+    </div>
+    {TERMSPLIT}
+    {AXIS_C}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">06</span>
+      <h2>Размер</h2></div>
+    <div class="col"><p class="lede">Одна форма не может держать весь диапазон.
+      Основной крой живёт с 29 px; ниже нужен отдельный, с расширенным
+      просветом и укороченным хвостом.</p></div>
+    <h3>Основной крой</h3>
+    {LADDER}
+    <h3>Мелкий крой</h3>
+    {LADDER_ICON}
+    {AXIS_D}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">07</span>
+      <h2>Что беру в мастер</h2></div>
+    <div class="col">
+      <p class="lede"><strong>Базовые пропорции, базовая посадка, радиальный
+        рез терминалов.</strong> Для 16–28 px — отдельный мелкий крой.</p>
+      <p>Пропорции: полоса 16 при радиусе 42. Тяжёлое кольцо душит контрформу,
+        лёгкое не выживает на материале. Посадка: базовая — единственная, где
+        хвост пересекает чашу, а кольцо остаётся кольцом. Терминалы:
+        радиальный рез — единственная версия, где у полосы нигде нет толщины
+        меньше полной.</p>
+      <p>Отдельно стоит зафиксировать удачу построения: разрыв, который
+        вырезает стрелка, после расширения до кратных 15° садится ровно
+        на <strong>0° и 90°</strong> — на горизонтальную и вертикальную оси
+        кольца. Терминалы стоят не «примерно там», а на осях, и это можно
+        проверить линейкой на любом носителе.</p>
+    </div>
+    {SUMMARY}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">08</span>
+      <h2>Что дальше</h2></div>
+    <div class="col">
+      <p class="lede">Форма закрыта. Дальше — то, что на неё ложится.</p>
+      <p>1. <b>Логотип целиком:</b> посадить знак к слову — соотношение
+        кеглей, оптический отступ, поведение в одну строку и в столбец.<br>
+        2. <b>Мелкий кегль:</b> довести отдельный крой до фавикона 16 px и
+        до маски приложения.<br>
+        3. <b>Кривые под материал:</b> контур под вырубку и тиснение, версия
+        под вышивку.<br>
+        4. <b>Цвет:</b> когда форма утверждена — палитра, контрасты, проверка
+        на дальтонизм. Сейчас намеренно не трогается.</p>
     </div>
   </div>
 </section>
@@ -351,11 +421,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Форма, цвет и материал — из референсов заказчика. Предыдущие итерации
-      остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v8</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v9.py &amp;&amp;
-      python3 tools/build_page.py</code>.</p>
+    <p>Все силуэты и чертёж сгенерированы кодом, все числа сняты обмером.
+      Предыдущие итерации остались в репозитории: <code>logo/01-jaryq</code>,
+      <code>logo/v2</code> … <code>logo/v9</code>. Пересборка:
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v10.py &amp;&amp;
+      node tools/measure_v10.js &amp;&amp; python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -372,33 +442,21 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 """
 
 
-V9 = "logo/v9/"
-
-
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
-    m = read_svg(V9 + "askqet-master.svg")
-    d = read_svg(V9 + "askqet-duo.svg")
-    p = read_svg(V9 + "askqet-premium.svg")
-    tiers = [
-        tier_block("master", m,
-                   [("a", m, "56"), ("b", m, "28"), ("c", m, "16")],
-                   read_svg(V9 + "askqet-lockup-master.svg")),
-        tier_block("duo", d,
-                   [("a", d, "56"), ("b", d, "28"), ("c", d, "16")],
-                   read_svg(V9 + "askqet-lockup-duo.svg")),
-        tier_block("premium", p,
-                   [("a", p, "56"), ("b", p, "28"), ("c", p, "16")],
-                   read_svg(V9 + "askqet-lockup-premium.svg")
-                   + read_svg(V9 + "askqet-premium-light.svg")),
-    ]
-    html = html.replace("{TIERS}", "\n".join(tiers))
-    html = html.replace("{MATERIALS}", materials())
-    html = html.replace("{SPECS}", specs_block())
-    html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
+    html = html.replace("{SPECS}", spec_block())
+    html = html.replace("{AXIS_A}", axis("A"))
+    html = html.replace("{AXIS_B}", axis("B"))
+    html = html.replace("{AXIS_C}", axis("C", picks=("radial",)))
+    html = html.replace("{AXIS_D}", axis("D", picks=("icon",)))
+    html = html.replace("{TERMSPLIT}", terminals_split())
+    html = html.replace("{LADDER}", ladder("radial"))
+    html = html.replace("{LADDER_ICON}", ladder("icon"))
+    html = html.replace("{SUMMARY}", summary_table())
+    html = re.sub(r"\u27e6([^\u27e7]+)\u27e7", embed, html)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"✓ index.html — {len(html) // 1024} КБ")
+    print(f"\u2713 index.html \u2014 {len(html) // 1024} \u041a\u0411")
 
 
 if __name__ == "__main__":

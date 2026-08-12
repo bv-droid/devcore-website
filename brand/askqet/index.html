@@ -208,55 +208,64 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
-.tier{display:grid; grid-template-columns:minmax(0,280px) minmax(0,1fr);
-  gap:var(--s4); align-items:start; padding-top:var(--s5);
-  border-top:1px solid var(--line); margin-top:var(--s5)}
-.tier:first-of-type{padding-top:0; border-top:0; margin-top:0}
-.tier__art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
-.tier__art svg{display:block; width:100%; height:auto}
-.tier__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.tier__title{font-size:clamp(21px,2.6vw,29px); letter-spacing:-.03em;
-  margin:0 0 .6em; font-weight:680}
-.tier__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3)}
-.tier__sizes figure{margin:0; text-align:center}
-.tier__sizes svg{display:block; border-radius:3px}
-.tier__sizes .a svg{width:56px} .tier__sizes .b svg{width:28px}
-.tier__sizes .c svg{width:16px}
-.tier__sizes figcaption{font-family:var(--mono); font-size:10.5px;
-  color:var(--ink-3); margin-top:.45em}
-.tier__note{border-left:2px solid var(--line-strong); padding-left:var(--s2);
-  margin-top:var(--s3); font-size:14px; color:var(--ink-2)}
-.tier__note b{color:var(--ink)}
+.axis{margin:var(--s5) 0 0}
+.axis__id{font-family:var(--mono); font-size:12px; letter-spacing:.14em;
+  color:var(--accent); display:block; margin-bottom:var(--s1)}
+.axis__q{font-size:17px; color:var(--ink-2); max-width:var(--measure);
+  margin:0 0 var(--s3)}
 
-.build{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr);
-  gap:var(--s4); align-items:start; margin-top:var(--s3)}
-.build__art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.forms{display:grid; gap:var(--s2);
+  grid-template-columns:repeat(auto-fill,minmax(232px,1fr))}
+.fcard{margin:0; border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  display:flex; flex-direction:column}
+.fcard--pick{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+.fcard__art{background:#fff; aspect-ratio:1; display:grid; place-items:center;
+  border-bottom:1px solid var(--line)}
+.fcard__art svg{display:block; width:78%; height:auto}
+.fcard figcaption{padding:var(--s2); display:flex; flex-direction:column;
+  gap:.42rem; flex:1}
+.fcard b{font-size:13px; letter-spacing:.04em; font-weight:650}
+.fcard__ch{font-family:var(--mono); font-size:12px; color:var(--accent)}
+.fcard p{margin:0; font-size:13.2px; line-height:1.5; color:var(--ink-2); flex:1}
+.fcard dl{display:grid; grid-template-columns:minmax(0,1fr); gap:.16rem;
+  margin:.2rem 0 0; padding-top:.55rem; border-top:1px solid var(--line)}
+.fcard dl div{display:flex; justify-content:space-between; gap:.5rem}
+.fcard dt{font-size:11.5px; color:var(--ink-3)}
+.fcard dd{margin:0; font-family:var(--mono); font-size:11.5px;
+  font-variant-numeric:tabular-nums; white-space:nowrap}
+
+.ladder{display:flex; align-items:flex-end; gap:var(--s3); flex-wrap:wrap;
+  background:#fff; border:1px solid var(--line); border-radius:4px;
+  padding:var(--s3); margin:var(--s3) 0}
+.ladder figure{margin:0; text-align:center}
+.ladder svg{display:block; width:100%; height:100%}
+.ladder figcaption{margin-top:.5rem; font-family:var(--mono); font-size:11px;
+  color:var(--ink-3)}
+.ladder .dead figcaption{color:var(--fail)}
+
+.split{display:grid; gap:var(--s2); margin:var(--s3) 0;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.split figure{margin:0}
+.split__art{background:#fff; border:1px solid var(--line); border-radius:4px;
+  aspect-ratio:1; display:grid; place-items:center}
+.split__art svg{width:82%; height:auto; display:block}
+.split figcaption{margin-top:.6rem; font-size:13.2px; color:var(--ink-2)}
+.split b{display:block; font-size:13px; color:var(--ink); margin-bottom:.25rem}
+
+.hero{display:grid; gap:2px; grid-template-columns:1fr 1fr;
+  margin:var(--s4) 0 var(--s3); border:1px solid var(--line); border-radius:4px;
+  overflow:hidden}
+.hero div{aspect-ratio:1; display:grid; place-items:center}
+.hero div:first-child{background:#fff}
+.hero div:last-child{background:#111}
+.hero svg{width:66%; height:auto; display:block}
+
+.build{display:grid; gap:var(--s3); margin:var(--s4) 0;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start}
+.build__art{background:#fff; border:1px solid var(--line); border-radius:4px;
+  padding:var(--s2)}
 .build__art svg{display:block; width:100%; height:auto}
-.specs{display:grid; gap:2px}
-.specs div{display:grid; grid-template-columns:1fr auto; gap:var(--s2);
-  padding:.5rem .7rem; background:var(--surface); font-size:14px}
-.specs span{font-family:var(--mono); font-variant-numeric:tabular-nums;
-  color:var(--ink)}
-.specs em{font-style:normal; color:var(--ink-2)}
-
-.mats{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  gap:2px; margin-top:var(--s3)}
-.mats div{padding:.6rem .7rem .7rem; font-family:var(--mono); font-size:10.5px;
-  line-height:1.5; min-height:70px; display:flex; flex-direction:column;
-  justify-content:flex-end}
-.mats b{font-size:11.5px; font-weight:500; display:block}
-
-.rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:var(--s2); margin-top:var(--s3)}
-.rules div{border:1px solid var(--line); border-radius:6px; padding:var(--s3);
-  background:var(--surface)}
-.rules h4{margin:0 0 .35em; font-size:14.5px}
-.rules p{margin:0; font-size:13.5px; color:var(--ink-2)}
-.lockups{display:grid; gap:2px; margin-top:var(--s3);
-  border:1px solid var(--line); border-radius:6px; overflow:hidden}
-.lockups svg{display:block; width:100%; height:auto}
-@media (max-width:760px){ .tier,.build{grid-template-columns:1fr} }
+@media (max-width:720px){ .build,.hero{grid-template-columns:minmax(0,1fr)} }
 
 </style>
 
@@ -264,19 +273,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 9 — кольцо и стрелка</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 10 — форма без цвета</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Мастер один, материалов — сколько нужно.
-      Эмаль и золото собраны <em>вектором, а не рендером</em><span
-      class="caret"></span></p>
+    <p class="mast__thesis">Цвет отложен. Знак разобран
+      <em>как силуэт</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>УРОВНЕЙ ИСПОЛНЕНИЯ<b>3</b></div>
+      <div>ОСЕЙ РАЗБОРА<b>3</b></div>
+      <div>ВАРИАНТОВ<b>14</b></div>
       <div>ПРОСВЕТ<b>4.5 по контуру</b></div>
-      <div>КАНТ<b>1.4 равномерно</b></div>
-      <div>ΔEok ЭМАЛЬ ↔ ЗОЛОТО<b>0.332</b></div>
+      <div>ТЕРМИНАЛЫ<b>0° и 90°</b></div>
     </div>
   </div>
 </header>
@@ -286,556 +294,576 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Как прочитаны два референса</h2></div>
+      <h2>Почему чёрное на белом</h2></div>
     <div class="col">
-      <p class="lede">Вы прислали не два варианта, а <strong>две разные
-        вещи</strong>. Чёрный силуэт — это мастер-форма, сам знак. Зелёно-золотой
-        рендер — материальное исполнение той же формы. Их нельзя путать: мастер
-        один и он неизменен, а материалов у бренда может быть сколько угодно.</p>
-      <p>Форма стала лучше, чем в прошлой итерации: стрелка теперь не остриё, а
-        полноценная <strong>стрелка с прямым углом в вершине</strong> — голова с
-        двумя катетами и стержень по оси 45°. За счёт прямого угла знак держит
-        квадратное поле и не заваливается, а разрыв кольца стал осмысленным:
-        стрелка входит в него и выходит наружу.</p>
-      <p>Материальное исполнение я собрал не рендером, а слоями SVG: градиент
-        эмали, кант равномерной ширины, гильоше сеткой под 45° и одна мягкая
-        тень. Разница принципиальная — такой файл масштабируется без потерь,
-        уходит в печать и в резку, и его можно править, а не перерисовывать.</p>
+      <p class="lede">Цвет — сильный анестетик. Он держит внимание на себе и
+        прощает форме то, чего прощать нельзя: неровный просвет, полосу,
+        которая сходит на нет, разрыв не на своём месте. Поэтому знак разобран
+        <strong>без цвета вообще</strong> — одной заливкой на белом.</p>
+      <p>Разбор идёт по трём осям, а не по одной. <strong>Пропорции</strong> —
+        толщина кольца, размер стрелки, ширина просвета. <strong>Посадка</strong> —
+        насколько глубоко стрелка входит в кольцо; именно она решает, читается
+        знак как Q или как значок обновления. <strong>Терминалы</strong> — чем
+        заканчивается полоса кольца на разрыве; здесь и обнаружился главный
+        дефект прошлой формы.</p>
+      <p>Каждый вариант обмерен, а не оценён на глаз: силуэт растрируется в
+        512 × 512, и с растра снимаются залитая площадь, габарит, число связных
+        частей и фактическая толщина полосы. Угол разрыва берётся из геометрии —
+        обходом средней окружности с шагом 0.25°.</p>
     </div>
 
-    <div class="build">
-      <div class="build__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="hero">
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <g opacity="0.35"><path d="M8,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M16,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M24,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M32,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M40,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M48,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M56,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M64,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M72,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M80,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M88,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M96,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M104,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M112,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M120,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,8 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,16 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,24 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,32 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,40 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,48 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,56 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,64 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,72 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,80 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,88 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,96 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,104 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,112 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,120 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/></g>
-  <circle cx="60" cy="56" r="42" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <circle cx="60" cy="56" r="26" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <path d="M60,6 V106" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <path d="M10,56 H122" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <path d="M68,68 L108,108" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <circle cx="60" cy="56" r="1.2" fill="#5B6B7E"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#05431F" stroke-width="1" stroke-linejoin="miter"/>
-  <text x="64" y="53" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">O · R 42 / 26</text>
-  <text x="68" y="64" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">катет 40</text>
-  <text x="58" y="120" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">стержень 26 · хвост 28 · просвет 4.5 · кант 1.4</text>
-  <text x="6" y="120" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">сетка 8</text>
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
 
 </svg></div>
-      <div><div class="specs"><div><em>центр кольца</em><span>O (60, 56)</span></div><div><em>радиусы кольца</em><span>R 42 / 26 · полоса 16</span></div><div><em>вершина стрелки</em><span>B (108, 68) · прямой угол</span></div><div><em>катеты головы</em><span>40</span></div><div><em>стержень</em><span>26 по оси 45°</span></div><div><em>хвост за гипотенузой</em><span>28</span></div><div><em>просвет кольцо ↔ стрелка</em><span>4.5 по всему контуру</span></div><div><em>золотой кант</em><span>1.4 равномерно</span></div><div><em>сетка</em><span>8</span></div></div></div>
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#111111"/>
+  <defs><mask id="m10035">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFFFFF" mask="url(#m10035)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#FFFFFF"/>
+
+</svg></div>
     </div>
+    <p class="note col">Форма, к которой пришёл разбор: базовые пропорции,
+      базовая посадка, радиальный рез терминалов. Прямая и вывороченная —
+      знак работает в обе стороны без правок.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Три уровня исполнения</h2></div>
-    <div class="col"><p class="lede">Одна форма, три степени материальности.
-      Каждый уровень отвечает за свой круг носителей, и переходы между ними
-      заданы размером, а не вкусом.</p></div>
-    
-<article class="tier">
-  <div>
-    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <h2>Построение</h2></div>
+    <div class="col"><p class="lede">Ни одной величины «на глаз». Кольцо
+      задано двумя радиусами, стрелка — осью 45° и прямым углом в вершине,
+      просвет одинаков по всему контуру, терминалы стоят на осях кольца.</p></div>
+    <div class="build">
+      <div class="build__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#FFFFFF"/>
-  <defs><mask id="m9001">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
+  <g opacity="0.45"><path d="M8,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M16,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M24,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M32,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M40,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M48,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M56,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M64,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M72,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M80,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M88,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M96,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M104,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M112,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M120,0 V128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,8 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,16 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,24 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,32 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,40 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,48 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,56 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,64 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,72 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,80 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,88 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,96 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,104 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,112 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/><path d="M0,120 H128" fill="none" stroke="#B8B8B8" stroke-width="0.5"/></g>
+  <circle cx="60" cy="56" r="42" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <circle cx="60" cy="56" r="26" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M11,56 H113" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M60,7 V111" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <path d="M34,53.5 V58.5" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="35.6" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">R 26</text>
+  <path d="M18,53.5 V58.5" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="19.6" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">R 42</text>
+  <path d="M60,56 L110,56" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <path d="M60,56 L60,106" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <text x="105" y="53.6" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">0°</text>
+  <text x="62.5" y="108" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">90°</text>
+  <path d="M102,69 V74 H107" fill="none" stroke="#8A8A8A" stroke-width="0.6"/>
+  <path d="M64,112 L108,68" fill="none" stroke="#B8B8B8" stroke-width="0.5" stroke-dasharray="3 2"/>
+  <text x="110" y="65" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">45°</text>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#111111" stroke-width="0.9" stroke-linejoin="round"/>
+  <circle cx="60" cy="56" r="1" fill="#6E6E6E"/>
+  <text x="62.5" y="52.4" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">O</text>
+  <text x="5" y="119" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">полоса 16 · просвет 4.5 · катет 40 · стержень 26</text>
+  <text x="5" y="125" font-family="ui-monospace,monospace" font-size="4.2" fill="#6E6E6E">хвост 28 · сетка 8 · поле 128 × 128</text>
 
 </svg></div>
-    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#FFFFFF"/>
-  <defs><mask id="m9001">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
-
-</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#FFFFFF"/>
-  <defs><mask id="m9001">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
-
-</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#FFFFFF"/>
-  <defs><mask id="m9001">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
-
-</svg><figcaption>16</figcaption></figure></div>
-  </div>
-  <div>
-    <p class="tier__id">Уровень 1</p>
-    <h3 class="tier__title">Мастер · плоский силуэт</h3>
-    <p>Одна фигура, одна краска, ничего лишнего. Это и есть логотип: он идёт в фавикон, в интерфейс, в документы, в вырубку, в тиснение и в вышивку. Ровно ваш второй референс.</p>
-    <div class="tier__note"><b>Где живёт.</b> Всё остальное — исполнения этой формы. Если знак не работает здесь, ни эмаль, ни золото его не спасут.</div>
-    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
-  
-  <rect width="443.74" height="124" fill="#FFFFFF"/>
-  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <defs><mask id="m9027">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9027)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
-</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-  </div>
-</article>
-
-<article class="tier">
-  <div>
-    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="m9003">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
-
-</svg></div>
-    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="m9003">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
-
-</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="m9003">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
-
-</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="m9003">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
-
-</svg><figcaption>16</figcaption></figure></div>
-  </div>
-  <div>
-    <p class="tier__id">Уровень 2</p>
-    <h3 class="tier__title">Дуо · кольцо и стрелка в цвете</h3>
-    <p>Рабочий цветной вариант: зелёное кольцо, золотая стрелка, плоские заливки без градиентов. Это версия для сайта, приложения, рекламы и презентаций — везде, где нужен цвет, но не нужен материал.</p>
-    <div class="tier__note"><b>Где живёт.</b> Держится до 24 px. Ниже переходит на мастер: две плоские заливки в 16 px сливаются в пятно.</div>
-    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
-  
-  <rect width="443.74" height="124" fill="#F4F2ED"/>
-  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <defs><mask id="m9026">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9026)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
-</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-  </div>
-</article>
-
-<article class="tier">
-  <div>
-    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0A0A"/>
-  <defs>
-    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9005">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9009)">
-    <defs><mask id="m9010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
-    <defs><mask id="m9011">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
-    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
-  </g>
-
-</svg></div>
-    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0A0A"/>
-  <defs>
-    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9005">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9009)">
-    <defs><mask id="m9010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
-    <defs><mask id="m9011">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
-    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
-  </g>
-
-</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0A0A"/>
-  <defs>
-    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9005">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9009)">
-    <defs><mask id="m9010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
-    <defs><mask id="m9011">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
-    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
-  </g>
-
-</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0A0A"/>
-  <defs>
-    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9005">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9009)">
-    <defs><mask id="m9010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
-    <defs><mask id="m9011">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
-    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
-  </g>
-
-</svg><figcaption>16</figcaption></figure></div>
-  </div>
-  <div>
-    <p class="tier__id">Уровень 3</p>
-    <h3 class="tier__title">Премиум · эмаль, кант, гильоше</h3>
-    <p>Материальное исполнение вашего первого референса — но собранное вектором, а не рендером: градиент эмали, золотой кант равномерной ширины, гильоше сеткой под 45° и одна мягкая тень. Значит его можно масштабировать, печатать и резать.</p>
-    <div class="tier__note"><b>Где живёт.</b> Церемониальный уровень: упаковка, карта, награда, заставка, фасад. Ниже 48 px гильоше превращается в муар — там обязателен переход на дуо.</div>
-    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
-  
-  <rect width="443.74" height="124" fill="#0A0A0A"/>
-  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <rect width="128" height="128" fill="#0A0A0A"/>
-  <defs>
-    <linearGradient id="en9020" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9021" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9022" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9023" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9019">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9023)">
-    <defs><mask id="m9024">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9021)" mask="url(#m9024)"/>
-    <defs><mask id="m9025">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9020)" mask="url(#m9025)"/>
-    <rect width="128" height="128" fill="url(#gu9022)" mask="url(#g9019)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9021)"/>
-  </g>
-</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs>
-    <linearGradient id="en9013" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1AA854"/>
-      <stop offset="0.5" stop-color="#0E7C3A"/>
-      <stop offset="1" stop-color="#05431F"/>
-    </linearGradient>
-    <linearGradient id="go9014" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#F8E4A8"/>
-      <stop offset="0.45" stop-color="#E6BE58"/>
-      <stop offset="1" stop-color="#A67C22"/>
-    </linearGradient>
-    <pattern id="gu9015" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
-    </pattern>
-    <filter id="sh9016" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
-    </filter>
-  <mask id="g9012">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask>
-  </defs>
-  <g filter="url(#sh9016)">
-    <defs><mask id="m9017">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="43.4" fill="white"/>
-    <circle cx="60" cy="56" r="24.6" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#go9014)" mask="url(#m9017)"/>
-    <defs><mask id="m9018">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="url(#en9013)" mask="url(#m9018)"/>
-    <rect width="128" height="128" fill="url(#gu9015)" mask="url(#g9012)"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9014)"/>
-  </g>
-
-</svg></div>
-  </div>
-</article>
+      <div><div class="scroll"><table><tr><th>величина</th><th>значение</th><th>комментарий</th></tr><tr><td>поле</td><td class="num">128 × 128</td><td class="note">сетка 8</td></tr><tr><td>центр кольца O</td><td class="num">60, 56</td><td class="note">выше геометрического центра на 8</td></tr><tr><td>радиусы</td><td class="num">42 / 26</td><td class="note">полоса 16 — 38 % радиуса</td></tr><tr><td>ось стрелки</td><td class="num">45°</td><td class="note">прямой угол в вершине</td></tr><tr><td>вершина стрелки</td><td class="num">108, 68</td><td class="note">катет 40</td></tr><tr><td>стержень</td><td class="num">26</td><td class="note">вылет хвоста 28</td></tr><tr><td>просвет</td><td class="num">4.5</td><td class="note">равномерный по всему контуру</td></tr><tr><td>терминалы</td><td class="num">0° и 90°</td><td class="note">радиальный рез по осям, разрыв 90°</td></tr><tr><td>габарит знака</td><td class="num">90 × 103</td><td class="note">пропорция 0.87</td></tr></table></div></div>
+    </div>
+    <p class="note col">Центр кольца поднят на 8 единиц выше центра поля: хвост
+      стрелки уходит вниз, и без этого сдвига знак сидел бы в квадрате низко.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span>
-      <h2>Материалы и правила</h2></div>
-    <div class="col"><p class="lede">Шесть значений: три ступени эмали и три
-      ступени золота. Больше не нужно — градиенты строятся из них.</p></div>
-    <div class="mats"><div style="background:#1AA854;color:#0B0C0E"><b>#1AA854</b>эмаль · блик<br>L 0.64 · C 0.167 · H 151°<br>6.39:1 на чёрном</div><div style="background:#0E7C3A;color:#F6F2E8"><b>#0E7C3A</b>эмаль · тело<br>L 0.51 · C 0.136 · H 150°<br>3.74:1 на чёрном</div><div style="background:#05431F;color:#F6F2E8"><b>#05431F</b>эмаль · тень<br>L 0.34 · C 0.086 · H 152°<br>1.72:1 на чёрном</div><div style="background:#F8E4A8;color:#0B0C0E"><b>#F8E4A8</b>золото · блик<br>L 0.92 · C 0.080 · H 92°<br>15.70:1 на чёрном</div><div style="background:#E6BE58;color:#0B0C0E"><b>#E6BE58</b>золото · тело<br>L 0.82 · C 0.128 · H 88°<br>11.19:1 на чёрном</div><div style="background:#A67C22;color:#0B0C0E"><b>#A67C22</b>золото · тень<br>L 0.61 · C 0.114 · H 82°<br>5.21:1 на чёрном</div></div>
-
-    <div class="rules">
-      <div><h4>Кант — не украшение</h4>
-        <p>Эмаль <code>#0E7C3A</code> на чёрном даёт всего <b>3.74:1</b> —
-          сама по себе она на тёмном тонет. Золотой кант вокруг неё поднимает
-          контур до <b>11.19:1</b>. Именно он делает знак читаемым, поэтому
-          на тёмных носителях кант обязателен, а не опционален.</p></div>
-      <div><h4>Золото — заливка, не текст</h4>
-        <p>На бумаге золото даёт <b>1.58:1</b>. Им заливают стрелку и плашки,
-          но им нельзя набрать ни строки и нельзя провести тонкую линию.
-          Всё читаемое идёт эмалью или чёрным.</p></div>
-      <div><h4>Зелёный в Казахстане не пустой</h4>
-        <p>ΔEok до Halyk <code>#009B77</code> — <b>0.108</b>. Это выше порога
-          различения, цвета разные, но оба зелёные и оба на одном рынке.
-          Рекомендую проверить пару на реальных носителях рядом с Halyk
-          прежде, чем фиксировать.</p></div>
-      <div><h4>Гильоше имеет нижний предел</h4>
-        <p>Сетка с шагом 3.6 единицы ниже 48 px превращается в муар и грязь.
-          Это не дефект файла, а свойство любого гильоше — поэтому переход
-          на плоское дуо задан размером.</p></div>
+      <h2>Ось A · пропорции</h2></div>
+    <div class="axis">
+      <span class="axis__id">ЧТО МЕНЯЕТСЯ</span>
+      <p class="axis__q">Толщина полосы кольца, размер стрелки, ширина
+        просвета. Всё остальное — центр, радиус, ось, посадка — заморожено.</p>
     </div>
+    <div class="forms"><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>БАЗА</b><span class="fcard__ch">исходные пропорции</span><p>Полоса 16 при радиусе 42 — 38 % радиуса. Отправная точка, с ней сравнивается всё остальное.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>75°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>36 %</dd></div><div><dt>заливка поля</dt><dd>25.8 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10004">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="22" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10004)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>ТЯЖЁЛОЕ КОЛЬЦО</b><span class="fcard__ch">полоса 20</span><p>Кольцо забирает вес себе, стрелка становится деталью. Знак плотнее и лучше держит тиснение, но контрформа сжимается и Q уходит в сторону запятой.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>70°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>20.8</dd></div><div><dt>масса стрелки</dt><dd>32 %</dd></div><div><dt>заливка поля</dt><dd>29.0 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="30" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10007)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>ЛЁГКОЕ КОЛЬЦО</b><span class="fcard__ch">полоса 12</span><p>Кольцо становится линией, стрелка — главным объектом. Читается быстрее всех, но 12 единиц не вытиснить и не вышить: на материале полоса пропадёт.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>79°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>12.7</dd></div><div><dt>масса стрелки</dt><dd>42 %</dd></div><div><dt>заливка поля</dt><dd>22.2 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M62,68 L108,68 L108,114 L95.607,101.607 L74.393,122.82 L53.18,101.607 L74.393,80.393 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10010)"/>
+  <path d="M62,68 L108,68 L108,114 L95.607,101.607 L74.393,122.82 L53.18,101.607 L74.393,80.393 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>КРУПНАЯ СТРЕЛКА</b><span class="fcard__ch">катет 46, стержень 30</span><p>Стрелка перевешивает кольцо: 42 % массы против 36 %. Динамичнее, но Q перестаёт быть первой прочитанной формой, и знак вырастает до 90 × 109.</p><dl><div><dt>габарит</dt><dd>90 × 108.8</dd></div><div><dt>пропорция</dt><dd>0.83</dd></div><div><dt>разрыв</dt><dd>80°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>42 %</dd></div><div><dt>заливка поля</dt><dd>28.1 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10013">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M74,68 L108,68 L108,102 L98.778,92.778 L83.222,108.335 L67.665,92.778 L83.222,77.222 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10013)"/>
+  <path d="M74,68 L108,68 L108,102 L98.778,92.778 L83.222,108.335 L67.665,92.778 L83.222,77.222 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>КОМПАКТНАЯ СТРЕЛКА</b><span class="fcard__ch">катет 34, стержень 22</span><p>Стрелка убирается в габарит кольца, знак становится почти квадратным (90 × 94) — лучше для иконки. Взамен стрелка теряет голос: 28 % массы.</p><dl><div><dt>габарит</dt><dd>90 × 94.3</dd></div><div><dt>пропорция</dt><dd>0.95</dd></div><div><dt>разрыв</dt><dd>70°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>28 %</dd></div><div><dt>заливка поля</dt><dd>23.6 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10016)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>ШИРОКИЙ ПРОСВЕТ</b><span class="fcard__ch">просвет 7</span><p>Просвет держится до 19 px против 29 px у базы. Взамен знак разваливается на два объекта: кольцо отдельно, стрелка отдельно.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>85°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>37 %</dd></div><div><dt>заливка поля</dt><dd>25.2 %</dd></div><div><dt>живёт с</dt><dd>19 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10019">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="5" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10019)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>УЗКИЙ ПРОСВЕТ</b><span class="fcard__ch">просвет 2.5</span><p>Плотнее и монолитнее, читается как одна фигура. Но просвет живёт только с 52 px: ниже стрелка прирастает к кольцу.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>66°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>35 %</dd></div><div><dt>заливка поля</dt><dd>26.4 %</dd></div><div><dt>живёт с</dt><dd>52 px</dd></div></dl></figcaption></figure></div>
+    <p class="note col" style="margin-top:var(--s3)">Просвет — единственный
+      параметр, который прямо задаёт нижнюю границу применения: чтобы он не
+      затёк, ему нужен минимум один пиксель, то есть размер не меньше
+      128 / просвет. Отсюда 29 px у базы, 52 px у узкого и 19 px
+      у широкого.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Что дальше</h2></div>
+    <div class="sec__head"><span class="sec__num">04</span>
+      <h2>Ось B · посадка стрелки</h2></div>
+    <div class="axis">
+      <span class="axis__id">ЧТО МЕНЯЕТСЯ</span>
+      <p class="axis__q">Стрелка целиком двигается по своей оси 45° и по
+        нормали к ней. Сама она не меняется — меняется только то, как глубоко
+        она сидит в кольце.</p>
+    </div>
+    <div class="forms"><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10022">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M61.636,61.636 L101.636,61.636 L101.636,101.636 L90.828,90.828 L71.029,110.627 L52.645,92.243 L72.444,72.444 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10022)"/>
+  <path d="M61.636,61.636 L101.636,61.636 L101.636,101.636 L90.828,90.828 L71.029,110.627 L52.645,92.243 L72.444,72.444 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>ГЛУБОКАЯ ПОСАДКА</b><span class="fcard__ch">стрелка на 9 к центру</span><p>Стрелка врезается в кольцо до самой контрформы. Разрыв раскрывается с 75° до 105°, и кольцо перестаёт быть кольцом: знак читается как значок обновления, а не как Q. Габарит при этом самый маленький — 84 × 97.</p><dl><div><dt>габарит</dt><dd>84 × 96.5</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>105°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>39 %</dd></div><div><dt>заливка поля</dt><dd>24.2 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10025">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M74.364,74.364 L114.364,74.364 L114.364,114.364 L103.556,103.556 L83.757,123.355 L65.373,104.971 L85.172,85.172 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10025)"/>
+  <path d="M74.364,74.364 L114.364,74.364 L114.364,114.364 L103.556,103.556 L83.757,123.355 L65.373,104.971 L85.172,85.172 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>КАСАТЕЛЬНАЯ ПОСАДКА</b><span class="fcard__ch">стрелка на 9 наружу</span><p>Стрелка едва задевает полосу, разрыв сжимается до 33°. Кольцо остаётся кольцом — но хвост больше не пересекает чашу, и Q распадается на «O и стрелка рядом». Габарит вырастает до 96 × 109.</p><dl><div><dt>габарит</dt><dd>96.3 × 109.3</dd></div><div><dt>пропорция</dt><dd>0.88</dd></div><div><dt>разрыв</dt><dd>33°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>34 %</dd></div><div><dt>заливка поля</dt><dd>27.7 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10028">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M76.485,59.515 L116.485,59.515 L116.485,99.515 L105.678,88.707 L85.879,108.506 L67.494,90.121 L87.293,70.322 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10028)"/>
+  <path d="M76.485,59.515 L116.485,59.515 L116.485,99.515 L105.678,88.707 L85.879,108.506 L67.494,90.121 L87.293,70.322 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>ВЫНЕСЕННАЯ СТРЕЛКА</b><span class="fcard__ch">стрелка на 12 вдоль оси наружу</span><p>Стрелка уходит из кольца по диагонали, жест наружу читается сильнее, кольцо остаётся почти целым. Единственный вариант шире, чем выше: 99 × 95. Взамен разрыв уезжает на −15° и терминал перестаёт стоять на оси.</p><dl><div><dt>габарит</dt><dd>98.5 × 94.5</dd></div><div><dt>пропорция</dt><dd>1.04</dd></div><div><dt>разрыв</dt><dd>86°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>37 %</dd></div><div><dt>заливка поля</dt><dd>25.4 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10031">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M61.636,74.364 L101.636,74.364 L101.636,114.364 L90.828,103.556 L71.029,123.355 L52.645,104.971 L72.444,85.172 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10031)"/>
+  <path d="M61.636,74.364 L101.636,74.364 L101.636,114.364 L90.828,103.556 L71.029,123.355 L52.645,104.971 L72.444,85.172 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>УТОПЛЕННАЯ СТРЕЛКА</b><span class="fcard__ch">стрелка на 9 вдоль оси внутрь</span><p>Знак сужается до 84 в ширину — но хвост уходит вниз, и по высоте выходит 109. Пропорция 0.77, самая вытянутая из всех; голова при этом упирается в противоположную стенку кольца.</p><dl><div><dt>габарит</dt><dd>84 × 109.3</dd></div><div><dt>пропорция</dt><dd>0.77</dd></div><div><dt>разрыв</dt><dd>64°</dd></div><div><dt>терминалы</dt><dd>по стрелке</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>35 %</dd></div><div><dt>заливка поля</dt><dd>26.4 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure></div>
+    <p class="note col" style="margin-top:var(--s3)">Это самая опасная ось.
+      Сдвиг на 9 единиц внутрь раскрывает разрыв с 75° до 105° — и знак
+      перестаёт читаться как Q, превращаясь в значок обновления. Сдвиг на те же
+      9 наружу сжимает разрыв до 33°, но хвост перестаёт пересекать чашу, и
+      знак распадается на кольцо и стрелку рядом. Базовая посадка —
+      единственная, где хвост входит в чашу, а кольцо остаётся кольцом.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">05</span>
+      <h2>Ось C · терминалы</h2></div>
     <div class="col">
-      <p class="lede">Форма и материал сошлись. Осталось довести до
-        производственного пакета.</p>
-      <p>1. <b>Размерный ряд с порогами:</b> 16 / 20 / 24 — мастер; 24 / 32 — дуо;
-        от 48 — премиум. Пороги прописать в гайде числом, а не словами.<br>
-        2. <b>Кривые под материал:</b> контур под вырубку и тиснение, отдельный
-        контур под гравировку, версия под вышивку с упрощённым кантом.<br>
-        3. <b>Pantone:</b> свести эмаль и золото по вееру на реальной бумаге.
-        Золото на глянце уходит в зелень — для него нужна проба фольги, а не
-        триадная имитация.<br>
-        4. <b>Анимация:</b> кольцо дорисовывается по часовой за 480 мс, стрелка
-        выходит из разрыва наружу за 260 мс, блик по канту проходит за 200 мс.<br>
-        5. Проверить <code>askqet.kz</code> / <code>.com</code> /
-        <code>.ai</code> и товарный знак по классам 9, 35, 42 — заявку подавать
-        на мастер-форму, а не на премиум.</p>
+      <p class="lede">Здесь чёрное на белом показало то, чего не было видно
+        в цвете. Если полосу режет только сама стрелка, нижний терминал
+        <strong>вырождается в иглу</strong>: полоса плавно сходит на нет
+        и заканчивается точкой.</p>
+      <p>Игла — это не стилистика, это дефект производства. Она не выживает
+        ни в тиснении, ни в гравировке, ни в вышивке, ни на экране в мелком
+        кегле: тонкий конец просто пропадает, и терминал каждый раз оказывается
+        разной длины. Обмер даёт цену вопроса точно: <strong>171 кв. ед.,
+        6.3 % площади кольца</strong> — та часть, которая уходит в ноль.</p>
+    </div>
+    <div class="split"><figure><div class="split__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10003">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10003)"/>
+
+</svg></div><figcaption><b>СВОБОДНЫЙ</b>Полосу режет сама стрелка. Нижний терминал сходит на нет — 171 кв. ед. кольца, 6.3 % его площади, вырождаются в иглу нулевой толщины. Разрыв 75°.</figcaption></figure><figure><div class="split__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10036">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10036)"/>
+
+</svg></div><figcaption><b>РАДИАЛЬНЫЙ</b>Рез идёт по линии из центра. Оба терминала стоят на осях кольца — 0° и 90°, то есть на 3 и на 6 часов. Толщина полосы у терминала равна толщине полосы везде. Разрыв 90°.</figcaption></figure><figure><div class="split__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10039">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L254.489,9.374 L259.96,59.976 L252.482,110.319 L232.539,157.146 L201.421,197.421 L161.146,228.539 L114.319,248.482 L63.976,255.96 L13.374,250.489 Z" fill="black"/>
+    <circle cx="93.063" cy="48.074" r="8" fill="white"/>
+    <circle cx="52.074" cy="89.063" r="8" fill="white"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10039)"/>
+
+</svg></div><figcaption><b>СКРУГЛЁННЫЙ</b>Тот же рез, закрытый полукругом радиусом 8: он касается и внешней, и внутренней окружности. Мягче, но разрыв вырастает до 117°.</figcaption></figure></div>
+    <div class="forms"><figure class="fcard fcard--pick"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>РАДИАЛЬНЫЙ РЕЗ</b><span class="fcard__ch">терминалы по радиусу, 0° и 90°</span><p>Полоса обрывается по линии из центра, и оба реза садятся точно на оси кольца — на 3 и на 6 часов. Разрыв за это растёт с 75° до 90°, зато терминал везде имеет полную толщину полосы: единственная версия без тонких мест.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>90°</dd></div><div><dt>терминалы</dt><dd>0° / 90°</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>38 %</dd></div><div><dt>заливка поля</dt><dd>24.8 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure><figure class="fcard"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10037">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L254.489,9.374 L259.96,59.976 L252.482,110.319 L232.539,157.146 L201.421,197.421 L161.146,228.539 L114.319,248.482 L63.976,255.96 L13.374,250.489 Z" fill="black"/>
+    <circle cx="93.063" cy="48.074" r="8" fill="white"/>
+    <circle cx="52.074" cy="89.063" r="8" fill="white"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10037)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>СКРУГЛЁННЫЙ ТЕРМИНАЛ</b><span class="fcard__ch">радиальный рез плюс полукруг радиусом 8</span><p>Терминал закрыт полукругом, касающимся обеих окружностей. Мягче, но скругление спорит с прямым углом стрелки, и разрыв вырастает с 90° до 117°.</p><dl><div><dt>габарит</dt><dd>90 × 103</dd></div><div><dt>пропорция</dt><dd>0.87</dd></div><div><dt>разрыв</dt><dd>117°</dd></div><div><dt>терминалы</dt><dd>0° / 90°</dd></div><div><dt>полоса</dt><dd>16.8</dd></div><div><dt>масса стрелки</dt><dd>38 %</dd></div><div><dt>заливка поля</dt><dd>24.6 %</dd></div><div><dt>живёт с</dt><dd>29 px</dd></div></dl></figcaption></figure></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">06</span>
+      <h2>Размер</h2></div>
+    <div class="col"><p class="lede">Одна форма не может держать весь диапазон.
+      Основной крой живёт с 29 px; ниже нужен отдельный, с расширенным
+      просветом и укороченным хвостом.</p></div>
+    <h3>Основной крой</h3>
+    <div class="ladder"><figure><div style="width:96px;height:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>96 px<br>просвет держится</figcaption></figure><figure><div style="width:64px;height:64px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>64 px<br>просвет держится</figcaption></figure><figure><div style="width:48px;height:48px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>48 px<br>просвет держится</figcaption></figure><figure><div style="width:32px;height:32px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>32 px<br>просвет держится</figcaption></figure><figure class="dead"><div style="width:24px;height:24px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>24 px<br>просвет затёк</figcaption></figure><figure class="dead"><div style="width:16px;height:16px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10034">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10034)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+
+</svg></div><figcaption>16 px<br>просвет затёк</figcaption></figure></div>
+    <h3>Мелкий крой</h3>
+    <div class="ladder"><figure><div style="width:96px;height:96px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>96 px<br>просвет держится</figcaption></figure><figure><div style="width:64px;height:64px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>64 px<br>просвет держится</figcaption></figure><figure><div style="width:48px;height:48px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>48 px<br>просвет держится</figcaption></figure><figure><div style="width:32px;height:32px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>32 px<br>просвет держится</figcaption></figure><figure><div style="width:24px;height:24px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>24 px<br>просвет держится</figcaption></figure><figure class="dead"><div style="width:16px;height:16px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption>16 px<br>просвет затёк</figcaption></figure></div>
+    <div class="forms"><figure class="fcard fcard--pick"><div class="fcard__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m10040">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="25" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10040)"/>
+  <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
+
+</svg></div><figcaption><b>МЕЛКИЙ КРОЙ</b><span class="fcard__ch">полоса 17, просвет 7, хвост 19</span><p>Отдельный крой для 16–28 px: просвет расширен до 7, полоса утолщена, хвост укорочен. Живёт с 19 px и почти квадратен — 0.94. Хвост подрезан ровно настолько, чтобы терминалы остались на осях, как у основного. В крупном размере выглядит грубее.</p><dl><div><dt>габарит</dt><dd>90 × 95.3</dd></div><div><dt>пропорция</dt><dd>0.94</dd></div><div><dt>разрыв</dt><dd>90°</dd></div><div><dt>терминалы</dt><dd>0° / 90°</dd></div><div><dt>полоса</dt><dd>17.8</dd></div><div><dt>масса стрелки</dt><dd>31 %</dd></div><div><dt>заливка поля</dt><dd>23.6 %</dd></div><div><dt>живёт с</dt><dd>19 px</dd></div></dl></figcaption></figure></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">07</span>
+      <h2>Что беру в мастер</h2></div>
+    <div class="col">
+      <p class="lede"><strong>Базовые пропорции, базовая посадка, радиальный
+        рез терминалов.</strong> Для 16–28 px — отдельный мелкий крой.</p>
+      <p>Пропорции: полоса 16 при радиусе 42. Тяжёлое кольцо душит контрформу,
+        лёгкое не выживает на материале. Посадка: базовая — единственная, где
+        хвост пересекает чашу, а кольцо остаётся кольцом. Терминалы:
+        радиальный рез — единственная версия, где у полосы нигде нет толщины
+        меньше полной.</p>
+      <p>Отдельно стоит зафиксировать удачу построения: разрыв, который
+        вырезает стрелка, после расширения до кратных 15° садится ровно
+        на <strong>0° и 90°</strong> — на горизонтальную и вертикальную оси
+        кольца. Терминалы стоят не «примерно там», а на осях, и это можно
+        проверить линейкой на любом носителе.</p>
+    </div>
+    <div class="scroll"><table><tr><th>вариант</th><th>ось</th><th>полоса</th><th>просвет</th><th>разрыв</th><th>габарит</th><th>проп.</th><th>масса стрелки</th><th>живёт с</th></tr><tr><td>БАЗА</td><td class="num">A</td><td class="num">16</td><td class="num">4.5</td><td class="num">75°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">36 %</td><td class="num">29 px</td></tr><tr><td>ТЯЖЁЛОЕ КОЛЬЦО</td><td class="num">A</td><td class="num">20</td><td class="num">4.5</td><td class="num">70°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">32 %</td><td class="num">29 px</td></tr><tr><td>ЛЁГКОЕ КОЛЬЦО</td><td class="num">A</td><td class="num">12</td><td class="num">4.5</td><td class="num">79°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">42 %</td><td class="num">29 px</td></tr><tr><td>КРУПНАЯ СТРЕЛКА</td><td class="num">A</td><td class="num">16</td><td class="num">4.5</td><td class="num">80°</td><td class="num">90 × 108.8</td><td class="num">0.83</td><td class="num">42 %</td><td class="num">29 px</td></tr><tr><td>КОМПАКТНАЯ СТРЕЛКА</td><td class="num">A</td><td class="num">16</td><td class="num">4.5</td><td class="num">70°</td><td class="num">90 × 94.3</td><td class="num">0.95</td><td class="num">28 %</td><td class="num">29 px</td></tr><tr><td>ШИРОКИЙ ПРОСВЕТ</td><td class="num">A</td><td class="num">16</td><td class="num">7</td><td class="num">85°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">37 %</td><td class="num">19 px</td></tr><tr><td>УЗКИЙ ПРОСВЕТ</td><td class="num">A</td><td class="num">16</td><td class="num">2.5</td><td class="num">66°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">35 %</td><td class="num">52 px</td></tr><tr><td>ГЛУБОКАЯ ПОСАДКА</td><td class="num">B</td><td class="num">16</td><td class="num">4.5</td><td class="num">105°</td><td class="num">84 × 96.5</td><td class="num">0.87</td><td class="num">39 %</td><td class="num">29 px</td></tr><tr><td>КАСАТЕЛЬНАЯ ПОСАДКА</td><td class="num">B</td><td class="num">16</td><td class="num">4.5</td><td class="num">33°</td><td class="num">96.3 × 109.3</td><td class="num">0.88</td><td class="num">34 %</td><td class="num">29 px</td></tr><tr><td>ВЫНЕСЕННАЯ СТРЕЛКА</td><td class="num">B</td><td class="num">16</td><td class="num">4.5</td><td class="num">86°</td><td class="num">98.5 × 94.5</td><td class="num">1.04</td><td class="num">37 %</td><td class="num">29 px</td></tr><tr><td>УТОПЛЕННАЯ СТРЕЛКА</td><td class="num">B</td><td class="num">16</td><td class="num">4.5</td><td class="num">64°</td><td class="num">84 × 109.3</td><td class="num">0.77</td><td class="num">35 %</td><td class="num">29 px</td></tr><tr style="font-weight:650"><td>РАДИАЛЬНЫЙ РЕЗ</td><td class="num">C</td><td class="num">16</td><td class="num">4.5</td><td class="num">90°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">38 %</td><td class="num">29 px</td></tr><tr><td>СКРУГЛЁННЫЙ ТЕРМИНАЛ</td><td class="num">C</td><td class="num">16</td><td class="num">4.5</td><td class="num">117°</td><td class="num">90 × 103</td><td class="num">0.87</td><td class="num">38 %</td><td class="num">29 px</td></tr><tr style="font-weight:650"><td>МЕЛКИЙ КРОЙ</td><td class="num">D</td><td class="num">17</td><td class="num">7</td><td class="num">90°</td><td class="num">90 × 95.3</td><td class="num">0.94</td><td class="num">31 %</td><td class="num">19 px</td></tr></table></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">08</span>
+      <h2>Что дальше</h2></div>
+    <div class="col">
+      <p class="lede">Форма закрыта. Дальше — то, что на неё ложится.</p>
+      <p>1. <b>Логотип целиком:</b> посадить знак к слову — соотношение
+        кеглей, оптический отступ, поведение в одну строку и в столбец.<br>
+        2. <b>Мелкий кегль:</b> довести отдельный крой до фавикона 16 px и
+        до маски приложения.<br>
+        3. <b>Кривые под материал:</b> контур под вырубку и тиснение, версия
+        под вышивку.<br>
+        4. <b>Цвет:</b> когда форма утверждена — палитра, контрасты, проверка
+        на дальтонизм. Сейчас намеренно не трогается.</p>
     </div>
   </div>
 </section>
@@ -844,11 +872,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Форма, цвет и материал — из референсов заказчика. Предыдущие итерации
-      остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v8</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v9.py &amp;&amp;
-      python3 tools/build_page.py</code>.</p>
+    <p>Все силуэты и чертёж сгенерированы кодом, все числа сняты обмером.
+      Предыдущие итерации остались в репозитории: <code>logo/01-jaryq</code>,
+      <code>logo/v2</code> … <code>logo/v9</code>. Пересборка:
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v10.py &amp;&amp;
+      node tools/measure_v10.js &amp;&amp; python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
