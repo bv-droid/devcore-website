@@ -208,31 +208,28 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
-.v{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
-.v:first-of-type{padding-top:0; border-top:0; margin-top:0}
-.v__top{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr);
-  gap:var(--s4); align-items:start}
-.v__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
+.tier{display:grid; grid-template-columns:minmax(0,280px) minmax(0,1fr);
+  gap:var(--s4); align-items:start; padding-top:var(--s5);
+  border-top:1px solid var(--line); margin-top:var(--s5)}
+.tier:first-of-type{padding-top:0; border-top:0; margin-top:0}
+.tier__art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.tier__art svg{display:block; width:100%; height:auto}
+.tier__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
   text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.v__title{font-size:clamp(21px,2.6vw,29px); letter-spacing:-.03em; margin:0 0 .6em;
-  font-weight:680}
-.v__plates{display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px;
-  border:1px solid var(--line); border-radius:6px; overflow:hidden}
-.v__plates svg{display:block; width:100%; height:auto}
-.v__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3)}
-.v__sizes figure{margin:0; text-align:center}
-.v__sizes svg{display:block; border-radius:3px}
-.v__sizes .a svg{width:56px} .v__sizes .b svg{width:28px} .v__sizes .c svg{width:16px}
-.v__sizes figcaption{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);
-  margin-top:.45em}
-.v__lockups{display:grid; gap:2px; margin-top:var(--s3); border:1px solid var(--line);
-  border-radius:6px; overflow:hidden}
-.v__lockups svg{display:block; width:100%; height:auto}
-.v__note{border-left:2px solid var(--line-strong); padding-left:var(--s2);
+.tier__title{font-size:clamp(21px,2.6vw,29px); letter-spacing:-.03em;
+  margin:0 0 .6em; font-weight:680}
+.tier__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3)}
+.tier__sizes figure{margin:0; text-align:center}
+.tier__sizes svg{display:block; border-radius:3px}
+.tier__sizes .a svg{width:56px} .tier__sizes .b svg{width:28px}
+.tier__sizes .c svg{width:16px}
+.tier__sizes figcaption{font-family:var(--mono); font-size:10.5px;
+  color:var(--ink-3); margin-top:.45em}
+.tier__note{border-left:2px solid var(--line-strong); padding-left:var(--s2);
   margin-top:var(--s3); font-size:14px; color:var(--ink-2)}
-.v__note b{color:var(--ink)}
+.tier__note b{color:var(--ink)}
 
-.build{display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr);
+.build{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr);
   gap:var(--s4); align-items:start; margin-top:var(--s3)}
 .build__art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
 .build__art svg{display:block; width:100%; height:auto}
@@ -243,23 +240,23 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   color:var(--ink)}
 .specs em{font-style:normal; color:var(--ink-2)}
 
-.cpair{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px;
-  margin-top:var(--s3)}
-.cpair div{padding:.6rem .7rem .7rem; font-family:var(--mono); font-size:10.5px;
-  line-height:1.5; min-height:66px; display:flex; flex-direction:column;
+.mats{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:2px; margin-top:var(--s3)}
+.mats div{padding:.6rem .7rem .7rem; font-family:var(--mono); font-size:10.5px;
+  line-height:1.5; min-height:70px; display:flex; flex-direction:column;
   justify-content:flex-end}
-.cpair b{font-size:11.5px; font-weight:500; display:block}
+.mats b{font-size:11.5px; font-weight:500; display:block}
 
-.pick{display:grid; grid-template-columns:72px minmax(0,1fr); gap:var(--s3);
-  align-items:center; border:1px solid var(--line); border-radius:6px;
-  padding:var(--s2); background:var(--surface)}
-.pick + .pick{margin-top:var(--s2)}
-.pick svg{display:block; width:100%; height:auto; border-radius:5px}
-.pick h4{margin:0 0 .25em} .pick p{margin:0; font-size:14.5px; color:var(--ink-2)}
-.flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
-  border-radius:3px; border:1px solid currentColor; margin-left:.5em}
-.flag--ok{color:var(--pass)}
-@media (max-width:760px){ .v__top,.pick,.build{grid-template-columns:1fr} }
+.rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:var(--s2); margin-top:var(--s3)}
+.rules div{border:1px solid var(--line); border-radius:6px; padding:var(--s3);
+  background:var(--surface)}
+.rules h4{margin:0 0 .35em; font-size:14.5px}
+.rules p{margin:0; font-size:13.5px; color:var(--ink-2)}
+.lockups{display:grid; gap:2px; margin-top:var(--s3);
+  border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.lockups svg{display:block; width:100%; height:auto}
+@media (max-width:760px){ .tier,.build{grid-template-columns:1fr} }
 
 </style>
 
@@ -267,18 +264,19 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 8 — кольцо и флаг</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 9 — кольцо и стрелка</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Ваш эскиз, построенный по сетке: <em>каждый радиус,
-      угол и просвет посчитан</em><span class="caret"></span></p>
+    <p class="mast__thesis">Мастер один, материалов — сколько нужно.
+      Эмаль и золото собраны <em>вектором, а не рендером</em><span
+      class="caret"></span></p>
     <div class="mast__meta">
-      <div>ВАРИАНТОВ КРАЯ<b>4</b></div>
-      <div>ПРОСВЕТ<b>5 по всему контуру</b></div>
-      <div>РАДИУС УГЛОВ<b>2.5 · единый</b></div>
-      <div>СЕТКА<b>8</b></div>
+      <div>УРОВНЕЙ ИСПОЛНЕНИЯ<b>3</b></div>
+      <div>ПРОСВЕТ<b>4.5 по контуру</b></div>
+      <div>КАНТ<b>1.4 равномерно</b></div>
+      <div>ΔEok ЭМАЛЬ ↔ ЗОЛОТО<b>0.332</b></div>
     </div>
   </div>
 </header>
@@ -288,21 +286,21 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Как я прочитал эскиз</h2></div>
+      <h2>Как прочитаны два референса</h2></div>
     <div class="col">
-      <p class="lede">Разомкнутое кольцо, из разрыва вверх выходит мачта, от неё
-        вправо летит полотнище с зубчатым краем. Кольцо — открытый вопрос, флаг —
-        поднятый ответ. По сравнению с прошлой итерацией знак прибавил смысла:
-        остриё просто указывало, флаг <strong>заявляет</strong>.</p>
-      <p>Премиальность тут не в эффектах, а в том, что от руки на маркерной доске
-        задать невозможно: одинаковая толщина полосы по всей дуге, ровно один
-        радиус на всех углах и <strong>одинаковый просвет между кольцом и флагом
-        по всему контуру</strong>. Последнее — главное. На эскизе просвет гуляет
-        от 0 до нескольких сантиметров, и именно это читается как «набросок».</p>
-      <p>Технически просвет берётся не на глаз: флаг рисуется в маске
-        одновременно заливкой и обводкой шириной 2 × (просвет + радиус), поэтому
-        кольцо отступает от него ровно на 5 единиц в любой точке — и на прямой,
-        и в вырезе, и на остром угле.</p>
+      <p class="lede">Вы прислали не два варианта, а <strong>две разные
+        вещи</strong>. Чёрный силуэт — это мастер-форма, сам знак. Зелёно-золотой
+        рендер — материальное исполнение той же формы. Их нельзя путать: мастер
+        один и он неизменен, а материалов у бренда может быть сколько угодно.</p>
+      <p>Форма стала лучше, чем в прошлой итерации: стрелка теперь не остриё, а
+        полноценная <strong>стрелка с прямым углом в вершине</strong> — голова с
+        двумя катетами и стержень по оси 45°. За счёт прямого угла знак держит
+        квадратное поле и не заваливается, а разрыв кольца стал осмысленным:
+        стрелка входит в него и выходит наружу.</p>
+      <p>Материальное исполнение я собрал не рендером, а слоями SVG: градиент
+        эмали, кант равномерной ширины, гильоше сеткой под 45° и одна мягкая
+        тень. Разница принципиальная — такой файл масштабируется без потерь,
+        уходит в печать и в резку, и его можно править, а не перерисовывать.</p>
     </div>
 
     <div class="build">
@@ -310,21 +308,20 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   
   <rect width="128" height="128" fill="#F4F2ED"/>
   <g opacity="0.35"><path d="M8,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M16,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M24,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M32,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M40,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M48,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M56,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M64,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M72,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M80,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M88,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M96,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M104,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M112,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M120,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,8 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,16 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,24 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,32 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,40 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,48 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,56 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,64 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,72 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,80 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,88 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,96 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,104 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,112 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,120 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/></g>
-  <circle cx="56" cy="76" r="44" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <circle cx="56" cy="76" r="26" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <path d="M56,24 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <path d="M4,76 H108" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
-  <circle cx="56" cy="76" r="1.2" fill="#5B6B7E"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="none" stroke="#16304B" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M56,76 L100,76" stroke="#16304B" stroke-width="0.8" fill="none"/>
-  <text x="60" y="73" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">O</text>
-  <text x="68" y="73.5" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">R 44 / 26</text>
-  <text x="50" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">мачта 14</text>
-  <text x="88" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">вылет 114</text>
-  <text x="6" y="122" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">просвет 5 · радиус углов 2.5 · сетка 8</text>
+  <circle cx="60" cy="56" r="42" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="60" cy="56" r="26" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M60,6 V106" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M10,56 H122" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M68,68 L108,108" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="60" cy="56" r="1.2" fill="#5B6B7E"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#05431F" stroke-width="1" stroke-linejoin="miter"/>
+  <text x="64" y="53" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">O · R 42 / 26</text>
+  <text x="68" y="64" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">катет 40</text>
+  <text x="58" y="120" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">стержень 26 · хвост 28 · просвет 4.5 · кант 1.4</text>
+  <text x="6" y="120" font-family="ui-monospace,monospace" font-size="4.4" fill="#5B6B7E">сетка 8</text>
 
 </svg></div>
-      <div><div class="specs"><div><em>центр кольца</em><span>O (56, 76)</span></div><div><em>радиусы</em><span>R 44 / 26 · полоса 18</span></div><div><em>мачта</em><span>x 50…64 · ширина 14</span></div><div><em>верх полотнища</em><span>y 14</span></div><div><em>вылет</em><span>x 114</span></div><div><em>просвет кольцо ↔ флаг</em><span>5 по всему контуру</span></div><div><em>радиус углов</em><span>2.5 · единый</span></div><div><em>сетка</em><span>8</span></div></div></div>
+      <div><div class="specs"><div><em>центр кольца</em><span>O (60, 56)</span></div><div><em>радиусы кольца</em><span>R 42 / 26 · полоса 16</span></div><div><em>вершина стрелки</em><span>B (108, 68) · прямой угол</span></div><div><em>катеты головы</em><span>40</span></div><div><em>стержень</em><span>26 по оси 45°</span></div><div><em>хвост за гипотенузой</em><span>28</span></div><div><em>просвет кольцо ↔ стрелка</em><span>4.5 по всему контуру</span></div><div><em>золотой кант</em><span>1.4 равномерно</span></div><div><em>сетка</em><span>8</span></div></div></div>
     </div>
   </div>
 </section>
@@ -332,564 +329,513 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре края полотнища</h2></div>
-    <div class="col"><p class="lede">Кольцо, мачта, вылет и просвет во всех четырёх
-      одинаковы — меняется только край. Каждый показан на бумаге, на тёмном и в
-      одну краску, плюс ряд 56 / 28 / 16 px.</p></div>
+      <h2>Три уровня исполнения</h2></div>
+    <div class="col"><p class="lede">Одна форма, три степени материальности.
+      Каждый уровень отвечает за свой круг носителей, и переходы между ними
+      заданы размером, а не вкусом.</p></div>
     
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+<article class="tier">
+  <div>
+    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8001">
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m9001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r8002">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8002)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8003">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r8003)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
 
 </svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8001">
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m9001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
 
 </svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8001">
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m9001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
 
 </svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8001">
+  <rect width="128" height="128" fill="#FFFFFF"/>
+  <defs><mask id="m9001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
 
 </svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Край 1</p>
-      <h3 class="v__title">TÚZU · прямой край</h3>
-      <p>Полотнище — прямоугольный треугольник: одна линия от вылета до мачты. Самая тихая и самая технологичная версия, ближе всего к флагу на схеме, а не к штандарту.</p>
-      <div class="v__note"><b>Чем платим.</b> Три вершины у полотнища. Единственный вариант, который не теряет ни одной детали в 16 px.</div>
-    </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
+  <div>
+    <p class="tier__id">Уровень 1</p>
+    <h3 class="tier__title">Мастер · плоский силуэт</h3>
+    <p>Одна фигура, одна краска, ничего лишнего. Это и есть логотип: он идёт в фавикон, в интерфейс, в документы, в вырубку, в тиснение и в вышивку. Ровно ваш второй референс.</p>
+    <div class="tier__note"><b>Где живёт.</b> Всё остальное — исполнения этой формы. Если знак не работает здесь, ни эмаль, ни золото его не спасут.</div>
+    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
   
-  <rect width="443.82" height="122" fill="#F4F2ED"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8004">
+  <rect width="443.74" height="124" fill="#FFFFFF"/>
+  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <defs><mask id="m9027">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8004)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
-  
-  <rect width="443.82" height="122" fill="#0E1621"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8005">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8005)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#0A0A0A" mask="url(#m9027)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0A0A0A"/>
+</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#0A0A0A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
+  </div>
 </article>
 
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+<article class="tier">
+  <div>
+    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8006">
+  <defs><mask id="m9003">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r8007">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8007)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8008">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r8008)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
 
 </svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8006">
+  <defs><mask id="m9003">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
 
 </svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8006">
+  <defs><mask id="m9003">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
 
 </svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8006">
+  <defs><mask id="m9003">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
 
 </svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Край 2</p>
-      <h3 class="v__title">QARLYǴASH · ласточкин хвост</h3>
-      <p>В край врезан один клин — классический раздвоенный вымпел. Ровно то, что нарисовано на эскизе, только вырез посчитан: глубина 13 единиц строго по нормали к краю.</p>
-      <div class="v__note"><b>Чем платим.</b> Вырез читается от 24 px. Ниже — схлопывается, нужен прямой дубль.</div>
-    </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
+  <div>
+    <p class="tier__id">Уровень 2</p>
+    <h3 class="tier__title">Дуо · кольцо и стрелка в цвете</h3>
+    <p>Рабочий цветной вариант: зелёное кольцо, золотая стрелка, плоские заливки без градиентов. Это версия для сайта, приложения, рекламы и презентаций — везде, где нужен цвет, но не нужен материал.</p>
+    <div class="tier__note"><b>Где живёт.</b> Держится до 24 px. Ниже переходит на мастер: две плоские заливки в 16 px сливаются в пятно.</div>
+    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
   
-  <rect width="443.82" height="122" fill="#F4F2ED"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8009">
+  <rect width="443.74" height="124" fill="#F4F2ED"/>
+  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <defs><mask id="m9026">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8009)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
-  
-  <rect width="443.82" height="122" fill="#0E1621"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8010)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#0E7C3A" mask="url(#m9026)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#E6BE58"/>
+</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#123322" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
+  </div>
 </article>
 
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+<article class="tier">
+  <div>
+    <div class="tier__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8011">
+  <rect width="128" height="128" fill="#0A0A0A"/>
+  <defs>
+    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9005">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r8012">
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9009)">
+    <defs><mask id="m9010">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8012)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8013">
+  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
+    <defs><mask id="m9011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r8013)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
+    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
+  </g>
 
 </svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="tier__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8011">
+  <rect width="128" height="128" fill="#0A0A0A"/>
+  <defs>
+    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9005">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9009)">
+    <defs><mask id="m9010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
+    <defs><mask id="m9011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
+    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
+  </g>
 
 </svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8011">
+  <rect width="128" height="128" fill="#0A0A0A"/>
+  <defs>
+    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9005">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9009)">
+    <defs><mask id="m9010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
+    <defs><mask id="m9011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
+    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
+  </g>
 
 </svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8011">
+  <rect width="128" height="128" fill="#0A0A0A"/>
+  <defs>
+    <linearGradient id="en9006" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9007" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9008" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9009" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9005">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9009)">
+    <defs><mask id="m9010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="url(#go9007)" mask="url(#m9010)"/>
+    <defs><mask id="m9011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#en9006)" mask="url(#m9011)"/>
+    <rect width="128" height="128" fill="url(#gu9008)" mask="url(#g9005)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9007)"/>
+  </g>
 
 </svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Край 3</p>
-      <h3 class="v__title">QYRLY · гранёный край</h3>
-      <p>Край сломан дважды: внутрь и наружу. Это ближе всего к рисунку от руки, где полотнище идёт зигзагом — но каждый излом стоит на своей доле длины, а не на глаз.</p>
-      <div class="v__note"><b>Чем платим.</b> Самая сложная форма из четырёх: шесть вершин на краю. Требует прямого дубля уже с 32 px.</div>
-    </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
+  <div>
+    <p class="tier__id">Уровень 3</p>
+    <h3 class="tier__title">Премиум · эмаль, кант, гильоше</h3>
+    <p>Материальное исполнение вашего первого референса — но собранное вектором, а не рендером: градиент эмали, золотой кант равномерной ширины, гильоше сеткой под 45° и одна мягкая тень. Значит его можно масштабировать, печатать и резать.</p>
+    <div class="tier__note"><b>Где живёт.</b> Церемониальный уровень: упаковка, карта, награда, заставка, фасад. Ниже 48 px гильоше превращается в муар — там обязателен переход на дуо.</div>
+    <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.74 124" fill="none">
   
-  <rect width="443.82" height="122" fill="#F4F2ED"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8014">
+  <rect width="443.74" height="124" fill="#0A0A0A"/>
+  <g transform="translate(10,88)"><g transform="translate(0,-76) scale(0.94) translate(-8,-8)">  <rect width="128" height="128" fill="#0A0A0A"/>
+  <defs>
+    <linearGradient id="en9020" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9021" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9022" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9023" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9019">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8014)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
-  
-  <rect width="443.82" height="122" fill="#0E1621"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8015">
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9023)">
+    <defs><mask id="m9024">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8015)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-</article>
-
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8016">
+  <rect width="128" height="128" fill="url(#go9021)" mask="url(#m9024)"/>
+    <defs><mask id="m9025">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r8017">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8017)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-
+  <rect width="128" height="128" fill="url(#en9020)" mask="url(#m9025)"/>
+    <rect width="128" height="128" fill="url(#gu9022)" mask="url(#g9019)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9021)"/>
+  </g>
+</g><g transform="translate(120.24,0)"><g transform="translate(0,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F8E4A8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8018">
+  <defs>
+    <linearGradient id="en9013" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9014" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9015" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9016" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9012">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9016)">
+    <defs><mask id="m9017">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r8018)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+  <rect width="128" height="128" fill="url(#go9014)" mask="url(#m9017)"/>
+    <defs><mask id="m9018">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#en9013)" mask="url(#m9018)"/>
+    <rect width="128" height="128" fill="url(#gu9015)" mask="url(#g9012)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9014)"/>
+  </g>
 
 </svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8016">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8016">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8016">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Край 4</p>
-      <h3 class="v__title">USHTAǴAN · вымпел</h3>
-      <p>Край не садится на мачту, а вытягивается в остриё: полотнище становится вымпелом и уводит взгляд вправо-вниз, к слову.</p>
-      <div class="v__note"><b>Чем платим.</b> Самый динамичный и самый широкий: знак перестаёт быть квадратным, в макетах нужен свой отступ справа.</div>
-    </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
-  
-  <rect width="443.82" height="122" fill="#F4F2ED"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8019">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8019)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
-  
-  <rect width="443.82" height="122" fill="#0E1621"/>
-  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8020">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r8020)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
-</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
 </article>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Цвет</h2></div>
-    <div class="col">
-      <p class="lede">Пара с вашего первого варианта, доведённая до рабочей: амбер
-        на кольце, тёмно-синий на флаге. ΔEok между ними 0.527 — самый большой
-        разрыв пары за всю работу, поэтому знак не рассыпается ни в мелком
-        размере, ни в печати.</p>
-      <p><strong>Правило, которое надо зафиксировать сразу: амбер — заливка, а не
-        текст.</strong> На бумаге он даёт 1.83:1. Им можно залить кольцо, плашку,
-        подложку — но нельзя набрать ни строки и нельзя провести тонкую линию.
-        Всё, что читают, идёт тёмно-синим.</p>
+    <div class="sec__head"><span class="sec__num">03</span>
+      <h2>Материалы и правила</h2></div>
+    <div class="col"><p class="lede">Шесть значений: три ступени эмали и три
+      ступени золота. Больше не нужно — градиенты строятся из них.</p></div>
+    <div class="mats"><div style="background:#1AA854;color:#0B0C0E"><b>#1AA854</b>эмаль · блик<br>L 0.64 · C 0.167 · H 151°<br>6.39:1 на чёрном</div><div style="background:#0E7C3A;color:#F6F2E8"><b>#0E7C3A</b>эмаль · тело<br>L 0.51 · C 0.136 · H 150°<br>3.74:1 на чёрном</div><div style="background:#05431F;color:#F6F2E8"><b>#05431F</b>эмаль · тень<br>L 0.34 · C 0.086 · H 152°<br>1.72:1 на чёрном</div><div style="background:#F8E4A8;color:#0B0C0E"><b>#F8E4A8</b>золото · блик<br>L 0.92 · C 0.080 · H 92°<br>15.70:1 на чёрном</div><div style="background:#E6BE58;color:#0B0C0E"><b>#E6BE58</b>золото · тело<br>L 0.82 · C 0.128 · H 88°<br>11.19:1 на чёрном</div><div style="background:#A67C22;color:#0B0C0E"><b>#A67C22</b>золото · тень<br>L 0.61 · C 0.114 · H 82°<br>5.21:1 на чёрном</div></div>
+
+    <div class="rules">
+      <div><h4>Кант — не украшение</h4>
+        <p>Эмаль <code>#0E7C3A</code> на чёрном даёт всего <b>3.74:1</b> —
+          сама по себе она на тёмном тонет. Золотой кант вокруг неё поднимает
+          контур до <b>11.19:1</b>. Именно он делает знак читаемым, поэтому
+          на тёмных носителях кант обязателен, а не опционален.</p></div>
+      <div><h4>Золото — заливка, не текст</h4>
+        <p>На бумаге золото даёт <b>1.58:1</b>. Им заливают стрелку и плашки,
+          но им нельзя набрать ни строки и нельзя провести тонкую линию.
+          Всё читаемое идёт эмалью или чёрным.</p></div>
+      <div><h4>Зелёный в Казахстане не пустой</h4>
+        <p>ΔEok до Halyk <code>#009B77</code> — <b>0.108</b>. Это выше порога
+          различения, цвета разные, но оба зелёные и оба на одном рынке.
+          Рекомендую проверить пару на реальных носителях рядом с Halyk
+          прежде, чем фиксировать.</p></div>
+      <div><h4>Гильоше имеет нижний предел</h4>
+        <p>Сетка с шагом 3.6 единицы ниже 48 px превращается в муар и грязь.
+          Это не дефект файла, а свойство любого гильоше — поэтому переход
+          на плоское дуо задан размером.</p></div>
     </div>
-    <div class="cpair"><div style="background:#F7A41C;color:#0B0C0E"><b>#F7A41C</b>кольцо · вопрос<br>L 0.78 · C 0.162 · H 72°<br>1.83:1 на бумаге</div><div style="background:#16304B;color:#F6F2E8"><b>#16304B</b>флаг · ответ<br>L 0.30 · C 0.059 · H 251°<br>12.04:1 на бумаге</div><div style="background:#FFB233;color:#0B0C0E"><b>#FFB233</b>кольцо на тёмном<br>L 0.82 · C 0.158 · H 74°<br>10.10:1 </div><div style="background:#F4F2ED;color:#0B0C0E"><b>#F4F2ED</b>флаг на тёмном<br>L 0.96 · C 0.007 · H 89°<br>16.25:1 </div></div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
+    <div class="sec__head"><span class="sec__num">04</span><h2>Что дальше</h2></div>
     <div class="col">
-      <p class="lede"><strong>QARLYǴASH — ласточкин хвост.</strong> Это ровно ваш
-        эскиз, только вырез посчитан: один клин глубиной 11 единиц строго по
-        нормали к краю, на середине его длины. Он даёт знаку характер, которого
-        нет у прямого края, и при этом остаётся одной формой без лишних вершин.</p>
-      <p><strong>TÚZU обязателен как пара к нему</strong> — не как альтернатива.
-        Ниже 24 px вырез схлопывается в грязь, поэтому мелкий размер, фавикон и
-        тиснение идут прямым краем. Это стандартная практика: у знака две
-        размерные версии, отличие ровно в одной детали.</p>
-    </div>
-    <div style="margin-top:var(--s3)">
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8006">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
-  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg>
-        <div><h4>QARLYǴASH · ласточкин хвост<span class="flag flag--ok">беру</span></h4>
-          <p>Ваш эскиз в построенном виде. Характер без усложнения формы.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8001">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
-  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg>
-        <div><h4>TÚZU · прямой край<span class="flag flag--ok">пара к нему</span></h4>
-          <p>Мелкий размер, фавикон, тиснение, одна краска.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8011">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
-  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg>
-        <div><h4>QYRLY · гранёный</h4>
-          <p>Ближе всего к зигзагу на рисунке, но шесть вершин — дорого в мелком.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r8016">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="56" cy="76" r="44" fill="white"/>
-    <circle cx="56" cy="76" r="26" fill="black"/>
-    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
-  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
-
-</svg>
-        <div><h4>USHTAǴAN · вымпел</h4>
-          <p>Самый динамичный. Ломает квадратное поле — нужен свой отступ.</p></div></div>
-    </div>
-
-    <h3>Что дальше</h3>
-    <div class="col">
-      <p>1. Подтвердить край — дальше собираю производственный набор: размерный ряд
-        16/20/24/32/48/64 с указанием, где переключаться на прямой край, охранное
-        поле, выворотка, версия в одну краску, кривые для вырубки и тиснения.<br>
-        2. Зафиксировать правило амбера в гайде первой же строкой.<br>
-        3. Анимация: кольцо дорисовывается по часовой, мачта выходит вверх,
-        полотнище разворачивается вправо. Три такта, всего 900 мс.<br>
-        4. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42.</p>
+      <p class="lede">Форма и материал сошлись. Осталось довести до
+        производственного пакета.</p>
+      <p>1. <b>Размерный ряд с порогами:</b> 16 / 20 / 24 — мастер; 24 / 32 — дуо;
+        от 48 — премиум. Пороги прописать в гайде числом, а не словами.<br>
+        2. <b>Кривые под материал:</b> контур под вырубку и тиснение, отдельный
+        контур под гравировку, версия под вышивку с упрощённым кантом.<br>
+        3. <b>Pantone:</b> свести эмаль и золото по вееру на реальной бумаге.
+        Золото на глянце уходит в зелень — для него нужна проба фольги, а не
+        триадная имитация.<br>
+        4. <b>Анимация:</b> кольцо дорисовывается по часовой за 480 мс, стрелка
+        выходит из разрыва наружу за 260 мс, блик по канту проходит за 200 мс.<br>
+        5. Проверить <code>askqet.kz</code> / <code>.com</code> /
+        <code>.ai</code> и товарный знак по классам 9, 35, 42 — заявку подавать
+        на мастер-форму, а не на премиум.</p>
     </div>
   </div>
 </section>
@@ -898,10 +844,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Конструкция, цвет и пропорции — из эскизов заказчика. Предыдущие итерации
+    <p>Форма, цвет и материал — из референсов заказчика. Предыдущие итерации
       остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v7</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v8.py &amp;&amp;
+      <code>logo/v8</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v9.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>

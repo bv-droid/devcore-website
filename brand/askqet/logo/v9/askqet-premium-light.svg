@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs>
+    <linearGradient id="en9013" x1="18" y1="14" x2="102" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1AA854"/>
+      <stop offset="0.5" stop-color="#0E7C3A"/>
+      <stop offset="1" stop-color="#05431F"/>
+    </linearGradient>
+    <linearGradient id="go9014" x1="66" y1="66" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8E4A8"/>
+      <stop offset="0.45" stop-color="#E6BE58"/>
+      <stop offset="1" stop-color="#A67C22"/>
+    </linearGradient>
+    <pattern id="gu9015" width="3.6" height="3.6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <path d="M0,0 V3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+      <path d="M0,0 H3.6" stroke="#05431F" stroke-width="0.75" opacity="0.55"/>
+    </pattern>
+    <filter id="sh9016" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+  <mask id="g9012">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask>
+  </defs>
+  <g filter="url(#sh9016)">
+    <defs><mask id="m9017">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="43.4" fill="white"/>
+    <circle cx="60" cy="56" r="24.6" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="6.2" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#go9014)" mask="url(#m9017)"/>
+    <defs><mask id="m9018">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="url(#en9013)" mask="url(#m9018)"/>
+    <rect width="128" height="128" fill="url(#gu9015)" mask="url(#g9012)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#A67C22" stroke="#A67C22" stroke-width="2.8" stroke-linejoin="miter"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="url(#go9014)"/>
+  </g>
+
+</svg>

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — итерация 8: кольцо и флаг.
+Собирает brand/askqet/index.html — итерация 9: кольцо и стрелка, эмаль.
 
-Запуск:  python3 tools/build_page.py   (после build.py и build_v8.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v9.py)
 """
 
 import os
@@ -12,8 +12,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from build_v8 import FLIES  # noqa: E402
-from page_body import EXTRA_CSS, variant_block, pair_block, specs_block  # noqa: E402
+from page_body import EXTRA_CSS, tier_block, materials, specs_block  # noqa: E402
 
 
 def read_svg(rel):
@@ -241,15 +240,16 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 8 — кольцо и флаг</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 9 — кольцо и стрелка</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Ваш эскиз, построенный по сетке: <em>каждый радиус,
-      угол и просвет посчитан</em><span class="caret"></span></p>
+    <p class="mast__thesis">Мастер один, материалов — сколько нужно.
+      Эмаль и золото собраны <em>вектором, а не рендером</em><span
+      class="caret"></span></p>
     <div class="mast__meta">
-      <div>ВАРИАНТОВ КРАЯ<b>4</b></div>
-      <div>ПРОСВЕТ<b>5 по всему контуру</b></div>
-      <div>РАДИУС УГЛОВ<b>2.5 · единый</b></div>
-      <div>СЕТКА<b>8</b></div>
+      <div>УРОВНЕЙ ИСПОЛНЕНИЯ<b>3</b></div>
+      <div>ПРОСВЕТ<b>4.5 по контуру</b></div>
+      <div>КАНТ<b>1.4 равномерно</b></div>
+      <div>ΔEok ЭМАЛЬ ↔ ЗОЛОТО<b>0.332</b></div>
     </div>
   </div>
 </header>
@@ -259,25 +259,25 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Как я прочитал эскиз</h2></div>
+      <h2>Как прочитаны два референса</h2></div>
     <div class="col">
-      <p class="lede">Разомкнутое кольцо, из разрыва вверх выходит мачта, от неё
-        вправо летит полотнище с зубчатым краем. Кольцо — открытый вопрос, флаг —
-        поднятый ответ. По сравнению с прошлой итерацией знак прибавил смысла:
-        остриё просто указывало, флаг <strong>заявляет</strong>.</p>
-      <p>Премиальность тут не в эффектах, а в том, что от руки на маркерной доске
-        задать невозможно: одинаковая толщина полосы по всей дуге, ровно один
-        радиус на всех углах и <strong>одинаковый просвет между кольцом и флагом
-        по всему контуру</strong>. Последнее — главное. На эскизе просвет гуляет
-        от 0 до нескольких сантиметров, и именно это читается как «набросок».</p>
-      <p>Технически просвет берётся не на глаз: флаг рисуется в маске
-        одновременно заливкой и обводкой шириной 2 × (просвет + радиус), поэтому
-        кольцо отступает от него ровно на 5 единиц в любой точке — и на прямой,
-        и в вырезе, и на остром угле.</p>
+      <p class="lede">Вы прислали не два варианта, а <strong>две разные
+        вещи</strong>. Чёрный силуэт — это мастер-форма, сам знак. Зелёно-золотой
+        рендер — материальное исполнение той же формы. Их нельзя путать: мастер
+        один и он неизменен, а материалов у бренда может быть сколько угодно.</p>
+      <p>Форма стала лучше, чем в прошлой итерации: стрелка теперь не остриё, а
+        полноценная <strong>стрелка с прямым углом в вершине</strong> — голова с
+        двумя катетами и стержень по оси 45°. За счёт прямого угла знак держит
+        квадратное поле и не заваливается, а разрыв кольца стал осмысленным:
+        стрелка входит в него и выходит наружу.</p>
+      <p>Материальное исполнение я собрал не рендером, а слоями SVG: градиент
+        эмали, кант равномерной ширины, гильоше сеткой под 45° и одна мягкая
+        тень. Разница принципиальная — такой файл масштабируется без потерь,
+        уходит в печать и в резку, и его можно править, а не перерисовывать.</p>
     </div>
 
     <div class="build">
-      <div class="build__art">⟦logo/v8/askqet-construction.svg⟧</div>
+      <div class="build__art">⟦logo/v9/askqet-construction.svg⟧</div>
       <div>{SPECS}</div>
     </div>
   </div>
@@ -286,69 +286,63 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре края полотнища</h2></div>
-    <div class="col"><p class="lede">Кольцо, мачта, вылет и просвет во всех четырёх
-      одинаковы — меняется только край. Каждый показан на бумаге, на тёмном и в
-      одну краску, плюс ряд 56 / 28 / 16 px.</p></div>
-    {VARIANTS}
+      <h2>Три уровня исполнения</h2></div>
+    <div class="col"><p class="lede">Одна форма, три степени материальности.
+      Каждый уровень отвечает за свой круг носителей, и переходы между ними
+      заданы размером, а не вкусом.</p></div>
+    {TIERS}
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Цвет</h2></div>
-    <div class="col">
-      <p class="lede">Пара с вашего первого варианта, доведённая до рабочей: амбер
-        на кольце, тёмно-синий на флаге. ΔEok между ними 0.527 — самый большой
-        разрыв пары за всю работу, поэтому знак не рассыпается ни в мелком
-        размере, ни в печати.</p>
-      <p><strong>Правило, которое надо зафиксировать сразу: амбер — заливка, а не
-        текст.</strong> На бумаге он даёт 1.83:1. Им можно залить кольцо, плашку,
-        подложку — но нельзя набрать ни строки и нельзя провести тонкую линию.
-        Всё, что читают, идёт тёмно-синим.</p>
+    <div class="sec__head"><span class="sec__num">03</span>
+      <h2>Материалы и правила</h2></div>
+    <div class="col"><p class="lede">Шесть значений: три ступени эмали и три
+      ступени золота. Больше не нужно — градиенты строятся из них.</p></div>
+    {MATERIALS}
+
+    <div class="rules">
+      <div><h4>Кант — не украшение</h4>
+        <p>Эмаль <code>#0E7C3A</code> на чёрном даёт всего <b>3.74:1</b> —
+          сама по себе она на тёмном тонет. Золотой кант вокруг неё поднимает
+          контур до <b>11.19:1</b>. Именно он делает знак читаемым, поэтому
+          на тёмных носителях кант обязателен, а не опционален.</p></div>
+      <div><h4>Золото — заливка, не текст</h4>
+        <p>На бумаге золото даёт <b>1.58:1</b>. Им заливают стрелку и плашки,
+          но им нельзя набрать ни строки и нельзя провести тонкую линию.
+          Всё читаемое идёт эмалью или чёрным.</p></div>
+      <div><h4>Зелёный в Казахстане не пустой</h4>
+        <p>ΔEok до Halyk <code>#009B77</code> — <b>0.108</b>. Это выше порога
+          различения, цвета разные, но оба зелёные и оба на одном рынке.
+          Рекомендую проверить пару на реальных носителях рядом с Halyk
+          прежде, чем фиксировать.</p></div>
+      <div><h4>Гильоше имеет нижний предел</h4>
+        <p>Сетка с шагом 3.6 единицы ниже 48 px превращается в муар и грязь.
+          Это не дефект файла, а свойство любого гильоше — поэтому переход
+          на плоское дуо задан размером.</p></div>
     </div>
-    {PAIR}
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
+    <div class="sec__head"><span class="sec__num">04</span><h2>Что дальше</h2></div>
     <div class="col">
-      <p class="lede"><strong>QARLYǴASH — ласточкин хвост.</strong> Это ровно ваш
-        эскиз, только вырез посчитан: один клин глубиной 11 единиц строго по
-        нормали к краю, на середине его длины. Он даёт знаку характер, которого
-        нет у прямого края, и при этом остаётся одной формой без лишних вершин.</p>
-      <p><strong>TÚZU обязателен как пара к нему</strong> — не как альтернатива.
-        Ниже 24 px вырез схлопывается в грязь, поэтому мелкий размер, фавикон и
-        тиснение идут прямым краем. Это стандартная практика: у знака две
-        размерные версии, отличие ровно в одной детали.</p>
-    </div>
-    <div style="margin-top:var(--s3)">
-      <div class="pick">{P_QARLYGASH}
-        <div><h4>QARLYǴASH · ласточкин хвост<span class="flag flag--ok">беру</span></h4>
-          <p>Ваш эскиз в построенном виде. Характер без усложнения формы.</p></div></div>
-      <div class="pick">{P_TUZU}
-        <div><h4>TÚZU · прямой край<span class="flag flag--ok">пара к нему</span></h4>
-          <p>Мелкий размер, фавикон, тиснение, одна краска.</p></div></div>
-      <div class="pick">{P_QYRLY}
-        <div><h4>QYRLY · гранёный</h4>
-          <p>Ближе всего к зигзагу на рисунке, но шесть вершин — дорого в мелком.</p></div></div>
-      <div class="pick">{P_USHTAGAN}
-        <div><h4>USHTAǴAN · вымпел</h4>
-          <p>Самый динамичный. Ломает квадратное поле — нужен свой отступ.</p></div></div>
-    </div>
-
-    <h3>Что дальше</h3>
-    <div class="col">
-      <p>1. Подтвердить край — дальше собираю производственный набор: размерный ряд
-        16/20/24/32/48/64 с указанием, где переключаться на прямой край, охранное
-        поле, выворотка, версия в одну краску, кривые для вырубки и тиснения.<br>
-        2. Зафиксировать правило амбера в гайде первой же строкой.<br>
-        3. Анимация: кольцо дорисовывается по часовой, мачта выходит вверх,
-        полотнище разворачивается вправо. Три такта, всего 900 мс.<br>
-        4. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42.</p>
+      <p class="lede">Форма и материал сошлись. Осталось довести до
+        производственного пакета.</p>
+      <p>1. <b>Размерный ряд с порогами:</b> 16 / 20 / 24 — мастер; 24 / 32 — дуо;
+        от 48 — премиум. Пороги прописать в гайде числом, а не словами.<br>
+        2. <b>Кривые под материал:</b> контур под вырубку и тиснение, отдельный
+        контур под гравировку, версия под вышивку с упрощённым кантом.<br>
+        3. <b>Pantone:</b> свести эмаль и золото по вееру на реальной бумаге.
+        Золото на глянце уходит в зелень — для него нужна проба фольги, а не
+        триадная имитация.<br>
+        4. <b>Анимация:</b> кольцо дорисовывается по часовой за 480 мс, стрелка
+        выходит из разрыва наружу за 260 мс, блик по канту проходит за 200 мс.<br>
+        5. Проверить <code>askqet.kz</code> / <code>.com</code> /
+        <code>.ai</code> и товарный знак по классам 9, 35, 42 — заявку подавать
+        на мастер-форму, а не на премиум.</p>
     </div>
   </div>
 </section>
@@ -357,10 +351,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Конструкция, цвет и пропорции — из эскизов заказчика. Предыдущие итерации
+    <p>Форма, цвет и материал — из референсов заказчика. Предыдущие итерации
       остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v7</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v8.py &amp;&amp;
+      <code>logo/v8</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v9.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
@@ -378,26 +372,29 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 """
 
 
-V8 = "logo/v8/"
+V9 = "logo/v9/"
 
 
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
-    blocks = []
-    for i, key in enumerate(FLIES, start=1):
-        base = f"{V8}{key}/askqet-{key}"
-        plates = (read_svg(base + ".svg") + read_svg(base + "-dark.svg")
-                  + read_svg(base + "-mono.svg"))
-        light = read_svg(base + ".svg")
-        sizes = [("a", light, "56"), ("b", light, "28"), ("c", light, "16")]
-        lockups = read_svg(base + "-lockup.svg") + read_svg(base + "-lockup-dark.svg")
-        blocks.append(variant_block(key, plates, sizes, lockups, i))
-    html = html.replace("{VARIANTS}", "\n".join(blocks))
-    html = html.replace("{PAIR}", pair_block())
+    m = read_svg(V9 + "askqet-master.svg")
+    d = read_svg(V9 + "askqet-duo.svg")
+    p = read_svg(V9 + "askqet-premium.svg")
+    tiers = [
+        tier_block("master", m,
+                   [("a", m, "56"), ("b", m, "28"), ("c", m, "16")],
+                   read_svg(V9 + "askqet-lockup-master.svg")),
+        tier_block("duo", d,
+                   [("a", d, "56"), ("b", d, "28"), ("c", d, "16")],
+                   read_svg(V9 + "askqet-lockup-duo.svg")),
+        tier_block("premium", p,
+                   [("a", p, "56"), ("b", p, "28"), ("c", p, "16")],
+                   read_svg(V9 + "askqet-lockup-premium.svg")
+                   + read_svg(V9 + "askqet-premium-light.svg")),
+    ]
+    html = html.replace("{TIERS}", "\n".join(tiers))
+    html = html.replace("{MATERIALS}", materials())
     html = html.replace("{SPECS}", specs_block())
-    for key in FLIES:
-        html = html.replace("{P_" + key.upper() + "}",
-                            read_svg(f"{V8}{key}/askqet-{key}.svg"))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
