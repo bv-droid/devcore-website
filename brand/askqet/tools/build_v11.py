@@ -60,12 +60,18 @@ def uid(p):
     return f"{p}{_U[0]}"
 
 
+OVER = 0.015        # свес круглых форм — 1.5 % роста строчных
+DIAG = 0.95         # диагональ тоньше стойки: на стыке чернила копятся
+
+
 def metrics(weight="text"):
     st = WEIGHTS[weight]["st"]
     x = 52.0
     m = dict(x=x, asc=72.0, desc=20.0, st=st)
-    m["r"] = (x - st) / 2          # радиус чаши по осевой
-    m["rs"] = (x - st) / 4         # радиус дуг s
+    m["ov"] = x * OVER                          # свес
+    m["r"] = (x - st) / 2 + m["ov"]             # радиус чаши по осевой
+    m["rs"] = (x - st + 2 * m["ov"]) / 4        # радиус дуг s
+    m["dg"] = st * DIAG                         # толщина диагонали
     return m
 
 
@@ -92,9 +98,11 @@ def _bowl(m, cx):
 
 
 def g_a(m):
+    """Чаша со свесом, стойка — по касательной к её осевой, без свеса."""
     cx = m["st"] / 2 + m["r"]
     stem = cx + m["r"]
-    return ([_bowl(m, cx), _line(stem, -m["x"], stem, 0)], [], m["x"])
+    return ([_bowl(m, cx), _line(stem, -m["x"], stem, 0)], [],
+            m["x"] + 2 * m["ov"])
 
 
 def g_q(m, tail="cut"):
@@ -102,7 +110,7 @@ def g_q(m, tail="cut"):
     stem = cx + m["r"]
     paths = [_bowl(m, cx)]
     fills = []
-    w = m["x"]
+    w = m["x"] + 2 * m["ov"]
     if tail == "cut":
         paths.append(_line(stem, -m["x"], stem, m["desc"]))
     else:
@@ -132,7 +140,8 @@ def g_e(m):
     cy = -m["x"] / 2
     # перекладина доводится до внешнего края чаши, иначе на срезе ступенька
     return ([_arc(cx, cy, m["r"], 0, -290.0),
-             _line(cx - m["r"], cy, cx + m["r"] + m["st"] / 2, cy)], [], m["x"])
+             _line(cx - m["r"], cy, cx + m["r"] + m["st"] / 2, cy)], [],
+            m["x"] + 2 * m["ov"])
 
 
 S_WIDE = 1.28       # растяжение дуг s по горизонтали
@@ -147,11 +156,11 @@ def g_s(m):
     в глухую фигуру. Терминалы обрываются на 305° и 125°, иначе апертуры
     зарастают в щели.
     """
-    ry, st = m["rs"], m["st"]
+    ry, st, ov = m["rs"], m["st"], m["ov"]
     rx = ry * S_WIDE
     cx = st / 2 + rx
-    yu = -m["x"] + st / 2 + ry
-    yl = -st / 2 - ry
+    yu = -m["x"] + st / 2 + ry - ov
+    yl = -st / 2 - ry + ov
     a0, a1 = S_CUT, S_CUT - 180.0
     p0 = (cx + rx * math.cos(math.radians(a0)), yu + ry * math.sin(math.radians(a0)))
     pj = (cx, yu + ry)
@@ -171,7 +180,7 @@ def g_k(m):
     """
     st, x = m["st"], m["x"]
     stem = st / 2
-    h2 = st / 2 * math.sqrt(2.0)
+    h2 = m["dg"] / 2 * math.sqrt(2.0)
     ax = stem + x / 2             # вылет диагоналей по осевой
     e = ax - h2                   # внешние кромки диагоналей упираются в стойку
     poly = [(ax + h2, -x), (ax - h2, -x), (0.0, -x + e), (0.0, -e),
@@ -196,6 +205,10 @@ GLYPH = {"a": g_a, "s": g_s, "k": g_k, "q": g_q, "e": g_e, "t": g_t}
 SIDE = {"a": (5.0, 7.0), "s": (5.0, 5.0), "k": (7.0, 3.0),
         "q": (5.0, 7.0), "e": (5.0, 5.0), "t": (3.0, 4.0)}
 
+# Кернинг из обмера: боковые задают среднее, кернинг выравнивает площадь
+# белого между конкретными соседями (tools/audit_v12.py).
+KERN = {"kq": -3.7, "qe": 2.1, "et": -9.3}
+
 
 def glyph(ch, m, tail="cut", color="currentColor"):
     fn = GLYPH[ch]
@@ -213,8 +226,10 @@ def wordmark(weight="text", tail="cut", color="currentColor", word=WORD):
     """Возвращает (svg, ширина, метрики)."""
     m = metrics(weight)
     x, els = 0.0, []
-    for ch in word:
+    for i, ch in enumerate(word):
         body, lsb, w, rsb = glyph(ch, m, tail, color)
+        if i:
+            x += KERN.get(word[i - 1] + ch, 0.0)
         els.append(f'<g transform="translate({n(x + lsb)},0)">{body}</g>')
         x += lsb + w + rsb
     return "".join(els), x, m

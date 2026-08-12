@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152.73 124" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153.729 124" fill="none">
   <title>AskQet — s</title>
-  <rect width="152.73" height="124" fill="#FFFFFF"/>
-  <path d="M0,88 H152.73" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
-  <path d="M0,36 H152.73" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <rect width="153.729" height="124" fill="#FFFFFF"/>
+  <path d="M0,88 H153.729" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <path d="M0,36 H153.729" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
   <g transform="translate(16,88) scale(1.13)"><g stroke="#111111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g>
-  <g transform="translate(94.13,88)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.142,-44.192 A12.8,10 0 1 0 18.8,-26 A12.8,10 0 1 1 11.458,-7.808"/></g></g>
+  <g transform="translate(94.13,88)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g>
 
 </svg>

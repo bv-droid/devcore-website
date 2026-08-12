@@ -18,8 +18,14 @@ import build_v10 as V10  # noqa: E402
 import build_v11 as V  # noqa: E402
 
 
-with open(os.path.join(ROOT, "tools/measure_v10.json"), encoding="utf-8") as f:
-    M10 = json.load(f)
+def _load(rel):
+    with open(os.path.join(ROOT, rel), encoding="utf-8") as f:
+        return json.load(f)
+
+
+M10 = _load("tools/measure_v10.json")
+AUD = _load("tools/audit_v12.json")
+COL = _load("tokens/askqet-color.json")
 
 L = "logo/v11/"
 F = "logo/final/"
@@ -84,6 +90,42 @@ EXTRA_CSS = """
   padding:var(--s2)}
 .build__art svg{display:block; width:100%; height:auto}
 @media (max-width:720px){ .build{grid-template-columns:minmax(0,1fr)} }
+
+.pals{display:flex; flex-direction:column; gap:var(--s3); margin:var(--s3) 0}
+.pal{border:1px solid var(--line); border-radius:4px; padding:var(--s3)}
+.pal__head{display:flex; align-items:baseline; gap:var(--s2); flex-wrap:wrap;
+  margin-bottom:var(--s2)}
+.pal__head h3{margin:0; font-size:17px}
+.pal__sw{display:grid; gap:6px; margin-bottom:var(--s3);
+  grid-template-columns:repeat(auto-fit,minmax(104px,1fr))}
+.pal__sw .sw i{display:block; height:40px; border:1px solid var(--line);
+  border-radius:3px}
+.pal__sw .sw b{display:block; margin-top:5px; font-size:11px; font-weight:600}
+.pal__sw .sw em{display:block; font-style:normal; font-family:var(--mono);
+  font-size:10.5px; color:var(--ink-3)}
+.pal__art{display:grid; gap:var(--s2); align-items:center; margin-bottom:var(--s3);
+  grid-template-columns:minmax(0,3fr) minmax(0,3fr) minmax(0,1fr) minmax(0,1fr)}
+.pal__art svg{width:100%; height:auto; display:block}
+.pal__txt{max-width:var(--measure)}
+.pal__txt p{margin:0 0 var(--s1); font-size:14px; line-height:1.55;
+  color:var(--ink-2)}
+.pal__txt b{color:var(--ink)}
+.pal__num{display:grid; gap:var(--s2); margin:var(--s2) 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.pal__num dl{margin:0; display:grid; gap:.15rem; align-content:start}
+.pal__num dt.h{font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+  color:var(--accent); margin-bottom:.25rem}
+.pal__num dl div{display:flex; justify-content:space-between; gap:.6rem}
+.pal__num dt{font-size:12px; color:var(--ink-3)}
+.pal__num dd{margin:0; font-family:var(--mono); font-size:12px;
+  font-variant-numeric:tabular-nums}
+.pal__cvd{display:grid; gap:var(--s2); margin-top:var(--s3);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.pal__cvd figure{margin:0}
+.pal__cvd svg{width:100%; height:auto; display:block}
+.pal__cvd figcaption{margin-top:.45rem; font-family:var(--mono); font-size:11px;
+  color:var(--ink-3)}
+@media (max-width:760px){ .pal__art{grid-template-columns:minmax(0,1fr)} }
 """
 
 
@@ -327,3 +369,130 @@ def files_table():
             '<p class="note">Версии с суффиксом <code>-mono</code> идут без '
             'подложки и в <code>currentColor</code>: цвет задаётся со стороны '
             'носителя. Всё в <code>logo/final/</code>.</p>')
+
+
+# ── перепроверка формы ───────────────────────────────────────────────────────
+
+def audit_block():
+    o = AUD["overshoot"]
+    rows = "".join(
+        f'<tr><td class="num">{ch}</td>'
+        f'<td class="num">{o[ch]["top"]:+.2f}</td>'
+        f'<td class="num">{o[ch]["bot"]:+.2f}</td>'
+        f'<td class="note">{"круглая — свес есть" if o[ch]["top"] > 0.3 else "плоская — свеса не нужно"}</td>'
+        f'</tr>' for ch in V.WORD)
+    t1 = ('<div class="scroll"><table>'
+          '<tr><th>буква</th><th>свес вверх</th><th>свес вниз</th>'
+          '<th>после правки</th></tr>' + rows + '</table></div>')
+
+    sp = AUD["spacing"]
+    before = {"as": 0, "sk": 0, "kq": 20, "qe": -11, "et": 49}
+    rows2 = "".join(
+        f'<tr><td class="num">{k}</td>'
+        f'<td class="num">{before[k]:+d} %</td>'
+        f'<td class="num">{V.KERN.get(k, 0.0):+.1f}</td>'
+        f'<td class="num">{sp[k]["dev"]:+.1f} %</td></tr>'
+        for k in ("as", "sk", "kq", "qe", "et"))
+    t2 = ('<div class="scroll"><table>'
+          '<tr><th>пара</th><th>было, откл. от медианы</th>'
+          '<th>кернинг</th><th>стало</th></tr>' + rows2 + '</table></div>')
+
+    st = AUD["seat"]
+    rows3 = [
+        ("центр тяжести слова", f"{st['word_centroid']:+.2f}", "от базовой линии"),
+        ("центр габарита слова", f"{st['word_box']:+.2f}", "от базовой линии"),
+        ("центр тяжести знака", f"{st['mark_centroid']:+.2f}",
+         "от центра его габарита, в масштабе локапа"),
+        ("требуемый сдвиг", f"{st['shift']:+.2f}", "меньше пятой доли единицы"),
+        ("плотность знака", f"{AUD['density']['mark']:.1f} %", "чернила / габарит"),
+        ("плотность слова", f"{AUD['density']['word']:.1f} %", "чернила / габарит"),
+        ("просвет знак ↔ слово", f"{AUD['mark_gap']['now']:.0f}",
+         f"{AUD['mark_gap']['ratio']:.2f} межбуквенного"),
+    ]
+    t3 = ('<div class="scroll"><table>'
+          '<tr><th>величина</th><th>значение</th><th>комментарий</th></tr>'
+          + "".join(f'<tr><td>{a}</td><td class="num">{b}</td>'
+                    f'<td class="note">{c}</td></tr>' for a, b, c in rows3)
+          + '</table></div>')
+    return t1, t2, t3
+
+
+def audit_overshoot():
+    return audit_block()[0]
+
+
+def audit_spacing():
+    return audit_block()[1]
+
+
+def audit_seat():
+    return audit_block()[2]
+
+
+# ── цвет ─────────────────────────────────────────────────────────────────────
+
+CVD_KEYS = ("протанопия", "дейтеранопия", "тританопия")
+
+
+def color_thresholds():
+    rows = [
+        ("4.5 : 1", "контраст текста на фоне", "WCAG 2.1 AA"),
+        ("3.0 : 1", "крупный текст и элементы интерфейса", "WCAG 2.1 AA large"),
+        ("ΔEok 0.10", "пара различима уверенно", "ниже 0.06 — сливается"),
+        ("ΔEok 0.08", "то же после симуляции дальтонизма",
+         "матрицы Machado 2009, severity 1.0"),
+        ("ΔEok 0.08", "расстояние до соседа по рынку",
+         "Kaspi, DevCore, Halyk"),
+    ]
+    return ('<div class="scroll"><table>'
+            '<tr><th>порог</th><th>что проверяет</th><th>откуда</th></tr>'
+            + "".join(f'<tr><td class="num">{a}</td><td>{b}</td>'
+                      f'<td class="note">{c}</td></tr>' for a, b, c in rows)
+            + '</table></div>')
+
+
+def palettes_block():
+    out = []
+    for key, d in COL.items():
+        sw = "".join(
+            f'<div class="sw"><i style="background:{c}"></i>'
+            f'<b>{k}</b><em>{c}</em>'
+            f'<em>L {d["oklch"][k][0]:.2f} · C {d["oklch"][k][1]:.3f}</em></div>'
+            for k, c in d["colors"].items())
+        con = "".join(
+            f'<div><dt>{k}</dt><dd>{v:.2f} : 1</dd></div>'
+            for k, v in d["contrast"].items())
+        sep = "".join(
+            f'<div><dt>{k}</dt><dd>{v:.3f}</dd></div>'
+            for k, v in list(d["separation"].items())[:1])
+        cvd = "".join(
+            f'<div><dt>{k}</dt><dd>{v:.3f}</dd></div>'
+            for k, v in d["cvd"].items())
+        nb = "".join(
+            f'<div><dt>до {k}</dt><dd>{v:.3f}</dd></div>'
+            for k, v in d["neighbours"].items())
+        cvdimg = "".join(
+            f'<figure><div>⟦logo/color/{key}/askqet-{c}.svg⟧</div>'
+            f'<figcaption>{c}</figcaption></figure>' for c in CVD_KEYS)
+        ok = ('<span class="tag tag--pass">все пороги пройдены</span>'
+              if not d["fails"] else
+              '<span class="tag tag--fail">' + "; ".join(d["fails"]) + '</span>')
+        out.append(
+            f'<article class="pal">'
+            f'<div class="pal__head"><h3>{d["title"]}</h3>{ok}</div>'
+            f'<div class="pal__sw">{sw}</div>'
+            f'<div class="pal__art">'
+            f'<div class="pal__logo">⟦logo/color/{key}/askqet-light.svg⟧</div>'
+            f'<div class="pal__logo">⟦logo/color/{key}/askqet-dark.svg⟧</div>'
+            f'<div class="pal__mark">⟦logo/color/{key}/askqet-accent.svg⟧</div>'
+            f'<div class="pal__mark">⟦logo/color/{key}/askqet-accent-dark.svg⟧</div>'
+            f'</div>'
+            f'<div class="pal__txt"><p><b>Идея.</b> {d["idea"]}</p>'
+            f'<p><b>Цена.</b> {d["cost"]}</p></div>'
+            f'<div class="pal__num">'
+            f'<dl><dt class="h">контраст</dt>{con}</dl>'
+            f'<dl><dt class="h">ΔEok</dt>{sep}{cvd}</dl>'
+            f'<dl><dt class="h">соседи по рынку</dt>{nb}</dl></div>'
+            f'<div class="pal__cvd">{cvdimg}</div>'
+            f'</article>')
+    return '<div class="pals">' + "".join(out) + '</div>'

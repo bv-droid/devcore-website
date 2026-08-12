@@ -13,9 +13,10 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from page_body import (EXTRA_CSS, before_after, decisions, files_table, fits,
-                       letter_fixes, lockups, size_table, sizes_row,
-                       spec_table, tails, weights)  # noqa: E402
+from page_body import (EXTRA_CSS, audit_overshoot, audit_seat, audit_spacing,
+                       before_after, color_thresholds, decisions, files_table,
+                       fits, letter_fixes, lockups, palettes_block, size_table,
+                       sizes_row, spec_table, tails, weights)  # noqa: E402
 
 
 def read_svg(rel):
@@ -243,15 +244,15 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · утверждённый логотип</p>
+    <p class="eyebrow">DevCore · AskQet · логотип и цвет</p>
     <div class="mast__logo">⟦logo/v11/word/askqet-word-text.svg⟧</div>
-    <p class="mast__thesis">Локап в строку, основной вес,
-      <em>знак со свободным терминалом</em><span class="caret"></span></p>
+    <p class="mast__thesis">Форма перепроверена замером,
+      <em>цвет разложен на пять</em><span class="caret"></span></p>
     <div class="mast__meta">
       <div>ШТРИХ<b>12 — 23 % роста</b></div>
       <div>ДИАГОНАЛИ<b>45°</b></div>
       <div>ПОЛОСА КОЛЬЦА<b>1.19 штриха</b></div>
-      <div>ОХРАННОЕ ПОЛЕ<b>14.3</b></div>
+      <div>РАСКЛАДОВ ЦВЕТА<b>5</b></div>
     </div>
   </div>
 </header>
@@ -284,7 +285,55 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Что было не так</h2></div>
+      <h2>Перепроверка формы</h2></div>
+    <div class="col">
+      <p class="lede">Логотип разобран заново — не глазом, а обмером растра.
+        Каждая буква растрируется отдельно в 1024 × 1024, и с растра снимается
+        фактический габарит, площадь, центр тяжести и профиль: крайняя левая и
+        крайняя правая точка чернил в каждой строке. По профилям считается
+        <strong>площадь белого между соседями</strong> — то, что на самом деле
+        видит глаз, а не номинальная боковая.</p>
+      <p>Нашлось три вещи. Две пришлось чинить, третья оказалась в порядке.</p>
+    </div>
+
+    <h3>1 · Свесов не было</h3>
+    <div class="col"><p>Круглая форма, поставленная ровно на линию, кажется
+      меньше плоской того же роста. Обмер показал: чаши a, s, e, q стояли
+      ровно на 52.00 и 0.00 — как стойки k и t. Добавлен свес
+      <strong>0.78 — 1.5 % роста строчных</strong>, вверх и вниз.</p></div>
+    {OVERSHOOT}
+
+    <h3>2 · Межбуквенный просвет плыл на 67 %</h3>
+    <div class="col"><p>Боковые задавались правилом «круглая 5, стойка 7,
+      открытая сторона 3». Правило даёт среднее, но не учитывает конкретную
+      пару: у <code>et</code> слева от t открытая перекладина, и белого там
+      оказалось на 49 % больше медианы, у <code>kq</code> — на 20 %.
+      Кернинг посчитан численно: для каждой пары подобрано расстояние, при
+      котором площадь белого равна медианной. Разброс упал
+      <strong>с 67 % до 0.4 %</strong>.</p></div>
+    {SPACING}
+
+    <h3>3 · Посадка знака оказалась верной</h3>
+    <div class="col"><p>Знак центрируется по габариту, но глаз ловит центр
+      тяжести чернил. Их сравнили: требуемая поправка вышла
+      <strong>0.18 единицы</strong> — то есть меньше пятой доли единицы поля
+      и заведомо меньше толщины линии. Ничего не двигал. Заодно проверен
+      просвет между знаком и словом: 30 единиц дают ровно вдвое больше белого,
+      чем межбуквенный просвет — знак читается отдельно от слова, но не
+      отрывается от него.</p></div>
+    {SEAT}
+
+    <div class="col"><p class="note">Проверен и сам знак: просвет между кольцом
+      и стрелкой по всему контуру канала — медиана 4.63 при заданных 4.50,
+      ядро распределения 4.29…6.46. Расхождение в пределах точности чемферного
+      расстояния; канал равномерен.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">03</span>
+      <h2>Что было не так со словом</h2></div>
     <div class="col">
       <p class="lede">Слово досталось от первой итерации и со знаком
         <strong>не разговаривало</strong>. Знак — плотная фигура с плоскими
@@ -303,7 +352,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span>
+    <div class="sec__head"><span class="sec__num">04</span>
       <h2>Четыре правила со знака в шрифт</h2></div>
     <div class="col">
       <p class="lede">Связь знака и слова — это не «похожий характер», а
@@ -329,7 +378,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span>
+    <div class="sec__head"><span class="sec__num">05</span>
       <h2>Буквы: было и стало</h2></div>
     <div class="col"><p class="lede">Четыре буквы, где правки не косметические.
       Слева версия итерации 1, справа новая; рост строчных уравнен, чтобы
@@ -340,7 +389,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">05</span>
+    <div class="sec__head"><span class="sec__num">06</span>
       <h2>Веса</h2></div>
     <div class="col"><p class="lede">Меняется одно число — штрих. Радиус чаши,
       радиусы дуг s и вылет диагоналей пересчитываются сами.</p></div>
@@ -350,7 +399,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">06</span>
+    <div class="sec__head"><span class="sec__num">07</span>
       <h2>Хвост q</h2></div>
     <div class="col"><p class="lede">Единственное место, где слово может
       напрямую подхватить ось знака. Проверено три версии — и взята самая
@@ -361,7 +410,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">07</span>
+    <div class="sec__head"><span class="sec__num">08</span>
       <h2>Посадка знака</h2></div>
     <div class="col">
       <p class="lede">Высота знака привязана к метрикам слова. Полоса кольца
@@ -379,7 +428,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">08</span>
+    <div class="sec__head"><span class="sec__num">09</span>
       <h2>Локапы</h2></div>
     {LOCKUPS}
   </div>
@@ -387,7 +436,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">09</span>
+    <div class="sec__head"><span class="sec__num">10</span>
       <h2>Охранное поле, размеры и файлы</h2></div>
     <div class="col"><p class="lede">Охранное поле равно полосе кольца. Это
       не круглое число, а величина из построения: она меняется вместе со
@@ -406,21 +455,72 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">10</span>
+    <div class="sec__head"><span class="sec__num">11</span>
+      <h2>Цвет: как он проверяется</h2></div>
+    <div class="col">
+      <p class="lede">Цвет разбирался последним намеренно. Он сильный
+        анестетик: держит внимание на себе и прощает форме то, чего прощать
+        нельзя. Именно поэтому без цвета нашлись и игла на терминале знака,
+        и четыре дефекта в буквах, и разброс просвета на 67 %.</p>
+      <p>Теперь цвет ложится на готовую форму — и проверяется на ней же,
+        а не на абстрактных плашках. Каждый расклад прогоняется через четыре
+        проверки.</p>
+      <p><b>1 · Контраст.</b> WCAG 2.1 для обеих тем. Порог 4.5 : 1 для
+        текста, 3 : 1 для крупного текста и элементов интерфейса.<br>
+        <b>2 · Расстояние.</b> ΔEok между ролями в перцептивном пространстве
+        OKLab: акцент не должен слипаться с чернилами.<br>
+        <b>3 · Дальтонизм.</b> Те же пары после симуляции протанопии,
+        дейтеранопии и тританопии — матрицы Machado, Oliveira, Fernandes
+        (2009), severity 1.0, применяются в линейном RGB. Дейтераномалия — у
+        примерно 8 % мужчин европейского происхождения, и это не крайний
+        случай, а обычный пользователь.<br>
+        <b>4 · Соседство.</b> Расстояние акцента до Kaspi, до материнского
+        DevCore и до Halyk. Логотип живёт не в вакууме, а в одном ряду с ними.</p>
+      <p>Проверка не декоративная: она уже сработала. Первый вариант
+        «СИГНАЛА» был на оранжевом <code>#EA5A00</code> — до Kaspi
+        <strong>ΔEok 0.049</strong>, то есть фактически тот же цвет. Заменён
+        на фуксию, расстояние выросло до 0.133.</p>
+    </div>
+    {THRESHOLDS}
+    <div class="col"><p class="note">Одно ограничение честно: пороги WCAG и
+      ΔEok — про различимость, а не про «нравится». Что цвет значит для
+      казахстанского пользователя, измерением не берётся; ниже это описано
+      словами и вынесено в «цену» каждого расклада.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">12</span>
+      <h2>Пять раскладов</h2></div>
+    <div class="col"><p class="lede">Роли во всех пяти одинаковы, поэтому
+      расклады взаимозаменяемы: макет не переделывается при смене палитры.
+      В каждом — светлая и тёмная тема, знак акцентом и три симуляции
+      дальтонизма.</p></div>
+    {PALETTES}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">13</span>
       <h2>Что дальше</h2></div>
     <div class="col">
-      <p class="lede">Форма знака и слова закрыта. Дальше — то, что на неё
-        ложится.</p>
-      <p>1. <b>Цвет.</b> Палитра, контрасты, проверка на дальтонизм. До сих
-        пор намеренно не трогался — и правильно: без цвета нашлись и игла на
-        терминале знака, и четыре дефекта в буквах.<br>
+      <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.
+        Дальше — выбор расклада и то, что за ним.</p>
+      <p>1. <b>Выбрать расклад.</b> Все пять проходят пороги; выбор — про
+        интонацию, а не про технику. После выбора палитра доводится до полного
+        набора: состояния, графики, тревога и успех.<br>
         2. <b>Остальной алфавит.</b> Сейчас нарисованы шесть букв слова.
         Для заголовков нужен полный набор — латиница, казахская латиница
         с Q и Ǵ, цифры.<br>
         3. <b>Кривые под материал.</b> Контур под вырубку и тиснение, версия
         под вышивку.<br>
         4. <b>Анимация.</b> Кольцо дорисовывается, стрелка выходит из разрыва,
-        слово набегает — но только после утверждения статики.</p>
+        слово набегает — но только после утверждения статики.<br>
+        5. <b>Товарный знак.</b> Проверить <code>askqet.kz</code> /
+        <code>.com</code> и подать заявку по классам 9, 35, 42 — на
+        чёрно-белый мастер, а не на цветную версию.</p>
     </div>
   </div>
 </section>
@@ -434,7 +534,9 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       … <code>logo/v10</code>. Пересборка:
       <code>python3 tools/build.py &amp;&amp; python3 tools/build_v10.py &amp;&amp;
       node tools/measure_v10.js &amp;&amp; python3 tools/build_v11.py &amp;&amp;
-      python3 tools/build_page.py</code>.</p>
+      python3 tools/plates_v12.py &amp;&amp; node tools/measure_v12.js &amp;&amp;
+      python3 tools/audit_v12.py &amp;&amp; python3 tools/build_final.py &amp;&amp;
+      python3 tools/build_color.py &amp;&amp; python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -454,6 +556,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
     for key, fn in (("{DECISIONS}", decisions), ("{FILES}", files_table),
+                    ("{OVERSHOOT}", audit_overshoot),
+                    ("{SPACING}", audit_spacing), ("{SEAT}", audit_seat),
+                    ("{THRESHOLDS}", color_thresholds),
+                    ("{PALETTES}", palettes_block),
                     ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),
                     ("{TAILS}", tails), ("{FITS}", fits),
