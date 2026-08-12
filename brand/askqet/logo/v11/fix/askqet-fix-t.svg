@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 151.277 124" fill="none">
+  <title>AskQet — t</title>
+  <rect width="151.277" height="124" fill="#FFFFFF"/>
+  <path d="M0,88 H151.277" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <path d="M0,36 H151.277" fill="none" stroke="#DADADA" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <g transform="translate(16,88) scale(1.13)"><g stroke="#111111" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g>
+  <g transform="translate(85.957,88)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g>
+
+</svg>

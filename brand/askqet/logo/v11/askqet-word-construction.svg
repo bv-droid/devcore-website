@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 393.405 144" fill="none">
+  <title>AskQet — построение слова</title>
+  <rect width="393.405" height="144" fill="#FFFFFF"/>
+  <path d="M0,98 H393.405" fill="none" stroke="#C4C4C4" stroke-width="0.7" stroke-dasharray="4 3"/>
+  <text x="4" y="95" font-family="ui-monospace,monospace" font-size="8" fill="#8A8A8A">базовая</text>
+  <path d="M0,46 H393.405" fill="none" stroke="#C4C4C4" stroke-width="0.7" stroke-dasharray="4 3"/>
+  <text x="4" y="43" font-family="ui-monospace,monospace" font-size="8" fill="#8A8A8A">рост строчных</text>
+  <path d="M0,26 H393.405" fill="none" stroke="#C4C4C4" stroke-width="0.7" stroke-dasharray="4 3"/>
+  <text x="4" y="23" font-family="ui-monospace,monospace" font-size="8" fill="#8A8A8A">выносной</text>
+  <path d="M0,118 H393.405" fill="none" stroke="#C4C4C4" stroke-width="0.7" stroke-dasharray="4 3"/>
+  <text x="4" y="115" font-family="ui-monospace,monospace" font-size="8" fill="#8A8A8A">нижний</text>
+  <g transform="translate(26,98)"><g transform="translate(5,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 1 46,-26.003"/><path d="M46,-52 L46,0"/></g></g><g transform="translate(69,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.142,-44.192 A12.8,10 0 1 0 18.8,-26 A12.8,10 0 1 1 11.458,-7.808"/></g></g><g transform="translate(118.6,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.485,-52 L23.515,-52 L0,-28.485 L0,-23.515 L23.515,0 L40.485,0 L14.485,-26 Z" fill="#111111"/></g><g transform="translate(167.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 1 46,-26.003"/><path d="M46,-52 L46,20"/></g></g><g transform="translate(231.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 0 32.84,-7.206"/><path d="M6,-26 L52,-26"/></g></g><g transform="translate(291.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
+  <text x="4" y="139" font-family="ui-monospace,monospace" font-size="8" fill="#8A8A8A">штрих 12 · рост 52 · чаша R 20 · диагонали 45°</text>
+
+</svg>

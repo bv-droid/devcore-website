@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.592 132" fill="none">
+  <title>AskQet</title>
+  <rect width="476.592" height="132" fill="#FFFFFF"/>
+  <g transform="translate(20,92)"><g transform="translate(-16.078,-84.505) scale(0.893)">  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+</g><g transform="translate(102.888,0)"><g transform="translate(5,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.5,-26 A21.5,21.5 0 1 1 47.5,-26.004"/><path d="M47.5,-52 L47.5,0"/></g></g><g transform="translate(69,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.152,-45.556 A13.76,10.75 0 1 0 18.26,-26 A13.76,10.75 0 1 1 10.368,-6.444"/></g></g><g transform="translate(117.52,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M4.5,-72 L4.5,0"/></g><path d="M36.864,-52 L24.136,-52 L0,-27.864 L0,-24.136 L24.136,0 L36.864,0 L10.864,-26 Z" fill="#111111"/></g><g transform="translate(162.384,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.5,-26 A21.5,21.5 0 1 1 47.5,-26.004"/><path d="M47.5,-52 L47.5,20"/></g></g><g transform="translate(226.384,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.5,-26 A21.5,21.5 0 1 0 33.353,-5.797"/><path d="M4.5,-26 L52,-26"/></g></g><g transform="translate(286.384,0)"><g fill="none" stroke="#111111" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M18.228,-66 L18.228,0"/><path d="M4.5,-52 L38.82,-52"/></g></g></g></g>
+</svg>

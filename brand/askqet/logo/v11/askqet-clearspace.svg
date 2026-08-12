@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526.108 166.315" fill="none">
+  <title>AskQet — охранное поле</title>
+  <rect width="526.108" height="166.315" fill="#FFFFFF"/>
+  <rect x="37.157" y="37.157" width="451.794" height="92" fill="none" stroke="#B9B9B9" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect x="22.866" y="22.866" width="480.376" height="120.583" fill="none" stroke="#B9B9B9" stroke-width="1"/>
+  <g transform="translate(37.157,109.157)"><g transform="translate(-16.078,-84.505) scale(0.893)">  <defs><mask id="m10012">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M60,56 L260,56 L256.157,95.018 L244.776,132.537 L226.294,167.114 L201.421,197.421 L171.114,222.294 L136.537,240.776 L99.018,252.157 L60,256 Z" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10012)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#111111"/>
+</g><g transform="translate(110.388,0)"><g transform="translate(5,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 1 46,-26.003"/><path d="M46,-52 L46,0"/></g></g><g transform="translate(69,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.142,-44.192 A12.8,10 0 1 0 18.8,-26 A12.8,10 0 1 1 11.458,-7.808"/></g></g><g transform="translate(118.6,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.485,-52 L23.515,-52 L0,-28.485 L0,-23.515 L23.515,0 L40.485,0 L14.485,-26 Z" fill="#111111"/></g><g transform="translate(167.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 1 46,-26.003"/><path d="M46,-52 L46,20"/></g></g><g transform="translate(231.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46,-26 A20,20 0 1 0 32.84,-7.206"/><path d="M6,-26 L52,-26"/></g></g><g transform="translate(291.085,0)"><g fill="none" stroke="#111111" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+  <text x="22.866" y="16.866" font-family="ui-monospace,monospace" font-size="11" fill="#8A8A8A">охранное поле = полоса кольца = 14.3</text>
+
+</svg>
