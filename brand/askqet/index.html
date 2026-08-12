@@ -210,6 +210,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
+/* ── раскладки внимания ── */
+.schemes{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
+  margin:var(--s4) 0}
+@media(min-width:820px){.schemes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scheme{border:1px solid var(--line); border-radius:4px; padding:var(--s3)}
+.scheme__sw{display:flex; gap:4px; margin-bottom:var(--s2)}
+.scheme__sw i{width:34px; height:22px; border-radius:3px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.scheme b{display:block; font-size:13px; letter-spacing:.04em;
+  margin-bottom:4px}
+.scheme p{font-size:13px; color:var(--dim); margin:0}
+
 /* ── тёмная краска: две таблицы рядом и полоса образцов ── */
 .two{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
   margin:var(--s4) 0; align-items:start}
@@ -2882,6 +2894,47 @@ tr.row--mark td{background:rgba(14,110,102,.10)}
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">18</span>
+      <h2>Сколько цветов выдерживает экран</h2></div>
+    <div class="col">
+      <p class="lede">Справочник по законодательству и бухгалтерии — не
+        витрина. Дефицитен здесь не взгляд, а <strong>доверие</strong>, и
+        цвет надо тратить на то, кто говорит, а не на украшение. Но сначала
+        стоит выяснить, сколько красок экран вообще выдерживает.</p>
+      <p>Поиск глазом описывается законом подобия (Duncan&nbsp;&amp;&nbsp;Humphreys,
+        1989): находка тем быстрее, чем сильнее цель отличается от фона, и тем
+        медленнее, чем разнороднее сам фон. Отсюда следствие, которое обычно
+        узнают поздно: <strong>каждая новая осмысленная краска удешевляет все
+        предыдущие</strong>. Четыре смысловые роли не богаче двух — они тише
+        двух.</p>
+      <p>Ниже посчитаны пять раскладок одной и той же системы. Отрыв цели —
+        минимальное расстояние от акцента до любой другой роли. Разнородность —
+        среднее попарное расстояние между не-акцентными ролями. Эффективность —
+        отрыв, делённый на разнородность.</p>
+    </div>
+    <div class="scroll"><table><tr><th>раскладка</th><th>цветных тонов</th><th>отрыв цели</th><th>разнородность</th><th>эффективность</th><th>при дальтонизме</th><th>к текущей</th></tr><tr><td>ПРОВЕНАНС</td><td class="num">5</td><td class="num">0.125</td><td class="num">0.169</td><td class="num"><b>0.107</b></td><td class="num">0.031</td><td class="num">0%</td></tr><tr><td>ТЕМПЕРАТУРА</td><td class="num">5</td><td class="num">0.043</td><td class="num">0.100</td><td class="num"><b>0.039</b></td><td class="num">0.011</td><td class="num">-64%</td></tr><tr class="row--mark"><td>ТЕМПЕРАТУРА НА ПОДЛОЖКЕ</td><td class="num">4</td><td class="num">0.125</td><td class="num">0.079</td><td class="num"><b>0.116</b></td><td class="num">0.033</td><td class="num">+8%</td></tr><tr><td>ОДИН ГОЛОС</td><td class="num">4</td><td class="num">0.103</td><td class="num">0.052</td><td class="num"><b>0.098</b></td><td class="num">0.033</td><td class="num">-8%</td></tr><tr><td>ОДИН ГОЛОС, СТРОГО</td><td class="num">3</td><td class="num">0.125</td><td class="num">0.084</td><td class="num"><b>0.116</b></td><td class="num">0.032</td><td class="num">+8%</td></tr></table></div><div class="schemes"><div class="scheme"><div class="scheme__sw"><i style="background:#0E6E66" title="accent #0E6E66"></i><i style="background:#754E2C" title="ink #754E2C"></i><i style="background:#2D3576" title="machine #2D3576"></i><i style="background:#671D3D" title="note #671D3D"></i><i style="background:#826954" title="muted #826954"></i></div><b>ПРОВЕНАНС — цвет кодирует источник</b><p>То, что собрано сейчас. Четыре смысловые краски: чернила, стрелка, машина, поля. Каждая — отдельный тон.</p></div><div class="scheme"><div class="scheme__sw"><i style="background:#0E6E66" title="accent #0E6E66"></i><i style="background:#754E2C" title="ink #754E2C"></i><i style="background:#446C6E" title="machine #446C6E"></i><i style="background:#9E533C" title="note #9E533C"></i><i style="background:#826954" title="muted #826954"></i></div><b>ТЕМПЕРАТУРА — тёплое человеческое, холодное машинное</b><p>Два семейства вместо четырёх тонов. Всё, что написал человек (текст, закон, ваши пометки), тёплое; всё, что делает система (ответ ИИ, кнопки, ссылки), холодное. Новые функции ИИ наследуют холод, не заводя новых красок.</p></div><div class="scheme"><div class="scheme__sw"><i style="background:#0E6E66" title="accent #0E6E66"></i><i style="background:#754E2C" title="ink #754E2C"></i><i style="background:#9E533C" title="note #9E533C"></i><i style="background:#826954" title="muted #826954"></i><i style="background:#E4EDEC" title="machineFill #E4EDEC"></i></div><b>ТЕМПЕРАТУРА НА ПОДЛОЖКЕ — холод уходит в фон, не в текст</b><p>Та же граница человек/машина, но холод несёт подложка, а не буквы. Текст ответа ИИ набран теми же чернилами; холодной остаётся плашка под ним. Так граница видна, а конкурента у акцента не появляется.</p></div><div class="scheme"><div class="scheme__sw"><i style="background:#0E6E66" title="accent #0E6E66"></i><i style="background:#754E2C" title="ink #754E2C"></i><i style="background:#705F52" title="machine #705F52"></i><i style="background:#84644B" title="note #84644B"></i><i style="background:#826954" title="muted #826954"></i></div><b>ОДИН ГОЛОС — одна краска на весь экран</b><p>Смысловая краска ровно одна — акцент. Машина и поля различаются не тоном, а светлотой, линейкой, отступом и почерком. Цвет тратится только на то, что требует действия.</p></div><div class="scheme"><div class="scheme__sw"><i style="background:#0E6E66" title="accent #0E6E66"></i><i style="background:#754E2C" title="ink #754E2C"></i><i style="background:#826954" title="muted #826954"></i><i style="background:#EFE8DD" title="machineFill #EFE8DD"></i></div><b>ОДИН ГОЛОС, СТРОГО — тон только у акцента</b><p>Предел той же мысли: машина и поля не отличаются тоном вовсе, только светлотой и формой. Тон на экране ровно один, и он всегда означает действие.</p></div></div>
+    <div class="col">
+      <p><b>Замер опроверг то, что я собирался предложить.</b> Разделить
+        человеческое и машинное температурой — тёплые чернила, холодная
+        реплика ИИ — идея верная по смыслу и провальная по исполнению, если
+        холод отдать буквам: акцент теряет <strong>64&nbsp;%</strong>
+        эффективности. Холодная машинная реплика встаёт вплотную к бирюзовой
+        стрелке и отбирает у неё уникальность.</p>
+      <p><b>Та же граница, но холодом подложки, — лучшая из пяти.</b> Текст
+        ответа ИИ набирается теми же чернилами, холодной остаётся плашка под
+        ним. Граница видна, конкурента у акцента не появляется, цветных тонов
+        на один меньше, и при дальтонизме раскладка держится лучше всех.</p>
+      <p class="note">Оговорка о методе: это модель, а не человек. Закон
+        подобия описывает поиск одиночной цели среди однородных отвлекающих,
+        а настоящий экран сложнее. Числа годятся для сравнения раскладок между
+        собой и не годятся как предсказание времени поиска в секундах.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">19</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.

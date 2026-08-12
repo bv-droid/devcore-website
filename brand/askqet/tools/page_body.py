@@ -34,6 +34,18 @@ L = "logo/v11/"
 F = "logo/final/"
 
 EXTRA_CSS = """
+/* ── раскладки внимания ── */
+.schemes{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
+  margin:var(--s4) 0}
+@media(min-width:820px){.schemes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scheme{border:1px solid var(--line); border-radius:4px; padding:var(--s3)}
+.scheme__sw{display:flex; gap:4px; margin-bottom:var(--s2)}
+.scheme__sw i{width:34px; height:22px; border-radius:3px;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.14)}
+.scheme b{display:block; font-size:13px; letter-spacing:.04em;
+  margin-bottom:4px}
+.scheme p{font-size:13px; color:var(--dim); margin:0}
+
 /* ── тёмная краска: две таблицы рядом и полоса образцов ── */
 .two{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
   margin:var(--s4) 0; align-items:start}
@@ -812,3 +824,41 @@ def ladder_block():
             f'<i>{fam["note"]}</i></div>'
             f'<div class="ladrow">{cells}</div></div>')
     return "".join(out)
+
+
+# ── сколько цветов выдерживает экран ─────────────────────────────────────────
+
+ATT = _load("tools/attention.json")
+
+
+def attention_block():
+    """Зрительный поиск: отрыв цели, разнородность поля, эффективность."""
+    base = ATT["provenance"]["normal"]["eff"]
+    best = max(v["normal"]["eff"] for v in ATT.values())
+    rows = ""
+    for k, v in ATT.items():
+        d = (v["normal"]["eff"] / base - 1) * 100
+        pick = abs(v["normal"]["eff"] - best) < 1e-9
+        cls = ' class="row--mark"' if pick else ''
+        sign = "+" if d > 0 else ""
+        rows += (f'<tr{cls}>'
+                 f'<td>{v["title"].split(" — ")[0]}</td>'
+                 f'<td class="num">{v["load"]}</td>'
+                 f'<td class="num">{v["normal"]["lead"]:.3f}</td>'
+                 f'<td class="num">{v["normal"]["het"]:.3f}</td>'
+                 f'<td class="num"><b>{v["normal"]["eff"]:.3f}</b></td>'
+                 f'<td class="num">{v["cvd"]["eff"]:.3f}</td>'
+                 f'<td class="num">{sign}{d:.0f}%</td></tr>')
+    sw = ""
+    for k, v in ATT.items():
+        cols = "".join(
+            f'<i style="background:{c}" title="{r} {c}"></i>'
+            for r, c in dict(accent=v["accent"], **v["others"],
+                             **v.get("fills", {})).items())
+        sw += (f'<div class="scheme"><div class="scheme__sw">{cols}</div>'
+               f'<b>{v["title"]}</b><p>{v["note"]}</p></div>')
+    return ('<div class="scroll"><table>'
+            '<tr><th>раскладка</th><th>цветных тонов</th><th>отрыв цели</th>'
+            '<th>разнородность</th><th>эффективность</th>'
+            '<th>при дальтонизме</th><th>к текущей</th></tr>'
+            + rows + '</table></div><div class="schemes">' + sw + '</div>')
