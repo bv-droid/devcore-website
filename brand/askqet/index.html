@@ -208,95 +208,124 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
-.concept{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
-.concept:first-of-type{padding-top:0; border-top:0; margin-top:0}
-.concept__top{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr);
+.atom{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
+.atom:first-of-type{padding-top:0; border-top:0; margin-top:0}
+.atom__top{display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr);
   gap:var(--s4); align-items:start}
-.concept__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
+.atom__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
   text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.concept__title{font-size:clamp(23px,2.8vw,32px); letter-spacing:-.03em; margin:0 0 .3em;
+.atom__title{font-size:clamp(22px,2.7vw,30px); letter-spacing:-.03em; margin:0 0 .6em;
   font-weight:680}
-.concept__kind{display:inline-block; font-family:var(--mono); font-size:11.5px;
-  letter-spacing:.04em; padding:.2em .6em; border-radius:3px;
-  background:var(--accent-soft); color:var(--accent); margin:0 0 var(--s3)}
-.art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
-.art svg{display:block; width:100%; height:auto}
-.sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3);
-  flex-wrap:wrap}
-.sizes figure{margin:0; text-align:center}
-.sizes svg{display:block; border-radius:4px}
-.sizes .a svg{width:88px} .sizes .b svg{width:44px} .sizes .c svg{width:24px}
-.sizes figcaption{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);
-  margin-top:.5em}
-.logic{border:1px solid var(--line); border-radius:6px; background:var(--surface);
-  padding:var(--s3); margin-top:var(--s3)}
-.logic__name{font-family:var(--mono); font-size:11.5px; letter-spacing:.14em;
-  text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.logic p{font-size:14.5px; color:var(--ink-2); margin:0}
-.chips{display:grid; grid-template-columns:repeat(auto-fill,minmax(126px,1fr)); gap:2px;
-  margin-top:var(--s2)}
-.chips div{padding:.45rem .5rem .55rem; font-family:var(--mono); font-size:10.5px;
-  line-height:1.45; min-height:58px; display:flex; flex-direction:column;
+.atom__pair{display:grid; grid-template-columns:1fr 1fr; gap:2px; border-radius:6px;
+  overflow:hidden; border:1px solid var(--line)}
+.atom__pair svg{display:block; width:100%; height:auto}
+.atom__swatches{display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:var(--s2)}
+.atom__swatches div{padding:.5rem .55rem .6rem; font-family:var(--mono); font-size:10.5px;
+  line-height:1.5; min-height:56px; display:flex; flex-direction:column;
   justify-content:flex-end}
-.chips b{font-size:11.5px; font-weight:500}
-.ref{border-left:2px solid var(--line-strong); padding-left:var(--s2);
-  margin-top:var(--s3); font-size:13.5px; color:var(--ink-3)}
-.ref b{color:var(--ink-2); font-weight:600}
-.lockup-row{margin-top:var(--s3); border:1px solid var(--line); border-radius:6px;
-  overflow:hidden}
-.lockup-row svg{display:block; width:100%; height:auto}
+.atom__swatches b{font-size:11.5px; font-weight:500; display:block}
 
-.shift{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+/* ── Сетка применения ── */
+.uses{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:var(--s2); margin-top:var(--s3)}
-.shift div{border:1px solid var(--line); border-radius:6px; padding:var(--s3);
-  background:var(--surface)}
-.shift h4{margin:0 0 .35em; font-size:14.5px}
-.shift p{margin:0; font-size:13.5px; color:var(--ink-2)}
-.shift em{font-style:normal; font-family:var(--mono); font-size:11px;
-  color:var(--ink-3); display:block; margin-top:.5em; letter-spacing:.05em}
+.use{border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  display:flex; flex-direction:column}
+.use__box{padding:var(--s3); flex:1; display:flex; align-items:center;
+  justify-content:center; min-height:112px}
+.use__box--dark{background:#0B0C0E; color:#F5F4F0}
+.use__box--light{background:#F5F4F0; color:#15171B}
+.use__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--ink-3); padding:.5rem .75rem;
+  border-top:1px solid var(--line); background:var(--surface)}
+.ico{display:inline-block; vertical-align:middle}
+.ico svg{display:block; width:100%; height:100%}
 
-.pick{display:grid; grid-template-columns:88px minmax(0,1fr); gap:var(--s3);
+/* вкладка браузера */
+.tab{display:flex; align-items:center; gap:.5rem; background:#1B1E23; color:#C8CCD2;
+  border-radius:8px 8px 0 0; padding:.45rem .7rem; font-size:12px; width:100%;
+  max-width:190px; font-family:var(--sans)}
+.tab .ico{width:16px; height:16px; flex:none}
+/* чат */
+.chat{display:flex; gap:.6rem; align-items:flex-start; width:100%}
+.chat__av{width:30px; height:30px; border-radius:50%; flex:none; display:grid;
+  place-items:center; background:rgba(255,255,255,.07)}
+.chat__av .ico{width:18px; height:18px}
+.use__box--light .chat__av{background:rgba(0,0,0,.05)}
+.chat__msg{font-size:13.5px; line-height:1.5}
+/* инлайн */
+.inline{font-size:14px; line-height:1.65}
+.inline .ico{width:.78em; height:.78em; margin:0 .1em}
+/* список */
+.list{width:100%; font-size:13.5px; line-height:1.5}
+.list li{display:flex; gap:.55rem; align-items:flex-start; margin-bottom:.5rem}
+.list li:last-child{margin:0}
+.list .ico{width:13px; height:13px; margin-top:.28em; flex:none}
+/* кнопка */
+.btn{display:inline-flex; align-items:center; gap:.5rem; border-radius:999px;
+  padding:.6rem 1.1rem; font-size:14px; font-weight:600; border:0}
+.btn .ico{width:15px; height:15px}
+/* индикатор */
+.typing{display:flex; gap:.55rem; align-items:center}
+.typing .ico{width:18px; height:18px; animation:pulse 1.25s ease-in-out infinite}
+.typing .ico:nth-child(2){animation-delay:.18s}
+.typing .ico:nth-child(3){animation-delay:.36s}
+@keyframes pulse{0%,100%{opacity:.28} 45%{opacity:1}}
+/* иконка приложения */
+.appicon{width:72px; height:72px; border-radius:17px; display:grid; place-items:center}
+.appicon .ico{width:40px; height:40px}
+/* цитата с водяным знаком */
+.quote{position:relative; width:100%; font-size:13px; line-height:1.55;
+  padding:.7rem .8rem; border-radius:6px; background:rgba(255,255,255,.05)}
+.use__box--light .quote{background:rgba(0,0,0,.045)}
+.quote .ico{position:absolute; right:.55rem; bottom:.5rem; width:22px; height:22px;
+  opacity:.32}
+
+.risk{border-left:2px solid var(--fail); padding-left:var(--s2); margin-top:var(--s3)}
+.risk p{margin:0; font-size:14px; color:var(--ink-2)}
+.risk b{color:var(--ink)}
+.lockups{display:grid; gap:2px; margin-top:var(--s3); border:1px solid var(--line);
+  border-radius:6px; overflow:hidden}
+.lockups svg{display:block; width:100%; height:auto}
+
+.pick{display:grid; grid-template-columns:72px minmax(0,1fr); gap:var(--s3);
   align-items:center; border:1px solid var(--line); border-radius:6px;
   padding:var(--s2); background:var(--surface)}
 .pick + .pick{margin-top:var(--s2)}
-.pick svg{display:block; width:100%; height:auto; border-radius:5px}
+.pick .box{border-radius:6px; padding:var(--s1); background:#0B0C0E}
+.pick .box svg{display:block; width:100%; height:auto}
 .pick h4{margin:0 0 .25em} .pick p{margin:0; font-size:14.5px; color:var(--ink-2)}
 .flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
   border-radius:3px; border:1px solid currentColor; margin-left:.5em}
-.flag--ok{color:var(--pass)} .flag--risk{color:var(--fail)}
+.flag--ok{color:var(--pass)}
 .src{font-size:13.5px; color:var(--ink-3); margin-top:var(--s3)}
 .src a{color:var(--ink-2)}
-@media (max-width:760px){ .concept__top,.pick{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .typing .ico{animation:none; opacity:1} }
+@media (max-width:760px){ .atom__top,.pick{grid-template-columns:1fr} }
 
 </style>
 
 <svg class="filters" aria-hidden="true" style="position:absolute;width:0;height:0">
-  <filter id="cvd-prot" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix"
-    values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
   <filter id="cvd-deut" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix"
     values="0.625 0.375 0 0 0  0.70 0.30 0 0 0  0 0.30 0.70 0 0  0 0 0 1 0"/></filter>
-  <filter id="cvd-trit" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix"
-    values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
-  <filter id="cvd-mono" color-interpolation-filters="linearRGB"><feColorMatrix type="saturate"
-    values="0"/></filter>
 </svg>
 
 <button class="theme-toggle" id="themeBtn" type="button">ТЕМА</button>
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 5 — без круга и квадрата</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 6 — знак как атом продукта</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Главный сдвиг пяти лет: знак перестал быть картинкой.
-      Он стал <em>буквой, поведением или жестом</em><span class="caret"></span></p>
+    <p class="mast__thesis">Простой знак — это не маленькая картинка.
+      Это <em>знак препинания</em>, который умеет быть логотипом<span
+      class="caret"></span></p>
     <div class="mast__meta">
-      <div>КОНЦЕПЦИЙ<b>5</b></div>
-      <div>ФИГУР В ОСНОВЕ<b>ноль</b></div>
-      <div>ИЗУЧЕНО<b>ребрендинги 2020–2026</b></div>
-      <div>ЛОГИК ЦВЕТА<b>5 разных</b></div>
+      <div>АТОМОВ<b>4</b></div>
+      <div>ФИГУР В КАЖДОМ<b>одна или две</b></div>
+      <div>МЕСТ ПРИМЕНЕНИЯ<b>8 на каждый</b></div>
+      <div>МИНИМАЛЬНЫЙ РАЗМЕР<b>16 px</b></div>
     </div>
   </div>
 </header>
@@ -306,309 +335,708 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Что случилось с логотипами за пять лет</h2></div>
+      <h2>Исследование: во что превратился знак в ИИ-продуктах</h2></div>
     <div class="col">
-      <p class="lede">Если выложить рядом заметные ребрендинги 2020–2026, видно
-        одно движение: <strong>символ уступил место буквам</strong>. Nokia (2023)
-        разобрала собственное имя на деформированные литеры. X (2023) заменила птицу
-        монограммой. Pepsi (2023) вернулась к жирным капителям. Burberry (2023)
-        достала из архива засечный шрифт. Jaguar (2024) построила ребрендинг на
-        типографике под лозунгом «Copy Nothing». OpenAI в 2025-м провела первый в
-        своей истории ребрендинг — и центральным активом стал не знак, а шрифт
-        OpenAI Sans.</p>
-      <p>Второе движение — внутри самой ИИ-категории. Она разошлась на две школы:
-        «магическую», с градиентными шарами и свечением, и «незаметную», которая
-        сознательно отказывается от градиентов. Anthropic и Perplexity стоят во
-        второй — и именно поэтому выделяются на фоне первой.</p>
-      <p>Вывод для нас прямой. Круг с квадратом — приём из предыдущей эпохи, когда
-        логотип должен был быть <em>картинкой</em>. Ниже пять концепций, где основой
-        служит буква, интонация, жест или поступок — но ни одна не строится на
-        фигуре.</p>
+      <p class="lede">Продолжение прошлого разбора даёт неприятную, но полезную
+        картину. Пока бренды уходили в типографику, внутри самих ИИ-продуктов
+        случилось обратное: знак сжался до одного маленького глифа, который ставят
+        прямо в интерфейс — и почти все пришли к <strong>одной и той же
+        четырёхлучевой «искре»</strong>.</p>
+      <p>Google выпустил по ней отдельное исследование — «Rise of the AI Sparkle
+        Icon». Искра стоит в Gemini, в поиске Google, в ChatGPT, в Spotify, в
+        Facebook: она помечает всё, что сделано машиной. В 2025-м Google перекрасил
+        её в четыре фирменных цвета, но форму не тронул. К концу года Slate вышел
+        с текстом «AI-инструменты используют одну и ту же иконку — и это проблема».</p>
+      <p>Отсюда два вывода, и оба прямо отвечают на задачу.</p>
     </div>
 
-    <div class="shift">
-      <div><h4>Пиктограмма → буква</h4>
-        <p>Символ перестал быть обязательным. Wordmark сам по себе стал полноценной
-          айдентикой, а главным активом — шрифт.</p><em>Nokia · X · Jaguar · OpenAI</em></div>
-      <div><h4>Оттенок → поведение</h4>
-        <p>Узнаваемость переехала с формы на то, что бренд делает с чужим
-          контентом: как размечает, как выделяет, как двигается.</p><em>школа сдержанности</em></div>
-      <div><h4>Геометрия → рука</h4>
-        <p>Когда рынок утонул в окружностях, рукописное вернулось как способ
-          выглядеть человеком.</p><em>Johnson &amp; Johnson · Jaguar script</em></div>
-      <div><h4>Один алфавит → два</h4>
-        <p>Казахстан десятый год идёт с кириллицы на латиницу. Бренд, который
-          стартует сейчас, обязан работать в обеих.</p><em>указ 2017, сроки сдвигались</em></div>
+    <div class="shift" style="display:grid;
+         grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s2);
+         margin-top:var(--s3)">
+      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
+           background:var(--surface)">
+        <h4 style="margin:0 0 .4em">Знак обязан быть атомом интерфейса</h4>
+        <p style="margin:0;font-size:14px;color:var(--ink-2)">Он ставится в строку
+          текста, в маркер списка, в кнопку, в аватар, в индикатор ожидания. Это не
+          «уменьшенный логотип», а самостоятельный элемент набора — значит и рисовать
+          его надо как знак препинания, а не как картинку.</p></div>
+      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
+           background:var(--surface)">
+        <h4 style="margin:0 0 .4em">Но именно поэтому нельзя брать искру</h4>
+        <p style="margin:0;font-size:14px;color:var(--ink-2)">Простое решение уже
+          занято всеми сразу. Искра сегодня означает не бренд, а категорию — примерно
+          как значок Wi-Fi. Знак, похожий на неё, будет читаться как «здесь есть ИИ»,
+          а не как «это askqet».</p></div>
     </div>
 
     <div class="col">
+      <p style="margin-top:var(--s3)">Ниже четыре атома. Каждый — одна или две
+        фигуры, ни один не искра, и каждый показан сразу в восьми местах продукта:
+        вкладка, аватар, строка текста, список, кнопка, ожидание ответа, иконка
+        приложения, водяной знак. Если атом где-то ломается, это видно тут же.</p>
       <p class="src">Источники:
-        <a href="https://designshack.net/articles/graphics/rebrand-examples/">Design
-        Shack — Best &amp; Worst Rebrands of 2023 &amp; 2024</a>,
-        <a href="https://brandsthatpunch.com/blogs/top-10-rebrands-of-2024">Brands That
-        Punch — Top 10 Rebrands of 2024</a>,
-        <a href="https://www.wallpaper.com/tech/openai-has-undergone-its-first-ever-rebrand-giving-fresh-life-to-chatgpt-interactions">Wallpaper*
-        — OpenAI’s first ever rebrand</a>,
-        <a href="https://www.creativereview.co.uk/openai-brand-refresh/">Creative Review
-        — OpenAI brand refresh</a>,
-        <a href="https://news.designrush.com/openai-refreshes-its-visual-brand-identity-with-new-logo-typeface">DesignRush
-        — OpenAI new logo &amp; typeface</a>,
-        <a href="https://d1s1.com/blog/ai-branding-invisible-vs-magical">D1S1 — Two
-        Schools of AI Branding</a>,
-        <a href="https://thediplomat.com/2024/09/the-latinization-of-kazakhstan-language-modernization-and-geopolitics/">The
-        Diplomat — The Latinization of Kazakhstan</a>.</p>
+        <a href="https://design.google/library/ai-sparkle-icon-research-pozos-schmidt">Google
+        Design — Rise of the AI Sparkle Icon</a>,
+        <a href="https://slate.com/technology/2025/12/artificial-intelligence-tools-icon-google-gemini-chatgpt-design.html">Slate
+        — AI Tools All Use the Same Sparkly Icon</a>,
+        <a href="https://9to5google.com/2025/06/30/new-gemini-icon/">9to5Google —
+        Gemini sparkle gets the four-color treatment</a>,
+        <a href="https://www.informaticsinc.com/blog/november-2024/press-magic-iconography-sparkles-ai-tools">Informatics
+        — The Iconography of Sparkles in AI Tools</a>,
+        <a href="https://design.google/library/gemini-ai-visual-design">Google Design
+        — Gemini AI Visual Design</a>.</p>
     </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span><h2>Пять концепций</h2></div>
-    <article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg></div><div><p class="concept__id">Концепция 1</p><h3 class="concept__title">QUYRYQ · Құйрық — хвост</h3><p class="concept__kind">Знака нет. Есть подпись.</p><p>Единственный элемент бренда — хвост. Он есть у латинской q, у прописной Q и у казахской Қ: три алфавита, одна деталь. В логотипе хвост уходит вниз и подчёркивает всё слово — буква превращается в росчерк, которым подтверждают.</p><p class="note">В продукте хвост живёт дальше знака: он подчёркивает найденный ответ, оборачивает цитату, тянется как индикатор загрузки. Это не логотип с элементами, а элемент, который иногда складывается в логотип.</p><div class="sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg><figcaption>88</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg><figcaption>44</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg><figcaption>24</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">СИНЯЯ РУЧКА</p><p>Цвета ровно один и ровно в одном месте — в хвосте. Синий шариковой ручки: единственный цвет, которым в этой стране что-то подтверждают.</p><div class="chips"><div style="background:#15171B;color:#F6F2E8"><b>#15171B</b>чернила<br>C 0.009 · H 264° · 15.90:1</div><div style="background:#1240FF;color:#F6F2E8"><b>#1240FF</b>хвост<br>C 0.279 · H 265° · 5.81:1</div></div></div><p class="ref"><b>Опора.</b> Тренд пяти лет: айдентика ушла из пиктограммы в шрифт. Nokia 2023, X 2023, Jaguar 2024, OpenAI 2025 — все четыре сделали ставку на буквы, а не на символ.</p><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 339.5 118" fill="none">
-  
-  <rect width="339.5" height="118" fill="#F3F1EC"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)" fill="none" stroke="#15171B" stroke-width="9" stroke-linecap="round"><circle cx="23" cy="-23" r="18.5"/></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><path d="M199,-37 L199,2 C199,18 187,27 169,27 L14,27 C4,27 -1,22 -1,14" fill="none" stroke="#1240FF" stroke-width="9" stroke-linecap="round"/></g>
-</svg></div></article>
-<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+    <div class="sec__head"><span class="sec__num">02</span>
+      <h2>Четыре атома, каждый — в восьми местах</h2></div>
+    
+<article class="atom">
+  <div class="atom__top">
+    <div>
+      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
+  <g color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+</g>
 
-</svg></div><div><p class="concept__id">Концепция 2</p><h3 class="concept__title">EKI JAZU · Екі жазу — два письма</h3><p class="concept__kind">Один глиф, два алфавита.</p><p>Снаружи — латинская Q. Внутри, в контрформе — кириллическая Қ. Один знак читается двумя алфавитами сразу, и ни один не главный: смотря что вы считаете формой, а что фоном.</p><p class="note">Инверсия переворачивает роли: кириллица выходит наружу, латиница уходит в контрформу. Это не два логотипа, а два состояния одного.</p><div class="sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F5F4F0"/>
+  <g color="#C2410C">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+</g>
+
+</svg></div>
+      <div class="atom__swatches">
+        <div style="background:#FF7A3D;color:#0B0C0E"><b>#FF7A3D</b>на тёмном<br>
+          7.55:1 · H 43°</div>
+        <div style="background:#C2410C;color:#F6F2E8"><b>#C2410C</b>на светлом<br>
+          4.71:1 · H 38°</div>
+      </div>
+    </div>
+    <div>
+      <p class="atom__id">Атом 1 · «:»</p>
+      <h3 class="atom__title">QOS NÚKTE · Қос нүкте — двоеточие</h3>
+      <p>Двоеточие — знак, после которого в любом языке идёт ответ. Верхняя точка раскрыта в кольцо (вопрос ещё открыт), нижняя сплошная (ответ закрыт). Две фигуры, больше ничего.</p>
+      <p class="note">Ставится после имени везде, где бренд говорит: «askqet:». В чате пульсирует как индикатор набора, в списке служит маркером, в CLI — приглашением ввода.</p>
+      <p class="note" style="margin-top:.8em">Тёплый киноварь: единственный акцент во всём интерфейсе. Всё остальное — нейтраль, поэтому атом всегда самый заметный объект на экране.</p>
+    </div>
+  </div>
+  
+<div class="uses">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="tab"><span class="ico" style="color:#FF7A3D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>
+        askqet — ответ по запросу</div>
+    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="chat">
+      <div class="chat__av" style="color:#FF7A3D"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span></div>
+      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
+    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><p class="inline" style="margin:0">
+      Срок сдачи ФНО 100.00 — до 31 марта
+      <span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>
+      следующего года.</p></div>
+    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
+      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>Проверить регистрацию</li>
+      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>Сверить ставку</li>
+      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>Подать отчёт</li>
+    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light">
+      <button class="btn" type="button"
+        style="background:#C2410C;color:#F5F4F0">
+        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span>Спросить</button>
+    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="typing" style="color:#FF7A3D">
+      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="appicon" style="background:#FF7A3D;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span></div>
+    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="quote">
+      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
+      <span class="ico" style="color:#FF7A3D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
+</div>
+  <div class="risk"><p><b>Чем платим.</b> Двоеточие не патентуется. Узнаваемость держится на дисциплине: одна и та же пара «кольцо + точка» с одним и тем же ритмом.</p></div>
+  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#0B0C0E"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+</g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#F5F4F0"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#C2410C">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+</g></g>
+</svg></div>
+</article>
+
+<article class="atom">
+  <div class="atom__top">
+    <div>
+      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
+  <g color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+</g>
 
-</svg><figcaption>88</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F5F4F0"/>
+  <g color="#1240FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+</g>
+
+</svg></div>
+      <div class="atom__swatches">
+        <div style="background:#7C93FF;color:#0B0C0E"><b>#7C93FF</b>на тёмном<br>
+          6.96:1 · H 273°</div>
+        <div style="background:#1240FF;color:#F6F2E8"><b>#1240FF</b>на светлом<br>
+          5.96:1 · H 265°</div>
+      </div>
+    </div>
+    <div>
+      <p class="atom__id">Атом 2 · «⌐»</p>
+      <h3 class="atom__title">QUYRYQ · Құйрық — хвост</h3>
+      <p>Один штрих: вниз и поворот влево. Тот самый хвост, что есть у латинской q, у прописной Q и у казахской Қ — три алфавита, одна деталь.</p>
+      <p class="note">Подчёркивает найденный ответ, оборачивает цитату, тянется как полоса загрузки, ставится как маркер сноски. Одна фигура во всех ролях, меняется только длина.</p>
+      <p class="note" style="margin-top:.8em">Синий шариковой ручки. Цвет подписи, а не цвет технологии — он объясняет, что знак служит подтверждением.</p>
+    </div>
+  </div>
+  
+<div class="uses">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="tab"><span class="ico" style="color:#7C93FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>
+        askqet — ответ по запросу</div>
+    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="chat">
+      <div class="chat__av" style="color:#7C93FF"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span></div>
+      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
+    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><p class="inline" style="margin:0">
+      Срок сдачи ФНО 100.00 — до 31 марта
+      <span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>
+      следующего года.</p></div>
+    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
+      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>Проверить регистрацию</li>
+      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>Сверить ставку</li>
+      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>Подать отчёт</li>
+    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light">
+      <button class="btn" type="button"
+        style="background:#1240FF;color:#F5F4F0">
+        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span>Спросить</button>
+    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="typing" style="color:#7C93FF">
+      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="appicon" style="background:#7C93FF;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span></div>
+    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="quote">
+      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
+      <span class="ico" style="color:#7C93FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
+</div>
+  <div class="risk"><p><b>Чем платим.</b> В отрыве от слова читается как «J». Первый год обязателен локап рядом.</p></div>
+  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#0B0C0E"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+</g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#F5F4F0"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#1240FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+</g></g>
+</svg></div>
+</article>
+
+<article class="atom">
+  <div class="atom__top">
+    <div>
+      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
+  <g color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+</g>
 
-</svg><figcaption>44</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F5F4F0"/>
+  <g color="#00795A">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+</g>
+
+</svg></div>
+      <div class="atom__swatches">
+        <div style="background:#2FD9A4;color:#0B0C0E"><b>#2FD9A4</b>на тёмном<br>
+          10.79:1 · H 166°</div>
+        <div style="background:#00795A;color:#F6F2E8"><b>#00795A</b>на светлом<br>
+          4.91:1 · H 167°</div>
+      </div>
+    </div>
+    <div>
+      <p class="atom__id">Атом 3 · «↳»</p>
+      <h3 class="atom__title">JAUAP · Жауап — ответ</h3>
+      <p>Уголок, которым в любом треде обозначают ответ на реплику. Вместо стрелки — точка: ответ не указывает направление, он приземляется.</p>
+      <p class="note">Родной элемент интерфейса: он и логотип, и разметка ответа в переписке, и маркер источника, и иконка «показать решение». Пользователь уже знает, что он значит.</p>
+      <p class="note" style="margin-top:.8em">Изумруд как единственная краска: он не встречается ни у Kaspi, ни у Halyk в этой светлоте и не читается как «успешно выполнено» при таком размере.</p>
+    </div>
+  </div>
+  
+<div class="uses">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="tab"><span class="ico" style="color:#2FD9A4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>
+        askqet — ответ по запросу</div>
+    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="chat">
+      <div class="chat__av" style="color:#2FD9A4"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span></div>
+      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
+    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><p class="inline" style="margin:0">
+      Срок сдачи ФНО 100.00 — до 31 марта
+      <span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>
+      следующего года.</p></div>
+    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
+      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>Проверить регистрацию</li>
+      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>Сверить ставку</li>
+      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>Подать отчёт</li>
+    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light">
+      <button class="btn" type="button"
+        style="background:#00795A;color:#F5F4F0">
+        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span>Спросить</button>
+    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="typing" style="color:#2FD9A4">
+      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="appicon" style="background:#2FD9A4;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span></div>
+    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="quote">
+      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
+      <span class="ico" style="color:#2FD9A4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
+</div>
+  <div class="risk"><p><b>Чем платим.</b> Самый узнаваемый и самый неоригинальный из четырёх: уголок ответа есть в любом мессенджере.</p></div>
+  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#0B0C0E"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+</g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#F5F4F0"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#00795A">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+</g></g>
+</svg></div>
+</article>
+
+<article class="atom">
+  <div class="atom__top">
+    <div>
+      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
+  <g color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+</g>
 
-</svg><figcaption>24</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">ДВА ПИСЬМА</p><p>Два цвета на два письма: латиница держит контур, кириллица живёт в контрформе. Инверсия переворачивает не цвет, а то, какой алфавит снаружи.</p><div class="chips"><div style="background:#FFD100;color:#0B0C0E"><b>#FFD100</b>латиница<br>C 0.179 · H 93° · 13.39:1</div><div style="background:#F4F1E8;color:#0B0C0E"><b>#F4F1E8</b>инверсия<br>C 0.012 · H 92° · 17.33:1</div></div></div><p class="ref"><b>Опора.</b> Казахстан десятый год живёт в переходе с кириллицы на латиницу — указ 2017 года, срок сдвигался несколько раз. Бренд, который запускается сейчас, обязан работать в обоих письменностях. Это не приём, это требование рынка.</p><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="440.06" height="118" fill="#0B0C0E"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <defs><mask id="ej5003"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5003)"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F1E8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div></article>
-<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
+  <rect width="128" height="128" fill="#F5F4F0"/>
+  <g color="#0F7392">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+</g>
 
-</svg></div><div><p class="concept__id">Концепция 3</p><h3 class="concept__title">ÝN · Үн — интонация</h3><p class="concept__kind">Не буква и не фигура — контур речи.</p><p>В речи вопрос идёт вверх, утверждение — вниз. Знак рисует ровно это: подъём, перелом, падение и точка в конце. Никакой метафоры — это буквальная разметка того, что делает продукт.</p><p class="note">Форма понятна без языка и без алфавита: интонация работает одинаково в казахском, русском и английском. И она рождена для движения — знак рисуется слева направо ровно за время фразы.</p><div class="sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+      <div class="atom__swatches">
+        <div style="background:#5CD5FF;color:#0B0C0E"><b>#5CD5FF</b>на тёмном<br>
+          11.57:1 · H 224°</div>
+        <div style="background:#0F7392;color:#F6F2E8"><b>#0F7392</b>на светлом<br>
+          4.91:1 · H 226°</div>
+      </div>
+    </div>
+    <div>
+      <p class="atom__id">Атом 4 · «/»</p>
+      <h3 class="atom__title">DEM · Дем — штрих</h3>
+      <p>Наклонный штрих, тонкий сверху и плотный снизу: вопрос входит лёгким, ответ выходит весомым. Одна фигура без единой кривой.</p>
+      <p class="note">Разделяет, перечисляет, задаёт ритм в наборе, работает дробью в датах и путях. Живёт в тексте, потому что это и есть знак препинания.</p>
+      <p class="note" style="margin-top:.8em">Голубой одного семейства с DevCore #00AEEF: не копия, но видимое родство. Сын узнаётся по отцу.</p>
+    </div>
+  </div>
   
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
+<div class="uses">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="tab"><span class="ico" style="color:#5CD5FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>88</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
+</svg></span>
+        askqet — ответ по запросу</div>
+    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
 
-</svg><figcaption>44</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="chat">
+      <div class="chat__av" style="color:#5CD5FF"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>24</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">ПОДЪЁМ И ПАДЕНИЕ</p><p>Цвет привязан к направлению: подъём — вопрос, падение — ответ. Не декор, а разметка интонации.</p><div class="chips"><div style="background:#C724B1;color:#F6F2E8"><b>#C724B1</b>подъём · вопрос<br>C 0.237 · H 335° · 4.09:1</div><div style="background:#FFB800;color:#0B0C0E"><b>#FFB800</b>падение · ответ<br>C 0.171 · H 81° · 11.48:1</div></div></div><p class="ref"><b>Опора.</b> Ответ на «магическую школу» ИИ-брендинга с её градиентными шарами: вместо иллюстрации интеллекта — схема разговора.</p><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
-  
-  <rect width="440.06" height="118" fill="#0A0810"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F2EEF6" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div></article>
-<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
+</svg></span></div>
+      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
+    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
 
-</svg></div><div><p class="concept__id">Концепция 4</p><h3 class="concept__title">QOL · Қол — рука</h3><p class="concept__kind">Рукописный жест.</p><p>Один росчерк пером: петля и отрыв. Переменная толщина, живая ось, неровности — всё, чего не бывает у машинного знака. В категории, где каждый второй логотип собран из окружностей, рука читается мгновенно.</p><p class="note">Знак невозможно построить по сетке и невозможно подделать случайно — у него нет параметров, есть один конкретный жест. Обратная сторона: его нельзя перерисовать «чуть иначе», любая правка видна.</p><div class="sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><p class="inline" style="margin:0">
+      Срок сдачи ФНО 100.00 — до 31 марта
+      <span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>88</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
+</svg></span>
+      следующего года.</p></div>
+    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
 
-</svg><figcaption>44</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
+      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>24</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">БЕЗ ЦВЕТА</p><p>Отказ от цвета — тоже позиция. В категории, где все светятся градиентами, чёрное перо на бумаге читается как честность.</p><div class="chips"><div style="background:#14141A;color:#F6F2E8"><b>#14141A</b>перо<br>C 0.012 · H 285° · 15.14:1</div><div style="background:#2B3A8F;color:#F6F2E8"><b>#2B3A8F</b>чернила<br>C 0.141 · H 271° · 8.24:1</div></div></div><p class="ref"><b>Опора.</b> Johnson & Johnson 2023 и скрипт Jaguar 2024 — оба ушли в рукописное ровно в тот момент, когда рынок утонул в геометрии.</p><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440.06 118" fill="none">
+</svg></span>Проверить регистрацию</li>
+      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="440.06" height="118" fill="#EDE9E0"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-66) scale(0.86) translate(-16,-16)">  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
-</g><g transform="translate(116.56,0)"><g transform="translate(0,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#14141A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div></article>
-<article class="concept"><div class="concept__top"><div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg></div><div><p class="concept__id">Концепция 5</p><h3 class="concept__title">BELGI · Белгі — выделение</h3><p class="concept__kind">Знака нет вообще. Бренд — это действие.</p><p><code>ask</code> остаётся открытым, <code>qet</code> лежит под маркером: вопрос и найденный ответ в одном слове. Логотип — не фигура, а поступок: отметить в тексте то, что и есть ответ.</p><p class="note">Приём переносится куда угодно без адаптации: маркер ложится на строку в интерфейсе, на заголовок в рекламе, на цитату в документе. Бренд узнаётся по тому, что он делает с чужим текстом, а не по своей форме.</p><div class="sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></span>Сверить ставку</li>
+      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>88</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
+</svg></span>Подать отчёт</li>
+    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
 
-</svg><figcaption>44</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--light">
+      <button class="btn" type="button"
+        style="background:#0F7392;color:#F5F4F0">
+        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
 
-</svg><figcaption>24</figcaption></figure></div></div></div><div class="logic"><p class="logic__name">МАРКЕР</p><p>Цвет один и он буквальный — цвет текстового маркера. Не «фирменный оттенок», а инструмент, которым отмечают найденное.</p><div class="chips"><div style="background:#D9FF00;color:#0B0C0E"><b>#D9FF00</b>маркер<br>C 0.223 · H 120° · 16.90:1</div><div style="background:#F6F6F4;color:#0B0C0E"><b>#F6F6F4</b>текст<br>C 0.003 · H 106° · 17.97:1</div></div></div><p class="ref"><b>Опора.</b> Крайняя точка «школы сдержанности» (Anthropic, Perplexity): отказ не только от градиента, но и от символа как такового.</p><div class="lockup-row"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 339.5 118" fill="none">
+</svg></span>Спросить</button>
+    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="typing" style="color:#5CD5FF">
+      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="339.5" height="118" fill="#0C0D0F"/>
-  <g transform="translate(20,80)"><rect x="148.5" y="-52" width="160" height="60" rx="4" fill="#D9FF00"/><g transform="translate(0,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F6F6F4" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
-</svg></div></article>
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+
+</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark">
+      <div class="appicon" style="background:#5CD5FF;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+
+</svg></span></div>
+    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
+
+  <figure class="use" style="margin:0">
+    <div class="use__box use__box--dark"><div class="quote">
+      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
+      <span class="ico" style="color:#5CD5FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+
+</svg></span></div></div>
+    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
+</div>
+  <div class="risk"><p><b>Чем платим.</b> Слэш есть у материнского бренда — родство читается, но самостоятельность придётся набирать цветом и ритмом.</p></div>
+  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#0B0C0E"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+</g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  
+  <rect width="383.66" height="118" fill="#F5F4F0"/>
+  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#0F7392">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+</g></g>
+</svg></div>
+</article>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Проверка</h2></div>
-    <div class="col"><p class="lede">Переключатель применяется ко всем пяти
-      сразу.</p></div>
-    <div class="controls" role="group" aria-label="Симуляция цветовосприятия">
-      <button type="button" data-cvd="none" aria-pressed="true">НОРМА</button>
-      <button type="button" data-cvd="deut" aria-pressed="false">ДЕЙТЕРАНОПИЯ</button>
-      <button type="button" data-cvd="prot" aria-pressed="false">ПРОТАНОПИЯ</button>
-      <button type="button" data-cvd="trit" aria-pressed="false">ТРИТАНОПИЯ</button>
-      <button type="button" data-cvd="mono" aria-pressed="false">БЕЗ ЦВЕТА</button>
-    </div>
-    <div id="dirs" style="display:grid;
-         grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:var(--s2)">
-      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg></div>
-      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
-
-</svg></div>
-      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
-
-</svg></div>
-      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
-
-</svg></div>
-      <div class="art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
-
-</svg></div>
-    </div>
-    <div class="col"><p class="cvd-note">Четыре из пяти не зависят от цвета вообще:
-      QUYRYQ, EKI JAZU, QOL и BELGI держатся формой, и симуляция им ничего не
-      делает. Единственный, кто теряет содержание, — ÝN: там цвет размечает
-      направление, и без него подъём и падение сливаются в одну дугу.</p></div>
-
+    <div class="sec__head"><span class="sec__num">03</span><h2>Сводка</h2></div>
     <div class="scroll">
-      <table><thead><tr><th>Концепция</th><th>24 px</th><th>Одна краска</th>
-        <th>Кириллица</th><th>Что мешает</th></tr></thead>
+      <table><thead><tr><th>Атом</th><th>Фигур</th><th>16 px</th>
+        <th>В строке текста</th><th>Своё значение</th><th>Занятость формы</th></tr></thead>
       <tbody>
-        <tr><td>QUYRYQ</td><td><span class="tag tag--pass">да</span></td>
+        <tr><td>QOS NÚKTE «:»</td><td class="num">2</td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">Қ несёт тот же хвост</span></td>
-          <td class="note">компактная форма абстрактна — первое время нужна рядом
-            со словом</td></tr>
-        <tr><td>EKI JAZU</td><td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
+          <td><span class="tag tag--pass">после него идёт ответ</span></td>
+          <td class="note">форма общая — держится ритмом</td></tr>
+        <tr><td>QUYRYQ «⌐»</td><td class="num">1</td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">она и есть содержание</span></td>
-          <td class="note">чтение Қ требует объяснения при первом контакте</td></tr>
-        <tr><td>ÝN</td><td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--warn">теряет смысл</span></td>
-          <td><span class="tag tag--pass">вне алфавита</span></td>
-          <td class="note">без цвета подъём и падение неразличимы</td></tr>
-        <tr><td>QOL</td><td><span class="tag tag--warn">упрощённый дубль</span></td>
+          <td><span class="tag tag--warn">нужен свой кегль</span></td>
+          <td><span class="tag tag--pass">хвост q, Q и Қ</span></td>
+          <td class="note">свободна, но абстрактна</td></tr>
+        <tr><td>JAUAP «↳»</td><td class="num">2</td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--warn">нужен второй жест</span></td>
-          <td class="note">жест нельзя перерисовать «чуть иначе» — любая правка
-            видна</td></tr>
-        <tr><td>BELGI</td><td><span class="tag tag--pass">да</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">маркер ложится на любой текст</span></td>
-          <td class="note">без слова знака нет — нужен минимум один носитель
-            с текстом</td></tr>
+          <td><span class="tag tag--pass">понятно без обучения</span></td>
+          <td class="note">занята мессенджерами</td></tr>
+        <tr><td>DEM «/»</td><td class="num">1</td>
+          <td><span class="tag tag--pass">да</span></td>
+          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
+          <td><span class="tag tag--warn">значение придётся назначить</span></td>
+          <td class="note">слэш уже у DevCore — родство</td></tr>
       </tbody></table>
     </div>
+    <div class="col"><p class="note">Все четыре проходят AA на обоих фонах — у
+      каждого своя пара светлот на один тон, потому что один hex не может быть
+      контрастным и на чёрном, и на белом. Это записано в паре, а не оставлено
+      верстальщику.</p></div>
   </div>
 </section>
 
@@ -616,77 +1044,70 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>BELGI.</strong> Из пяти это единственная, где бренд
-        описывается глаголом, а не существительным. Продукт находит ответ — знак
-        отмечает найденное. Одна и та же механика работает в интерфейсе, в рекламе,
-        в документе и на витрине, и её невозможно скопировать, не скопировав саму
-        мысль.</p>
-      <p>И у неё лучшая экономика внимания: <code>ask</code> открыт, <code>qet</code> под маркером —
-        человек читает всё имя целиком и одновременно видит обещание. Ни одна из
-        остальных четырёх не объясняет продукт за одно касание.</p>
-      <p><strong>Вторая — QUYRYQ.</strong> Если нужен именно классический,
-        «взрослый» логотип, который ляжет на договор и на фасад, берите хвост: он
-        такой же типографический, но спокойнее и работает в трёх алфавитах.</p>
+      <p class="lede"><strong>QOS NÚKTE — двоеточие.</strong> Оно уже значит
+        «дальше идёт ответ», причём в казахском, русском и английском одинаково.
+        Ничего не нужно объяснять: знак работает с первой секунды, а имя с ним
+        превращается в фразу — <code>askqet:</code></p>
+      <p>И он честнее всех отвечает на требование «жить во всём продукте». Кольцо
+        и точка — это готовый индикатор ожидания, маркер списка, приглашение в
+        консоли, аватар и фавикон. Ни в одной из восьми ролей его не пришлось
+        перерисовывать.</p>
+      <p><strong>Вторым держу QUYRYQ.</strong> Он единственный собственный, а не
+        заимствованный у пунктуации: хвост, общий для трёх алфавитов. Берите его,
+        если важнее уникальность формы, а не мгновенная понятность.</p>
     </div>
     <div style="margin-top:var(--s3)">
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0C0D0F"/>
-  <rect x="16" y="16" width="96" height="96" rx="6" fill="#D9FF00"/>
-  <g transform="translate(36,88) scale(1.05)"><g stroke="#0C0D0F" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g>
-
-</svg>
-        <div><h4>BELGI · Белгі<span class="flag flag--ok">беру</span></h4>
-          <p>Бренд как действие. Объясняет продукт мгновенно, переносится куда угодно.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F3F1EC"/>
-  <path d="M74,22 L74,76 C74,92 65,100 47,100 L32,100 C22,100 18,95 18,86" fill="none" stroke="#1240FF" stroke-width="13" stroke-linecap="round"/>
-
-</svg>
-        <div><h4>QUYRYQ · Құйрық</h4>
-          <p>Хвост вместо знака. Самая «взрослая» и самая универсальная из пяти.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0B0C0E"/>
-  <defs><mask id="ej5001"><circle cx="54" cy="52" r="44" fill="white"/><path d="M77.1,62.9 L111.1,96.9 L96.9,111.1 L62.9,77.1 Z" fill="white"/><g stroke="black" stroke-width="11" stroke-linecap="butt" stroke-linejoin="miter" fill="none"><path d="M32,20 L32,80"/><path d="M32,52 L62,20"/><path d="M41,43 L64,80"/><path d="M64,80 L64,97"/></g></mask></defs>
-  <rect width="128" height="128" fill="#FFD100" mask="url(#ej5001)"/>
+  <g color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
+  <circle cx="64" cy="92" r="17" fill="currentColor"/>
+</g>
 
-</svg>
-        <div><h4>EKI JAZU · Екі жазу</h4>
-          <p>Сильнейшая идея для местного рынка: два алфавита в одном глифе.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+        <div><h4>QOS NÚKTE · «:»<span class="flag flag--ok">беру</span></h4>
+          <p>Понятен без обучения, работает во всех восьми ролях, две фигуры.</p></div></div>
+      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#EDE9E0"/>
-  <path d="M65.124,19.88 L64.257,19.691 L62.762,18.213 L60.51,18.055 L59.963,17.473 L57.875,16.387 L56.203,16.167 L54.371,15.312 L53.189,15.471 L51.632,14.311 L47.899,14.513 L47.643,14.769 L45.939,13.923 L42.231,14.815 L42.1,15.005 L39.389,14.758 L36.86,16.48 L35.588,16.606 L34.709,17.276 L33.925,17.04 L29.822,18.712 L29.07,19.902 L27.868,19.839 L24.522,23.036 L23.615,24.667 L24.386,23.777 L21.273,25.618 L20.458,27.792 L18.568,29.088 L18.394,30.775 L16.964,31.332 L15.46,35.663 L15.313,35.877 L14.422,37.322 L13.559,39.919 L12.94,42.51 L12.812,44.345 L12.436,46.768 L12.662,48.116 L12.236,50.416 L13.161,54.189 L13.452,55.328 L13.537,55.778 L13.595,57.647 L14.064,59.468 L14.687,62.707 L17.101,66.382 L17.214,66.231 L17.941,68.316 L20.422,70.935 L20.748,71.354 L20.772,71.288 L22.305,74.269 L25.718,77.005 L26.293,77.356 L28.387,79.151 L29.104,79.108 L29.936,80.413 L33.963,82.506 L36.988,83.452 L36.255,82.65 L38.724,84.581 L43.745,84.604 L42.769,84.546 L44.506,85.068 L46.892,85.34 L49.558,85.589 L50.862,85.296 L53.91,85.518 L56.37,84.514 L56.334,84.633 L60.733,83.846 L62.342,82.505 L61.545,82.837 L65.049,82.138 L69.089,79.285 L69.066,78.627 L69.372,78.762 L71.514,77.319 L73.494,75.91 L75.256,73.995 L76.072,72.917 L78.265,70.422 L78.535,68.787 L78.905,68.658 L81.195,65.012 L81.206,63.094 L81.762,62.297 L82.366,59.665 L81.864,59.768 L83.273,58.205 L84.019,54.844 L84.255,52.981 L84.164,49.716 L83.214,47.778 L82.959,48.367 L83.601,46.711 L83.313,43.038 L82.461,41.839 L82.251,39.578 L80.747,38.068 L80.617,36.863 L79.422,35.135 L78.661,33.506 L77.424,32.256 L76.584,30.725 L75.28,29.601 L74.627,28.165 L73.536,26.977 L72.694,25.286 L67.201,27.274 L67.375,38.645 L65.99,34.452 L66.342,37.368 L66.791,39.429 L67.795,42.257 L68.121,40.98 L67.806,42.652 L68.623,46.948 L69.19,47.178 L69.12,48.306 L69.657,51.477 L70.257,52.861 L70.619,54.113 L70.655,55.874 L71.242,58.135 L71.835,60.673 L72.353,61.134 L72.173,64.379 L73.395,66.234 L73.526,67.429 L73.35,70.079 L74.534,72.351 L74.695,73.719 L74.497,76.612 L75.376,79.847 L76.027,80.907 L75.915,82.728 L75.84,85.577 L76.323,88.31 L77.049,89.936 L77.16,92.088 L77.655,95.3 L77.973,97.492 L78.526,100.119 L78.354,102.754 L79.313,105.245 L79.332,107.459 L79.585,110.113 L79.809,112.95 L80.136,115.314 L83.325,115.055 L83.275,112.777 L83.363,110.002 L83.436,107.492 L83.717,104.667 L83.123,102.343 L83.666,100.089 L83.441,96.928 L83.497,94.817 L83.383,91.805 L83.602,89.135 L83.159,86.911 L83.196,85.607 L83.605,83.606 L84.137,80.404 L83.593,77.618 L83.397,76.329 L83.974,74.313 L84.016,70.337 L83.33,68.584 L83.981,68.297 L84.005,63.765 L83.378,62.941 L84.056,61.14 L83.721,58.354 L83.585,56.036 L83.576,55.358 L83.959,53.831 L83.807,50.484 L83.59,48.878 L83.709,48.421 L84.117,45.618 L83.473,42.765 L83.631,43.505 L84.391,41.028 L83.662,37.066 L83.554,35.957 L83.795,35.58 L83.873,36.227 L83.254,29.349 L71.547,24.419 L68.586,28.475 L69.214,29.869 L70.297,31.045 L71.019,32.582 L72.021,33.744 L72.378,35.22 L73.192,36.494 L73.431,37.928 L73.953,38.964 L74.021,41.065 L74.975,42.211 L74.489,43.323 L75.106,45.163 L74.978,44.748 L73.969,46.38 L73.94,50.128 L74.402,51.492 L74.092,51.482 L73.598,52.798 L73.817,52.659 L72.387,53.615 L71.095,56.79 L70.911,57.274 L69.596,59.103 L69.362,60.71 L69.676,59.646 L67.458,61.61 L66.786,63.332 L66.519,62.988 L65.115,64.261 L64.61,64.669 L63.792,64.94 L63.231,65.248 L60.349,66.31 L58.237,68.46 L59.612,67.563 L59.723,67.168 L55.699,67.966 L54.624,68.86 L55.743,68.269 L52.456,68.428 L51.861,68.918 L51.626,68.428 L49.729,68.554 L49.204,68.32 L48.416,68.211 L47.099,67.67 L43,67.089 L44.477,67.919 L44.512,66.979 L40.432,66.001 L40.414,65.862 L41.447,66.7 L40.296,65.082 L37.931,63.92 L37.727,63.464 L35.659,61.999 L36.312,62.971 L36.591,62.74 L34.752,60.118 L32.985,58.162 L32.953,58.627 L32.761,57.55 L30.663,54.953 L31.019,56.007 L31.263,55.927 L30.796,54.678 L30.698,53.29 L30.02,50.658 L29.337,48.716 L29.132,49.35 L29.432,48.394 L29.039,46.507 L29.181,45.724 L29.081,44.297 L29.146,43.714 L29.133,43.182 L29.793,41.732 L30.52,38.847 L29.498,39.857 L31.218,38.393 L31.223,36.496 L32.348,35.92 L32.184,34.604 L32.437,35.057 L35.212,31.723 L35.7,30.213 L34.535,30.981 L36.715,30.018 L37.772,28.186 L36.788,28.745 L39.373,28.034 L41.016,26.625 L42.802,25.807 L42.781,24.926 L43.596,25.269 L46.405,23.927 L45.785,23.59 L47.475,24.077 L50.356,23.117 L49.87,22.711 L51.431,23.495 L53.518,23.109 L54.722,23.488 L56.314,23.309 L57.167,23.581 L59.526,24.317 L60.862,23.862 L61.836,24.719 L64.376,25.025 Z" fill="#14141A"/>
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <g color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+</g>
 
-</svg>
-        <div><h4>QOL · Қол</h4>
-          <p>Человек в машинной категории. Самая тёплая и самая рискованная.</p></div></div>
-      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+        <div><h4>QUYRYQ · «⌐»</h4>
+          <p>Единственный полностью собственный. Требует времени на узнавание.</p></div></div>
+      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0A0810"/>
-  <g fill="none" stroke-width="13" stroke-linecap="round">
-    <path d="M12,88 C34,88 36,26 60,26" stroke="#C724B1"/>
-    <path d="M60,26 C80,26 78,94 98,94" stroke="#FFB800"/>
-  </g>
-  <circle cx="112" cy="94" r="9" fill="#FFB800"/>
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <g color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="97" cy="80" r="11" fill="currentColor"/>
+</g>
 
-</svg>
-        <div><h4>ÝN · Үн<span class="flag flag--risk">зависит от цвета</span></h4>
-          <p>Схема разговора вместо иллюстрации интеллекта. Красиво, но без цвета
-            разваливается.</p></div></div>
+</svg></div>
+        <div><h4>JAUAP · «↳»</h4>
+          <p>Самый понятный и самый неоригинальный: уголок ответа есть везде.</p></div></div>
+      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#0B0C0E"/>
+  <g color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+</g>
+
+</svg></div>
+        <div><h4>DEM · «/»</h4>
+          <p>Родство с DevCore читается сразу. Своё значение придётся назначать.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать концепцию — дальше собираю полный пакет: шрифт, токены, правила
-        применения, анимация, носители.<br>
-        2. Для BELGI и QUYRYQ обязательно лицензировать наборный шрифт с казахской
-        латиницей и кириллицей: обе концепции держатся на буквах, и рисованных
-        контуров тут не хватит.<br>
+      <p>1. Выбрать атом — дальше собираю рабочий набор: SVG-спрайт под интерфейс,
+        размерную сетку (16/20/24/32), правила отступов, motion для ожидания и
+        токены в двух темах.<br>
+        2. Лицензировать наборный шрифт с казахской латиницей и кириллицей: три из
+        четырёх атомов — знаки препинания, и они обязаны совпадать по ритму с
+        текстовым шрифтом продукта.<br>
         3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42.</p>
+        товарный знак по классам 9, 35, 42. Для пунктуационного знака охрана идёт
+        по локапу целиком, а не по одной фигуре — это надо учесть в заявке.</p>
     </div>
   </div>
 </section>
@@ -697,9 +1118,9 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
       имени и контекста DevCore. Предыдущие итерации остались в репозитории:
-      <code>logo/01-jaryq</code>, <code>logo/v2</code>, <code>logo/v3</code>,
-      <code>logo/v4</code>. Всё пересобирается командой <code>python3 tools/build.py
-      &amp;&amp; python3 tools/build_v5.py &amp;&amp; python3 tools/build_page.py</code>.</p>
+      <code>logo/01-jaryq</code>, <code>logo/v2</code> … <code>logo/v5</code>.
+      Всё пересобирается командой <code>python3 tools/build.py &amp;&amp; python3
+      tools/build_v6.py &amp;&amp; python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -710,17 +1131,6 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     var cur=root.getAttribute('data-theme');
     if(!cur){cur=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}
     root.setAttribute('data-theme', cur==='dark'?'light':'dark');
-  });
-  var dirs=document.getElementById('dirs');
-  var map={none:'',deut:'url(#cvd-deut)',prot:'url(#cvd-prot)',
-           trit:'url(#cvd-trit)',mono:'url(#cvd-mono)'};
-  document.querySelectorAll('[data-cvd]').forEach(function(b){
-    b.addEventListener('click',function(){
-      document.querySelectorAll('[data-cvd]').forEach(function(o){
-        o.setAttribute('aria-pressed', String(o===b));
-      });
-      dirs.style.filter=map[b.dataset.cvd];
-    });
   });
 })();
 </script>
