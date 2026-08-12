@@ -54,6 +54,38 @@ def marks():
     return out
 
 
+def words():
+    """Само слово — нашими буквами, а не стоковым шрифтом.
+
+    На титуле презентации имя стояло набранным системной антиквой. Это
+    подмена того же рода, что и «не чёрный» в коде: слово рисовалось
+    отдельно, под знак, и именно оно обязано стоять там, где называют имя.
+    """
+    out = []
+    m = V.metrics(F.WEIGHT)
+    pad = m["st"] * 1.6
+
+    body, w, _ = V.wordmark(F.WEIGHT, "cut", CUR)
+    out.append(write("logo/deck/word.svg", svg(
+        f'  <g transform="translate({n(pad)},{n(pad + m["asc"])})">{body}</g>\n',
+        box=(w + pad * 2, m["asc"] + m["desc"] + pad * 2), title="askqet")))
+
+    # три веса друг под другом: видно, что растёт штрих, а не размер
+    els, y, wmax = [], pad, 0.0
+    for key in ("light", "text", "bold"):
+        mm = V.metrics(key)
+        b, ww, _ = V.wordmark(key, "cut", CUR)
+        els.append(f'<g transform="translate({n(pad)},{n(y + mm["asc"])})">{b}</g>')
+        els.append(f'<text x="{n(pad)}" y="{n(y - 6)}" fill="{CUR}" '
+                   f'font-size="11" opacity="0.55" letter-spacing="1.6">'
+                   f'{V.WEIGHTS[key]["title"]} · {V.WEIGHTS[key]["note"]}</text>')
+        y += mm["asc"] + mm["desc"] + pad * 2.2
+        wmax = max(wmax, ww)
+    out.append(write("logo/deck/weights.svg", svg(
+        "  " + "".join(els) + "\n", box=(wmax + pad * 2, y), title="Веса")))
+    return out
+
+
 # ── Шкала Манселла ───────────────────────────────────────────────────────────
 
 def munsell_scale():
@@ -151,7 +183,7 @@ def print_corridor():
 
 
 if __name__ == "__main__":
-    files = marks()
+    files = marks() + words()
     files.append(write("logo/deck/munsell.svg", munsell_scale()))
     files.append(write("logo/deck/corridor.svg", print_corridor()))
     print(f"✓ {len(files)} файлов")

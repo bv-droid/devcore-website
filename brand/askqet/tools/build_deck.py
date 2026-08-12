@@ -117,13 +117,11 @@ def slide(kind, num, eyebrow, body, wide=False):
 
 slide("title", "", "", f'''
   <div class="title">
-    <div class="title__mark">⟦logo/deck/glyph.svg⟧</div>
-    <div class="title__txt">
-      <h1>AskQet</h1>
-      <p class="title__sub">Энциклопедия предпринимателя</p>
-      <p class="title__note">Знак, слово и цвет. Что решено, что измерено
-        и что осталось выбрать.</p>
-    </div>
+    <h1 class="title__logo"><span class="sr">AskQet</span>
+      ⟦logo/deck/mark.svg⟧</h1>
+    <p class="title__sub">Энциклопедия предпринимателя</p>
+    <p class="title__note">Знак, слово и цвет. Что решено, что измерено
+      и что осталось выбрать.</p>
   </div>''')
 
 slide("std", "01", "Предмет", '''
@@ -175,17 +173,25 @@ slide("std", "03", "Построение", f'''
     Число снято с растра, а не взято из чертежа.</p>''')
 
 slide("std", "04", "Слово", '''
-  <h2>Слово нарисовано под знак</h2>
-  <div class="hero-logo">⟦logo/deck/mark.svg⟧</div>
+  <h2>Буквы нарисованы, а не выбраны</h2>
+  <div class="hero-logo hero-logo--word">⟦logo/deck/word.svg⟧</div>
   <div class="cols">
-    <p>Буквы не взяты из готового шрифта. Четыре правила перенесены со знака
-      в слово: та же толщина штриха, тот же радиус, те же горизонтальные
-      срезы, та же открытость.</p>
-    <p>Межбуквенные пробелы не назначены, а решены численно: между соседями
-      выравнивалась площадь просвета, а не расстояние между габаритами.</p>
+    <p>Готового шрифта здесь нет ни одной буквы. Четыре правила перенесены
+      со знака в слово: та же толщина штриха, тот же радиус, те же
+      горизонтальные срезы, та же открытость апертур.</p>
+    <p>Межбуквенные пробелы не назначены на глаз, а решены численно: между
+      соседями выравнивалась площадь просвета, а не расстояние между
+      габаритами. Кернинг найден тем же способом.</p>
   </div>''')
 
-slide("std", "05", "Размеры", f'''
+slide("std", "05", "Веса", '''
+  <h2>Три веса одной формы</h2>
+  <div class="art art--w">⟦logo/deck/weights.svg⟧</div>
+  <p class="note">Растёт штрих, а не размер: рост чернил 17, 23 и 29 %
+    от высоты строчной. Скелет буквы при этом не меняется — иначе веса
+    перестали бы быть одной семьёй.</p>''')
+
+slide("std", "06", "Размеры", f'''
   <h2>С какого размера знак ещё работает</h2>
   <ul class="facts facts--4">
     <li><b>{CUT['tech']:.0f} px</b><span>логотип целиком, технический минимум</span></li>
@@ -204,7 +210,7 @@ slide("break", "", "Цвет", '''
       Каждая из них дала правило, которого иначе бы не было.</p>
   </div>''')
 
-slide("std", "06", "Тупик первый", '''
+slide("std", "07", "Тупик первый", '''
   <h2>«Не чёрный», который читается чёрным</h2>
   <p class="lede">Было сказано: чёрного в логотипе нет. Я подобрал
     <code>#2E3136</code> и отчитался, что чёрного нет, — потому что в коде не
@@ -214,7 +220,7 @@ slide("std", "06", "Тупик первый", '''
     ступени 2.5, называют чёрным независимо от координат. Обе отданные краски
     стояли на 2.00 и 2.02.</p>''')
 
-slide("std", "07", "Тупик второй", '''
+slide("std", "08", "Тупик второй", '''
   <h2>Каждая новая краска гасит все прежние</h2>
   <div class="cols">
     <p>Поиск глазом описывается законом подобия: находка тем быстрее, чем
@@ -228,7 +234,7 @@ slide("std", "07", "Тупик второй", '''
   </div>
   <p class="rule">Четыре смысловые краски — не богаче двух, а тише двух.</p>''')
 
-slide("std", "08", "Тупик третий", '''
+slide("std", "09", "Тупик третий", '''
   <h2>Печать отменяет цвет целиком</h2>
   <p class="lede">Содержимое регулярно печатают. На монохромном принтере роли
     различает только светлота — и коридор для неё зажат с двух сторон.</p>
@@ -237,7 +243,7 @@ slide("std", "08", "Тупик третий", '''
     Половину монохромной полосы забрал сам запрет. Это цена решения, и она
     названа, а не спрятана.</p>''')
 
-slide("std", "09", "Правило", '''
+slide("std", "10", "Правило", '''
   <h2>К чему сошлись все три</h2>
   <p class="rule rule--big">Цвет — экранная надстройка,<br>а не носитель смысла.</p>
   <div class="cols">
@@ -249,7 +255,7 @@ slide("std", "09", "Правило", '''
       у необратимого действия, значок у срока.</p>
   </div>''')
 
-slide("std", "10", "Основа", f'''
+slide("std", "11", "Основа", f'''
   <h2>Почти монохром</h2>
   <div class="cols">
     <p>Бумага тёплая, но не белая. Чернила серые, ступень 3.60 — чёрного нет,
@@ -266,7 +272,7 @@ slide("std", "10", "Основа", f'''
     <li><i style="background:{SLINE}"></i><b>{SLINE}</b><span>линейка</span></li>
   </ul>''')
 
-slide("wide", "11", "Решение", f'''
+slide("wide", "12", "Решение", f'''
   <h2>Восемь акцентов на одном экране</h2>
   <p class="lede">Одна и та же статья, восемь раз. Основа общая, меняется
     ровно один цвет: стрелка знака, кнопка, ссылка, волосок у цитаты, записи
@@ -274,7 +280,7 @@ slide("wide", "11", "Решение", f'''
   <div class="accents">{accent_grid()}</div>
   {accent_table()}''', wide=True)
 
-slide("std", "12", "Дальше", '''
+slide("std", "13", "Дальше", '''
   <h2>Что нужно от вас</h2>
   <ol class="next">
     <li><b>Акцент</b><span>Один из восьми — или направление, если ни один
@@ -374,14 +380,13 @@ code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
   letter-spacing:-.015em}
 
 /* ── титул ── */
-.title{display:grid; gap:var(--s4); align-items:center}
-@media (min-width:800px){
-  .title{grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:var(--s5)}
-}
-.title__mark svg{display:block; width:100%; max-width:15rem; height:auto;
+.title{display:flex; flex-direction:column; gap:var(--s3)}
+.title__logo{margin:0}
+.title__logo svg{display:block; width:100%; max-width:46rem; height:auto;
   color:var(--ink)}
-.title__sub{font-size:clamp(1.1rem,2.4vw,1.6rem); color:var(--ink-2);
-  margin-top:var(--s2)}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap}
+.title__sub{font-size:clamp(1.1rem,2.4vw,1.6rem); color:var(--ink-2)}
 .title__note{font-family:var(--sans); font-size:14.5px; color:var(--dim);
   max-width:30rem; margin-top:var(--s3); line-height:1.6}
 
@@ -401,6 +406,8 @@ code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
 .art svg{display:block; width:100%; min-width:520px; height:auto}
 .hero-logo{color:var(--ink)}
 .hero-logo svg{display:block; width:100%; max-width:44rem; height:auto}
+.hero-logo--word svg{max-width:36rem}
+.art--w svg{min-width:260px; max-width:30rem; margin:0 auto}
 .mark-show{display:grid; gap:var(--s4); align-items:center}
 @media (min-width:800px){
   .mark-show{grid-template-columns:minmax(0,13rem) minmax(0,1fr);

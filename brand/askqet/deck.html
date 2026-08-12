@@ -79,14 +79,13 @@ code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
   letter-spacing:-.015em}
 
 /* ── титул ── */
-.title{display:grid; gap:var(--s4); align-items:center}
-@media (min-width:800px){
-  .title{grid-template-columns:minmax(0,15rem) minmax(0,1fr); gap:var(--s5)}
-}
-.title__mark svg{display:block; width:100%; max-width:15rem; height:auto;
+.title{display:flex; flex-direction:column; gap:var(--s3)}
+.title__logo{margin:0}
+.title__logo svg{display:block; width:100%; max-width:46rem; height:auto;
   color:var(--ink)}
-.title__sub{font-size:clamp(1.1rem,2.4vw,1.6rem); color:var(--ink-2);
-  margin-top:var(--s2)}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden;
+  clip-path:inset(50%); white-space:nowrap}
+.title__sub{font-size:clamp(1.1rem,2.4vw,1.6rem); color:var(--ink-2)}
 .title__note{font-family:var(--sans); font-size:14.5px; color:var(--dim);
   max-width:30rem; margin-top:var(--s3); line-height:1.6}
 
@@ -106,6 +105,8 @@ code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
 .art svg{display:block; width:100%; min-width:520px; height:auto}
 .hero-logo{color:var(--ink)}
 .hero-logo svg{display:block; width:100%; max-width:44rem; height:auto}
+.hero-logo--word svg{max-width:36rem}
+.art--w svg{min-width:260px; max-width:30rem; margin:0 auto}
 .mark-show{display:grid; gap:var(--s4); align-items:center}
 @media (min-width:800px){
   .mark-show{grid-template-columns:minmax(0,13rem) minmax(0,1fr);
@@ -227,25 +228,23 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
 <button class="theme" id="t">Тема</button>
 <section class="slide slide--title"><div class="slide__rail"></div><div class="slide__in">
   <div class="title">
-    <div class="title__mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.1 98.844" fill="none">
+    <h1 class="title__logo"><span class="sr">AskQet</span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   <title>AskQet</title>
-  <g transform="translate(10.8,82.8)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10006">
+  
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="currentColor" mask="url(#m10006)"/>
+  <rect width="128" height="128" fill="currentColor" mask="url(#m10002)"/>
   <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="currentColor"/>
-</g></g>
-
-</svg></div>
-    <div class="title__txt">
-      <h1>AskQet</h1>
-      <p class="title__sub">Энциклопедия предпринимателя</p>
-      <p class="title__note">Знак, слово и цвет. Что решено, что измерено
-        и что осталось выбрать.</p>
-    </div>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></h1>
+    <p class="title__sub">Энциклопедия предпринимателя</p>
+    <p class="title__note">Знак, слово и цвет. Что решено, что измерено
+      и что осталось выбрать.</p>
   </div></div></section>
 <section class="slide"><div class="slide__rail"><span class="slide__num">01</span><span class="slide__eyebrow">Предмет</span></div><div class="slide__in">
   <h2>Справочник, к которому возвращаются</h2>
@@ -330,28 +329,31 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   <p class="note">Полоса кольца равна штриху слова — по вашему условию.
     Число снято с растра, а не взято из чертежа.</p></div></section>
 <section class="slide"><div class="slide__rail"><span class="slide__num">04</span><span class="slide__eyebrow">Слово</span></div><div class="slide__in">
-  <h2>Слово нарисовано под знак</h2>
-  <div class="hero-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="currentColor" mask="url(#m10002)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="currentColor"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+  <h2>Буквы нарисованы, а не выбраны</h2>
+  <div class="hero-logo hero-logo--word"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 374.159 130.4" fill="none">
+  <title>askqet</title>
+  <g transform="translate(19.2,91.2)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
+
 </svg></div>
   <div class="cols">
-    <p>Буквы не взяты из готового шрифта. Четыре правила перенесены со знака
-      в слово: та же толщина штриха, тот же радиус, те же горизонтальные
-      срезы, та же открытость.</p>
-    <p>Межбуквенные пробелы не назначены, а решены численно: между соседями
-      выравнивалась площадь просвета, а не расстояние между габаритами.</p>
+    <p>Готового шрифта здесь нет ни одной буквы. Четыре правила перенесены
+      со знака в слово: та же толщина штриха, тот же радиус, те же
+      горизонтальные срезы, та же открытость апертур.</p>
+    <p>Межбуквенные пробелы не назначены на глаз, а решены численно: между
+      соседями выравнивалась площадь просвета, а не расстояние между
+      габаритами. Кернинг найден тем же способом.</p>
   </div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">05</span><span class="slide__eyebrow">Размеры</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">05</span><span class="slide__eyebrow">Веса</span></div><div class="slide__in">
+  <h2>Три веса одной формы</h2>
+  <div class="art art--w"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.755 421.92" fill="none">
+  <title>Веса</title>
+  <g transform="translate(19.2,91.2)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M49.06,-26 A22.28,22.28 0 1 1 49.06,-26.004"/><path d="M49.06,-52 L49.06,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.938,-46.265 A14.259,11.14 0 1 0 18.759,-26 A14.259,11.14 0 1 1 10.58,-5.735"/></g></g><g transform="translate(120.078,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M4.5,-72 L4.5,0"/></g><path d="M36.546,-52 L24.454,-52 L0,-27.546 L0,-24.454 L24.454,0 L36.546,0 L10.546,-26 Z" fill="currentColor"/></g><g transform="translate(160.924,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M49.06,-26 A22.28,22.28 0 1 1 49.06,-26.004"/><path d="M49.06,-52 L49.06,20"/></g></g><g transform="translate(228.584,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M49.06,-26 A22.28,22.28 0 1 0 34.4,-5.064"/><path d="M4.5,-26 L53.56,-26"/></g></g><g transform="translate(280.844,0)"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter"><path d="M18.228,-66 L18.228,0"/><path d="M4.5,-52 L38.82,-52"/></g></g></g><text x="19.2" y="13.2" fill="currentColor" font-size="11" opacity="0.55" letter-spacing="1.6">СВЕТЛЫЙ · штрих 9 — 17 % роста</text><g transform="translate(19.2,225.44)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g><text x="19.2" y="147.44" fill="currentColor" font-size="11" opacity="0.55" letter-spacing="1.6">ОСНОВНОЙ · штрих 12 — 23 % роста</text><g transform="translate(19.2,359.68)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46.06,-26 A19.28,19.28 0 1 1 46.06,-26.003"/><path d="M46.06,-52 L46.06,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.917,-43.537 A12.339,9.64 0 1 0 19.839,-26 A12.339,9.64 0 1 1 12.762,-8.463"/></g></g><g transform="translate(122.238,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7.5,-72 L7.5,0"/></g><path d="M43.576,-52 L23.424,-52 L0,-28.576 L0,-23.424 L23.424,0 L43.576,0 L17.576,-26 Z" fill="currentColor"/></g><g transform="translate(170.115,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46.06,-26 A19.28,19.28 0 1 1 46.06,-26.003"/><path d="M46.06,-52 L46.06,20"/></g></g><g transform="translate(237.775,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M46.06,-26 A19.28,19.28 0 1 0 33.374,-7.883"/><path d="M7.5,-26 L53.56,-26"/></g></g><g transform="translate(290.035,0)"><g fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M21.228,-66 L21.228,0"/><path d="M7.5,-52 L41.82,-52"/></g></g></g><text x="19.2" y="281.68" fill="currentColor" font-size="11" opacity="0.55" letter-spacing="1.6">ПЛОТНЫЙ · штрих 15 — 29 % роста</text>
+
+</svg></div>
+  <p class="note">Растёт штрих, а не размер: рост чернил 17, 23 и 29 %
+    от высоты строчной. Скелет буквы при этом не меняется — иначе веса
+    перестали бы быть одной семьёй.</p></div></section>
+<section class="slide"><div class="slide__rail"><span class="slide__num">06</span><span class="slide__eyebrow">Размеры</span></div><div class="slide__in">
   <h2>С какого размера знак ещё работает</h2>
   <ul class="facts facts--4">
     <li><b>140 px</b><span>логотип целиком, технический минимум</span></li>
@@ -368,7 +370,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
     <p class="break__t">Дорога к цвету прошла через три ошибки.<br>
       Каждая из них дала правило, которого иначе бы не было.</p>
   </div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">06</span><span class="slide__eyebrow">Тупик первый</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">07</span><span class="slide__eyebrow">Тупик первый</span></div><div class="slide__in">
   <h2>«Не чёрный», который читается чёрным</h2>
   <p class="lede">Было сказано: чёрного в логотипе нет. Я подобрал
     <code>#2E3136</code> и отчитался, что чёрного нет, — потому что в коде не
@@ -437,7 +439,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   <p class="note">Шкала Манселла равномерна по восприятию. Всё, что ниже
     ступени 2.5, называют чёрным независимо от координат. Обе отданные краски
     стояли на 2.00 и 2.02.</p></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">07</span><span class="slide__eyebrow">Тупик второй</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">08</span><span class="slide__eyebrow">Тупик второй</span></div><div class="slide__in">
   <h2>Каждая новая краска гасит все прежние</h2>
   <div class="cols">
     <p>Поиск глазом описывается законом подобия: находка тем быстрее, чем
@@ -450,7 +452,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
       отбирает у неё уникальность.</p>
   </div>
   <p class="rule">Четыре смысловые краски — не богаче двух, а тише двух.</p></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">08</span><span class="slide__eyebrow">Тупик третий</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">09</span><span class="slide__eyebrow">Тупик третий</span></div><div class="slide__in">
   <h2>Печать отменяет цвет целиком</h2>
   <p class="lede">Содержимое регулярно печатают. На монохромном принтере роли
     различает только светлота — и коридор для неё зажат с двух сторон.</p>
@@ -476,7 +478,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   <p class="note">Сверху — требование доступности, снизу — запрет на чёрный.
     Половину монохромной полосы забрал сам запрет. Это цена решения, и она
     названа, а не спрятана.</p></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">09</span><span class="slide__eyebrow">Правило</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">10</span><span class="slide__eyebrow">Правило</span></div><div class="slide__in">
   <h2>К чему сошлись все три</h2>
   <p class="rule rule--big">Цвет — экранная надстройка,<br>а не носитель смысла.</p>
   <div class="cols">
@@ -487,7 +489,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
       подчёркивание у ссылки, почерк и линейка у записи на полях, плашка
       у необратимого действия, значок у срока.</p>
   </div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">10</span><span class="slide__eyebrow">Основа</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">11</span><span class="slide__eyebrow">Основа</span></div><div class="slide__in">
   <h2>Почти монохром</h2>
   <div class="cols">
     <p>Бумага тёплая, но не белая. Чернила серые, ступень 3.60 — чёрного нет,
@@ -503,7 +505,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
     <li><i style="background:#8A8884"></i><b>#8A8884</b><span>второстепенное</span></li>
     <li><i style="background:#DDDAD4"></i><b>#DDDAD4</b><span>линейка</span></li>
   </ul></div></section>
-<section class="slide slide--wide"><div class="slide__rail"><span class="slide__num">11</span><span class="slide__eyebrow">Решение</span></div><div class="slide__in">
+<section class="slide slide--wide"><div class="slide__rail"><span class="slide__num">12</span><span class="slide__eyebrow">Решение</span></div><div class="slide__in">
   <h2>Восемь акцентов на одном экране</h2>
   <p class="lede">Одна и та же статья, восемь раз. Основа общая, меняется
     ровно один цвет: стрелка знака, кнопка, ссылка, волосок у цитаты, записи
@@ -837,7 +839,7 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   </div>
 </article></figure></div>
   <div class="scroll"><table><thead><tr><th>акцент</th><th>значение</th><th>тон</th><th>хрома</th><th>к бумаге</th><th>белым по нему</th><th>офсет</th></tr></thead><tbody><tr><td><i style="background:#266D47"></i>ИЗУМРУД</td><td class="num">#266D47</td><td class="num">156°</td><td class="num">0.094</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#406A3D"></i>БУТЫЛОЧНЫЙ</td><td class="num">#406A3D</td><td class="num">143°</td><td class="num">0.085</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr><tr><td><i style="background:#296881"></i>ПЕТРОЛЬ</td><td class="num">#296881</td><td class="num">228°</td><td class="num">0.075</td><td class="num">5.7 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#435CAC"></i>ИНДИГО</td><td class="num">#435CAC</td><td class="num">268°</td><td class="num">0.131</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#9B464B"></i>БОРДО</td><td class="num">#9B464B</td><td class="num">18°</td><td class="num">0.114</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#944D24"></i>МЕДЬ</td><td class="num">#944D24</td><td class="num">48°</td><td class="num">0.110</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr><tr><td><i style="background:#765D25"></i>ЛАТУНЬ</td><td class="num">#765D25</td><td class="num">85°</td><td class="num">0.080</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#854C81"></i>СЛИВА</td><td class="num">#854C81</td><td class="num">330°</td><td class="num">0.106</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr></tbody></table></div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">12</span><span class="slide__eyebrow">Дальше</span></div><div class="slide__in">
+<section class="slide"><div class="slide__rail"><span class="slide__num">13</span><span class="slide__eyebrow">Дальше</span></div><div class="slide__in">
   <h2>Что нужно от вас</h2>
   <ol class="next">
     <li><b>Акцент</b><span>Один из восьми — или направление, если ни один
