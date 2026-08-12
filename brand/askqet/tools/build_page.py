@@ -14,9 +14,10 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
 from page_body import (EXTRA_CSS, audit_overshoot, audit_seat, audit_spacing,
-                       before_after, color_thresholds, decisions, files_table,
-                       fits, letter_fixes, lockups, material_table,
-                       narrow_table, palettes_block, size_table, sizes_row,
+                       before_after, color_thresholds, decisions, device_table,
+                       duo_block, files_table, fits, glare_table, gray_table,
+                       letter_fixes, lockups, material_table, narrow_table,
+                       palettes_block, print_table, size_table, sizes_row,
                        spec_table, tails, type_block, weights)  # noqa: E402
 
 
@@ -247,13 +248,13 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <p class="eyebrow">DevCore · AskQet · логотип и цвет</p>
     <div class="mast__logo">⟦logo/v11/word/askqet-word-text.svg⟧</div>
-    <p class="mast__thesis">Форма перепроверена замером,
-      <em>цвет разложен на пять</em><span class="caret"></span></p>
+    <p class="mast__thesis">Логотип двухцветный, цвет проверен
+      <em>на пяти устройствах и на бумаге</em><span class="caret"></span></p>
     <div class="mast__meta">
       <div>ШТРИХ<b>12 — 23 % роста</b></div>
       <div>ДИАГОНАЛИ<b>45°</b></div>
       <div>ПОЛОСА КОЛЬЦА<b>1.19 штриха</b></div>
-      <div>РАСКЛАДОВ ЦВЕТА<b>5</b></div>
+      <div>РОЛЕЙ ЦВЕТА<b>4 + фон</b></div>
     </div>
   </div>
 </header>
@@ -582,6 +583,93 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">14</span>
+      <h2>Двухцветный логотип</h2></div>
+    <div class="col">
+      <p class="lede">Имя разбирается на <strong>ASK + GET</strong>, и знак
+        разбирается ровно так же. Стрелка — это вопрос, жест наружу.
+        Кольцо — ответ, замкнутый круг. Поэтому в цвете
+        <strong>стрелка и «ask» идут акцентом, кольцо и «qet» — чернилами</strong>.</p>
+      <p>Деление не декоративное: оно объясняет имя без единого слова
+        пояснения и работает в обе стороны — на светлом и на тёмном. При
+        одноцветной печати, тиснении и гравировке логотип схлопывается в
+        мастер-версию, она уже есть в комплекте.</p>
+    </div>
+    {DUO}
+    <div class="col"><p class="note">Внизу каждого расклада — схема разворота:
+      колонка статьи, пометки на полях рукой читателя и блок ответа машины.
+      Это не макет, а проверка, что четыре роли цвета уживаются на одной
+      странице и не спорят.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">15</span>
+      <h2>Цветопередача на устройствах</h2></div>
+    <div class="col">
+      <p class="lede">Один и тот же HEX выглядит по-разному на разных экранах
+        и на бумаге. Здесь посчитано, насколько именно — по каждому цвету
+        каждого расклада.</p>
+    </div>
+
+    <h3>1 · Широкий гамут без управления цветом</h3>
+    <div class="col"><p>Самая частая ошибка на мобильных. Панель современного
+      телефона — Display P3, шире sRGB. Если приложение или вебвью не помечает
+      содержимое как sRGB, система выводит числа напрямую на P3-панель, и цвет
+      становится заметно насыщеннее. Считается точно: значения sRGB трактуются
+      как P3, переводятся в XYZ и обратно.</p></div>
+    {DEVICE}
+    <div class="col"><p class="note">Сдвиг 0.020…0.030 — это видимое изменение
+      тона, но не потеря узнаваемости. Достаётся сильнее всего тёплым
+      акцентам: охра уходит в оранжевый. Лечится не выбором цвета, а
+      дисциплиной: профиль sRGB в файлах, <code>color-scheme</code> в вебе и
+      явное объявление пространства в мобильных сборках.</p></div>
+
+    <h3>2 · Гамма и белая точка</h3>
+    <div class="col"><p>Кривая 2.4 вместо 2.2 (частая на OLED) даёт средний
+      сдвиг <strong>0.024…0.027 ΔEok</strong> — того же порядка, что и
+      неуправляемый гамут: средние тона темнеют. Уход белой точки в тёплую
+      сторону на 200 K даёт <strong>0.001</strong>: экран сдвигает и фон, и
+      краску одинаково, глаз адаптируется, и относительная картина почти не
+      меняется. Ночной режим логотипу не страшен.</p></div>
+
+    <h3>3 · Блики и солнце</h3>
+    <div class="col"><p>На улице экран отражает свет, и контраст падает.
+      К светлоте обоих цветов прибавляется отражённая доля.</p></div>
+    {GLARE}
+    <div class="col"><p>Вывод жёсткий и его стоит принять сейчас, а не после
+      запуска. <strong>На солнце даже чёрный текст на белом падает до 4.0 : 1</strong>
+      — ниже порога AA. Маргиналия держится до 3.6 : 1, акцент — до 2.9 : 1.
+      Значит, ссылка на полях <strong>не может опираться на цвет</strong>:
+      ей нужны подчёркивание или начертание, иначе на улице она перестанет
+      быть ссылкой.</p></div>
+
+    <h3>4 · Оттенки серого</h3>
+    <div class="col"><p>Печать в одну краску, чёрно-белый принтер, e-ink,
+      факс в налоговую. Все роли переводятся в светлоту, и смотрится
+      ближайшая пара.</p></div>
+    {GRAY}
+    <div class="col"><p>Второй жёсткий вывод, и он совпадает с первым.
+      В «АНЫҚТАМА» на тёмной теме редакция и машина расходятся по светлоте
+      всего на <strong>ΔY 0.010</strong> — в чёрно-белой печати это один и тот
+      же серый. То есть <strong>цвет в принципе не может один нести различение
+      человека и машины</strong>. Ему нужен второй носитель: значок, подпись
+      или линейка слева от блока. В схеме разворота выше такая линейка уже
+      стоит.</p></div>
+
+    <h3>5 · Печать</h3>
+    {PRINTT}
+    <div class="col"><p class="note">Перевод в CMYK здесь наивный и нужен
+      только чтобы показать порядок. Точный требует профиля бумаги и
+      контрактной пробы; холодные машинные тона — фиолетовый и индиго —
+      офсет по мелованной бумаге не удержит, для печати им нужны отдельные
+      подстановки или Pantone.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">16</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.
@@ -638,7 +726,9 @@ def main():
                     ("{SPACING}", audit_spacing), ("{SEAT}", audit_seat),
                     ("{THRESHOLDS}", color_thresholds),
                     ("{NARROW}", narrow_table), ("{TYPE}", type_block),
-                    ("{MATERIAL}", material_table),
+                    ("{MATERIAL}", material_table), ("{DUO}", duo_block),
+                    ("{DEVICE}", device_table), ("{GLARE}", glare_table),
+                    ("{GRAY}", gray_table), ("{PRINTT}", print_table),
                     ("{PALETTES}", palettes_block),
                     ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),

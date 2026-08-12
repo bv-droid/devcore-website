@@ -314,12 +314,13 @@ def ring_mask(v, with_arrow=True):
                + '\n  </mask></defs>\n')
 
 
-def mark(key=None, ink=INK, **over):
+def mark(key=None, ink=INK, arrow_ink=None, **over):
+    """arrow_ink задаётся отдельно, когда знак двухцветный."""
     v = params(key, **over)
     m, defs = ring_mask(v)
     return (defs
             + f'  <rect width="128" height="128" fill="{ink}" mask="url(#{m})"/>\n'
-            + f'  <path d="{arrow_path(v)}" fill="{ink}"/>\n')
+            + f'  <path d="{arrow_path(v)}" fill="{arrow_ink or ink}"/>\n')
 
 
 def ring_only(key=None, **over):

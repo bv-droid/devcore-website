@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 268" fill="none">
+  <title>AskQet — разворот</title>
+  <rect width="420" height="268" fill="#17181B"/>
+  <rect x="128" y="20" width="132" height="11" fill="#FBF9F5"/>
+  <rect x="128" y="38" width="46" height="5" rx="2.5" fill="#E09A4E"/>
+  <rect x="128" y="58" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="70" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="82" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="94" width="132.68" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="106" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="118" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="130" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="142" width="132.68" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="128" y="154" width="214" height="5" rx="2.5" fill="#8A857C" opacity="0.55"/>
+  <rect x="120" y="172" width="230" height="54" rx="4" fill="#8FA9F0" opacity="0.10"/>
+  <rect x="120" y="172" width="3" height="54" rx="1.5" fill="#8FA9F0"/>
+  <rect x="128" y="184" width="214" height="5" rx="2.5" fill="#8FA9F0" opacity="0.55"/>
+  <rect x="128" y="196" width="214" height="5" rx="2.5" fill="#8FA9F0" opacity="0.55"/>
+  <rect x="128" y="208" width="107" height="5" rx="2.5" fill="#8FA9F0" opacity="0.55"/>
+  <path d="M18.0,64.0 L27.8,65.2 L37.6,64.8 L47.3,64.5 L57.1,64.5 L66.9,63.2 L76.7,62.4 L86.4,63.5 L96.2,64.2 L106.0,64.2" fill="none" stroke="#E4C7B6" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M18,69 H72.56" stroke="#E4C7B6" stroke-width="0.8" opacity="0.5"/>
+  <path d="M18.0,113.4 L26.2,112.7 L34.4,112.4 L42.7,112.3 L50.9,111.0 L59.1,110.5 L67.3,111.7 L75.6,112.4 L83.8,112.4 L92.0,113.2" fill="none" stroke="#E4C7B6" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M18,117 H63.88" stroke="#E4C7B6" stroke-width="0.8" opacity="0.5"/>
+  <path d="M18.0,176.6 L28.2,176.2 L38.4,176.1 L48.7,174.9 L58.9,174.6 L69.1,176.0 L79.3,176.6 L89.6,176.5 L99.8,177.2 L110.0,176.9" fill="none" stroke="#E4C7B6" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M18,181 H75.04" stroke="#E4C7B6" stroke-width="0.8" opacity="0.5"/>
+  <path d="M108,14 V254" stroke="#8A857C" stroke-width="0.6" opacity="0.4"/>
+
+</svg>

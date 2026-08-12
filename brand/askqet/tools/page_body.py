@@ -27,6 +27,7 @@ M10 = _load("tools/measure_v10.json")
 AUD = _load("tools/audit_v12.json")
 COL = _load("tokens/askqet-color.json")
 SIZE = _load("tools/size_limits.json")
+DEV = _load("tools/device_color.json")
 
 L = "logo/v11/"
 F = "logo/final/"
@@ -127,7 +128,9 @@ EXTRA_CSS = """
 .pal__cvd svg{width:100%; height:auto; display:block}
 .pal__cvd figcaption{margin-top:.45rem; font-family:var(--mono); font-size:11px;
   color:var(--ink-3)}
-@media (max-width:760px){ .pal__art{grid-template-columns:minmax(0,1fr)} }
+.duo{display:grid; gap:var(--s2); grid-template-columns:1fr 1fr}
+.duo svg{width:100%; height:auto; display:block}
+@media (max-width:760px){ .pal__art,.duo{grid-template-columns:minmax(0,1fr)} }
 """
 
 
@@ -554,3 +557,88 @@ def palettes_block():
             f'<div class="pal__cvd">{cvdimg}</div>'
             f'</article>')
     return '<div class="pals">' + "".join(out) + '</div>'
+
+
+# ── двухцветный логотип и поля ───────────────────────────────────────────────
+
+def duo_block():
+    out = []
+    for key, d in COL.items():
+        sw = "".join(
+            f'<div class="sw"><i style="background:{d["colors"][r]}"></i>'
+            f'<b>{V11ROLE[r]}</b><em>{d["colors"][r]}</em></div>'
+            for r in ("ink", "accent", "machine", "note"))
+        out.append(
+            f'<article class="pal"><div class="pal__head">'
+            f'<h3>{d["title"]}</h3></div>'
+            f'<div class="pal__sw">{sw}</div>'
+            f'<div class="duo">'
+            f'<div>⟦logo/color/{key}/askqet-duo.svg⟧</div>'
+            f'<div>⟦logo/color/{key}/askqet-duo-dark.svg⟧</div></div>'
+            f'<div class="duo" style="margin-top:var(--s2)">'
+            f'<div>⟦logo/color/{key}/askqet-spread.svg⟧</div>'
+            f'<div>⟦logo/color/{key}/askqet-spread-dark.svg⟧</div></div>'
+            f'</article>')
+    return '<div class="pals">' + "".join(out) + '</div>'
+
+
+V11ROLE = {"ink": "кольцо и qet", "accent": "стрелка и ask",
+           "machine": "машина", "note": "поля"}
+
+
+def device_table():
+    head = ("<tr><th>расклад</th><th>худшая роль</th><th>задумано</th>"
+            "<th>показано</th><th>ΔEok</th></tr>")
+    rows = ""
+    for k, d in DEV.items():
+        w = d["worst_unmanaged"]
+        rows += (f'<tr><td>{d["title"]}</td><td class="note">{w["role"]}</td>'
+                 f'<td class="num">{w["hex"]}</td>'
+                 f'<td class="num">{w["unmanaged"]}</td>'
+                 f'<td class="num">{w["d_unmanaged"]:.3f}</td></tr>')
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+def glare_table():
+    names = ("в помещении", "блики", "солнце")
+    head = ("<tr><th>что читаем</th>"
+            + "".join(f"<th>{n}</th>" for n in names) + "</tr>")
+    rows = ""
+    d = DEV["anyqtama"]["glare"]
+    for role in ("чернила", "маргиналия", "редакция"):
+        rows += f'<tr><td>{role} на бумаге</td>'
+        for n in names:
+            v = d[n][role]
+            cls = "tag--pass" if v >= 4.5 else ("tag--warn" if v >= 3
+                                                else "tag--fail")
+            rows += f'<td class="num"><span class="tag {cls}">{v:.1f} : 1</span></td>'
+        rows += '</tr>'
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+def gray_table():
+    head = ("<tr><th>расклад</th><th>светлая тема</th><th>ΔY</th>"
+            "<th>тёмная тема</th><th>ΔY</th></tr>")
+    rows = ""
+    for k, d in DEV.items():
+        a, b, v = d["gray_worst_light"]
+        c, e, v2 = d["gray_worst_dark"]
+        rows += (f'<tr><td>{d["title"]}</td>'
+                 f'<td class="note">{a} ↔ {b}</td><td class="num">{v:.3f}</td>'
+                 f'<td class="note">{c} ↔ {e}</td><td class="num">{v2:.3f}</td>'
+                 f'</tr>')
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+def print_table():
+    head = ("<tr><th>расклад</th><th>роли, которые офсет не удержит</th>"
+            "<th>чернила, CMYK</th><th>редакция, CMYK</th></tr>")
+    rows = ""
+    for k, d in DEV.items():
+        by = {r["role"]: r for r in d["rows"]}
+        bad = ", ".join(d["print_bad"]) or "все держит"
+        rows += (f'<tr><td>{d["title"]}</td><td class="note">{bad}</td>'
+                 f'<td class="num">{"/".join(map(str, by["ink"]["cmyk"]))}</td>'
+                 f'<td class="num">{"/".join(map(str, by["accent"]["cmyk"]))}</td>'
+                 f'</tr>')
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'

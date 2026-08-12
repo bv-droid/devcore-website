@@ -85,11 +85,19 @@ def simulate(h, kind):
 # Общий принцип: тёплый акцент — человек и редакция, холодный — машина.
 # Температура читается быстрее тона и переживает дальтонизм.
 #
+# Третья роль — маргиналия: пометки и ссылки на полях, которые пользователь
+# оставляет как в записной книжке. Она берёт ТОТ ЖЕ тон, что и редакция, но
+# темнее и тише. Логика простая: рука редактора и рука читателя — обе
+# человеческие, машина остаётся холодной. Различаются они светлотой и
+# начертанием, а не тоном; на разделении по тону маргиналия проваливалась
+# при тританопии.
+#
 # Роли (одинаковы во всех раскладах, макет не переделывается при смене):
 #   paper   фон светлой темы           deep        фон тёмной темы
 #   ink     текст и знак на светлом    onDeep      текст и знак на тёмном
 #   accent  бренд и редакция           accentDark  то же на тёмном
 #   machine ответ ИИ                   machineDark то же на тёмном
+#   note    пометка на полях           noteDark    то же на тёмном
 #   support вспомогательный тон
 
 PALETTES = {
@@ -107,8 +115,8 @@ PALETTES = {
              "здесь наименьшее из пяти: охра и синий разводятся уверенно, но "
              "запаса меньше, чем у «двух голосов».",
         paper="#FBF9F5", ink="#17181B", accent="#A2551A", machine="#33549E",
-        support="#8A857C", deep="#17181B", onDeep="#FBF9F5",
-        accentDark="#E09A4E", machineDark="#8FA9F0"),
+        note="#6D2D00", support="#8A857C", deep="#17181B", onDeep="#FBF9F5",
+        accentDark="#E09A4E", machineDark="#8FA9F0", noteDark="#E4C7B6"),
 
     "senim": dict(
         title="СЕНІМ · доверие",
@@ -120,9 +128,9 @@ PALETTES = {
         cost="Самый предсказуемый расклад. Синий с золотом — стандарт для "
              "банков и госуслуг, и продукт рискует выглядеть старше и "
              "официальнее, чем он есть. Для стартапа это скорее тормоз.",
-        paper="#FFFFFF", ink="#10243D", accent="#9A6E12", machine="#5B4BD6",
+        paper="#FFFFFF", ink="#10243D", accent="#9A6E12", machine="#5B4BD6", note="#643F00",
         support="#7A8CA0", deep="#0A1728", onDeep="#F2F6FA",
-        accentDark="#E3B052", machineDark="#9C8CFF"),
+        accentDark="#E3B052", machineDark="#9C8CFF", noteDark="#BC871A"),
 
     "jauap": dict(
         title="ЖАУАП · ответ",
@@ -136,9 +144,9 @@ PALETTES = {
              "останется единственным, что отличает продукт в ряду. И слабое "
              "место замерено: при тританопии редакция и машина сходятся до "
              "ΔEok 0.090 — порог держится, но это худший результат из пяти.",
-        paper="#F7F8FA", ink="#14161A", accent="#0E6E66", machine="#6431C7",
+        paper="#F7F8FA", ink="#14161A", accent="#0E6E66", machine="#6431C7", note="#1D3F3B",
         support="#79808C", deep="#101317", onDeep="#EDEFF2",
-        accentDark="#3FBFAE", machineDark="#A98BFF"),
+        accentDark="#3FBFAE", machineDark="#A98BFF", noteDark="#89D9CF"),
 
     "juie": dict(
         title="ЖҮЙЕ · система",
@@ -151,9 +159,9 @@ PALETTES = {
              "фоне, и на белом теряет половину эффекта. Печать, документы и "
              "договоры живут на белом — там придётся держать вторую, менее "
              "выразительную версию.",
-        paper="#FFFFFF", ink="#0C0F14", accent="#96601A", machine="#5C46C8",
+        paper="#FFFFFF", ink="#0C0F14", accent="#96601A", machine="#5C46C8", note="#4F3414",
         support="#7C8593", deep="#0C0F14", onDeep="#E8ECF2",
-        accentDark="#E8A73A", machineDark="#A793FF"),
+        accentDark="#E8A73A", machineDark="#A793FF", noteDark="#B3895C"),
 
     "ekidauys": dict(
         title="ЕКІ ДАУЫС · два голоса",
@@ -166,15 +174,16 @@ PALETTES = {
         cost="Расклад требует дисциплины: как только тёплым покрасят что-то "
              "не редакционное, система рассыпается. И бренд остаётся без "
              "собственного цвета — фирменным становится не тон, а сама пара.",
-        paper="#FCFCFB", ink="#1A1C1E", accent="#B4441B", machine="#2E44B8",
+        paper="#FCFCFB", ink="#1A1C1E", accent="#B4441B", machine="#2E44B8", note="#4E3A34",
         support="#87898C", deep="#141618", onDeep="#F2F3F4",
-        accentDark="#F0774A", machineDark="#8C9BFF"),
+        accentDark="#F0774A", machineDark="#8C9BFF", noteDark="#D6BEB6"),
 }
 
-ROLES = ("paper", "ink", "accent", "machine", "support", "deep", "onDeep",
-         "accentDark", "machineDark")
+ROLES = ("paper", "ink", "accent", "machine", "note", "support", "deep",
+         "onDeep", "accentDark", "machineDark", "noteDark")
 ROLE_RU = {"paper": "бумага", "ink": "чернила", "accent": "редакция",
-           "machine": "машина", "support": "вспомогательный",
+           "machine": "машина", "note": "маргиналия",
+           "support": "вспомогательный",
            "deep": "тёмный фон", "onDeep": "на тёмном",
            "accentDark": "редакция на тёмном", "machineDark": "машина на тёмном"}
 
@@ -191,15 +200,25 @@ def checks(p):
         "знак на тёмном": wcag(p["onDeep"], p["deep"]),
         "редакция на тёмном": wcag(p["accentDark"], p["deep"]),
         "машина на тёмном": wcag(p["machineDark"], p["deep"]),
+        "маргиналия на бумаге": wcag(p["note"], p["paper"]),
+        "маргиналия на тёмном": wcag(p["noteDark"], p["deep"]),
     }
     out["separation"] = {
         "редакция ↔ машина": de_ok(p["accent"], p["machine"]),
         "редакция ↔ чернила": de_ok(p["accent"], p["ink"]),
         "машина ↔ чернила": de_ok(p["machine"], p["ink"]),
         "то же на тёмном": de_ok(p["accentDark"], p["machineDark"]),
+        "маргиналия ↔ редакция": de_ok(p["note"], p["accent"]),
+        "маргиналия ↔ машина": de_ok(p["note"], p["machine"]),
+        "маргиналия ↔ чернила": de_ok(p["note"], p["ink"]),
     }
     out["cvd"] = {
         k: de_ok(simulate(p["accent"], k), simulate(p["machine"], k))
+        for k in CVD
+    }
+    out["cvd_note"] = {
+        k: min(de_ok(simulate(p["note"], k), simulate(p["machine"], k)),
+               de_ok(simulate(p["note"], k), simulate(p["accent"], k)))
         for k in CVD
     }
     out["neighbours"] = {
@@ -220,13 +239,22 @@ def verdict(c):
                  "редакция на тёмном", "машина на тёмном"):
         if c["contrast"][role] < 3.0:
             bad.append(f"{role} ниже 3 : 1")
+    # маргиналия — это текст, ей нужен полный порог
+    for role in ("маргиналия на бумаге", "маргиналия на тёмном"):
+        if c["contrast"][role] < 4.5:
+            bad.append(f"{role} ниже 4.5 : 1")
     for pair in ("редакция ↔ машина", "редакция ↔ чернила",
-                 "машина ↔ чернила", "то же на тёмном"):
+                 "машина ↔ чернила", "то же на тёмном",
+                 "маргиналия ↔ редакция", "маргиналия ↔ машина",
+                 "маргиналия ↔ чернила"):
         if c["separation"][pair] < 0.10:
             bad.append(f"{pair} — ближе 0.10")
     for k, v in c["cvd"].items():
         if v < 0.08:
             bad.append(f"редакция и машина сливаются: {k}")
+    for k, v in c["cvd_note"].items():
+        if v < 0.08:
+            bad.append(f"маргиналия сливается с соседом: {k}")
     for k, v in c["neighbours"].items():
         if v < 0.08:
             bad.append(f"акцент слишком близко к {k}")
@@ -285,6 +313,75 @@ def cvd_plate(p, kind):
                box=box, title="AskQet")
 
 
+# ── Двухцветный логотип ──────────────────────────────────────────────────────
+
+def duo_plate(p, dark=False):
+    """Кольцо и «qet» чернилами, стрелка и «ask» акцентом."""
+    ink = p["onDeep"] if dark else p["ink"]
+    acc = p["accentDark"] if dark else p["accent"]
+    bg = p["deep"] if dark else p["paper"]
+    body, w, h, m = V.lockup_row(weight=F.WEIGHT, kind=F.KIND, color=ink,
+                                 fit=F.FIT, accent=acc)
+    band = V.band_in_word(F.WEIGHT, F.FIT, F.KIND)
+    pad = band * F.PAD
+    box = (w + pad * 2, h + pad * 2)
+    top = pad + h - m["desc"]
+    return svg(f'  <rect width="{n(box[0])}" height="{n(box[1])}" fill="{bg}"/>\n'
+               f'  <g transform="translate({n(pad)},{n(top)})">{body}</g>',
+               box=box, title="AskQet")
+
+
+# ── Разворот: статья, поля, ответ машины ─────────────────────────────────────
+
+def _squiggle(x, y, w, seed=0):
+    """Строка «от руки»: ломаная с лёгким дрожанием."""
+    pts, k = [], 9
+    for i in range(k + 1):
+        t = i / k
+        dy = math.sin(t * 7.0 + seed) * 1.1 + math.sin(t * 17.0 + seed * 2) * 0.5
+        pts.append((x + w * t, y + dy))
+    return "M" + " L".join(f"{a:.1f},{b:.1f}" for a, b in pts)
+
+
+def spread(p, dark=False):
+    """Схема разворота: колонка статьи, пометки на полях, блок машины."""
+    bg = p["deep"] if dark else p["paper"]
+    ink = p["onDeep"] if dark else p["ink"]
+    acc = p["accentDark"] if dark else p["accent"]
+    mac = p["machineDark"] if dark else p["machine"]
+    note = p["noteDark"] if dark else p["note"]
+    sup = p["support"]
+    W, H = 420.0, 268.0
+    MX, CX, CW = 18.0, 128.0, 214.0
+    out = [f'  <rect width="{n(W)}" height="{n(H)}" fill="{bg}"/>']
+    out.append(f'  <rect x="{n(CX)}" y="20" width="132" height="11" fill="{ink}"/>')
+    out.append(f'  <rect x="{n(CX)}" y="38" width="46" height="5" rx="2.5"'
+               f' fill="{acc}"/>')
+    y = 58.0
+    for i in range(9):
+        w = CW if i % 4 != 3 else CW * 0.62
+        out.append(f'  <rect x="{n(CX)}" y="{n(y)}" width="{n(w)}" height="5"'
+                   f' rx="2.5" fill="{sup}" opacity="0.55"/>')
+        y += 12.0
+    out.append(f'  <rect x="{n(CX - 8)}" y="{n(y + 6)}" width="{n(CW + 16)}"'
+               f' height="54" rx="4" fill="{mac}" opacity="0.10"/>')
+    out.append(f'  <rect x="{n(CX - 8)}" y="{n(y + 6)}" width="3"'
+               f' height="54" rx="1.5" fill="{mac}"/>')
+    for i in range(3):
+        out.append(f'  <rect x="{n(CX)}" y="{n(y + 18 + i * 12)}"'
+                   f' width="{n(CW * (1 if i < 2 else 0.5))}" height="5"'
+                   f' rx="2.5" fill="{mac}" opacity="0.55"/>')
+    for i, (yy, ln) in enumerate(((64.0, 88.0), (112.0, 74.0), (176.0, 92.0))):
+        out.append(f'  <path d="{_squiggle(MX, yy, ln, i)}" fill="none"'
+                   f' stroke="{note}" stroke-width="1.6"'
+                   f' stroke-linecap="round"/>')
+        out.append(f'  <path d="M{n(MX)},{n(yy + 5)} H{n(MX + ln * 0.62)}"'
+                   f' stroke="{note}" stroke-width="0.8" opacity="0.5"/>')
+    out.append(f'  <path d="M{n(CX - 20)},14 V{n(H - 14)}" stroke="{sup}"'
+               f' stroke-width="0.6" opacity="0.4"/>')
+    return svg("\n".join(out) + "\n", box=(W, H), title="AskQet — разворот")
+
+
 def build_all():
     out = []
     data = {}
@@ -294,6 +391,10 @@ def build_all():
         out.append(write(d + "askqet-dark.svg", logo_plate(p, True)))
         out.append(write(d + "askqet-accent.svg", accent_plate(p)))
         out.append(write(d + "askqet-accent-dark.svg", accent_plate(p, True)))
+        out.append(write(d + "askqet-duo.svg", duo_plate(p)))
+        out.append(write(d + "askqet-duo-dark.svg", duo_plate(p, True)))
+        out.append(write(d + "askqet-spread.svg", spread(p)))
+        out.append(write(d + "askqet-spread-dark.svg", spread(p, True)))
         for cv in CVD:
             out.append(write(d + f"askqet-{cv}.svg", cvd_plate(p, cv)))
         c = checks(p)
@@ -303,7 +404,8 @@ def build_all():
             "colors": {r: p[r] for r in ROLES},
             "oklch": {r: oklch(p[r]) for r in ROLES},
             "contrast": c["contrast"], "separation": c["separation"],
-            "cvd": c["cvd"], "neighbours": c["neighbours"],
+            "cvd": c["cvd"], "cvd_note": c["cvd_note"],
+            "neighbours": c["neighbours"],
             "fails": verdict(c),
         }
     write("tokens/askqet-color.json", json.dumps(data, ensure_ascii=False,

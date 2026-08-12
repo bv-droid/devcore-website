@@ -252,9 +252,33 @@ def _mk(kind):
             else dict(key=kind))
 
 
-def mark(kind=MARK_KIND, color="currentColor"):
-    """Знак итерации 10 без подложки, в currentColor."""
-    return V10.mark(ink=color, **_mk(kind))
+def mark(kind=MARK_KIND, color="currentColor", arrow=None):
+    """Знак итерации 10 без подложки. arrow — цвет стрелки, если он свой."""
+    return V10.mark(ink=color, arrow_ink=arrow, **_mk(kind))
+
+
+# ── Двухцветное деление ──────────────────────────────────────────────────────
+#
+# Имя разбирается на ASK + GET, и знак разбирается ровно так же:
+#   стрелка  ↔ ask   — вопрос, жест наружу
+#   кольцо   ↔ qet   — ответ, замкнутый круг
+# Поэтому в цвете стрелка и «ask» идут акцентом, кольцо и «qet» — чернилами.
+
+SPLIT = 3                      # первые три буквы — ask
+
+
+def wordmark_duo(weight="text", tail="cut", c_ask="currentColor",
+                 c_qet="currentColor", word=WORD):
+    m = metrics(weight)
+    x, els = 0.0, []
+    for i, ch in enumerate(word):
+        color = c_ask if i < SPLIT else c_qet
+        body, lsb, w, rsb = glyph(ch, m, tail, color)
+        if i:
+            x += KERN.get(word[i - 1] + ch, 0.0)
+        els.append(f'<g transform="translate({n(x + lsb)},0)">{body}</g>')
+        x += lsb + w + rsb
+    return "".join(els), x, m
 
 
 def mark_box(kind=MARK_KIND):
@@ -271,12 +295,12 @@ MARK_BOX = 128.0
 # Все отношения выражены в долях полосы знака (band = 16 при R_out = 42),
 # чтобы при любом масштабе связь между знаком и словом оставалась одной.
 
-def _mark_group(kind, color, scale, tx, ty):
+def _mark_group(kind, color, scale, tx, ty, arrow=None):
     """Знак, посаженный так, чтобы левый верхний угол габарита попал в (tx, ty)."""
     left, top, _, _ = mark_box(kind)
     return (f'<g transform="translate({n(tx - left * scale)},'
             f'{n(ty - top * scale)}) scale({n(scale)})">'
-            f'{mark(kind, color)}</g>')
+            f'{mark(kind, color, arrow)}</g>')
 
 
 # Три посадки знака по высоте. Высота знака привязана к метрикам слова,
@@ -311,19 +335,22 @@ FITS = {
 
 
 def lockup_row(weight="text", tail="cut", kind=MARK_KIND, color="currentColor",
-               fit="even"):
+               fit="even", accent=None):
     """В строку: знак слева, слово справа.
 
     Высота знака задана посадкой, просвет — 2.5 штриха, по вертикали знак
     центрируется на оптической середине слова.
     """
-    wm, ww, m = wordmark(weight, tail, color)
+    if accent:
+        wm, ww, m = wordmark_duo(weight, tail, accent, color)
+    else:
+        wm, ww, m = wordmark(weight, tail, color)
     _, _, bw, bh = mark_box(kind)
     scale = FITS[fit]["h"](m) / bh
     mw, mh = bw * scale, bh * scale
     gap = m["st"] * 2.5
     mid = (-m["asc"] + m["desc"]) / 2
-    body = (_mark_group(kind, color, scale, 0.0, mid - mh / 2)
+    body = (_mark_group(kind, color, scale, 0.0, mid - mh / 2, arrow=accent)
             + f'<g transform="translate({n(mw + gap)},0)">{wm}</g>')
     h = max(m["asc"] + m["desc"], mh)
     return body, mw + gap + ww, h, m
