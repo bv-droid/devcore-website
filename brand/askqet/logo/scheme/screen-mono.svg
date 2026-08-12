@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" fill="none">
+  <title>AskQet — экран</title>
+  <rect width="460" height="300" fill="#FFFFFF"/>
+  <rect width="460" height="36" fill="#FFFFFF"/>
+  <path d="M0,36 H460" stroke="#E3D5CB" stroke-width="1"/>
+  <circle cx="23" cy="18" r="7.5" fill="none" stroke="#754E2C" stroke-width="3"/>
+  <path d="M27,22 l7.5,7.5 M34.5,29.5 v-6.5 M34.5,29.5 h-6.5" stroke="#754E2C" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="46" y="13" width="54" height="9" rx="2" fill="#754E2C"/>
+  <rect x="356" y="11" width="88" height="16" rx="4" fill="#754E2C"/>
+  <rect x="366" y="17" width="68" height="4" rx="2" fill="#FFFFFF"/>
+  <rect x="142" y="54" width="152" height="12" fill="#754E2C"/>
+  <rect x="142" y="76" width="64" height="5" rx="2.5" fill="#754E2C"/>
+  <path d="M142,84 h64" stroke="#754E2C" stroke-width="1.2"/>
+  <rect x="142" y="96" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="108" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="120" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="132" width="131.08" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="144" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="156" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="130" y="176" width="250" height="46" rx="4" fill="#E8E4DC"/>
+  <rect x="130" y="176" width="3" height="46" rx="1.5" fill="#754E2C"/>
+  <circle cx="144" cy="191" r="5.5" fill="none" stroke="#754E2C" stroke-width="1.6"/>
+  <path d="M144,187.5 v3.5 h2.6" stroke="#754E2C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <rect x="156" y="188" width="118" height="6" rx="3" fill="#754E2C"/>
+  <rect x="156" y="202" width="176" height="5" rx="2.5" fill="#754E2C" opacity="0.6"/>
+  <path d="M116,48 V286" stroke="#E3D5CB" stroke-width="1"/>
+  <path d="M22.0,100.0 L31.3,101.2 L40.7,100.8 L50.0,100.5 L59.3,100.5 L68.7,99.2 L78.0,98.4 L87.3,99.5 L96.7,100.2 L106.0,100.2" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,106 H75.76" stroke="#754E2C" stroke-width="1"/>
+  <path d="M22.0,153.4 L29.8,152.7 L37.6,152.4 L45.3,152.3 L53.1,151.0 L60.9,150.5 L68.7,151.7 L76.4,152.4 L84.2,152.4 L92.0,153.2" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,158 H66.8" stroke="#754E2C" stroke-width="1"/>
+  <path d="M22.0,214.6 L32.0,214.2 L42.0,214.1 L52.0,212.9 L62.0,212.6 L72.0,214.0 L82.0,214.6 L92.0,214.5 L102.0,215.2 L112.0,214.9" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,220 H79.6" stroke="#754E2C" stroke-width="1"/>
+
+</svg>

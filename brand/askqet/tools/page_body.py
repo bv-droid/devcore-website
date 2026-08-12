@@ -862,3 +862,67 @@ def attention_block():
             '<th>разнородность</th><th>эффективность</th>'
             '<th>при дальтонизме</th><th>к текущей</th></tr>'
             + rows + '</table></div><div class="schemes">' + sw + '</div>')
+
+
+# ── итоговая схема приложения ────────────────────────────────────────────────
+
+SCH = _load("tokens/askqet-scheme.json")
+SFIN = _load("tools/scheme_final.json")
+
+
+def print_budget():
+    """Предел печати в одну краску — и во что обошёлся отказ от чёрного."""
+    b, b0 = SFIN["budget"], SFIN["budget_if_black"]
+    lv = "".join(f'<tr><td class="num">{i}</td>'
+                 f'<td class="num">{l["Y"]:.3f}</td>'
+                 f'<td class="num">{l["contrast"]:.1f} : 1</td></tr>'
+                 for i, l in enumerate(b["levels"], 1))
+    return (f'<div class="two"><div class="scroll"><table>'
+            f'<tr><th>ступень</th><th>светлота</th><th>контраст</th></tr>'
+            f'{lv}</table></div>'
+            f'<div class="scroll"><table>'
+            f'<tr><th>что зажимает коридор</th><th>значение</th></tr>'
+            f'<tr><td>сверху — требование AA</td>'
+            f'<td class="num">4.5 : 1</td></tr>'
+            f'<tr><td>снизу — запрет на чёрный, ступень 3.5</td>'
+            f'<td class="num">6.8 : 1</td></tr>'
+            f'<tr><td>ширина коридора</td>'
+            f'<td class="num">{b["span"]:.3f}</td></tr>'
+            f'<tr><td>различимая разница светлот</td>'
+            f'<td class="num">{0.045:.3f}</td></tr>'
+            f'<tr class="row--mark"><td><b>различимых ступеней</b></td>'
+            f'<td class="num"><b>{b["n"]}</b></td></tr>'
+            f'<tr><td>было бы, если б чёрный был разрешён</td>'
+            f'<td class="num">{b0["n"]}</td></tr>'
+            f'</table></div></div>')
+
+
+def scheme_block():
+    sw = "".join(
+        f'<div class="sw"><i style="background:{v}"></i>'
+        f'<b>{k}</b><em>{v}</em></div>' for k, v in SCH["colors"].items())
+    rows = ""
+    for k, v in SCH["sep"].items():
+        cvd, g = SCH["cvd"][k], SCH["grey"][k]
+        by = "цветом" if cvd >= 0.08 else "только формой"
+        pr = "виден" if g >= 0.045 else "не виден"
+        cls = '' if cvd >= 0.08 else ' class="row--mark"'
+        rows += (f'<tr{cls}><td>{k}</td><td class="num">{v:.3f}</td>'
+                 f'<td class="num">{cvd:.3f}</td><td class="num">{g:.3f}</td>'
+                 f'<td>{by}</td><td>{pr}</td></tr>')
+    form = "".join(f'<tr><td class="num">{k}</td><td>{t}</td></tr>'
+                   for k, t in SCH["form"].items())
+    return (f'<div class="pal__sw">{sw}</div>'
+            f'<div class="duo">'
+            f'<figure><div>\u27e6logo/scheme/screen.svg\u27e7</div>'
+            f'<figcaption>экран</figcaption></figure>'
+            f'<figure><div>\u27e6logo/scheme/screen-mono.svg\u27e7</div>'
+            f'<figcaption>он же в одну краску, у бухгалтера на принтере</figcaption>'
+            f'</figure></div>'
+            f'<div class="scroll"><table>'
+            f'<tr><th>пара ролей</th><th>ΔEok</th><th>при дальтонизме</th>'
+            f'<th>ΔY</th><th>чем разведены</th><th>в печати</th></tr>'
+            f'{rows}</table></div>'
+            f'<div class="scroll"><table>'
+            f'<tr><th>роль</th><th>признак формы, работающий без цвета</th></tr>'
+            f'{form}</table></div>')

@@ -2931,10 +2931,122 @@ tr.row--mark td{background:rgba(14,110,102,.10)}
   </div>
 </section>
 
-
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">19</span>
+      <h2>Цветовая схема приложения</h2></div>
+    <div class="col">
+      <p class="lede">Четыре ответа заказчика сузили задачу: сессия 20—60 минут,
+        ИИ работает невидимо, есть сроки и есть платежи, содержимое регулярно
+        печатается. Последнее оказалось самым суровым — печать отменяет цвет
+        целиком, и именно она задала предел всей системе.</p>
+      <p>Требование AA не пускает роли светлее 4.5&nbsp;:&nbsp;1. Запрет на
+        чёрный не пускает их темнее ступени&nbsp;3.5. Между этими двумя
+        границами остаётся коридор светлот шириной 0.071, и в него помещается
+        ровно столько ступеней, сколько раз в нём укладывается минимальная
+        различимая разница.</p>
+    </div>
+    <div class="two"><div class="scroll"><table><tr><th>ступень</th><th>светлота</th><th>контраст</th></tr><tr><td class="num">1</td><td class="num">0.159</td><td class="num">4.5 : 1</td></tr><tr><td class="num">2</td><td class="num">0.088</td><td class="num">6.8 : 1</td></tr></table></div><div class="scroll"><table><tr><th>что зажимает коридор</th><th>значение</th></tr><tr><td>сверху — требование AA</td><td class="num">4.5 : 1</td></tr><tr><td>снизу — запрет на чёрный, ступень 3.5</td><td class="num">6.8 : 1</td></tr><tr><td>ширина коридора</td><td class="num">0.071</td></tr><tr><td>различимая разница светлот</td><td class="num">0.045</td></tr><tr class="row--mark"><td><b>различимых ступеней</b></td><td class="num"><b>2</b></td></tr><tr><td>было бы, если б чёрный был разрешён</td><td class="num">4</td></tr></table></div></div>
+    <div class="col">
+      <p><strong>Две ступени вместо четырёх.</strong> Половину монохромной
+        полосы забрал отказ от чёрного — и это уже не эстетическая, а
+        функциональная цена: на принтере у бухгалтера существуют ровно две
+        различимые текстовые роли. Всё остальное обязано различаться формой.</p>
+      <p>К тому же выводу независимо пришли два других замера. Красная тревога
+        и коричневые чернила при дейтеранопии сходятся до
+        <strong>0.022</strong> — красным текстом опасность обозначать нельзя,
+        только плашкой. А на солнце контраст чернил падает до 3.0&nbsp;:&nbsp;1.
+        Три разные проверки, один ответ: <strong>цвет — экранная надстройка,
+        а не носитель смысла</strong>.</p>
+    </div>
+
+    <h3>Схема</h3>
+    <div class="col">
+      <p>Тонов три. Коричневый — данность: закон, текст, то, что не вы писали.
+        Бирюзовый — ваше и живое: ссылки, кнопки, стрелка и записи на полях
+        (это один смысл, «на это можно нажать», и он не заслуживает двух
+        красок). Красный — необратимое: платёж, подписка, отправка.</p>
+      <p class="note">Машинной роли нет: выбран невидимый помощник. Токен
+        <code>machineFill</code> оставлен заглушкой, чтобы включить границу
+        одной строкой. Оговорка по существу: в справочнике по законодательству
+        неразличимость сгенерированного и нормативного — риск пользователя,
+        и решение стоит пересматривать осознанно, а не по умолчанию.</p>
+    </div>
+    <div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#FFFDF8"></i><b>surface</b><em>#FFFDF8</em></div><div class="sw"><i style="background:#754E2C"></i><b>ink</b><em>#754E2C</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#AB3E3B"></i><b>danger</b><em>#AB3E3B</em></div><div class="sw"><i style="background:#846B56"></i><b>muted</b><em>#846B56</em></div><div class="sw"><i style="background:#E3D5CB"></i><b>line</b><em>#E3D5CB</em></div><div class="sw"><i style="background:#F9DAD6"></i><b>warnFill</b><em>#F9DAD6</em></div><div class="sw"><i style="background:#CDEAE5"></i><b>accentFill</b><em>#CDEAE5</em></div><div class="sw"><i style="background:#FFFFFF"></i><b>onDanger</b><em>#FFFFFF</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" fill="none">
+  
+  <rect width="460" height="300" fill="#F6F2EA"/>
+  <rect width="460" height="36" fill="#FFFDF8"/>
+  <path d="M0,36 H460" stroke="#E3D5CB" stroke-width="1"/>
+  <circle cx="23" cy="18" r="7.5" fill="none" stroke="#754E2C" stroke-width="3"/>
+  <path d="M27,22 l7.5,7.5 M34.5,29.5 v-6.5 M34.5,29.5 h-6.5" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="46" y="13" width="54" height="9" rx="2" fill="#754E2C"/>
+  <rect x="356" y="11" width="88" height="16" rx="4" fill="#AB3E3B"/>
+  <rect x="366" y="17" width="68" height="4" rx="2" fill="#FFFFFF"/>
+  <rect x="142" y="54" width="152" height="12" fill="#754E2C"/>
+  <rect x="142" y="76" width="64" height="5" rx="2.5" fill="#0E6E66"/>
+  <path d="M142,84 h64" stroke="#0E6E66" stroke-width="1.2"/>
+  <rect x="142" y="96" width="226" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="142" y="108" width="226" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="142" y="120" width="226" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="142" y="132" width="131.08" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="142" y="144" width="226" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="142" y="156" width="226" height="5" rx="2.5" fill="#846B56" opacity="0.55"/>
+  <rect x="130" y="176" width="250" height="46" rx="4" fill="#F9DAD6"/>
+  <rect x="130" y="176" width="3" height="46" rx="1.5" fill="#AB3E3B"/>
+  <circle cx="144" cy="191" r="5.5" fill="none" stroke="#754E2C" stroke-width="1.6"/>
+  <path d="M144,187.5 v3.5 h2.6" stroke="#754E2C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <rect x="156" y="188" width="118" height="6" rx="3" fill="#754E2C"/>
+  <rect x="156" y="202" width="176" height="5" rx="2.5" fill="#754E2C" opacity="0.6"/>
+  <path d="M116,48 V286" stroke="#E3D5CB" stroke-width="1"/>
+  <path d="M22.0,100.0 L31.3,101.2 L40.7,100.8 L50.0,100.5 L59.3,100.5 L68.7,99.2 L78.0,98.4 L87.3,99.5 L96.7,100.2 L106.0,100.2" fill="none" stroke="#0E6E66" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,106 H75.76" stroke="#0E6E66" stroke-width="1"/>
+  <path d="M22.0,153.4 L29.8,152.7 L37.6,152.4 L45.3,152.3 L53.1,151.0 L60.9,150.5 L68.7,151.7 L76.4,152.4 L84.2,152.4 L92.0,153.2" fill="none" stroke="#0E6E66" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,158 H66.8" stroke="#0E6E66" stroke-width="1"/>
+  <path d="M22.0,214.6 L32.0,214.2 L42.0,214.1 L52.0,212.9 L62.0,212.6 L72.0,214.0 L82.0,214.6 L92.0,214.5 L102.0,215.2 L112.0,214.9" fill="none" stroke="#0E6E66" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,220 H79.6" stroke="#0E6E66" stroke-width="1"/>
+
+</svg></div><figcaption>экран</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 300" fill="none">
+  
+  <rect width="460" height="300" fill="#FFFFFF"/>
+  <rect width="460" height="36" fill="#FFFFFF"/>
+  <path d="M0,36 H460" stroke="#E3D5CB" stroke-width="1"/>
+  <circle cx="23" cy="18" r="7.5" fill="none" stroke="#754E2C" stroke-width="3"/>
+  <path d="M27,22 l7.5,7.5 M34.5,29.5 v-6.5 M34.5,29.5 h-6.5" stroke="#754E2C" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="46" y="13" width="54" height="9" rx="2" fill="#754E2C"/>
+  <rect x="356" y="11" width="88" height="16" rx="4" fill="#754E2C"/>
+  <rect x="366" y="17" width="68" height="4" rx="2" fill="#FFFFFF"/>
+  <rect x="142" y="54" width="152" height="12" fill="#754E2C"/>
+  <rect x="142" y="76" width="64" height="5" rx="2.5" fill="#754E2C"/>
+  <path d="M142,84 h64" stroke="#754E2C" stroke-width="1.2"/>
+  <rect x="142" y="96" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="108" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="120" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="132" width="131.08" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="144" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="142" y="156" width="226" height="5" rx="2.5" fill="#754E2C" opacity="0.55"/>
+  <rect x="130" y="176" width="250" height="46" rx="4" fill="#E8E4DC"/>
+  <rect x="130" y="176" width="3" height="46" rx="1.5" fill="#754E2C"/>
+  <circle cx="144" cy="191" r="5.5" fill="none" stroke="#754E2C" stroke-width="1.6"/>
+  <path d="M144,187.5 v3.5 h2.6" stroke="#754E2C" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <rect x="156" y="188" width="118" height="6" rx="3" fill="#754E2C"/>
+  <rect x="156" y="202" width="176" height="5" rx="2.5" fill="#754E2C" opacity="0.6"/>
+  <path d="M116,48 V286" stroke="#E3D5CB" stroke-width="1"/>
+  <path d="M22.0,100.0 L31.3,101.2 L40.7,100.8 L50.0,100.5 L59.3,100.5 L68.7,99.2 L78.0,98.4 L87.3,99.5 L96.7,100.2 L106.0,100.2" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,106 H75.76" stroke="#754E2C" stroke-width="1"/>
+  <path d="M22.0,153.4 L29.8,152.7 L37.6,152.4 L45.3,152.3 L53.1,151.0 L60.9,150.5 L68.7,151.7 L76.4,152.4 L84.2,152.4 L92.0,153.2" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,158 H66.8" stroke="#754E2C" stroke-width="1"/>
+  <path d="M22.0,214.6 L32.0,214.2 L42.0,214.1 L52.0,212.9 L62.0,212.6 L72.0,214.0 L82.0,214.6 L92.0,214.5 L102.0,215.2 L112.0,214.9" fill="none" stroke="#754E2C" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22,220 H79.6" stroke="#754E2C" stroke-width="1"/>
+
+</svg></div><figcaption>он же в одну краску, у бухгалтера на принтере</figcaption></figure></div><div class="scroll"><table><tr><th>пара ролей</th><th>ΔEok</th><th>при дальтонизме</th><th>ΔY</th><th>чем разведены</th><th>в печати</th></tr><tr><td>ink ↔ accent</td><td class="num">0.139</td><td class="num">0.083</td><td class="num">0.028</td><td>цветом</td><td>не виден</td></tr><tr class="row--mark"><td>ink ↔ danger</td><td class="num">0.111</td><td class="num">0.022</td><td class="num">0.030</td><td>только формой</td><td>не виден</td></tr><tr><td>ink ↔ muted</td><td class="num">0.091</td><td class="num">0.089</td><td class="num">0.067</td><td>цветом</td><td>виден</td></tr><tr class="row--mark"><td>accent ↔ danger</td><td class="num">0.225</td><td class="num">0.079</td><td class="num">0.002</td><td>только формой</td><td>не виден</td></tr><tr class="row--mark"><td>accent ↔ muted</td><td class="num">0.128</td><td class="num">0.038</td><td class="num">0.039</td><td>только формой</td><td>не виден</td></tr><tr class="row--mark"><td>danger ↔ muted</td><td class="num">0.115</td><td class="num">0.038</td><td class="num">0.037</td><td>только формой</td><td>не виден</td></tr></table></div><div class="scroll"><table><tr><th>роль</th><th>признак формы, работающий без цвета</th></tr><tr><td class="num">ink</td><td>кегль и вес — базовая роль, форма не нужна</td></tr><tr><td class="num">accent</td><td>подчёркивание; у пометки — почерк и линейка слева</td></tr><tr><td class="num">danger</td><td>плашка с белым текстом, никогда не красный текст</td></tr><tr><td class="num">warnFill</td><td>линейка слева и значок часов</td></tr><tr><td class="num">muted</td><td>меньший кегль</td></tr></table></div>
+  </div>
+</section>
+
+
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">20</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.

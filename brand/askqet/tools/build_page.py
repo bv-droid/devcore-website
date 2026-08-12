@@ -14,7 +14,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
 from page_body import (EXTRA_CSS, ink_value_block, ladder_block,
-                       attention_block,
+                       attention_block, print_budget, scheme_block,
                        audit_overshoot, audit_seat, audit_spacing,
                        before_after, brand_block, brand_tokens,
                        color_thresholds, decisions, device_table, duo_block,
@@ -812,6 +812,52 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   </div>
 </section>
 
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">19</span>
+      <h2>Цветовая схема приложения</h2></div>
+    <div class="col">
+      <p class="lede">Четыре ответа заказчика сузили задачу: сессия 20—60 минут,
+        ИИ работает невидимо, есть сроки и есть платежи, содержимое регулярно
+        печатается. Последнее оказалось самым суровым — печать отменяет цвет
+        целиком, и именно она задала предел всей системе.</p>
+      <p>Требование AA не пускает роли светлее 4.5&nbsp;:&nbsp;1. Запрет на
+        чёрный не пускает их темнее ступени&nbsp;3.5. Между этими двумя
+        границами остаётся коридор светлот шириной 0.071, и в него помещается
+        ровно столько ступеней, сколько раз в нём укладывается минимальная
+        различимая разница.</p>
+    </div>
+    {PRINTBUDGET}
+    <div class="col">
+      <p><strong>Две ступени вместо четырёх.</strong> Половину монохромной
+        полосы забрал отказ от чёрного — и это уже не эстетическая, а
+        функциональная цена: на принтере у бухгалтера существуют ровно две
+        различимые текстовые роли. Всё остальное обязано различаться формой.</p>
+      <p>К тому же выводу независимо пришли два других замера. Красная тревога
+        и коричневые чернила при дейтеранопии сходятся до
+        <strong>0.022</strong> — красным текстом опасность обозначать нельзя,
+        только плашкой. А на солнце контраст чернил падает до 3.0&nbsp;:&nbsp;1.
+        Три разные проверки, один ответ: <strong>цвет — экранная надстройка,
+        а не носитель смысла</strong>.</p>
+    </div>
+
+    <h3>Схема</h3>
+    <div class="col">
+      <p>Тонов три. Коричневый — данность: закон, текст, то, что не вы писали.
+        Бирюзовый — ваше и живое: ссылки, кнопки, стрелка и записи на полях
+        (это один смысл, «на это можно нажать», и он не заслуживает двух
+        красок). Красный — необратимое: платёж, подписка, отправка.</p>
+      <p class="note">Машинной роли нет: выбран невидимый помощник. Токен
+        <code>machineFill</code> оставлен заглушкой, чтобы включить границу
+        одной строкой. Оговорка по существу: в справочнике по законодательству
+        неразличимость сгенерированного и нормативного — риск пользователя,
+        и решение стоит пересматривать осознанно, а не по умолчанию.</p>
+    </div>
+    {SCHEME}
+  </div>
+</section>
+
+
 
 <section class="sec">
   <div class="wrap">
@@ -894,6 +940,8 @@ def main():
                     ("{INKVALUE}", ink_value_block),
                     ("{LADDER}", ladder_block),
                     ("{ATTENTION}", attention_block),
+                    ("{PRINTBUDGET}", print_budget),
+                    ("{SCHEME}", scheme_block),
                     ("{PALETTES}", palettes_block),
                     ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),
