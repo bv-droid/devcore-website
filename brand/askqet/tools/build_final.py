@@ -33,7 +33,7 @@ BG = "#FFFFFF"
 CUR = "currentColor"
 
 WEIGHT = "text"          # утверждённый вес слова
-FIT = "full"             # знак во весь рост слова
+FIT = "even"             # полоса кольца равна штриху слова
 KIND = V.MARK_KIND       # свободный терминал
 SMALL = V.MARK_SMALL     # мелкий крой той же формы
 

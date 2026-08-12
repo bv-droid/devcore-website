@@ -226,7 +226,7 @@ def fits():
     cards = []
     for k, meta in V.FITS.items():
         band = V.band_in_word("text", k)
-        pick = k == "full"
+        pick = k == "even"
         rows = [("высота знака", _n(meta["h"](m))),
                 ("полоса кольца", _n(band)),
                 ("к штриху слова", f"{band / m['st']:.2f}"),
@@ -266,7 +266,7 @@ def lockups():
 
 
 def sizes_row():
-    lim = math.ceil(V.min_width("text", "full"))
+    lim = math.ceil(V.min_width("text", "even"))
     out = []
     for w in (420, 260, 180, 140, 110):
         dead = "" if w >= lim else ' class="dead"'
@@ -281,7 +281,7 @@ def sizes_row():
 
 def spec_table():
     m = V.metrics("text")
-    band = V.band_in_word("text", "full")
+    band = V.band_in_word("text", "even")
     rows = [
         ("рост строчных", _n(m["x"], 0), "базовая величина слова"),
         ("верхний выносной", _n(m["asc"], 0), "k и t"),
@@ -290,8 +290,8 @@ def spec_table():
         ("радиус чаши", _n(m["r"]), "a, q, e — одна окружность"),
         ("диагонали", "45°", "k, ось стрелки знака"),
         ("боковые", "5 / 7 / 3", "круглая · стойка · открытая сторона"),
-        ("высота знака", _n(m["asc"] + m["desc"], 0), "во весь рост слова"),
         ("полоса кольца", _n(band), f"{band / m['st']:.2f} штриха"),
+        ("высота знака", _n(V.FITS["even"]["h"](m)), "из равной толщины"),
         ("просвет знак ↔ слово", _n(m["st"] * 2.5), "2.5 штриха"),
         ("охранное поле", _n(band), "равно полосе кольца"),
     ]
@@ -305,11 +305,11 @@ def spec_table():
 def size_table():
     rows = []
     for key, title, weight, kind, fit in (
-            ("row", "В строку, основной", "text", "radial", "full"),
-            ("compact", "В строку, компактный", "bold", "icon", "full")):
+            ("row", "В строку, основной", "text", V.MARK_KIND, "even"),
+            ("compact", "В строку, компактный", "bold", V.MARK_SMALL, "even")):
         w = V.min_width(weight, fit, kind)
         rows.append((title, V.WEIGHTS[weight]["title"].lower(),
-                     "мастер" if kind == "radial" else "мелкий крой",
+                     "мастер" if kind == V.MARK_KIND else "мелкий крой",
                      f"{math.ceil(w)} px"))
     head = ("<tr><th>локап</th><th>вес слова</th><th>крой знака</th>"
             "<th>минимальная ширина</th></tr>")
@@ -323,7 +323,7 @@ def size_table():
 
 def decisions():
     m = V.metrics("text")
-    band = V.band_in_word("text", "full")
+    band = V.band_in_word("text", "even")
     chosen = [
         ("ЛОКАП", "в строку", "знак слева, слово справа"),
         ("ВЕС СЛОВА", "основной",

@@ -281,7 +281,19 @@ def _mark_group(kind, color, scale, tx, ty):
 
 # Три посадки знака по высоте. Высота знака привязана к метрикам слова,
 # а полоса кольца при этом сама встаёт в известное отношение к штриху.
+def _even_h(m):
+    """Высота знака, при которой полоса кольца равна штриху слова."""
+    _, _, _, bh = mark_box(MARK_KIND)
+    band = V10.params(**_mk(MARK_KIND))["band"]
+    return m["st"] * bh / band
+
+
 FITS = {
+    "even": dict(title="РАВНАЯ ТОЛЩИНА", h=_even_h,
+                 note="Полоса кольца равна штриху слова — ровно один к одному. "
+                      "Знак и слово держат одинаковый цвет на странице, "
+                      "логотип читается как одна вещь, а не как знак плюс "
+                      "подпись."),
     "asc": dict(title="ПО ВЫНОСНОМУ", h=lambda m: m["asc"],
                 note="Знак ростом с k и t. Самая тихая посадка: знак не спорит "
                      "со словом, но и не держит его — в мелком размере "
@@ -299,7 +311,7 @@ FITS = {
 
 
 def lockup_row(weight="text", tail="cut", kind=MARK_KIND, color="currentColor",
-               fit="full"):
+               fit="even"):
     """В строку: знак слева, слово справа.
 
     Высота знака задана посадкой, просвет — 2.5 штриха, по вертикали знак
@@ -317,7 +329,7 @@ def lockup_row(weight="text", tail="cut", kind=MARK_KIND, color="currentColor",
     return body, mw + gap + ww, h, m
 
 
-def band_of(weight="text", fit="full", kind=MARK_KIND):
+def band_of(weight="text", fit="even", kind=MARK_KIND):
     """Полоса кольца в единицах слова при данной посадке."""
     m = metrics(weight)
     _, _, _, mh = mark_box(kind)
@@ -363,12 +375,12 @@ def lockup_swap(weight="text", kind=MARK_KIND, color="currentColor"):
 
 # ── Охранное поле и размеры ──────────────────────────────────────────────────
 
-def band_in_word(weight="text", fit="full", kind=MARK_KIND):
+def band_in_word(weight="text", fit="even", kind=MARK_KIND):
     """Полоса кольца, пересчитанная в единицы слова."""
     return band_of(weight, fit, kind)
 
 
-def min_width(weight="text", fit="full", kind=MARK_KIND):
+def min_width(weight="text", fit="even", kind=MARK_KIND):
     """Минимальная ширина локапа: просвету знака нужен один пиксель."""
     m = metrics(weight)
     _, _, _, bh = mark_box(kind)
@@ -378,7 +390,7 @@ def min_width(weight="text", fit="full", kind=MARK_KIND):
     return w / gap
 
 
-def clearspace(weight="text", fit="full", kind=MARK_KIND):
+def clearspace(weight="text", fit="even", kind=MARK_KIND):
     """Чертёж охранного поля: отступ равен полосе кольца."""
     body, w, h, m = lockup_row(weight=weight, fit=fit, kind=kind, color=INK)
     band = band_in_word(weight, fit)
