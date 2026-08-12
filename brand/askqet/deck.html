@@ -3,9 +3,11 @@
 <title>AskQet</title>
 <style>
 :root{
-  --paper:#F1F0EC; --surface:#FBFAF7; --raised:#FFFFFF;
-  --ink:#33322E; --ink-2:#55534D; --dim:#807D76;
-  --line:#DBD8D1; --line-2:#E9E6E0;
+  /* Презентация набрана самой системой: та же бумага, те же серые,
+     тот же лист. Показывать палитру на чужом фоне было бы странно. */
+  --paper:#F9F3ED; --surface:#FEFAF7; --raised:#FFFFFF;
+  --ink:#3B3934; --ink-2:#514F4A; --dim:#84817C;
+  --line:#D2D0CA; --line-2:#E8E5E0; --leaf:#8CCD88; --deep-leaf:#377835;
   --measure:34rem;
   --s1:.5rem; --s2:1rem; --s3:1.75rem; --s4:2.75rem; --s5:4.5rem;
   --serif:'Iowan Old Style','Charter','Bitstream Charter','Palatino Linotype',
@@ -16,15 +18,15 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#171614; --surface:#1E1D1A; --raised:#242320;
-    --ink:#E9E6DF; --ink-2:#C2BEB5; --dim:#8F8B82;
-    --line:#332F2A; --line-2:#2A2723;
+    --paper:#191B18; --surface:#20231F; --raised:#272A26;
+    --ink:#E7E6DF; --ink-2:#C4C2B9; --dim:#918F87;
+    --line:#33362F; --line-2:#2A2D27; --deep-leaf:#8CCD88;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#171614; --surface:#1E1D1A; --raised:#242320;
-  --ink:#E9E6DF; --ink-2:#C2BEB5; --dim:#8F8B82;
-  --line:#332F2A; --line-2:#2A2723;
+  --paper:#191B18; --surface:#20231F; --raised:#272A26;
+  --ink:#E7E6DF; --ink-2:#C4C2B9; --dim:#918F87;
+  --line:#33362F; --line-2:#2A2D27; --deep-leaf:#8CCD88;
 }
 
 *{box-sizing:border-box}
@@ -41,7 +43,7 @@ body{margin:0; background:var(--paper); color:var(--ink);
 .slide__rail{flex:0 0 7.5rem; display:none; padding-top:.4rem;
   border-right:1px solid var(--line-2); margin-right:var(--s4)}
 .slide--title .slide__rail{border-right-color:transparent}
-.slide__num{font-family:var(--mono); font-size:12px; color:var(--dim);
+.slide__num{font-family:var(--mono); font-size:12px; color:var(--deep-leaf);
   letter-spacing:.12em; display:block}
 .slide__eyebrow{font-family:var(--sans); font-size:11.5px; color:var(--dim);
   letter-spacing:.14em; text-transform:uppercase; margin-top:.4rem;
@@ -71,10 +73,10 @@ b{font-weight:600; color:var(--ink)}
 code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
 .note{font-family:var(--sans); font-size:14px; line-height:1.6;
   color:var(--dim); max-width:var(--measure);
-  border-left:2px solid var(--line); padding-left:var(--s2)}
+  border-left:2px solid var(--leaf); padding-left:var(--s2)}
 .rule{font-family:var(--serif); font-size:clamp(1.2rem,2.4vw,1.7rem);
   line-height:1.35; color:var(--ink); max-width:38rem;
-  border-top:1px solid var(--ink); padding-top:var(--s2)}
+  border-top:2px solid var(--leaf); padding-top:var(--s2)}
 .rule--big{font-size:clamp(1.6rem,4.2vw,3rem); border:0; padding:0;
   letter-spacing:-.015em}
 
@@ -165,56 +167,64 @@ td.num{font-family:var(--mono); font-variant-numeric:tabular-nums;
 td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   vertical-align:-.08em; box-shadow:inset 0 0 0 1px rgba(128,128,128,.4)}
 
-/* ── сетка акцентов ── */
-.accents{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr)}
-@media (min-width:900px){ .accents{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (min-width:1500px){ .accents{grid-template-columns:repeat(4,minmax(0,1fr))} }
-.acc{margin:0; border:1px solid var(--line-2); background:var(--surface);
-  overflow:hidden}
-.acc__cap{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem;
-  padding:.7rem .85rem; border-bottom:1px solid var(--line-2);
-  font-family:var(--sans)}
-.acc__cap i{width:1rem; height:1rem; flex:0 0 auto;
-  box-shadow:inset 0 0 0 1px rgba(128,128,128,.4)}
-.acc__cap b{font-size:12px; letter-spacing:.08em}
-.acc__cap code{font-size:11px; color:var(--dim)}
-.acc__cap span{flex:1 0 100%; font-size:12px; color:var(--dim);
-  line-height:1.45}
+/* ── знак: три прочтения ── */
+.mks{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){ .mks{grid-template-columns:repeat(3,minmax(0,1fr))} }
+.mks--two{grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){ .mks--two{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.mk{margin:0; border:1px solid var(--line); background:#F9F3ED}
+.mk>div{padding:var(--s3) var(--s2)}
+.mk svg{display:block; width:100%; height:auto}
+.mk figcaption{border-top:1px solid rgba(120,116,110,.22); padding:var(--s2);
+  display:grid; gap:.25rem; font-family:var(--sans); color:#514F4A}
+.mk figcaption b{font-size:12px; letter-spacing:.09em}
+.mk figcaption span{font-size:12.5px; line-height:1.5; opacity:.72}
+
+/* ── образцы палитры ── */
+.facts--sw{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){ .facts--sw{grid-template-columns:repeat(6,minmax(0,1fr))} }
+.facts--sw li{border-top:0; padding-top:0}
+.facts--sw b{font-size:12px}
 
 /* ── образец экрана: собственная палитра, темой не управляется ── */
-.scr{--sink:#575653; --spaper:#F7F6F4; --sdim:#8A8884; --sline:#DDDAD4;
+.scrwrap{border:1px solid var(--line); overflow:hidden}
+.scr{--acc:#8CCD88; --deep:#377835; --mid:#5B9A58;
+  --onacc:#4B4844;
+  --note:#9A4C4F; --sink:#514F4A; --spaper:#F9F3ED; --sdim:#84817C;
+  --sline:#D2D0CA; --shair:#E8E5E0;
   background:var(--spaper); color:var(--sink); font-family:var(--serif);
-  font-size:11px; line-height:1.6}
-.scr__bar{display:flex; align-items:center; gap:.9rem; padding:.7rem .9rem;
+  font-size:13px; line-height:1.65}
+.scr__bar{display:flex; align-items:center; gap:1.4rem; padding:1rem 1.4rem;
   border-bottom:1px solid var(--sline)}
-.scr__logo{flex:0 0 5rem}
+.scr__logo{flex:0 0 7.5rem}
 .scr__logo svg{display:block; width:100%; height:auto}
-.scr__nav{display:flex; gap:.7rem; font-family:var(--sans); font-size:9px;
+.scr__nav{display:flex; gap:1.1rem; font-family:var(--sans); font-size:11.5px;
   color:var(--sdim)}
-.scr__btn{margin-left:auto; font-family:var(--sans); font-size:8.5px;
-  letter-spacing:.09em; text-transform:uppercase; color:#fff;
-  background:var(--acc); padding:.4rem .7rem; border-radius:2px}
-.scr__body{display:grid; grid-template-columns:5.4rem minmax(0,1fr);
-  padding:.9rem}
-.scr__marg{border-right:1px solid var(--sline); padding:1rem .7rem 0 0;
-  display:flex; flex-direction:column; gap:1.3rem}
-.scr__marg p{font-style:italic; font-size:9.5px; line-height:1.4;
-  color:var(--acc); border-bottom:1px solid var(--acc);
-  padding-bottom:.15rem; align-self:flex-start}
-.scr__main{padding-left:.9rem; display:flex; flex-direction:column; gap:.5rem}
-.scr__eyebrow{font-family:var(--sans); font-size:8px; letter-spacing:.14em;
+.scr__btn{margin-left:auto; font-family:var(--sans); font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--onacc);
+  background:var(--acc); padding:.5rem 1rem; border-radius:2px}
+.scr__body{display:grid; grid-template-columns:9.5rem minmax(0,1fr);
+  padding:1.4rem 1.6rem 1.8rem}
+.scr__marg{border-right:1px solid var(--sline); padding:1.6rem 1.1rem 0 0;
+  display:flex; flex-direction:column; gap:2rem}
+.scr__marg p{font-style:italic; font-size:12px; line-height:1.45;
+  color:var(--note); border-bottom:1px solid var(--note);
+  padding-bottom:.2rem; align-self:flex-start}
+.scr__main{padding:0 2.5rem 0 1.5rem; display:flex;
+  flex-direction:column; gap:.7rem; max-width:68ch}
+.scr__eyebrow{font-family:var(--sans); font-size:10px; letter-spacing:.16em;
   text-transform:uppercase; color:var(--sdim)}
-.scr h4{font-size:15px; line-height:1.2; letter-spacing:-.005em}
-.scr__lead{font-size:11.5px}
-.scr__a{color:var(--acc); border-bottom:1px solid var(--acc)}
-.scr blockquote{margin:.2rem 0; border-left:2px solid var(--acc);
-  padding:.1rem 0 .1rem .8rem; font-size:10.5px; line-height:1.55}
-.scr cite{display:block; margin-top:.35rem; font-family:var(--sans);
-  font-style:normal; font-size:8.5px; color:var(--sdim); letter-spacing:.05em}
-.scr__dl{display:flex; align-items:baseline; gap:.5rem;
-  border-top:1px solid var(--sline); padding-top:.5rem; margin-top:.2rem}
-.scr__dl b{font-size:13px; font-weight:400; color:var(--deep)}
-.scr__dl span{font-family:var(--sans); font-size:9px; color:var(--sdim)}
+.scr h4{font-size:22px; line-height:1.2; letter-spacing:-.008em}
+.scr__lead{font-size:14.5px}
+.scr__a{color:var(--deep); border-bottom:1px solid var(--acc)}
+.scr blockquote{margin:.3rem 0; border-left:2px solid var(--acc);
+  padding:.15rem 0 .15rem 1rem; font-size:12.5px; line-height:1.6}
+.scr cite{display:block; margin-top:.45rem; font-family:var(--sans);
+  font-style:normal; font-size:10.5px; color:var(--sdim); letter-spacing:.05em}
+.scr__dl{display:flex; align-items:baseline; gap:.7rem;
+  border-top:1px solid var(--sline); padding-top:.7rem; margin-top:.35rem}
+.scr__dl b{font-size:16px; font-weight:400; color:var(--deep)}
+.scr__dl span{font-family:var(--sans); font-size:11px; color:var(--sdim)}
 
 /* ── переключатель темы ── */
 .theme{position:fixed; right:var(--s2); top:var(--s2); z-index:9;
@@ -229,18 +239,32 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
 <section class="slide slide--title"><div class="slide__rail"></div><div class="slide__in">
   <div class="title">
     <h1 class="title__logo"><span class="sr">AskQet</span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
   <title>AskQet</title>
-  
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
+<defs>
+  <filter id="ow11" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om12" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om12)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10007">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="currentColor" mask="url(#m10002)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="currentColor"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+  <rect width="128" height="128" fill="#8CCD88" mask="url(#m10007)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
+</g></g><g filter="url(#ow11)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
 </svg></h1>
     <p class="title__sub">Энциклопедия предпринимателя</p>
     <p class="title__note">Знак, слово и цвет. Что решено, что измерено
@@ -265,16 +289,24 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
 <section class="slide"><div class="slide__rail"><span class="slide__num">02</span><span class="slide__eyebrow">Знак</span></div><div class="slide__in">
   <h2>Q, собранная из вопроса и ответа</h2>
   <div class="mark-show">
-    <div class="mark-show__big"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.1 98.844" fill="none">
+    <div class="mark-show__big"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.9 115.644" fill="none">
   <title>AskQet</title>
-  <g transform="translate(10.8,82.8)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10006">
+<defs>
+  <filter id="om13" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g filter="url(#om13)" transform="translate(19.2,19.2)"><g transform="translate(-13.5,-10.5) scale(0.75)">  <defs><mask id="m10008">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="currentColor" mask="url(#m10006)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#8CCD88" mask="url(#m10008)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
 </g></g>
 
 </svg></div>
@@ -330,9 +362,17 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
     Число снято с растра, а не взято из чертежа.</p></div></section>
 <section class="slide"><div class="slide__rail"><span class="slide__num">04</span><span class="slide__eyebrow">Слово</span></div><div class="slide__in">
   <h2>Буквы нарисованы, а не выбраны</h2>
-  <div class="hero-logo hero-logo--word"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 374.159 130.4" fill="none">
+  <div class="hero-logo hero-logo--word"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.359 137.6" fill="none">
   <title>askqet</title>
-  <g transform="translate(19.2,91.2)"><g transform="translate(5,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="currentColor"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
+<defs>
+  <filter id="ow16" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g filter="url(#ow16)" transform="translate(22.8,94.8)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
 
 </svg></div>
   <div class="cols">
@@ -489,41 +529,220 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
       подчёркивание у ссылки, почерк и линейка у записи на полях, плашка
       у необратимого действия, значок у срока.</p>
   </div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">11</span><span class="slide__eyebrow">Основа</span></div><div class="slide__in">
-  <h2>Почти монохром</h2>
+<section class="slide"><div class="slide__rail"><span class="slide__num">11</span><span class="slide__eyebrow">Приём</span></div><div class="slide__in">
+  <h2>Заливка отвечает за цвет, обводка — за форму</h2>
+  <p class="lede">Светло-зелёный стоит к бумаге на <b>1.70 : 1</b>. Сам по
+    себе он не держит ни текста, ни формы: светлое пятно на светлом фоне
+    расплывается. Край ему даёт серая обводка — <b>4.91 : 1</b>.</p>
   <div class="cols">
-    <p>Бумага тёплая, но не белая. Чернила серые, ступень 3.60 — чёрного нет,
-      и на этот раз честно. Один цвет на весь продукт, и тот появляется
-      только там, где нужно действие.</p>
-    <p>Цветная подложка под цитатой ушла: пятно спорит с текстом и тянет
-      вещь в «веб». Осталась втяжка и волосок. Это подняло регистр сильнее,
-      чем любой выбор цвета.</p>
+    <p>Поэтому обводка здесь не украшение, а конструкция. Убрать её нельзя:
+      вместе с ней уйдёт читаемость. Это одно решение, а не два.</p>
+    <p>Буквы нарисованы осевой линией, а не замкнутым контуром — утолщить
+      такую линию нельзя, торцы остались бы без обводки. Контур берётся
+      морфологическим расширением: точной суммой формы с квадратом заданного
+      радиуса. Оно обходит и срезы, и стыки, и внутренние контрформы.</p>
   </div>
-  <ul class="facts">
-    <li><i style="background:#F7F6F4"></i><b>#F7F6F4</b><span>бумага</span></li>
-    <li><i style="background:#575653"></i><b>#575653</b><span>чернила, 6.8 : 1</span></li>
-    <li><i style="background:#8A8884"></i><b>#8A8884</b><span>второстепенное</span></li>
-    <li><i style="background:#DDDAD4"></i><b>#DDDAD4</b><span>линейка</span></li>
-  </ul></div></section>
-<section class="slide slide--wide"><div class="slide__rail"><span class="slide__num">12</span><span class="slide__eyebrow">Решение</span></div><div class="slide__in">
-  <h2>Восемь акцентов на одном экране</h2>
-  <p class="lede">Одна и та же статья, восемь раз. Основа общая, меняется
-    ровно один цвет: стрелка знака, кнопка, ссылка, волосок у цитаты, записи
-    на полях и срок.</p>
-  <div class="accents"><figure class="acc"><figcaption class="acc__cap"><i style="background:#266D47"></i><b>ИЗУМРУД</b><code>#266D47</code><span>Зелёная эмаль. Прямо из первого референса проекта.</span></figcaption><article class="scr" style="--acc:#266D47;--deep:#174C2F">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  <div class="art art--w"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.359 137.6" fill="none">
+  <title>askqet</title>
+<defs>
+  <filter id="ow16" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g filter="url(#ow16)" transform="translate(22.8,94.8)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
+
+</svg></div></div></section>
+<section class="slide"><div class="slide__rail"><span class="slide__num">12</span><span class="slide__eyebrow">Цена приёма</span></div><div class="slide__in">
+  <h2>Обводка чуть не закрыла Q</h2>
+  <p class="lede">Просвет между кольцом и стрелкой — 3.38 единицы слова.
+    Обводка съедает по 1.5 с каждой стороны. Остаётся <b>0.38</b>: просвет
+    закрыт, и Q перестаёт быть Q.</p>
+  <div class="cols">
+    <p>Ошибка нашлась при сборке, а не после. Исправлена не толщиной обводки —
+      её пришлось бы делать неразличимой, — а самим знаком: просвет расширен
+      с 4.5 до 7.0 в поле 128.</p>
+    <p>После обводки остаётся <b>2.25</b> единицы, и Q читается. Контурный
+      знак — отдельное построение, а не раскраска прежнего: конструкции нужен
+      воздух, и его посчитали.</p>
+  </div>
+  <div class="mks mks--two">
+    <figure class="mk"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105.9 115.644" fill="none">
   <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
+<defs>
+  <filter id="om13" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g filter="url(#om13)" transform="translate(19.2,19.2)"><g transform="translate(-13.5,-10.5) scale(0.75)">  <defs><mask id="m10008">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#8CCD88" mask="url(#m10008)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
+</g></g>
+
+</svg></div>
+      <figcaption><b>Просвет 7.0</b><span>после обводки остаётся 2.25 —
+        читается</span></figcaption></figure>
+    <figure class="mk"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89.1 98.844" fill="none">
+  <title>AskQet</title>
+  <g transform="translate(10.8,82.8)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10006">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10002)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#266D47"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+  <rect width="128" height="128" fill="currentColor" mask="url(#m10006)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="currentColor"/>
+</g></g>
+
+</svg></div>
+      <figcaption><b>Просвет 4.5, без обводки</b><span>исходное построение,
+        для сравнения формы</span></figcaption></figure>
+  </div></div></section>
+<section class="slide"><div class="slide__rail"><span class="slide__num">13</span><span class="slide__eyebrow">Палитра</span></div><div class="slide__in">
+  <h2>Серое держит, зелёное ведёт, бордо помнит</h2>
+  <div class="cols">
+    <p>Серые оттенки — база: чернила, обводка, второстепенное, линейки. Они
+      несут всю работу и не претендуют на внимание.</p>
+    <p>Светло-зелёный — единственный акцент. Бордовый живёт только на полях
+      и в оттенках подложек: это след руки, а не второй акцент.</p>
+  </div>
+  <h3>База</h3>
+  <ul class="facts facts--sw"><li><i style="background:#F9F3ED"></i><b>#F9F3ED</b><span>бумага</span></li><li><i style="background:#FEFAF7"></i><b>#FEFAF7</b><span>карточка</span></li><li><i style="background:#514F4A"></i><b>#514F4A</b><span>чернила</span></li><li><i style="background:#6C6A65"></i><b>#6C6A65</b><span>обводка</span></li><li><i style="background:#84817C"></i><b>#84817C</b><span>второстепенное</span></li><li><i style="background:#D2D0CA"></i><b>#D2D0CA</b><span>линейка</span></li></ul>
+  <h3>Акцент и записи</h3>
+  <ul class="facts facts--sw"><li><i style="background:#8CCD88"></i><b>#8CCD88</b><span>лист — акцент</span></li><li><i style="background:#377835"></i><b>#377835</b><span>хвоя — текст и действие</span></li><li><i style="background:#5B9A58"></i><b>#5B9A58</b><span>лист глубже</span></li><li><i style="background:#9A4C4F"></i><b>#9A4C4F</b><span>бордо — записи</span></li><li><i style="background:#FCDDDC"></i><b>#FCDDDC</b><span>бордовый оттенок</span></li><li><i style="background:#D6EDD4"></i><b>#D6EDD4</b><span>зелёный оттенок</span></li></ul>
+  <p class="note">Зелёный заведён парой: ЛИСТ для знака и крупного, ХВОЯ для
+    текста и действий. Тон один, разводит только светлота — иначе ссылка на
+    светлом фоне не читалась бы.</p></div></section>
+<section class="slide"><div class="slide__rail"><span class="slide__num">14</span><span class="slide__eyebrow">Три прочтения</span></div><div class="slide__in">
+  <h2>Куда именно идёт зелёный</h2>
+  <p class="lede">Формулировка допускает несколько прочтений, и вместо
+    угадывания собраны все три. Слово у всех одинаковое: светло-зелёное
+    с серой обводкой. Различается знак.</p>
+  <div class="mks"><figure class="mk"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
+  <title>AskQet</title>
+<defs>
+  <filter id="ow1" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.9" result="d"/>
+    <feFlood flood-color="#8CCD88"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/>
+</g></g><g filter="url(#ow1)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
+</svg></div><figcaption><b>КОНТУР ПО ЗНАКУ</b><span>Знак серый, вокруг него зелёный контур. Тише всех: цвет появляется как кайма, а не как пятно.</span></figcaption></figure><figure class="mk"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
+  <title>AskQet</title>
+<defs>
+  <filter id="ow6" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om7" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om7)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10004">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#514F4A" mask="url(#m10004)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
+</g></g><g filter="url(#ow6)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
+</svg></div><figcaption><b>СТРЕЛКА ЛИСТОМ</b><span>Кольцо серое, стрелка светло-зелёная, серая обводка держит обе. Ближе всего к прежнему знаку и к словам о стрелке.</span></figcaption></figure><figure class="mk"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
+  <title>AskQet</title>
+<defs>
+  <filter id="ow11" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om12" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om12)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#8CCD88" mask="url(#m10007)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
+</g></g><g filter="url(#ow11)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
+</svg></div><figcaption><b>ВЕСЬ ЛИСТ</b><span>Знак целиком светло-зелёный в серой обводке, как и слово. Самый цельный и самый смелый: логотип становится одним цветом.</span></figcaption></figure></div>
+  <p class="note">Рекомендую <b>ВЕСЬ ЛИСТ</b>. Логотип становится одним
+    цветом и одной формой — это и есть простота, которую вы просите. Серая
+    обводка при этом делает всю работу по читаемости, а зелёный отвечает
+    только за характер.</p></div></section>
+<section class="slide slide--wide"><div class="slide__rail"><span class="slide__num">15</span><span class="slide__eyebrow">Инструмент</span></div><div class="slide__in">
+  <h2>Как это живёт на странице</h2>
+  <p class="lede">Философия здесь простая: страница выглядит напечатанной,
+    на полях можно писать, и ровно один цвет говорит «сюда можно нажать».</p>
+  <div class="scrwrap"><article class="scr">
+  <header class="scr__bar">
+    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
+  <title>AskQet</title>
+<defs>
+  <filter id="ow11" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om12" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om12)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#8CCD88" mask="url(#m10007)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#8CCD88"/>
+</g></g><g filter="url(#ow11)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
 </svg></span>
     <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
     <span class="scr__btn">Спросить</span>
@@ -550,312 +769,33 @@ td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
       <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
     </div>
   </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#406A3D"></i><b>БУТЫЛОЧНЫЙ</b><code>#406A3D</code><span>Тот же зелёный, но глуше и старее — библиотечный переплёт.</span></figcaption><article class="scr" style="--acc:#406A3D;--deep:#234B22">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10004">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10004)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#406A3D"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#296881"></i><b>ПЕТРОЛЬ</b><code>#296881</code><span>Глубокий сине-зелёный. Холоднее изумруда, дороже синего.</span></figcaption><article class="scr" style="--acc:#296881;--deep:#18475A">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10006">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10006)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#296881"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#435CAC"></i><b>ИНДИГО</b><code>#435CAC</code><span>Чернильно-синий. Самый «документный» из холодных.</span></figcaption><article class="scr" style="--acc:#435CAC;--deep:#283C85">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10008">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10008)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#435CAC"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#9B464B"></i><b>БОРДО</b><code>#9B464B</code><span>Винный. Тон печати и сургуча, а не тревоги.</span></figcaption><article class="scr" style="--acc:#9B464B;--deep:#75282F">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10010">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10010)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#9B464B"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#944D24"></i><b>МЕДЬ</b><code>#944D24</code><span>Тёплый металл. Ближе всего к золоту, какое держит контраст.</span></figcaption><article class="scr" style="--acc:#944D24;--deep:#743000">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10012">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10012)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#944D24"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#765D25"></i><b>ЛАТУНЬ</b><code>#765D25</code><span>Охра с зеленцой. Металл, но спокойнее меди.</span></figcaption><article class="scr" style="--acc:#765D25;--deep:#523F15">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10014">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10014)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#765D25"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure>
-<figure class="acc"><figcaption class="acc__cap"><i style="background:#854C81"></i><b>СЛИВА</b><code>#854C81</code><span>Тёмная слива. Редкий тон, ни с кем не спутать.</span></figcaption><article class="scr" style="--acc:#854C81;--deep:#622F5F">
-  <header class="scr__bar">
-    <span class="scr__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  <title>AskQet</title>
-  <rect width="471.659" height="130.4" fill="#F7F6F4"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10016">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="60" cy="56" r="42" fill="white"/>
-    <circle cx="60" cy="56" r="26" fill="black"/>
-    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#575653" mask="url(#m10016)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#854C81"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#575653"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#575653" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></span>
-    <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
-    <span class="scr__btn">Спросить</span>
-  </header>
-  <div class="scr__body">
-    <aside class="scr__marg">
-      <p>спросить у Айгуль про филиал</p>
-      <p>это было до поправок 2024</p>
-      <p>сверить с актом</p>
-    </aside>
-    <div class="scr__main">
-      <p class="scr__eyebrow">Налоги · Косвенные</p>
-      <h4>Постановка на учёт по НДС</h4>
-      <p class="scr__lead">Обязанность возникает не с даты регистрации бизнеса,
-        а с момента, когда оборот за календарный год превысил порог.</p>
-      <p>Порог считается нарастающим итогом с начала года. Ошибка на этом шаге
-        стоит дороже всего: <span class="scr__a">срок подачи заявления</span>
-        отсчитывается от дня превышения, а не от дня, когда превышение
-        заметили.</p>
-      <blockquote>Лицо обязано подать налоговое заявление о постановке на
-        регистрационный учёт не позднее десяти рабочих дней со дня окончания
-        месяца, в котором возникло превышение минимума оборота.
-        <cite>Налоговый кодекс, статья 82, пункт 2</cite></blockquote>
-      <p class="scr__dl"><b>10 рабочих дней</b><span>со дня окончания месяца</span></p>
-    </div>
-  </div>
-</article></figure></div>
-  <div class="scroll"><table><thead><tr><th>акцент</th><th>значение</th><th>тон</th><th>хрома</th><th>к бумаге</th><th>белым по нему</th><th>офсет</th></tr></thead><tbody><tr><td><i style="background:#266D47"></i>ИЗУМРУД</td><td class="num">#266D47</td><td class="num">156°</td><td class="num">0.094</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#406A3D"></i>БУТЫЛОЧНЫЙ</td><td class="num">#406A3D</td><td class="num">143°</td><td class="num">0.085</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr><tr><td><i style="background:#296881"></i>ПЕТРОЛЬ</td><td class="num">#296881</td><td class="num">228°</td><td class="num">0.075</td><td class="num">5.7 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#435CAC"></i>ИНДИГО</td><td class="num">#435CAC</td><td class="num">268°</td><td class="num">0.131</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#9B464B"></i>БОРДО</td><td class="num">#9B464B</td><td class="num">18°</td><td class="num">0.114</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#944D24"></i>МЕДЬ</td><td class="num">#944D24</td><td class="num">48°</td><td class="num">0.110</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr><tr><td><i style="background:#765D25"></i>ЛАТУНЬ</td><td class="num">#765D25</td><td class="num">85°</td><td class="num">0.080</td><td class="num">5.8 : 1</td><td class="num">6.2 : 1</td><td>держит</td></tr><tr><td><i style="background:#854C81"></i>СЛИВА</td><td class="num">#854C81</td><td class="num">330°</td><td class="num">0.106</td><td class="num">5.8 : 1</td><td class="num">6.3 : 1</td><td>держит</td></tr></tbody></table></div></div></section>
-<section class="slide"><div class="slide__rail"><span class="slide__num">13</span><span class="slide__eyebrow">Дальше</span></div><div class="slide__in">
+</article></div>
+  <div class="cols">
+    <p>Зелёный появляется четыре раза на весь экран: знак, кнопка, ссылка и
+      волосок у цитаты. Больше он нигде не нужен — и потому каждый раз
+      работает.</p>
+    <p>Бордовый живёт только на полях. Это записи от руки: то, что вы сами
+      добавили к чужому тексту. Курсив, подчёркивание и левая линейка держат
+      их и без цвета — на печати они не пропадут.</p>
+  </div></div></section>
+<section class="slide"><div class="slide__rail"><span class="slide__num">16</span><span class="slide__eyebrow">Дальше</span></div><div class="slide__in">
   <h2>Что нужно от вас</h2>
   <ol class="next">
-    <li><b>Акцент</b><span>Один из восьми — или направление, если ни один
-      не тот.</span></li>
-    <li><b>Глубина серого</b><span>Ступень 3.60, как сейчас, или 2.90 —
-      глубже и строже, но ближе к границе чёрного.</span></li>
-    <li><b>Температура бумаги</b><span>Тёплая, нейтральная или холодная.</span></li>
+    <li><b>Прочтение знака</b><span>Контур по знаку, стрелка листом или
+      весь лист. Рекомендую последнее.</span></li>
+    <li><b>Толщина обводки</b><span>1.0 — тонкая и хрупкая, 1.5 — рабочая,
+      2.2 — плотная и заметная. Стоит 1.5.</span></li>
+    <li><b>Сам зелёный</b><span>Лист #8CCD88 — свежий и светлый. Если нужен
+      тише и дороже, уведу в шалфей; если звонче — в фисташку.</span></li>
   </ol>
   <div class="cols">
-    <p>После этого собирается остальное: тёмная тема, цвет срока и
-      необратимого действия, полный набор токенов, шрифт для текста и
-      казахская латиница в знаке.</p>
-    <p class="note">Отдельно к решению: ИИ выбран невидимым. В справочнике по
-      законодательству неразличимость сгенерированного и нормативного — риск
-      пользователя. Технически граница включается одной строкой, и я бы
-      оставил эту возможность открытой.</p>
+    <p>После этого собирается остальное: тёмная тема, срок и необратимое
+      действие, полный набор токенов, шрифт для текста, казахская латиница
+      и производственные файлы с запечёнными контурами вместо фильтра.</p>
+    <p class="note">Одно к сведению. Бордо и хвоя при дейтеранопии сходятся
+      до 0.023. Функционально это не мешает — записи на полях стоят в своей
+      колонке, курсивом и с линейкой, а ссылки подчёркнуты в тексте. Но цвет
+      их не разводит, и полагаться на него тут нельзя.</p>
   </div></div></section>
 <script>
 document.getElementById("t").addEventListener("click",()=>{

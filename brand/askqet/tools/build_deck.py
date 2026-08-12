@@ -30,24 +30,23 @@ def load(rel):
         return json.load(f)
 
 
-ACC = load("tools/accents.json")
 SIZE = load("tools/size_limits.json")
 M10 = load("tools/measure_v10.json")
 CUT = SIZE["cuts"]["логотип, основной"]
+PAL = load("tokens/askqet-palette.json")
+K = PAL["colors"]
 
-PAPER = ACC["papers"]["neutral"]["hex"]
-INK = ACC["inks"]["neutral-strict"]["hex"]
-SMUTED = "#8A8884"
-SLINE = "#DDDAD4"
+PAPER, INK = K["paper"], K["ink"]
+SMUTED, SLINE = K["muted"], K["line"]
 
 
 # ── Экран-образец ────────────────────────────────────────────────────────────
 
-def screen(a, logo):
-    """Разворот статьи справочника. Меняется ровно один цвет."""
-    return f'''<article class="scr" style="--acc:{a['hex']};--deep:{a['deep']}">
+def screen():
+    """Разворот справочника. Серая база, зелёный акцент, бордо на полях."""
+    return f'''<article class="scr">
   <header class="scr__bar">
-    <span class="scr__logo">{logo}</span>
+    <span class="scr__logo">⟦logo/outline/leaf.svg⟧</span>
     <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
     <span class="scr__btn">Спросить</span>
   </header>
@@ -76,33 +75,29 @@ def screen(a, logo):
 </article>'''
 
 
-def accent_grid():
-    out = []
-    for a in ACC["accents"]:
-        out.append(
-            f'<figure class="acc">'
-            f'<figcaption class="acc__cap">'
-            f'<i style="background:{a["hex"]}"></i>'
-            f'<b>{a["title"]}</b><code>{a["hex"]}</code>'
-            f'<span>{a["note"]}</span></figcaption>'
-            f'{screen(a, "⟦logo/accents/" + a["key"] + ".svg⟧")}</figure>')
-    return "\n".join(out)
+def swatches(keys):
+    names = {
+        "paper": "бумага", "surface": "карточка", "ink": "чернила",
+        "outline": "обводка", "muted": "второстепенное", "line": "линейка",
+        "hair": "волосок", "accent": "лист — акцент",
+        "accentDeep": "хвоя — текст и действие", "accentMid": "лист глубже",
+        "accentTint": "зелёный оттенок", "note": "бордо — записи",
+        "noteTint": "бордовый оттенок"}
+    out = ""
+    for k in keys:
+        out += (f'<li><i style="background:{K[k]}"></i>'
+                f'<b>{K[k]}</b><span>{names[k]}</span></li>')
+    return f'<ul class="facts facts--sw">{out}</ul>'
 
 
-def accent_table():
-    rows = ""
-    for a in ACC["accents"]:
-        rows += (f'<tr><td><i style="background:{a["hex"]}"></i>{a["title"]}</td>'
-                 f'<td class="num">{a["hex"]}</td>'
-                 f'<td class="num">{a["oklch"][2]:.0f}°</td>'
-                 f'<td class="num">{a["oklch"][1]:.3f}</td>'
-                 f'<td class="num">{a["contrast"]:.1f} : 1</td>'
-                 f'<td class="num">{a["on_white"]:.1f} : 1</td>'
-                 f'<td>{a["print_risk"]}</td></tr>')
-    return (f'<div class="scroll"><table>'
-            f'<thead><tr><th>акцент</th><th>значение</th><th>тон</th>'
-            f'<th>хрома</th><th>к бумаге</th><th>белым по нему</th>'
-            f'<th>офсет</th></tr></thead><tbody>{rows}</tbody></table></div>')
+def marks_row():
+    import build_outline as O
+    out = ""
+    for key, v in O.VARIANTS.items():
+        out += (f'<figure class="mk"><div>⟦logo/outline/{key}.svg⟧</div>'
+                f'<figcaption><b>{v["title"]}</b><span>{v["note"]}</span>'
+                f'</figcaption></figure>')
+    return f'<div class="mks">{out}</div>'
 
 
 SLIDES = []
@@ -118,7 +113,7 @@ def slide(kind, num, eyebrow, body, wide=False):
 slide("title", "", "", f'''
   <div class="title">
     <h1 class="title__logo"><span class="sr">AskQet</span>
-      ⟦logo/deck/mark.svg⟧</h1>
+      ⟦logo/outline/leaf.svg⟧</h1>
     <p class="title__sub">Энциклопедия предпринимателя</p>
     <p class="title__note">Знак, слово и цвет. Что решено, что измерено
       и что осталось выбрать.</p>
@@ -144,7 +139,7 @@ slide("std", "01", "Предмет", '''
 slide("std", "02", "Знак", '''
   <h2>Q, собранная из вопроса и ответа</h2>
   <div class="mark-show">
-    <div class="mark-show__big">⟦logo/deck/glyph.svg⟧</div>
+    <div class="mark-show__big">⟦logo/outline/leaf-glyph.svg⟧</div>
     <div class="cols cols--one">
       <p>Незамкнутое кольцо и стрелка вместе читаются как <b>Q</b> — первая
         буква имени. Кольцо остаётся открытым: справочник не закрывает тему,
@@ -174,7 +169,7 @@ slide("std", "03", "Построение", f'''
 
 slide("std", "04", "Слово", '''
   <h2>Буквы нарисованы, а не выбраны</h2>
-  <div class="hero-logo hero-logo--word">⟦logo/deck/word.svg⟧</div>
+  <div class="hero-logo hero-logo--word">⟦logo/outline/word.svg⟧</div>
   <div class="cols">
     <p>Готового шрифта здесь нет ни одной буквы. Четыре правила перенесены
       со знака в слово: та же толщина штриха, тот же радиус, те же
@@ -255,58 +250,116 @@ slide("std", "10", "Правило", '''
       у необратимого действия, значок у срока.</p>
   </div>''')
 
-slide("std", "11", "Основа", f'''
-  <h2>Почти монохром</h2>
+slide("std", "11", "Приём", '''
+  <h2>Заливка отвечает за цвет, обводка — за форму</h2>
+  <p class="lede">Светло-зелёный стоит к бумаге на <b>1.70 : 1</b>. Сам по
+    себе он не держит ни текста, ни формы: светлое пятно на светлом фоне
+    расплывается. Край ему даёт серая обводка — <b>4.91 : 1</b>.</p>
   <div class="cols">
-    <p>Бумага тёплая, но не белая. Чернила серые, ступень 3.60 — чёрного нет,
-      и на этот раз честно. Один цвет на весь продукт, и тот появляется
-      только там, где нужно действие.</p>
-    <p>Цветная подложка под цитатой ушла: пятно спорит с текстом и тянет
-      вещь в «веб». Осталась втяжка и волосок. Это подняло регистр сильнее,
-      чем любой выбор цвета.</p>
+    <p>Поэтому обводка здесь не украшение, а конструкция. Убрать её нельзя:
+      вместе с ней уйдёт читаемость. Это одно решение, а не два.</p>
+    <p>Буквы нарисованы осевой линией, а не замкнутым контуром — утолщить
+      такую линию нельзя, торцы остались бы без обводки. Контур берётся
+      морфологическим расширением: точной суммой формы с квадратом заданного
+      радиуса. Оно обходит и срезы, и стыки, и внутренние контрформы.</p>
   </div>
-  <ul class="facts">
-    <li><i style="background:{PAPER}"></i><b>{PAPER}</b><span>бумага</span></li>
-    <li><i style="background:{INK}"></i><b>{INK}</b><span>чернила, 6.8 : 1</span></li>
-    <li><i style="background:{SMUTED}"></i><b>{SMUTED}</b><span>второстепенное</span></li>
-    <li><i style="background:{SLINE}"></i><b>{SLINE}</b><span>линейка</span></li>
-  </ul>''')
+  <div class="art art--w">⟦logo/outline/word.svg⟧</div>''')
 
-slide("wide", "12", "Решение", f'''
-  <h2>Восемь акцентов на одном экране</h2>
-  <p class="lede">Одна и та же статья, восемь раз. Основа общая, меняется
-    ровно один цвет: стрелка знака, кнопка, ссылка, волосок у цитаты, записи
-    на полях и срок.</p>
-  <div class="accents">{accent_grid()}</div>
-  {accent_table()}''', wide=True)
+slide("std", "12", "Цена приёма", '''
+  <h2>Обводка чуть не закрыла Q</h2>
+  <p class="lede">Просвет между кольцом и стрелкой — 3.38 единицы слова.
+    Обводка съедает по 1.5 с каждой стороны. Остаётся <b>0.38</b>: просвет
+    закрыт, и Q перестаёт быть Q.</p>
+  <div class="cols">
+    <p>Ошибка нашлась при сборке, а не после. Исправлена не толщиной обводки —
+      её пришлось бы делать неразличимой, — а самим знаком: просвет расширен
+      с 4.5 до 7.0 в поле 128.</p>
+    <p>После обводки остаётся <b>2.25</b> единицы, и Q читается. Контурный
+      знак — отдельное построение, а не раскраска прежнего: конструкции нужен
+      воздух, и его посчитали.</p>
+  </div>
+  <div class="mks mks--two">
+    <figure class="mk"><div>⟦logo/outline/leaf-glyph.svg⟧</div>
+      <figcaption><b>Просвет 7.0</b><span>после обводки остаётся 2.25 —
+        читается</span></figcaption></figure>
+    <figure class="mk"><div>⟦logo/deck/glyph.svg⟧</div>
+      <figcaption><b>Просвет 4.5, без обводки</b><span>исходное построение,
+        для сравнения формы</span></figcaption></figure>
+  </div>''')
 
-slide("std", "13", "Дальше", '''
+slide("std", "13", "Палитра", '''
+  <h2>Серое держит, зелёное ведёт, бордо помнит</h2>
+  <div class="cols">
+    <p>Серые оттенки — база: чернила, обводка, второстепенное, линейки. Они
+      несут всю работу и не претендуют на внимание.</p>
+    <p>Светло-зелёный — единственный акцент. Бордовый живёт только на полях
+      и в оттенках подложек: это след руки, а не второй акцент.</p>
+  </div>
+  <h3>База</h3>
+  ''' + swatches(["paper", "surface", "ink", "outline", "muted", "line"]) + '''
+  <h3>Акцент и записи</h3>
+  ''' + swatches(["accent", "accentDeep", "accentMid", "note", "noteTint", "accentTint"]) + '''
+  <p class="note">Зелёный заведён парой: ЛИСТ для знака и крупного, ХВОЯ для
+    текста и действий. Тон один, разводит только светлота — иначе ссылка на
+    светлом фоне не читалась бы.</p>''')
+
+slide("std", "14", "Три прочтения", '''
+  <h2>Куда именно идёт зелёный</h2>
+  <p class="lede">Формулировка допускает несколько прочтений, и вместо
+    угадывания собраны все три. Слово у всех одинаковое: светло-зелёное
+    с серой обводкой. Различается знак.</p>
+  ''' + marks_row() + '''
+  <p class="note">Рекомендую <b>ВЕСЬ ЛИСТ</b>. Логотип становится одним
+    цветом и одной формой — это и есть простота, которую вы просите. Серая
+    обводка при этом делает всю работу по читаемости, а зелёный отвечает
+    только за характер.</p>''')
+
+slide("wide", "15", "Инструмент", '''
+  <h2>Как это живёт на странице</h2>
+  <p class="lede">Философия здесь простая: страница выглядит напечатанной,
+    на полях можно писать, и ровно один цвет говорит «сюда можно нажать».</p>
+  <div class="scrwrap">''' + screen() + '''</div>
+  <div class="cols">
+    <p>Зелёный появляется четыре раза на весь экран: знак, кнопка, ссылка и
+      волосок у цитаты. Больше он нигде не нужен — и потому каждый раз
+      работает.</p>
+    <p>Бордовый живёт только на полях. Это записи от руки: то, что вы сами
+      добавили к чужому тексту. Курсив, подчёркивание и левая линейка держат
+      их и без цвета — на печати они не пропадут.</p>
+  </div>''', wide=True)
+
+slide("std", "16", "Дальше", '''
   <h2>Что нужно от вас</h2>
   <ol class="next">
-    <li><b>Акцент</b><span>Один из восьми — или направление, если ни один
-      не тот.</span></li>
-    <li><b>Глубина серого</b><span>Ступень 3.60, как сейчас, или 2.90 —
-      глубже и строже, но ближе к границе чёрного.</span></li>
-    <li><b>Температура бумаги</b><span>Тёплая, нейтральная или холодная.</span></li>
+    <li><b>Прочтение знака</b><span>Контур по знаку, стрелка листом или
+      весь лист. Рекомендую последнее.</span></li>
+    <li><b>Толщина обводки</b><span>1.0 — тонкая и хрупкая, 1.5 — рабочая,
+      2.2 — плотная и заметная. Стоит 1.5.</span></li>
+    <li><b>Сам зелёный</b><span>Лист #8CCD88 — свежий и светлый. Если нужен
+      тише и дороже, уведу в шалфей; если звонче — в фисташку.</span></li>
   </ol>
   <div class="cols">
-    <p>После этого собирается остальное: тёмная тема, цвет срока и
-      необратимого действия, полный набор токенов, шрифт для текста и
-      казахская латиница в знаке.</p>
-    <p class="note">Отдельно к решению: ИИ выбран невидимым. В справочнике по
-      законодательству неразличимость сгенерированного и нормативного — риск
-      пользователя. Технически граница включается одной строкой, и я бы
-      оставил эту возможность открытой.</p>
+    <p>После этого собирается остальное: тёмная тема, срок и необратимое
+      действие, полный набор токенов, шрифт для текста, казахская латиница
+      и производственные файлы с запечёнными контурами вместо фильтра.</p>
+    <p class="note">Одно к сведению. Бордо и хвоя при дейтеранопии сходятся
+      до 0.023. Функционально это не мешает — записи на полях стоят в своей
+      колонке, курсивом и с линейкой, а ссылки подчёркнуты в тексте. Но цвет
+      их не разводит, и полагаться на него тут нельзя.</p>
   </div>''')
+
+
 
 
 # ── Сборка ───────────────────────────────────────────────────────────────────
 
 CSS = """
 :root{
-  --paper:#F1F0EC; --surface:#FBFAF7; --raised:#FFFFFF;
-  --ink:#33322E; --ink-2:#55534D; --dim:#807D76;
-  --line:#DBD8D1; --line-2:#E9E6E0;
+  /* Презентация набрана самой системой: та же бумага, те же серые,
+     тот же лист. Показывать палитру на чужом фоне было бы странно. */
+  --paper:%PAPER%; --surface:%SURFACE%; --raised:#FFFFFF;
+  --ink:#3B3934; --ink-2:%INK%; --dim:%MUTED%;
+  --line:%LINE%; --line-2:%HAIR%; --leaf:%ACCENT%; --deep-leaf:%ACCENTDEEP%;
   --measure:34rem;
   --s1:.5rem; --s2:1rem; --s3:1.75rem; --s4:2.75rem; --s5:4.5rem;
   --serif:'Iowan Old Style','Charter','Bitstream Charter','Palatino Linotype',
@@ -317,15 +370,15 @@ CSS = """
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#171614; --surface:#1E1D1A; --raised:#242320;
-    --ink:#E9E6DF; --ink-2:#C2BEB5; --dim:#8F8B82;
-    --line:#332F2A; --line-2:#2A2723;
+    --paper:#191B18; --surface:#20231F; --raised:#272A26;
+    --ink:#E7E6DF; --ink-2:#C4C2B9; --dim:#918F87;
+    --line:#33362F; --line-2:#2A2D27; --deep-leaf:%ACCENT%;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#171614; --surface:#1E1D1A; --raised:#242320;
-  --ink:#E9E6DF; --ink-2:#C2BEB5; --dim:#8F8B82;
-  --line:#332F2A; --line-2:#2A2723;
+  --paper:#191B18; --surface:#20231F; --raised:#272A26;
+  --ink:#E7E6DF; --ink-2:#C4C2B9; --dim:#918F87;
+  --line:#33362F; --line-2:#2A2D27; --deep-leaf:%ACCENT%;
 }
 
 *{box-sizing:border-box}
@@ -342,7 +395,7 @@ body{margin:0; background:var(--paper); color:var(--ink);
 .slide__rail{flex:0 0 7.5rem; display:none; padding-top:.4rem;
   border-right:1px solid var(--line-2); margin-right:var(--s4)}
 .slide--title .slide__rail{border-right-color:transparent}
-.slide__num{font-family:var(--mono); font-size:12px; color:var(--dim);
+.slide__num{font-family:var(--mono); font-size:12px; color:var(--deep-leaf);
   letter-spacing:.12em; display:block}
 .slide__eyebrow{font-family:var(--sans); font-size:11.5px; color:var(--dim);
   letter-spacing:.14em; text-transform:uppercase; margin-top:.4rem;
@@ -372,10 +425,10 @@ b{font-weight:600; color:var(--ink)}
 code{font-family:var(--mono); font-size:.88em; color:var(--ink)}
 .note{font-family:var(--sans); font-size:14px; line-height:1.6;
   color:var(--dim); max-width:var(--measure);
-  border-left:2px solid var(--line); padding-left:var(--s2)}
+  border-left:2px solid var(--leaf); padding-left:var(--s2)}
 .rule{font-family:var(--serif); font-size:clamp(1.2rem,2.4vw,1.7rem);
   line-height:1.35; color:var(--ink); max-width:38rem;
-  border-top:1px solid var(--ink); padding-top:var(--s2)}
+  border-top:2px solid var(--leaf); padding-top:var(--s2)}
 .rule--big{font-size:clamp(1.6rem,4.2vw,3rem); border:0; padding:0;
   letter-spacing:-.015em}
 
@@ -466,56 +519,64 @@ td.num{font-family:var(--mono); font-variant-numeric:tabular-nums;
 td i{display:inline-block; width:.85rem; height:.85rem; margin-right:.5rem;
   vertical-align:-.08em; box-shadow:inset 0 0 0 1px rgba(128,128,128,.4)}
 
-/* ── сетка акцентов ── */
-.accents{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr)}
-@media (min-width:900px){ .accents{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (min-width:1500px){ .accents{grid-template-columns:repeat(4,minmax(0,1fr))} }
-.acc{margin:0; border:1px solid var(--line-2); background:var(--surface);
-  overflow:hidden}
-.acc__cap{display:flex; flex-wrap:wrap; align-items:center; gap:.5rem;
-  padding:.7rem .85rem; border-bottom:1px solid var(--line-2);
-  font-family:var(--sans)}
-.acc__cap i{width:1rem; height:1rem; flex:0 0 auto;
-  box-shadow:inset 0 0 0 1px rgba(128,128,128,.4)}
-.acc__cap b{font-size:12px; letter-spacing:.08em}
-.acc__cap code{font-size:11px; color:var(--dim)}
-.acc__cap span{flex:1 0 100%; font-size:12px; color:var(--dim);
-  line-height:1.45}
+/* ── знак: три прочтения ── */
+.mks{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){ .mks{grid-template-columns:repeat(3,minmax(0,1fr))} }
+.mks--two{grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){ .mks--two{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.mk{margin:0; border:1px solid var(--line); background:%PAPER%}
+.mk>div{padding:var(--s3) var(--s2)}
+.mk svg{display:block; width:100%; height:auto}
+.mk figcaption{border-top:1px solid rgba(120,116,110,.22); padding:var(--s2);
+  display:grid; gap:.25rem; font-family:var(--sans); color:%INK%}
+.mk figcaption b{font-size:12px; letter-spacing:.09em}
+.mk figcaption span{font-size:12.5px; line-height:1.5; opacity:.72}
+
+/* ── образцы палитры ── */
+.facts--sw{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){ .facts--sw{grid-template-columns:repeat(6,minmax(0,1fr))} }
+.facts--sw li{border-top:0; padding-top:0}
+.facts--sw b{font-size:12px}
 
 /* ── образец экрана: собственная палитра, темой не управляется ── */
-.scr{--sink:%INK%; --spaper:%PAPER%; --sdim:%MUTED%; --sline:%LINE%;
+.scrwrap{border:1px solid var(--line); overflow:hidden}
+.scr{--acc:%ACCENT%; --deep:%ACCENTDEEP%; --mid:%ACCENTMID%;
+  --onacc:%ONACCENT%;
+  --note:%NOTE%; --sink:%INK%; --spaper:%PAPER%; --sdim:%MUTED%;
+  --sline:%LINE%; --shair:%HAIR%;
   background:var(--spaper); color:var(--sink); font-family:var(--serif);
-  font-size:11px; line-height:1.6}
-.scr__bar{display:flex; align-items:center; gap:.9rem; padding:.7rem .9rem;
+  font-size:13px; line-height:1.65}
+.scr__bar{display:flex; align-items:center; gap:1.4rem; padding:1rem 1.4rem;
   border-bottom:1px solid var(--sline)}
-.scr__logo{flex:0 0 5rem}
+.scr__logo{flex:0 0 7.5rem}
 .scr__logo svg{display:block; width:100%; height:auto}
-.scr__nav{display:flex; gap:.7rem; font-family:var(--sans); font-size:9px;
+.scr__nav{display:flex; gap:1.1rem; font-family:var(--sans); font-size:11.5px;
   color:var(--sdim)}
-.scr__btn{margin-left:auto; font-family:var(--sans); font-size:8.5px;
-  letter-spacing:.09em; text-transform:uppercase; color:#fff;
-  background:var(--acc); padding:.4rem .7rem; border-radius:2px}
-.scr__body{display:grid; grid-template-columns:5.4rem minmax(0,1fr);
-  padding:.9rem}
-.scr__marg{border-right:1px solid var(--sline); padding:1rem .7rem 0 0;
-  display:flex; flex-direction:column; gap:1.3rem}
-.scr__marg p{font-style:italic; font-size:9.5px; line-height:1.4;
-  color:var(--acc); border-bottom:1px solid var(--acc);
-  padding-bottom:.15rem; align-self:flex-start}
-.scr__main{padding-left:.9rem; display:flex; flex-direction:column; gap:.5rem}
-.scr__eyebrow{font-family:var(--sans); font-size:8px; letter-spacing:.14em;
+.scr__btn{margin-left:auto; font-family:var(--sans); font-size:10.5px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--onacc);
+  background:var(--acc); padding:.5rem 1rem; border-radius:2px}
+.scr__body{display:grid; grid-template-columns:9.5rem minmax(0,1fr);
+  padding:1.4rem 1.6rem 1.8rem}
+.scr__marg{border-right:1px solid var(--sline); padding:1.6rem 1.1rem 0 0;
+  display:flex; flex-direction:column; gap:2rem}
+.scr__marg p{font-style:italic; font-size:12px; line-height:1.45;
+  color:var(--note); border-bottom:1px solid var(--note);
+  padding-bottom:.2rem; align-self:flex-start}
+.scr__main{padding:0 2.5rem 0 1.5rem; display:flex;
+  flex-direction:column; gap:.7rem; max-width:68ch}
+.scr__eyebrow{font-family:var(--sans); font-size:10px; letter-spacing:.16em;
   text-transform:uppercase; color:var(--sdim)}
-.scr h4{font-size:15px; line-height:1.2; letter-spacing:-.005em}
-.scr__lead{font-size:11.5px}
-.scr__a{color:var(--acc); border-bottom:1px solid var(--acc)}
-.scr blockquote{margin:.2rem 0; border-left:2px solid var(--acc);
-  padding:.1rem 0 .1rem .8rem; font-size:10.5px; line-height:1.55}
-.scr cite{display:block; margin-top:.35rem; font-family:var(--sans);
-  font-style:normal; font-size:8.5px; color:var(--sdim); letter-spacing:.05em}
-.scr__dl{display:flex; align-items:baseline; gap:.5rem;
-  border-top:1px solid var(--sline); padding-top:.5rem; margin-top:.2rem}
-.scr__dl b{font-size:13px; font-weight:400; color:var(--deep)}
-.scr__dl span{font-family:var(--sans); font-size:9px; color:var(--sdim)}
+.scr h4{font-size:22px; line-height:1.2; letter-spacing:-.008em}
+.scr__lead{font-size:14.5px}
+.scr__a{color:var(--deep); border-bottom:1px solid var(--acc)}
+.scr blockquote{margin:.3rem 0; border-left:2px solid var(--acc);
+  padding:.15rem 0 .15rem 1rem; font-size:12.5px; line-height:1.6}
+.scr cite{display:block; margin-top:.45rem; font-family:var(--sans);
+  font-style:normal; font-size:10.5px; color:var(--sdim); letter-spacing:.05em}
+.scr__dl{display:flex; align-items:baseline; gap:.7rem;
+  border-top:1px solid var(--sline); padding-top:.7rem; margin-top:.35rem}
+.scr__dl b{font-size:16px; font-weight:400; color:var(--deep)}
+.scr__dl span{font-family:var(--sans); font-size:11px; color:var(--sdim)}
 
 /* ── переключатель темы ── */
 .theme{position:fixed; right:var(--s2); top:var(--s2); z-index:9;
@@ -548,8 +609,15 @@ def render():
         body.append(f'<section class="{cls}">{rail}'
                     f'<div class="slide__in">{s["body"]}</div></section>')
 
-    css = (CSS.replace("%INK%", INK).replace("%PAPER%", PAPER)
-              .replace("%MUTED%", SMUTED).replace("%LINE%", SLINE))
+    css = CSS
+    for token, val in (("%INK%", INK), ("%PAPER%", PAPER),
+                       ("%MUTED%", SMUTED), ("%LINE%", SLINE),
+                       ("%HAIR%", K["hair"]), ("%ACCENT%", K["accent"]),
+                       ("%SURFACE%", K["surface"]),
+                       ("%ACCENTDEEP%", K["accentDeep"]),
+                       ("%ACCENTMID%", K["accentMid"]), ("%NOTE%", K["note"]),
+                       ("%ONACCENT%", K["onAccent"])):
+        css = css.replace(token, val)
     html = (f'<meta charset="utf-8">\n'
             f'<meta name="viewport" content="width=device-width,'
             f'initial-scale=1">\n'

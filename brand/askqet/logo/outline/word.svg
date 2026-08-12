@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 381.359 137.6" fill="none">
+  <title>askqet</title>
+<defs>
+  <filter id="ow16" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="d"/>
+    <feFlood flood-color="#6C6A65"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g filter="url(#ow16)" transform="translate(22.8,94.8)"><g transform="translate(5,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#8CCD88"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8CCD88" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g>
+
+</svg>
