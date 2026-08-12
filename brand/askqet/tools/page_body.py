@@ -34,6 +34,36 @@ L = "logo/v11/"
 F = "logo/final/"
 
 EXTRA_CSS = """
+/* ── тёмная краска: две таблицы рядом и полоса образцов ── */
+.two{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
+  margin:var(--s4) 0; align-items:start}
+.two table{width:100%}
+.two td:last-child, .two th:last-child{white-space:normal}
+@media(min-width:900px){.two{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+td.bad{color:#C4433A; font-weight:600}
+tr.row--mark td{background:rgba(14,110,102,.10)}
+
+.ladfam{margin:var(--s4) 0}
+.ladfam__head{display:flex; flex-wrap:wrap; align-items:baseline;
+  gap:var(--s2); margin-bottom:var(--s2)}
+.ladfam__head b{font-size:14px; letter-spacing:.08em}
+.ladfam__head span{font-family:var(--mono); font-size:12px; color:var(--dim)}
+.ladfam__head i{font-style:normal; font-size:13px; color:var(--dim)}
+.ladrow{display:grid; gap:var(--s2); grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.ladrow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lad{margin:0; border:1px solid var(--line); border-radius:4px; overflow:hidden}
+.lad--ok{border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(14,110,102,.16)}
+.lad>div{background:#fff}
+.lad svg{display:block; width:100%; height:auto}
+.lad figcaption{display:grid; gap:2px; padding:var(--s2);
+  border-top:1px solid var(--line)}
+.lad figcaption b{font-family:var(--mono); font-size:12px}
+.lad figcaption span{font-family:var(--mono); font-size:11px; color:var(--dim)}
+.lad figcaption em{font-style:normal; font-size:11px; color:var(--dim);
+  letter-spacing:.04em; text-transform:uppercase}
+.lad--ok figcaption em{color:var(--accent)}
+
 .hero{display:grid; gap:2px; grid-template-columns:minmax(0,1fr);
   margin:var(--s4) 0 var(--s2); border:1px solid var(--line); border-radius:4px;
   overflow:hidden}
@@ -651,7 +681,7 @@ def print_table():
 
 # ── фирменный цвет ───────────────────────────────────────────────────────────
 
-BRAND_PICK = "kofe-biryuza"
+BRAND_PICK = "tabak-biryuza"
 
 
 def brand_block():
@@ -713,3 +743,72 @@ def brand_tokens():
     return ('<div class="scroll"><table>'
             '<tr><th>токен</th><th>значение</th><th>роль</th>'
             '<th>контраст</th></tr>' + rows + '</table></div>')
+
+# ── тёмная краска: шкала Манселла и полоса ───────────────────────────────────
+
+INKV = _load("tools/ink_value.json")
+LADDER = _load("tools/ink_ladder.json")
+
+
+def ink_value_block():
+    """Что было отдано как «не чёрное» — и где на шкале это стоит."""
+    rows = ""
+    for r in INKV["старое"]:
+        bad = r["value"] < 2.5
+        rows += (f'<tr><td>{r["name"]}</td>'
+                 f'<td class="num">{r["hex"]}</td>'
+                 f'<td class="num">{r["Y"] * 100:.1f}%</td>'
+                 f'<td class="num{" bad" if bad else ""}">{r["value"]:.2f}</td>'
+                 f'<td class="num">{r["oklch"][1]:.3f}</td>'
+                 f'<td>{r["reads"]}</td></tr>')
+    step = ""
+    for r in INKV["лестница"]:
+        if r["value"] * 10 % 4:
+            continue
+        mark = ' class="row--mark"' if abs(r["value"] - 3.6) < 0.01 else ""
+        step += (f'<tr{mark}><td class="num">{r["value"]:.1f}</td>'
+                 f'<td class="num">{r["Y"] * 100:.1f}%</td>'
+                 f'<td class="num">{r["contrast"]:.1f} : 1</td>'
+                 f'<td>{r["reads"]}</td></tr>')
+    return ('<div class="two">'
+            '<div class="scroll"><table>'
+            '<tr><th>что отдано</th><th>hex</th><th>отражение</th>'
+            '<th>Value</th><th>хрома</th><th>как читается</th></tr>'
+            + rows + '</table></div>'
+            '<div class="scroll"><table>'
+            '<tr><th>Value</th><th>отражение</th><th>к бумаге</th>'
+            '<th>как читается</th></tr>' + step + '</table></div></div>')
+
+
+def _verdict(e):
+    both = (e["ok"], e["siniy"]["ok"])
+    return {(True, True): "проходит с обоими",
+            (True, False): "только с бирюзой",
+            (False, True): "только с синим",
+            (False, False): "не проходит ни с одним"}[both]
+
+
+def ladder_block():
+    """Полоса: пять семей по хроме × три ступени, на утверждённом локапе."""
+    out = []
+    for fam in LADDER["families"]:
+        cells = ""
+        for e in fam["steps"]:
+            cls = " lad--ok" if e["ok"] else ""
+            cells += (
+                f'<figure class="lad{cls}">'
+                f'<div>\u27e6logo/ladder/{fam["key"]}-{e["target"]:.1f}-'
+                f'biryuza.svg\u27e7</div>'
+                f'<figcaption><b>{e["hex"]}</b>'
+                f'<span>Value {e["value"]:.2f} · '
+                f'{e["contrast"]:.1f} : 1 · '
+                f'\u0394Eok {e["sep"]:.3f} · '
+                f'дальт. {e["cvd"]:.3f}</span>'
+                f'<em>{_verdict(e)}</em>'
+                f'</figcaption></figure>')
+        out.append(
+            f'<div class="ladfam"><div class="ladfam__head"><b>{fam["title"]}</b>'
+            f'<span>тон {fam["hue"]}° · хрома {fam["chroma"]}</span>'
+            f'<i>{fam["note"]}</i></div>'
+            f'<div class="ladrow">{cells}</div></div>')
+    return "".join(out)

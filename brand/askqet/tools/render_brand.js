@@ -13,9 +13,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const COMBOS = ['grafit-biryuza', 'grafit-siniy', 'kofe-biryuza', 'kofe-siniy'];
 const BRAND = JSON.parse(
   fs.readFileSync(path.join(ROOT, 'tokens/askqet-brand.json'), 'utf8'));
+const COMBOS = Object.keys(BRAND);
+const PICK = 'tabak-biryuza';
 
 const read = (c, n) =>
   fs.readFileSync(path.join(ROOT, 'logo/brand', c, `askqet-${n}.svg`), 'utf8');
@@ -27,10 +28,15 @@ const chip = (label, hex) => `
 const card = (c) => {
   const d = BRAND[c];
   const k = d.colors;
+  const dead = d.fails.length > 0;
+  const cls = dead ? ' class="dead"' : (c === PICK ? ' class="pick"' : '');
+  const tail = dead
+    ? ` <em class="no">— не проходит: ${d.fails.join('; ')}</em>`
+    : (c === PICK ? ' <em>— рекомендую</em>' : '');
   return `
-  <section${c === 'kofe-biryuza' ? ' class="pick"' : ''}>
+  <section${cls}>
     <header>
-      <h2>${d.base} + ${d.arrow}${c === 'kofe-biryuza' ? ' <em>— рекомендую</em>' : ''}</h2>
+      <h2>${d.base} + ${d.arrow}${tail}</h2>
       <div class="chips">
         ${chip('чернила', k.ink)}${chip('стрелка', k.accent)}
         ${chip('бумага', k.paper)}${chip('машина', k.machine)}
@@ -60,8 +66,12 @@ const html = `<!doctype html><meta charset="utf-8"><style>
   section{background:#fff;border:1px solid #E0E0DC;border-radius:14px;
           padding:22px}
   section.pick{border-color:#0E6E66;box-shadow:0 0 0 3px #0E6E6618}
+  /* Непроходные помечаются рамкой, но не приглушаются: в исследовании цвета
+     любая прозрачность врёт про сам предмет исследования. */
+  section.dead{border-color:#B0342A;box-shadow:0 0 0 3px #B0342A18}
   h2{font-size:19px;margin-bottom:12px}
   h2 em{color:#0E6E66;font-style:normal;font-weight:400;font-size:15px}
+  h2 em.no{color:#B0342A;font-size:13px}
   .chips{display:flex;flex-wrap:wrap;gap:8px 14px;margin-bottom:18px}
   .chip{display:flex;align-items:center;gap:6px;font-size:12px}
   .chip i{width:15px;height:15px;border-radius:4px;
@@ -75,12 +85,13 @@ const html = `<!doctype html><meta charset="utf-8"><style>
              color:#8A8A85;padding:8px 12px;border-bottom:1px solid #EFEFEC}
   svg{display:block;width:100%;height:auto}
 </style>
-<h1>AskQet — четыре фирменных сочетания</h1>
-<p class="lede">Чёрного в знаке нет. Тёмная часть — графит или кофе,
-стрелка — бирюза #0E6E66 или синий. Светлая тема основная; тёмная показана
-как ответная. Внизу каждой карточки — схема интерфейса, где видно, как цвета
-работают вместе: чернила текста, стрелка на действии, машинная реплика и
-запись на полях.</p>
+<h1>AskQet — фирменный цвет, второй заход</h1>
+<p class="lede">Первый набор был отдан на краске Value 2.00 — это чёрный, как
+его ни назови. Здесь основы взяты со ступени 3.5 и выше, где виден тон, и
+хрома поднята, чтобы вернуть разрыв со стрелкой, съеденный подъёмом. Бумага
+у всех одна, тёплая #F6F2EA; чистого белого в системе нет по той же причине,
+по какой нет чёрного. Внизу каждой карточки — схема интерфейса: чернила
+текста, стрелка на действии, машинная реплика и запись на полях.</p>
 <div class="sheet">${COMBOS.map(card).join('\n')}</div>`;
 
 (async () => {

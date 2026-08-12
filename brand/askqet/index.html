@@ -114,6 +114,8 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   box-shadow:0 0 0 1px var(--line-strong)}
 .tag{font-family:var(--mono); font-size:11px; letter-spacing:.06em; padding:.14em .5em;
   border-radius:3px; white-space:nowrap; border:1px solid currentColor}
+/* Вердикт бывает длинным — ему перенос нужен, иначе он рвёт узкий экран. */
+.tag--fail{white-space:normal; max-width:100%}
 .tag--pass{color:var(--pass)} .tag--warn{color:var(--warn)} .tag--fail{color:var(--fail)}
 
 /* ── Выкраска + симуляция ЦАЗ ── */
@@ -207,6 +209,36 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     transition-duration:.001ms !important}
   .caret{opacity:1}
 }
+
+/* ── тёмная краска: две таблицы рядом и полоса образцов ── */
+.two{display:grid; gap:var(--s3); grid-template-columns:minmax(0,1fr);
+  margin:var(--s4) 0; align-items:start}
+.two table{width:100%}
+.two td:last-child, .two th:last-child{white-space:normal}
+@media(min-width:900px){.two{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}}
+td.bad{color:#C4433A; font-weight:600}
+tr.row--mark td{background:rgba(14,110,102,.10)}
+
+.ladfam{margin:var(--s4) 0}
+.ladfam__head{display:flex; flex-wrap:wrap; align-items:baseline;
+  gap:var(--s2); margin-bottom:var(--s2)}
+.ladfam__head b{font-size:14px; letter-spacing:.08em}
+.ladfam__head span{font-family:var(--mono); font-size:12px; color:var(--dim)}
+.ladfam__head i{font-style:normal; font-size:13px; color:var(--dim)}
+.ladrow{display:grid; gap:var(--s2); grid-template-columns:minmax(0,1fr)}
+@media(min-width:760px){.ladrow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lad{margin:0; border:1px solid var(--line); border-radius:4px; overflow:hidden}
+.lad--ok{border-color:var(--accent);
+  box-shadow:0 0 0 2px rgba(14,110,102,.16)}
+.lad>div{background:#fff}
+.lad svg{display:block; width:100%; height:auto}
+.lad figcaption{display:grid; gap:2px; padding:var(--s2);
+  border-top:1px solid var(--line)}
+.lad figcaption b{font-family:var(--mono); font-size:12px}
+.lad figcaption span{font-family:var(--mono); font-size:11px; color:var(--dim)}
+.lad figcaption em{font-style:normal; font-size:11px; color:var(--dim);
+  letter-spacing:.04em; text-transform:uppercase}
+.lad--ok figcaption em{color:var(--accent)}
 
 .hero{display:grid; gap:2px; grid-template-columns:minmax(0,1fr);
   margin:var(--s4) 0 var(--s2); border:1px solid var(--line); border-radius:4px;
@@ -338,7 +370,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">01</span>
+    <div class="sec__head"><span class="sec__num">1</span>
       <h2>Утверждённый логотип</h2></div>
     <div class="hero">
       <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
@@ -386,7 +418,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">02</span>
+    <div class="sec__head"><span class="sec__num">2</span>
       <h2>Перепроверка формы</h2></div>
     <div class="col">
       <p class="lede">Логотип разобран заново — не глазом, а обмером растра.
@@ -434,7 +466,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span>
+    <div class="sec__head"><span class="sec__num">3</span>
       <h2>Что было не так со словом</h2></div>
     <div class="col">
       <p class="lede">Слово досталось от первой итерации и со знаком
@@ -461,7 +493,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">04</span>
+    <div class="sec__head"><span class="sec__num">4</span>
       <h2>Четыре правила со знака в шрифт</h2></div>
     <div class="col">
       <p class="lede">Связь знака и слова — это не «похожий характер», а
@@ -501,7 +533,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">05</span>
+    <div class="sec__head"><span class="sec__num">5</span>
       <h2>Буквы: было и стало</h2></div>
     <div class="col"><p class="lede">Четыре буквы, где правки не косметические.
       Слева версия итерации 1, справа новая; рост строчных уравнен, чтобы
@@ -544,7 +576,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">06</span>
+    <div class="sec__head"><span class="sec__num">6</span>
       <h2>Веса</h2></div>
     <div class="col"><p class="lede">Меняется одно число — штрих. Радиус чаши,
       радиусы дуг s и вылет диагоналей пересчитываются сами.</p></div>
@@ -566,7 +598,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">07</span>
+    <div class="sec__head"><span class="sec__num">7</span>
       <h2>Хвост q</h2></div>
     <div class="col"><p class="lede">Единственное место, где слово может
       напрямую подхватить ось знака. Проверено три версии — и взята самая
@@ -589,7 +621,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">08</span>
+    <div class="sec__head"><span class="sec__num">8</span>
       <h2>Посадка знака</h2></div>
     <div class="col">
       <p class="lede">Высота знака привязана к метрикам слова. Полоса кольца
@@ -659,7 +691,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">09</span>
+    <div class="sec__head"><span class="sec__num">9</span>
       <h2>Локапы</h2></div>
     <div class="pairs"><figure class="pair2"><div class="pair2__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 473.259 132" fill="none">
   
@@ -1882,402 +1914,974 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">16</span>
-      <h2>Фирменный цвет</h2></div>
+      <h2>Тёмная краска: где кончается чёрный</h2></div>
     <div class="col">
-      <p class="lede">Три решения приняты: <strong>чёрного в логотипе нет</strong>,
-        основа — тёмный серый или коричневый; <strong>стрелка</strong> — бирюза
-        <code>#0E6E66</code> или синий; <strong>основной цвет приложения —
-        светлый</strong>. Отсюда четыре сочетания, и все они посчитаны.</p>
-      <p>Формулировка «весь логотип кроме стрелки» допускает два чтения, и я не
-        стал угадывать: собраны оба. В первом акцентом окрашена только стрелка,
-        слово идёт целиком основой. Во втором акцент подхватывает и первые три
-        буквы — тогда логотип сам объясняет имя: <b>ask</b> — вопрос и стрелка,
-        <b>qet</b> — ответ и кольцо.</p>
+      <p class="lede">Первый набор фирменных цветов я отдал и получил
+        «не заходит». Причина нашлась сразу, и она моя: было сказано
+        <strong>чёрного в логотипе нет</strong>, а я подобрал
+        <code>#2E3136</code> и <code>#3B2F27</code> и отчитался, что чёрного
+        нет, — потому что в коде не нули. Это подмена. Глаз судит не по коду,
+        а по отражению.</p>
+      <p>Светлоту поверхности меряют шкалой Манселла — она равномерна по
+        восприятию, и связь ступени с отражением задана квинтикой
+        ASTM&nbsp;D1535. Порог известен: <strong>ниже Value&nbsp;2.5
+        поверхность называют чёрной</strong> независимо от того, что записано
+        в её координатах, а тон становится виден примерно с 3.5.</p>
     </div>
-    <div class="pals"><article class="pal"><div class="pal__head"><h3>ГРАФИТ + БИРЮЗА</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#FAFAFA"></i><b>paper</b><em>#FAFAFA</em></div><div class="sw"><i style="background:#2E3136"></i><b>ink</b><em>#2E3136</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#6B2FB8"></i><b>machine</b><em>#6B2FB8</em></div><div class="sw"><i style="background:#8A4B1C"></i><b>note</b><em>#8A4B1C</em></div><div class="sw"><i style="background:#6E7278"></i><b>muted</b><em>#6E7278</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+    <div class="two"><div class="scroll"><table><tr><th>что отдано</th><th>hex</th><th>отражение</th><th>Value</th><th>хрома</th><th>как читается</th></tr><tr><td>ГРАФИТ (было)</td><td class="num">#2E3136</td><td class="num">3.0%</td><td class="num bad">2.00</td><td class="num">0.010</td><td>чёрная</td></tr><tr><td>КОФЕ (было)</td><td class="num">#3B2F27</td><td class="num">3.1%</td><td class="num bad">2.02</td><td class="num">0.022</td><td>чёрная</td></tr><tr><td>чистый чёрный</td><td class="num">#000000</td><td class="num">0.0%</td><td class="num bad">0.00</td><td class="num">0.000</td><td>чёрная</td></tr><tr><td>тёмная тема, фон</td><td class="num">#141618</td><td class="num">0.8%</td><td class="num bad">0.69</td><td class="num">0.005</td><td>чёрная</td></tr></table></div><div class="scroll"><table><tr><th>Value</th><th>отражение</th><th>к бумаге</th><th>как читается</th></tr><tr><td class="num">2.0</td><td class="num">3.0%</td><td class="num">11.6 : 1</td><td>чёрная</td></tr><tr><td class="num">2.4</td><td class="num">4.2%</td><td class="num">10.1 : 1</td><td>чёрная</td></tr><tr><td class="num">2.8</td><td class="num">5.6%</td><td class="num">8.8 : 1</td><td>почти чёрная</td></tr><tr><td class="num">3.2</td><td class="num">7.3%</td><td class="num">7.6 : 1</td><td>почти чёрная</td></tr><tr class="row--mark"><td class="num">3.6</td><td class="num">9.3%</td><td class="num">6.5 : 1</td><td>тёмная, тон виден</td></tr><tr><td class="num">4.0</td><td class="num">11.7%</td><td class="num">5.6 : 1</td><td>тёмная, тон виден</td></tr><tr><td class="num">4.4</td><td class="num">14.4%</td><td class="num">4.8 : 1</td><td>тёмная, тон виден</td></tr><tr><td class="num">4.8</td><td class="num">17.6%</td><td class="num">4.1 : 1</td><td>тёмная, тон виден</td></tr><tr><td class="num">5.2</td><td class="num">21.1%</td><td class="num">3.6 : 1</td><td>тёмная, тон виден</td></tr></table></div></div>
+    <div class="col">
+      <p>Обе краски стояли на <strong>2.00</strong> и <strong>2.02</strong>.
+        Я отдал чёрный и назвал его не-чёрным.</p>
+    </div>
+
+    <h3>Чем платит подъём</h3>
+    <div class="col">
+      <p>Поднять краску по ступени мало — подъём тянет её к светлоте стрелки,
+        и разрыв между ними съедается. Полный перебор по тону и хроме показал,
+        чем именно за это платят: <strong>то, что отнял подъём, обязана
+        вернуть хрома</strong>. Нейтральный тёмно-коричневый этого не может —
+        при хроме 0.03 у него нет ничего, кроме светлоты, и при дейтеранопии
+        он падает до 0.05.</p>
+      <p>Вторая плата — контраст. На тёплой бумаге ступень 3.5 и уровень
+        AAA (7&nbsp;:&nbsp;1) несовместимы: 7&nbsp;:&nbsp;1 достигается только
+        на 3.4 и ниже, то есть на краске, которую всё ещё зовут почти чёрной.
+        <strong>Отдан AAA, оставлен AA с запасом в полтора раза</strong> —
+        6.2—6.6&nbsp;:&nbsp;1. Это прямая цена первого требования, и я называю
+        её, а не прячу.</p>
+    </div>
+    <div class="ladfam"><div class="ladfam__head"><b>ГРИФЕЛЬ</b><span>тон 72° · хрома 0.012</span><i>карандаш: тона нет, работает одна светлота</i></div><div class="ladrow"><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="471.659" height="130.4" fill="#FAFAFA"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10001">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#2E3136" mask="url(#m10002)"/>
+  <rect width="128" height="128" fill="#514C45" mask="url(#m10001)"/>
   <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#2E3136"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#514C45" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#514C45" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#514C45" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#514C45</b><span>Value 3.21 · 7.6 : 1 · ΔEok 0.110 · дальт. 0.069</span><em>только с синим</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="471.659" height="130.4" fill="#FAFAFA"/>
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10003">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#5B564F" mask="url(#m10003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#5B564F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#5B564F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#5B564F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#5B564F</b><span>Value 3.62 · 6.5 : 1 · ΔEok 0.092 · дальт. 0.038</span><em>только с синим</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
   <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10005">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#2E3136" mask="url(#m10005)"/>
+  <rect width="128" height="128" fill="#655F59" mask="url(#m10005)"/>
   <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#655F59" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#655F59" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#655F59" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#655F59</b><span>Value 4.00 · 5.6 : 1 · ΔEok 0.088 · дальт. 0.027</span><em>не проходит ни с одним</em></figcaption></figure></div></div><div class="ladfam"><div class="ladfam__head"><b>ДЫМ</b><span>тон 70° · хрома 0.028</span><i>тёплый серый, тон угадывается на большом поле</i></div><div class="ladrow"><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="440" height="280" fill="#FAFAFA"/>
-  <rect width="440" height="34" fill="#FFFFFF"/>
-  <path d="M0,34 H440" stroke="#E3E4E6" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#2E3136" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#2E3136"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
-  <rect x="132" y="52" width="150" height="12" fill="#2E3136"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6B2FB8" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6B2FB8"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#E3E4E6" stroke-width="1"/>
-
-</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
-  
-  <rect width="440" height="280" fill="#141618"/>
-  <rect width="440" height="34" fill="#141618"/>
-  <path d="M0,34 H440" stroke="#2A2D31" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#ECEDEE" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#ECEDEE"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
-  <rect x="132" y="52" width="150" height="12" fill="#ECEDEE"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#A98BFF" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#A98BFF"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#2A2D31" stroke-width="1"/>
-
-</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>12.5 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.191</dd></div><div><dt>то же при дальтонизме</dt><dd>0.172</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.104</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.021</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ГРАФИТ + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#FAFAFA"></i><b>paper</b><em>#FAFAFA</em></div><div class="sw"><i style="background:#2E3136"></i><b>ink</b><em>#2E3136</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#6F5062"></i><b>machine</b><em>#6F5062</em></div><div class="sw"><i style="background:#AC5D13"></i><b>note</b><em>#AC5D13</em></div><div class="sw"><i style="background:#6E7278"></i><b>muted</b><em>#6E7278</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  
-  <rect width="471.659" height="130.4" fill="#FAFAFA"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10008">
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10007">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#2E3136" mask="url(#m10008)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#2E3136"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  <rect width="128" height="128" fill="#574B3C" mask="url(#m10007)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#574B3C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#574B3C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#574B3C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#574B3C</b><span>Value 3.22 · 7.6 : 1 · ΔEok 0.117 · дальт. 0.074</span><em>только с синим</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="471.659" height="130.4" fill="#FAFAFA"/>
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10009">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#615445" mask="url(#m10009)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#615445</b><span>Value 3.60 · 6.6 : 1 · ΔEok 0.103 · дальт. 0.051</span><em>только с синим</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
   <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10011">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#2E3136" mask="url(#m10011)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#2E3136" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  <rect width="128" height="128" fill="#6B5E4F" mask="url(#m10011)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#6B5E4F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#6B5E4F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#6B5E4F" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#6B5E4F</b><span>Value 4.00 · 5.6 : 1 · ΔEok 0.097 · дальт. 0.040</span><em>не проходит ни с одним</em></figcaption></figure></div></div><div class="ladfam"><div class="ladfam__head"><b>СЕПИЯ</b><span>тон 66° · хрома 0.048</span><i>коричневый читается тоном, а не только тем, что тёмный</i></div><div class="ladrow"><figure class="lad lad--ok"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="440" height="280" fill="#FAFAFA"/>
-  <rect width="440" height="34" fill="#FFFFFF"/>
-  <path d="M0,34 H440" stroke="#E3E4E6" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#2E3136" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#2E3136"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
-  <rect x="132" y="52" width="150" height="12" fill="#2E3136"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#6E7278" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6F5062" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6F5062"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#E3E4E6" stroke-width="1"/>
-
-</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
-  
-  <rect width="440" height="280" fill="#141618"/>
-  <rect width="440" height="34" fill="#141618"/>
-  <path d="M0,34 H440" stroke="#2A2D31" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#ECEDEE" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#ECEDEE"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
-  <rect x="132" y="52" width="150" height="12" fill="#ECEDEE"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#9AA0A6" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#E092B4" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#E092B4"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#2A2D31" stroke-width="1"/>
-
-</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>12.5 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>6.2 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.226</dd></div><div><dt>то же при дальтонизме</dt><dd>0.206</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.136</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.023</dd></div></dl></div></article><article class="pal pal--pick"><div class="pal__head"><h3>КОФЕ + БИРЮЗА</h3><span class="tag tag--pass">всё проходит</span><span class="tag tag--pass">рекомендую</span></div><div class="pal__sw"><div class="sw"><i style="background:#FBFAF7"></i><b>paper</b><em>#FBFAF7</em></div><div class="sw"><i style="background:#3B2F27"></i><b>ink</b><em>#3B2F27</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#6B2FB8"></i><b>machine</b><em>#6B2FB8</em></div><div class="sw"><i style="background:#8A4B1C"></i><b>note</b><em>#8A4B1C</em></div><div class="sw"><i style="background:#77706A"></i><b>muted</b><em>#77706A</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  
-  <rect width="471.659" height="130.4" fill="#FBFAF7"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10014">
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10013">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#3B2F27" mask="url(#m10014)"/>
+  <rect width="128" height="128" fill="#5F4831" mask="url(#m10013)"/>
   <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#3B2F27"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#5F4831" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#5F4831" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#5F4831" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#5F4831</b><span>Value 3.20 · 7.7 : 1 · ΔEok 0.131 · дальт. 0.084</span><em>проходит с обоими</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="471.659" height="130.4" fill="#FBFAF7"/>
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10015">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#69513A" mask="url(#m10015)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#69513A</b><span>Value 3.58 · 6.6 : 1 · ΔEok 0.118 · дальт. 0.065</span><em>только с синим</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
   <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10017">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#3B2F27" mask="url(#m10017)"/>
+  <rect width="128" height="128" fill="#745B44" mask="url(#m10017)"/>
   <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#745B44" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#745B44" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#745B44" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#745B44</b><span>Value 3.99 · 5.7 : 1 · ΔEok 0.115 · дальт. 0.056</span><em>не проходит ни с одним</em></figcaption></figure></div></div><div class="ladfam"><div class="ladfam__head"><b>ТАБАК</b><span>тон 60° · хрома 0.072</span><i>насыщенный коричневый, у цвета появляется характер</i></div><div class="ladrow"><figure class="lad lad--ok"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="440" height="280" fill="#FBFAF7"/>
-  <rect width="440" height="34" fill="#FFFFFF"/>
-  <path d="M0,34 H440" stroke="#E7E3DC" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#3B2F27" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#3B2F27"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
-  <rect x="132" y="52" width="150" height="12" fill="#3B2F27"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6B2FB8" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6B2FB8"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6B2FB8" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#8A4B1C" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#8A4B1C" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#E7E3DC" stroke-width="1"/>
-
-</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
-  
-  <rect width="440" height="280" fill="#17130F"/>
-  <rect width="440" height="34" fill="#17130F"/>
-  <path d="M0,34 H440" stroke="#2E2721" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#EFEBE5" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#EFEBE5"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
-  <rect x="132" y="52" width="150" height="12" fill="#EFEBE5"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#A98BFF" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#A98BFF"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#A98BFF" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#E8A96B" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#E8A96B" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#2E2721" stroke-width="1"/>
-
-</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>12.4 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.196</dd></div><div><dt>то же при дальтонизме</dt><dd>0.169</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.104</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.021</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>КОФЕ + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#FBFAF7"></i><b>paper</b><em>#FBFAF7</em></div><div class="sw"><i style="background:#3B2F27"></i><b>ink</b><em>#3B2F27</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#6F5062"></i><b>machine</b><em>#6F5062</em></div><div class="sw"><i style="background:#AC5D13"></i><b>note</b><em>#AC5D13</em></div><div class="sw"><i style="background:#77706A"></i><b>muted</b><em>#77706A</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
-  
-  <rect width="471.659" height="130.4" fill="#FBFAF7"/>
-  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10020">
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10019">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#3B2F27" mask="url(#m10020)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#3B2F27"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  <rect width="128" height="128" fill="#6A4422" mask="url(#m10019)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#6A4422" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#6A4422" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#6A4422" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#6A4422</b><span>Value 3.21 · 7.6 : 1 · ΔEok 0.150 · дальт. 0.096</span><em>проходит с обоими</em></figcaption></figure><figure class="lad lad--ok"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="471.659" height="130.4" fill="#FBFAF7"/>
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10021">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#754E2C" mask="url(#m10021)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#754E2C</b><span>Value 3.62 · 6.5 : 1 · ΔEok 0.139 · дальт. 0.083</span><em>проходит с обоими</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
   <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10023">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="26" fill="black"/>
     <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#3B2F27" mask="url(#m10023)"/>
-  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
-</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#3B2F27" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
-</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  <rect width="128" height="128" fill="#805836" mask="url(#m10023)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#805836" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#805836" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#805836" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#805836</b><span>Value 4.02 · 5.6 : 1 · ΔEok 0.137 · дальт. 0.073</span><em>не проходит ни с одним</em></figcaption></figure></div></div><div class="ladfam"><div class="ladfam__head"><b>ПАТИНА</b><span>тон 55° · хрома 0.1</span><i>табак с рыжиной, предел охвата на этой светлоте</i></div><div class="ladrow"><figure class="lad lad--ok"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="440" height="280" fill="#FBFAF7"/>
-  <rect width="440" height="34" fill="#FFFFFF"/>
-  <path d="M0,34 H440" stroke="#E7E3DC" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#3B2F27" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#3B2F27"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
-  <rect x="132" y="52" width="150" height="12" fill="#3B2F27"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#77706A" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6F5062" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6F5062"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6F5062" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#AC5D13" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#AC5D13" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#E7E3DC" stroke-width="1"/>
-
-</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10025">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10025)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#864B1C</b><span>Value 3.75 · 6.2 : 1 · ΔEok 0.165 · дальт. 0.101</span><em>проходит с обоими</em></figcaption></figure><figure class="lad lad--ok"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
   
-  <rect width="440" height="280" fill="#17130F"/>
-  <rect width="440" height="34" fill="#17130F"/>
-  <path d="M0,34 H440" stroke="#2E2721" stroke-width="1"/>
-  <circle cx="22" cy="17" r="7" fill="none" stroke="#EFEBE5" stroke-width="3"/>
-  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
-  <rect x="44" y="12" width="52" height="9" rx="2" fill="#EFEBE5"/>
-  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
-  <rect x="132" y="52" width="150" height="12" fill="#EFEBE5"/>
-  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
-  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#A2988E" opacity="0.5"/>
-  <rect x="122" y="182" width="240" height="56" rx="4" fill="#E092B4" opacity="0.09"/>
-  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#E092B4"/>
-  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#E092B4" opacity="0.5"/>
-  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,102 H74.12" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,152 H64.88" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#C9C77A" stroke-width="1.7" stroke-linecap="round"/>
-  <path d="M20,212 H78.08" stroke="#C9C77A" stroke-width="1"/>
-  <path d="M110,46 V264" stroke="#2E2721" stroke-width="1"/>
-
-</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>12.4 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>6.2 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.245</dd></div><div><dt>то же при дальтонизме</dt><dd>0.216</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.136</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.023</dd></div></dl></div></article></div>
-
-    <h3>Что показал замер</h3>
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10027">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10027)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#864B1C</b><span>Value 3.75 · 6.2 : 1 · ΔEok 0.165 · дальт. 0.101</span><em>проходит с обоими</em></figcaption></figure><figure class="lad"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10029">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#8D5124" mask="url(#m10029)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#8D5124" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#8D5124" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#8D5124" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption><b>#8D5124</b><span>Value 4.00 · 5.6 : 1 · ΔEok 0.166 · дальт. 0.094</span><em>не проходит ни с одним</em></figcaption></figure></div></div>
     <div class="col">
-      <p>Все четыре сочетания проходят пороги — но пришли они к этому
-        по-разному, и разница существенная.</p>
-      <p><b>Когда акцент холодный, машина не может быть тоже холодной.</b>
-        При протанопии и дейтеранопии синий и фиолетовый схлопываются:
-        первая версия с синей стрелкой и фиолетовым машинным давала
-        <strong>ΔEok 0.026</strong> — это один и тот же цвет для восьми
-        процентов мужчин. Роли пришлось пересобирать под каждый акцент.</p>
-      <p><b>С бирюзой система собирается естественно.</b> Машина —
-        фиолетовый <code>#6B2FB8</code>, поля — сепия <code>#8A4B1C</code>,
-        худшая пара при дальтонизме <strong>0.104</strong> на светлой теме и
-        0.087 на тёмной. Запас есть.</p>
-      <p><b>С синим — только на неудобных цветах.</b> Чтобы четыре роли
-        разошлись, машине приходится становиться приглушённо-лиловой
-        (<code>#6F5062</code>), а на тёмной теме — розовой с оливковыми
-        полями. Пороги держатся, но система выглядит собранной из того, что
-        осталось, а не выбранной.</p>
-      <p><strong>Рекомендую КОФЕ + БИРЮЗА.</strong> Тёплый коричневый даёт
-        справочнику бумажную интонацию, и он расходится с холодной бирюзой
-        по температуре, а не только по тону — такое различение переживает и
-        дальтонизм, и солнце. Графит нейтральнее, но своего характера у него
-        нет; для энциклопедии это потеря.</p>
-      <p class="note">Оговорка по бирюзе: она заметно менее насыщенная, чем
-        синий (C 0.082 против 0.156). На плашке кнопки и на мелкой иконке она
-        будет тише — это цена спокойного тона, и её стоит принять сознательно.</p>
+      <p class="note">Здесь же виден побочный итог, которого я не ждал.
+        <b>Бирюза сужает выбор краски до двух семей из пяти, синий оставляет
+        открытыми все.</b> Механика простая: хрома бирюзы 0.082, и разводить
+        роли ей приходится светлотой — той самой, которую забирает подъём.
+        У синего хрома 0.156, он разводит цветностью и к ступени основы
+        безразличен.</p>
     </div>
-
-    <h3>Токены выбранного расклада</h3>
-    <div class="col"><p>Светлая тема — основная: <code>paper</code> задаёт вид
-      всего приложения, тёмная остаётся второй и нужна для ночи и для OLED.</p></div>
-    <div class="scroll"><table><tr><th>токен</th><th>значение</th><th>роль</th><th>контраст</th></tr><tr><td class="num">paper</td><td class="num">#FBFAF7</td><td>фон приложения</td><td class="num">—</td></tr><tr><td class="num">surface</td><td class="num">#FFFFFF</td><td>карточка</td><td class="num">—</td></tr><tr><td class="num">line</td><td class="num">#E7E3DC</td><td>граница</td><td class="num">—</td></tr><tr><td class="num">muted</td><td class="num">#77706A</td><td>второстепенный текст</td><td class="num">4.7 : 1</td></tr><tr><td class="num">ink</td><td class="num">#3B2F27</td><td>текст и логотип</td><td class="num">12.4 : 1</td></tr><tr><td class="num">accent</td><td class="num">#0E6E66</td><td>стрелка, действие, ссылки</td><td class="num">5.8 : 1</td></tr><tr><td class="num">accentDark</td><td class="num">#3FBFAE</td><td>акцент на тёмном</td><td class="num">8.2 : 1</td></tr><tr><td class="num">machine</td><td class="num">#6B2FB8</td><td>ответ ИИ</td><td class="num">7.4 : 1</td></tr><tr><td class="num">machineDark</td><td class="num">#A98BFF</td><td>ИИ на тёмном</td><td class="num">6.9 : 1</td></tr><tr><td class="num">note</td><td class="num">#8A4B1C</td><td>пометка на полях</td><td class="num">6.5 : 1</td></tr><tr><td class="num">noteDark</td><td class="num">#E8A96B</td><td>поля на тёмном</td><td class="num">9.1 : 1</td></tr><tr><td class="num">deep</td><td class="num">#17130F</td><td>фон тёмной темы</td><td class="num">—</td></tr><tr><td class="num">onDeep</td><td class="num">#EFEBE5</td><td>текст на тёмном</td><td class="num">15.6 : 1</td></tr><tr><td class="num">deepLine</td><td class="num">#2E2721</td><td>граница на тёмном</td><td class="num">—</td></tr><tr><td class="num">deepMuted</td><td class="num">#A2988E</td><td>второстепенный на тёмном</td><td class="num">6.5 : 1</td></tr></table></div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">17</span>
+      <h2>Фирменный цвет</h2></div>
+    <div class="col">
+      <p class="lede">Четыре основы со ступени 3.5 и выше × два акцента.
+        Бумага у всех одна, тёплая <code>#F6F2EA</code>: чистого белого в
+        системе нет по той же причине, по какой нет чёрного — справочник
+        должен выглядеть напечатанным, а не выведенным на экран.</p>
+      <p>Формулировка «весь логотип кроме стрелки» допускает два чтения, и я не
+        стал угадывать: собраны оба. В первом акцентом окрашена только стрелка,
+        слово идёт целиком основой. Во втором акцент подхватывает и первые три
+        буквы — тогда логотип сам объясняет имя: <b>ask</b> — вопрос и стрелка,
+        <b>qet</b> — ответ и кольцо.</p>
+    </div>
+    <div class="pals"><article class="pal pal--pick"><div class="pal__head"><h3>ТАБАК + БИРЮЗА</h3><span class="tag tag--pass">всё проходит</span><span class="tag tag--pass">рекомендую</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#754E2C"></i><b>ink</b><em>#754E2C</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#2D3576"></i><b>machine</b><em>#2D3576</em></div><div class="sw"><i style="background:#671D3D"></i><b>note</b><em>#671D3D</em></div><div class="sw"><i style="background:#826954"></i><b>muted</b><em>#826954</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10002">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#754E2C" mask="url(#m10002)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#754E2C"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10005">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#754E2C" mask="url(#m10005)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C9BBB0" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#754E2C" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#754E2C"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
+  <rect x="132" y="52" width="150" height="12" fill="#754E2C"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#2D3576" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#2D3576"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#671D3D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#671D3D" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#671D3D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#671D3D" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#671D3D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#671D3D" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C9BBB0" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#1B0E03"/>
+  <rect width="440" height="34" fill="#1B0E03"/>
+  <path d="M0,34 H440" stroke="#3C2E23" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#DFD4CC" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#DFD4CC"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
+  <rect x="132" y="52" width="150" height="12" fill="#DFD4CC"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6D7BBE" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6D7BBE"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#B46883" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#B46883" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#B46883" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#B46883" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#B46883" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#B46883" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#3C2E23" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.5 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.5 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.139</dd></div><div><dt>то же при дальтонизме</dt><dd>0.083</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.083</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.021</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ТАБАК + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#754E2C"></i><b>ink</b><em>#754E2C</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#432383"></i><b>machine</b><em>#432383</em></div><div class="sw"><i style="background:#6E113D"></i><b>note</b><em>#6E113D</em></div><div class="sw"><i style="background:#826954"></i><b>muted</b><em>#826954</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10008">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#754E2C" mask="url(#m10008)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#754E2C"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#754E2C" mask="url(#m10011)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#754E2C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C9BBB0" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#754E2C" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#754E2C"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
+  <rect x="132" y="52" width="150" height="12" fill="#754E2C"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#826954" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#432383" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#432383"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#432383" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#432383" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#432383" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#6E113D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#6E113D" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#6E113D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#6E113D" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#6E113D" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#6E113D" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C9BBB0" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#1B0E03"/>
+  <rect width="440" height="34" fill="#1B0E03"/>
+  <path d="M0,34 H440" stroke="#3C2E23" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#DFD4CC" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#DFD4CC"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
+  <rect x="132" y="52" width="150" height="12" fill="#DFD4CC"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#897B6F" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#8771CF" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#8771CF"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#8771CF" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#8771CF" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#8771CF" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#BC6283" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#BC6283" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#BC6283" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#BC6283" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#BC6283" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#BC6283" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#3C2E23" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.5 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.226</dd></div><div><dt>то же при дальтонизме</dt><dd>0.169</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.115</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.025</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ПАТИНА + БИРЮЗА</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#864B1C"></i><b>ink</b><em>#864B1C</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#323A89"></i><b>machine</b><em>#323A89</em></div><div class="sw"><i style="background:#6B1344"></i><b>note</b><em>#6B1344</em></div><div class="sw"><i style="background:#8B654C"></i><b>muted</b><em>#8B654C</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10014">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10014)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#864B1C"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10017">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10017)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#CEB9AC" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#864B1C" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#864B1C"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
+  <rect x="132" y="52" width="150" height="12" fill="#864B1C"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#323A89" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#323A89"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#323A89" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#323A89" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#323A89" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#6B1344" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#6B1344" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#6B1344" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#6B1344" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#6B1344" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#6B1344" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#CEB9AC" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#200B00"/>
+  <rect width="440" height="34" fill="#200B00"/>
+  <path d="M0,34 H440" stroke="#412C1E" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#E3D3C9" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#E3D3C9"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
+  <rect x="132" y="52" width="150" height="12" fill="#E3D3C9"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6A79C9" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6A79C9"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6A79C9" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6A79C9" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6A79C9" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#B9638B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#B9638B" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#B9638B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#B9638B" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#B9638B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#B9638B" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#412C1E" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.2 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.5 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.165</dd></div><div><dt>то же при дальтонизме</dt><dd>0.101</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.101</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.024</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ПАТИНА + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#864B1C"></i><b>ink</b><em>#864B1C</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#49207F"></i><b>machine</b><em>#49207F</em></div><div class="sw"><i style="background:#6F1035"></i><b>note</b><em>#6F1035</em></div><div class="sw"><i style="background:#8B654C"></i><b>muted</b><em>#8B654C</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10020">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10020)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#864B1C"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10023">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#864B1C" mask="url(#m10023)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#864B1C" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#CEB9AC" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#864B1C" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#864B1C"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
+  <rect x="132" y="52" width="150" height="12" fill="#864B1C"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#8B654C" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#49207F" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#49207F"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#49207F" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#49207F" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#49207F" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#6F1035" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#6F1035" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#6F1035" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#6F1035" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#6F1035" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#6F1035" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#CEB9AC" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#200B00"/>
+  <rect width="440" height="34" fill="#200B00"/>
+  <path d="M0,34 H440" stroke="#412C1E" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#E3D3C9" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#E3D3C9"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
+  <rect x="132" y="52" width="150" height="12" fill="#E3D3C9"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#8E796A" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#8E6ECB" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#8E6ECB"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#8E6ECB" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#8E6ECB" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#8E6ECB" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#BE627B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#BE627B" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#BE627B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#BE627B" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#BE627B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#BE627B" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#412C1E" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.2 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.250</dd></div><div><dt>то же при дальтонизме</dt><dd>0.203</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.118</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.024</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>СЕПИЯ + БИРЮЗА</h3><span class="tag tag--fail">ink ↔ accent сливается при дальтонизме (0.065)</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#69513A"></i><b>ink</b><em>#69513A</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#2D3576"></i><b>machine</b><em>#2D3576</em></div><div class="sw"><i style="background:#5D2747"></i><b>note</b><em>#5D2747</em></div><div class="sw"><i style="background:#7A6B5C"></i><b>muted</b><em>#7A6B5C</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10026">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#69513A" mask="url(#m10026)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#69513A"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10029">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#69513A" mask="url(#m10029)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C4BCB4" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#69513A" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#69513A"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
+  <rect x="132" y="52" width="150" height="12" fill="#69513A"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#2D3576" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#2D3576"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#5D2747" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#5D2747" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#5D2747" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#5D2747" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#5D2747" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#5D2747" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C4BCB4" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#170F07"/>
+  <rect width="440" height="34" fill="#170F07"/>
+  <path d="M0,34 H440" stroke="#383027" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#DBD4CF" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#DBD4CF"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
+  <rect x="132" y="52" width="150" height="12" fill="#DBD4CF"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6D7BBE" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6D7BBE"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#A86F8E" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#A86F8E" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#A86F8E" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#A86F8E" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#A86F8E" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#A86F8E" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#383027" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.6 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.5 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.118</dd></div><div><dt>то же при дальтонизме</dt><dd>0.065</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.065</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.018</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>СЕПИЯ + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#69513A"></i><b>ink</b><em>#69513A</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#292D8A"></i><b>machine</b><em>#292D8A</em></div><div class="sw"><i style="background:#69154B"></i><b>note</b><em>#69154B</em></div><div class="sw"><i style="background:#7A6B5C"></i><b>muted</b><em>#7A6B5C</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10032">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#69513A" mask="url(#m10032)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#69513A"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10035">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#69513A" mask="url(#m10035)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#69513A" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C4BCB4" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#69513A" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#69513A"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
+  <rect x="132" y="52" width="150" height="12" fill="#69513A"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#7A6B5C" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#292D8A" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#292D8A"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#292D8A" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#292D8A" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#292D8A" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#69154B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#69154B" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#69154B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#69154B" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#69154B" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#69154B" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C4BCB4" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#170F07"/>
+  <rect width="440" height="34" fill="#170F07"/>
+  <path d="M0,34 H440" stroke="#383027" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#DBD4CF" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#DBD4CF"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
+  <rect x="132" y="52" width="150" height="12" fill="#DBD4CF"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#857B73" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6A7AD6" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6A7AD6"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6A7AD6" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6A7AD6" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6A7AD6" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#B66392" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#B66392" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#B66392" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#B66392" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#B66392" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#B66392" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#383027" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.6 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.204</dd></div><div><dt>то же при дальтонизме</dt><dd>0.143</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.113</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.024</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ДЫМ + БИРЮЗА</h3><span class="tag tag--fail">ink ↔ accent сливается при дальтонизме (0.051)</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#615445"></i><b>ink</b><em>#615445</em></div><div class="sw"><i style="background:#0E6E66"></i><b>accent</b><em>#0E6E66</em></div><div class="sw"><i style="background:#2D3576"></i><b>machine</b><em>#2D3576</em></div><div class="sw"><i style="background:#503243"></i><b>note</b><em>#503243</em></div><div class="sw"><i style="background:#756D63"></i><b>muted</b><em>#756D63</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10038">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#615445" mask="url(#m10038)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#615445"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10041">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#615445" mask="url(#m10041)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#0E6E66"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#0E6E66" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#0E6E66"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C1BDB8" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#615445" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#0E6E66" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#615445"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#0E6E66"/>
+  <rect x="132" y="52" width="150" height="12" fill="#615445"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#0E6E66"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#2D3576" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#2D3576"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#2D3576" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#503243" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#503243" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#503243" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#503243" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#503243" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#503243" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C1BDB8" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#14100A"/>
+  <rect width="440" height="34" fill="#14100A"/>
+  <path d="M0,34 H440" stroke="#35302A" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#D9D6D2" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#3FBFAE" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#D9D6D2"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#3FBFAE"/>
+  <rect x="132" y="52" width="150" height="12" fill="#D9D6D2"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#3FBFAE"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#6D7BBE" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#6D7BBE"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#6D7BBE" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#967587" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#967587" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#967587" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#967587" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#967587" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#967587" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#35302A" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.6 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.5 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.103</dd></div><div><dt>то же при дальтонизме</dt><dd>0.051</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.051</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.011</dd></div></dl></div></article><article class="pal"><div class="pal__head"><h3>ДЫМ + СИНИЙ</h3><span class="tag tag--pass">всё проходит</span></div><div class="pal__sw"><div class="sw"><i style="background:#F6F2EA"></i><b>paper</b><em>#F6F2EA</em></div><div class="sw"><i style="background:#615445"></i><b>ink</b><em>#615445</em></div><div class="sw"><i style="background:#1F5BB5"></i><b>accent</b><em>#1F5BB5</em></div><div class="sw"><i style="background:#332A88"></i><b>machine</b><em>#332A88</em></div><div class="sw"><i style="background:#5B284C"></i><b>note</b><em>#5B284C</em></div><div class="sw"><i style="background:#756D63"></i><b>muted</b><em>#756D63</em></div></div><div class="duo"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10044">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#615445" mask="url(#m10044)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#615445"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>только стрелка</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.659 130.4" fill="none">
+  
+  <rect width="471.659" height="130.4" fill="#F6F2EA"/>
+  <g transform="translate(19.2,91.2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10047">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#615445" mask="url(#m10047)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#1F5BB5"/>
+</g><g transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#1F5BB5" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#1F5BB5"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#615445" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+</svg></div><figcaption>ask + стрелка</figcaption></figure></div><div class="duo" style="margin-top:var(--s2)"><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#F6F2EA"/>
+  <rect width="440" height="34" fill="#FFFDF8"/>
+  <path d="M0,34 H440" stroke="#C1BDB8" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#615445" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#1F5BB5" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#615445"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#1F5BB5"/>
+  <rect x="132" y="52" width="150" height="12" fill="#615445"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#1F5BB5"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#756D63" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#332A88" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#332A88"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#332A88" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#332A88" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#332A88" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#5B284C" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#5B284C" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#5B284C" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#5B284C" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#5B284C" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#5B284C" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#C1BDB8" stroke-width="1"/>
+
+</svg></div><figcaption>светлая — основная</figcaption></figure><figure><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 280" fill="none">
+  
+  <rect width="440" height="280" fill="#14100A"/>
+  <rect width="440" height="34" fill="#14100A"/>
+  <path d="M0,34 H440" stroke="#35302A" stroke-width="1"/>
+  <circle cx="22" cy="17" r="7" fill="none" stroke="#D9D6D2" stroke-width="3"/>
+  <path d="M26,21 l7,7 M33,28 v-6 M33,28 h-6" stroke="#7FA8F0" stroke-width="3" fill="none" stroke-linecap="square"/>
+  <rect x="44" y="12" width="52" height="9" rx="2" fill="#D9D6D2"/>
+  <rect x="344" y="10" width="80" height="14" rx="7" fill="#7FA8F0"/>
+  <rect x="132" y="52" width="150" height="12" fill="#D9D6D2"/>
+  <rect x="132" y="72" width="52" height="5" rx="2.5" fill="#7FA8F0"/>
+  <rect x="132" y="92" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="104" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="116" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="128" width="132" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="140" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="152" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="132" y="164" width="220" height="5" rx="2.5" fill="#817C77" opacity="0.5"/>
+  <rect x="122" y="182" width="240" height="56" rx="4" fill="#7477D4" opacity="0.09"/>
+  <rect x="122" y="182" width="3" height="56" rx="1.5" fill="#7477D4"/>
+  <rect x="132" y="196" width="220" height="5" rx="2.5" fill="#7477D4" opacity="0.5"/>
+  <rect x="132" y="208" width="220" height="5" rx="2.5" fill="#7477D4" opacity="0.5"/>
+  <rect x="132" y="220" width="99" height="5" rx="2.5" fill="#7477D4" opacity="0.5"/>
+  <path d="M20.0,96.0 L29.1,97.2 L38.2,96.8 L47.3,96.5 L56.4,96.5 L65.6,95.2 L74.7,94.4 L83.8,95.5 L92.9,96.2 L102.0,96.2" fill="none" stroke="#A56F93" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,102 H74.12" stroke="#A56F93" stroke-width="1"/>
+  <path d="M20.0,147.4 L27.6,146.7 L35.1,146.4 L42.7,146.3 L50.2,145.0 L57.8,144.5 L65.3,145.7 L72.9,146.4 L80.4,146.4 L88.0,147.2" fill="none" stroke="#A56F93" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,152 H64.88" stroke="#A56F93" stroke-width="1"/>
+  <path d="M20.0,206.6 L29.8,206.2 L39.6,206.1 L49.3,204.9 L59.1,204.6 L68.9,206.0 L78.7,206.6 L88.4,206.5 L98.2,207.2 L108.0,206.9" fill="none" stroke="#A56F93" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M20,212 H78.08" stroke="#A56F93" stroke-width="1"/>
+  <path d="M110,46 V264" stroke="#35302A" stroke-width="1"/>
+
+</svg></div><figcaption>тёмная — вторая</figcaption></figure></div><div class="pal__num"><dl><dt class="h">замеры</dt><div><dt>чернила на бумаге</dt><dd>6.6 : 1</dd></div><div><dt>акцент на бумаге</dt><dd>5.8 : 1</dd></div><div><dt>чернила ↔ акцент</dt><dd>0.187</dd></div><div><dt>то же при дальтонизме</dt><dd>0.124</dd></div><div><dt>худшая пара при дальтонизме</dt><dd>0.108</dd></div><div><dt>сдвиг на широком гамуте</dt><dd>0.017</dd></div></dl></div></article></div>
+
+    <h3>Что показал замер</h3>
+    <div class="col">
+      <p><b>Шесть сочетаний из восьми проходят.</b> Не проходят ровно те, что
+        предсказала полоса: сепия и дым с бирюзой — при дейтеранопии разрыв
+        падает до 0.065 и 0.051. С синим обе живут спокойно.</p>
+      <p><b>Сопутствующие цвета пришлось пересобрать целиком.</b> Пока чернила
+        были почти чёрными, роли расходились с ними по светлоте и тон можно
+        было брать любой. Коричневая основа сама тёплая и цветная — прежняя
+        маргиналия <code>#8A4B1C</code> с ней просто сливается. Полный перебор
+        увёл машину в индиго (тон 274—298°), а поля — в винный (340—4°).
+        Для справочника это попадание: индиго читается как машинное, винный —
+        как след пера, а не как ещё одна ссылка.</p>
+      <p><strong>Рекомендую ТАБАК + БИРЮЗА.</strong> Это самая спокойная из
+        основ, которые вообще проходят с бирюзой: ступень 3.62, тон читается,
+        и при этом краска не уходит в рыжину. Патина дальше от чёрного и
+        держит больший запас (0.101 против 0.083), но это уже заметный цвет —
+        он потребует сдержанности во всём остальном.</p>
+      <p class="note">Что стало хуже честности ради: на солнце контраст чернил
+        упал с 4.0 до <strong>3.0&nbsp;:&nbsp;1</strong>. Светлая краска на
+        улице читается тяжелее тёмной — это неустранимая часть отказа от
+        чёрного. Механизм тот же, что и раньше: цвет не должен один нести
+        различение, форма обязана его дублировать.</p>
+    </div>
+
+    <h3>Токены выбранного расклада</h3>
+    <div class="col"><p>Светлая тема — основная: <code>paper</code> задаёт вид
+      всего приложения, тёмная остаётся второй и нужна для ночи и для OLED.
+      Второстепенный текст, линейка, глубина и текст на глубине не подобраны,
+      а решены из тона чернил под заданный контраст.</p></div>
+    <div class="scroll"><table><tr><th>токен</th><th>значение</th><th>роль</th><th>контраст</th></tr><tr><td class="num">paper</td><td class="num">#F6F2EA</td><td>фон приложения</td><td class="num">—</td></tr><tr><td class="num">surface</td><td class="num">#FFFDF8</td><td>карточка</td><td class="num">—</td></tr><tr><td class="num">line</td><td class="num">#C9BBB0</td><td>граница</td><td class="num">—</td></tr><tr><td class="num">muted</td><td class="num">#826954</td><td>второстепенный текст</td><td class="num">4.6 : 1</td></tr><tr><td class="num">ink</td><td class="num">#754E2C</td><td>текст и логотип</td><td class="num">6.5 : 1</td></tr><tr><td class="num">accent</td><td class="num">#0E6E66</td><td>стрелка, действие, ссылки</td><td class="num">5.5 : 1</td></tr><tr><td class="num">accentDark</td><td class="num">#3FBFAE</td><td>акцент на тёмном</td><td class="num">8.4 : 1</td></tr><tr><td class="num">machine</td><td class="num">#2D3576</td><td>ответ ИИ</td><td class="num">10.0 : 1</td></tr><tr><td class="num">machineDark</td><td class="num">#6D7BBE</td><td>ИИ на тёмном</td><td class="num">4.7 : 1</td></tr><tr><td class="num">note</td><td class="num">#671D3D</td><td>пометка на полях</td><td class="num">10.3 : 1</td></tr><tr><td class="num">noteDark</td><td class="num">#B46883</td><td>поля на тёмном</td><td class="num">4.7 : 1</td></tr><tr><td class="num">deep</td><td class="num">#1B0E03</td><td>фон тёмной темы</td><td class="num">—</td></tr><tr><td class="num">onDeep</td><td class="num">#DFD4CC</td><td>текст на тёмном</td><td class="num">13.0 : 1</td></tr><tr><td class="num">deepLine</td><td class="num">#3C2E23</td><td>граница на тёмном</td><td class="num">—</td></tr><tr><td class="num">deepMuted</td><td class="num">#897B6F</td><td>второстепенный на тёмном</td><td class="num">4.6 : 1</td></tr></table></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">18</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.
