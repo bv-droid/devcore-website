@@ -9,8 +9,8 @@ AskQet — итерация 11: логотип целиком, знак плюс
 затем собирается локап.
 
 Правила, перенесённые со знака в шрифт
-  1. Терминал — плоский срез, а не круглая шапка. У знака полоса обрывается
-     по радиусу; у буквы штрих обрывается по нормали.
+  1. Терминал — плоский срез, а не круглая шапка. У знака полоса кольца
+     обрывается ровно по контуру стрелки; у буквы штрих обрывается по нормали.
   2. Диагонали — ровно 45°, как ось стрелки. Это касается k и хвоста q.
   3. Основа — окружность. Чаши a, q, e — один и тот же круг, как чаша знака.
   4. Вес задаётся одним числом: штрих. Всё остальное из него выводится.
@@ -166,8 +166,8 @@ def g_k(m):
     """Обе диагонали ровно 45°, сходятся на осевой стойки — стык без зазора.
 
     Терминалы диагоналей срезаны горизонтально, по росту строчных и по
-    базовой линии: у знака рез идёт по осям, здесь — так же. Косой срез,
-    который даёт обычная обводка, вылезал бы за обе линии на 4.2.
+    базовой линии. Косой срез, который даёт обычная обводка, вылезал бы
+    за обе линии на 4.2.
     """
     st, x = m["st"], m["x"]
     stem = st / 2
@@ -222,14 +222,33 @@ def wordmark(weight="text", tail="cut", color="currentColor", word=WORD):
 
 # ── Знак ─────────────────────────────────────────────────────────────────────
 
-def mark(kind="radial", color="currentColor"):
+# Утверждён вариант со свободным терминалом: полосу кольца режет сама
+# стрелка, кроя по радиусу нет.
+MARK_KIND = "base"
+
+# Мелкий крой той же формы: просвет шире, полоса толще, хвост короче.
+MARK_SMALL = dict(term="free", band=17.0, gap=7.0, leg=38.0, half=12.5,
+                  tail=19.0)
+
+
+def _mk(kind):
+    """kind — имя варианта итерации 10 или словарь параметров."""
+    return (dict(key=None, **kind) if isinstance(kind, dict)
+            else dict(key=kind))
+
+
+def mark(kind=MARK_KIND, color="currentColor"):
     """Знак итерации 10 без подложки, в currentColor."""
-    return V10.mark(kind, ink=color)
+    return V10.mark(ink=color, **_mk(kind))
+
+
+def mark_box(kind=MARK_KIND):
+    """Габарит знака: (левый, верхний, ширина, высота) в поле 128."""
+    x0, y0, x1, y1 = V10.bbox(**_mk(kind))
+    return x0, y0, x1 - x0, y1 - y0
 
 
 MARK_BOX = 128.0
-MARK_LEFT, MARK_TOP = 18.0, 14.0      # габарит знака внутри поля 128
-MARK_W, MARK_H = 90.0, 103.0
 
 
 # ── Локапы ───────────────────────────────────────────────────────────────────
@@ -239,12 +258,11 @@ MARK_W, MARK_H = 90.0, 103.0
 
 def _mark_group(kind, color, scale, tx, ty):
     """Знак, посаженный так, чтобы левый верхний угол габарита попал в (tx, ty)."""
-    return (f'<g transform="translate({n(tx - MARK_LEFT * scale)},'
-            f'{n(ty - MARK_TOP * scale)}) scale({n(scale)})">'
+    left, top, _, _ = mark_box(kind)
+    return (f'<g transform="translate({n(tx - left * scale)},'
+            f'{n(ty - top * scale)}) scale({n(scale)})">'
             f'{mark(kind, color)}</g>')
 
-
-MARK_BAND = 16.0            # полоса кольца в поле знака
 
 # Три посадки знака по высоте. Высота знака привязана к метрикам слова,
 # а полоса кольца при этом сама встаёт в известное отношение к штриху.
@@ -265,7 +283,7 @@ FITS = {
 }
 
 
-def lockup_row(weight="text", tail="cut", kind="radial", color="currentColor",
+def lockup_row(weight="text", tail="cut", kind=MARK_KIND, color="currentColor",
                fit="full"):
     """В строку: знак слева, слово справа.
 
@@ -273,8 +291,9 @@ def lockup_row(weight="text", tail="cut", kind="radial", color="currentColor",
     центрируется на оптической середине слова.
     """
     wm, ww, m = wordmark(weight, tail, color)
-    scale = FITS[fit]["h"](m) / MARK_H
-    mw, mh = MARK_W * scale, MARK_H * scale
+    _, _, bw, bh = mark_box(kind)
+    scale = FITS[fit]["h"](m) / bh
+    mw, mh = bw * scale, bh * scale
     gap = m["st"] * 2.5
     mid = (-m["asc"] + m["desc"]) / 2
     body = (_mark_group(kind, color, scale, 0.0, mid - mh / 2)
@@ -283,13 +302,15 @@ def lockup_row(weight="text", tail="cut", kind="radial", color="currentColor",
     return body, mw + gap + ww, h, m
 
 
-def band_of(weight="text", fit="full"):
+def band_of(weight="text", fit="full", kind=MARK_KIND):
     """Полоса кольца в единицах слова при данной посадке."""
     m = metrics(weight)
-    return MARK_BAND * FITS[fit]["h"](m) / MARK_H
+    _, _, _, mh = mark_box(kind)
+    band = V10.params(**_mk(kind))["band"]
+    return band * FITS[fit]["h"](m) / mh
 
 
-def lockup_stack(weight="text", tail="cut", kind="radial", color="currentColor",
+def lockup_stack(weight="text", tail="cut", kind=MARK_KIND, color="currentColor",
                  fit="over"):
     """Стопкой: знак сверху, слово снизу, по центру.
 
@@ -297,24 +318,26 @@ def lockup_stack(weight="text", tail="cut", kind="radial", color="currentColor",
     проваливается под словом.
     """
     wm, ww, m = wordmark(weight, tail, color)
-    scale = FITS[fit]["h"](m) * 1.35 / MARK_H
-    mw, mh = MARK_W * scale, MARK_H * scale
+    _, _, bw, bh = mark_box(kind)
+    scale = FITS[fit]["h"](m) * 1.35 / bh
+    mw, mh = bw * scale, bh * scale
     gap = m["st"] * 2.2
     body = (_mark_group(kind, color, scale, (ww - mw) / 2, -(m["x"] + gap + mh))
             + f'{wm}')
     return body, ww, mh + gap + m["x"] + m["desc"], m
 
 
-def lockup_swap(weight="text", kind="radial", color="currentColor"):
+def lockup_swap(weight="text", kind=MARK_KIND, color="currentColor"):
     """Знак вместо буквы q: «as‹знак›et»."""
     m = metrics(weight)
-    scale = m["x"] * 1.34 / MARK_H
-    mw = MARK_W * scale
+    _, _, bw, bh = mark_box(kind)
+    scale = m["x"] * 1.34 / bh
+    mw = bw * scale
     x, els = 0.0, []
     for ch in WORD:
         if ch == "q":
             els.append(_mark_group(kind, color, scale, x + 4.0,
-                                   -m["x"] / 2 - MARK_H * scale / 2))
+                                   -m["x"] / 2 - bh * scale / 2))
             x += mw + 9.0
             continue
         body, lsb, w, rsb = glyph(ch, m, "cut", color)
@@ -325,22 +348,22 @@ def lockup_swap(weight="text", kind="radial", color="currentColor"):
 
 # ── Охранное поле и размеры ──────────────────────────────────────────────────
 
-def band_in_word(weight="text", fit="full"):
+def band_in_word(weight="text", fit="full", kind=MARK_KIND):
     """Полоса кольца, пересчитанная в единицы слова."""
-    m = metrics(weight)
-    return MARK_BAND * FITS[fit]["h"](m) / MARK_H
+    return band_of(weight, fit, kind)
 
 
-def min_width(weight="text", fit="full", kind="radial"):
+def min_width(weight="text", fit="full", kind=MARK_KIND):
     """Минимальная ширина локапа: просвету знака нужен один пиксель."""
     m = metrics(weight)
-    scale = FITS[fit]["h"](m) / MARK_H
-    gap = V10.params(kind)["gap"] * scale
+    _, _, _, bh = mark_box(kind)
+    scale = FITS[fit]["h"](m) / bh
+    gap = V10.params(**_mk(kind))["gap"] * scale
     _, w, _, _ = lockup_row(weight=weight, fit=fit, kind=kind)
     return w / gap
 
 
-def clearspace(weight="text", fit="full", kind="radial"):
+def clearspace(weight="text", fit="full", kind=MARK_KIND):
     """Чертёж охранного поля: отступ равен полосе кольца."""
     body, w, h, m = lockup_row(weight=weight, fit=fit, kind=kind, color=INK)
     band = band_in_word(weight, fit)
@@ -483,7 +506,7 @@ def build_all():
     for ch in FIXES:
         out.append(write(d + f"fix/askqet-fix-{ch}.svg", letter_pair(ch)))
     out.append(write(d + "lockup/askqet-row-compact.svg",
-                     plate_lock(lockup_row, weight="bold", kind="icon")))
+                     plate_lock(lockup_row, weight="bold", kind=MARK_SMALL)))
     return out
 
 
@@ -501,7 +524,7 @@ if __name__ == "__main__":
         b = band_of("text", f)
         print(f"  {meta['title']:<16} высота {FITS[f]['h'](m):>6.1f}"
               f"  полоса {b:>5.1f}  к штриху {b / m['st']:>5.2f}"
-              f"  живёт с {min_width('text', f):>4.0f} px")
+              f"  живёт с {math.ceil(min_width('text', f)):>4} px")
     print(f"\n  компактный локап (мелкий крой знака): "
-          f"живёт с {min_width('bold', 'full', 'icon'):.0f} px")
+          f"живёт с {math.ceil(min_width('bold', 'full', MARK_SMALL))} px")
     print(f"  охранное поле: {band_in_word():.1f} единиц слова")

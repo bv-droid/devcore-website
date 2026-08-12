@@ -13,9 +13,9 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from page_body import (EXTRA_CSS, before_after, fits, letter_fixes, lockups,
-                       size_table, sizes_row, spec_table, tails,
-                       weights)  # noqa: E402
+from page_body import (EXTRA_CSS, before_after, decisions, files_table, fits,
+                       letter_fixes, lockups, size_table, sizes_row,
+                       spec_table, tails, weights)  # noqa: E402
 
 
 def read_svg(rel):
@@ -243,10 +243,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 11 — логотип целиком</p>
+    <p class="eyebrow">DevCore · AskQet · утверждённый логотип</p>
     <div class="mast__logo">⟦logo/v11/word/askqet-word-text.svg⟧</div>
-    <p class="mast__thesis">Знак закрыт. Теперь под него
-      <em>перестроено слово</em><span class="caret"></span></p>
+    <p class="mast__thesis">Локап в строку, основной вес,
+      <em>знак со свободным терминалом</em><span class="caret"></span></p>
     <div class="mast__meta">
       <div>ШТРИХ<b>12 — 23 % роста</b></div>
       <div>ДИАГОНАЛИ<b>45°</b></div>
@@ -261,15 +261,22 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Логотип</h2></div>
+      <h2>Утверждённый логотип</h2></div>
     <div class="hero">
-      <div>⟦logo/v11/lockup/askqet-row.svg⟧</div>
-      <div>⟦logo/v11/lockup/askqet-row-invert.svg⟧</div>
+      <div>⟦logo/final/askqet-logo.svg⟧</div>
+      <div>⟦logo/final/askqet-logo-invert.svg⟧</div>
     </div>
     <div class="col">
-      <p class="lede">Знак из прошлой итерации остался нетронутым. Изменилось
-        всё остальное: слово перестроено по правилам знака, а посадка
-        и просветы больше не назначены на глаз — они выведены из штриха.</p>
+      <p class="lede">Три решения приняты: <strong>локап в строку</strong>,
+        <strong>основной вес слова</strong>, <strong>знак со свободным
+        терминалом</strong> — тот, где полосу кольца режет сама стрелка.
+        Всё остальное из них выведено.</p>
+    </div>
+    {DECISIONS}
+    <div class="col">
+      <p class="note">Разбор ниже — обоснование этих решений: что было не так,
+        какие правила перенесены со знака в шрифт, какие дефекты букв
+        исправлены и по какому замеру выбрана посадка знака.</p>
     </div>
   </div>
 </section>
@@ -302,12 +309,12 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <p class="lede">Связь знака и слова — это не «похожий характер», а
         перечисляемые правила. Их четыре, и каждое проверяется линейкой.</p>
       <p><b>1 · Терминал — плоский срез.</b> У знака полоса кольца обрывается
-        по радиусу. У буквы штрих обрывается по нормали: на дуге это тот же
-        радиальный рез, на прямой — рез по оси. Круглых шапок нет нигде.<br>
+        ровно по контуру стрелки — плоской линией, а не скруглением. У буквы
+        штрих обрывается по нормали: на дуге это рез по радиусу, на прямой —
+        рез по оси. Круглых шапок нет нигде.<br>
         <b>2 · Диагонали ровно 45°.</b> Столько же, сколько у оси стрелки.
         Это касается обеих диагоналей k, а их концы срезаны горизонтально —
-        по росту строчных и по базовой линии, как терминалы знака стоят
-        на осях кольца.<br>
+        по росту строчных и по базовой линии.<br>
         <b>3 · Основа — окружность.</b> Чаши a, q и e — одна и та же
         окружность, как чаша знака.<br>
         <b>4 · Вес — одно число.</b> Штрих задаётся, всё остальное выводится:
@@ -381,7 +388,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">09</span>
-      <h2>Охранное поле и размеры</h2></div>
+      <h2>Охранное поле, размеры и файлы</h2></div>
     <div class="col"><p class="lede">Охранное поле равно полосе кольца. Это
       не круглое число, а величина из построения: она меняется вместе со
       знаком и её нельзя забыть пересчитать.</p></div>
@@ -390,8 +397,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
     {SIZES}
     <div class="col"><p class="note">Нижняя граница снова задана просветом
       знака: ему нужен минимум один пиксель. Отсюда 113 px для основного
-      локапа и 75 px для компактного, где просвет расширен.</p></div>
+      локапа и 71 px для компактного, где просвет расширен.</p></div>
     {SIZETABLE}
+    <h3>Файлы</h3>
+    {FILES}
   </div>
 </section>
 
@@ -444,7 +453,8 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
-    for key, fn in (("{BEFORE}", before_after), ("{SPECS}", spec_table),
+    for key, fn in (("{DECISIONS}", decisions), ("{FILES}", files_table),
+                    ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),
                     ("{TAILS}", tails), ("{FITS}", fits),
                     ("{LOCKUPS}", lockups), ("{SIZES}", sizes_row),

@@ -22,6 +22,7 @@ with open(os.path.join(ROOT, "tools/measure_v10.json"), encoding="utf-8") as f:
     M10 = json.load(f)
 
 L = "logo/v11/"
+F = "logo/final/"
 
 EXTRA_CSS = """
 .hero{display:grid; gap:2px; grid-template-columns:minmax(0,1fr);
@@ -274,3 +275,55 @@ def size_table():
             + "".join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td>'
                       f'<td class="num">{d}</td></tr>' for a, b, c, d in rows)
             + '</table></div>')
+
+
+# ── утверждённое ─────────────────────────────────────────────────────────────
+
+def decisions():
+    m = V.metrics("text")
+    band = V.band_in_word("text", "full")
+    chosen = [
+        ("ЛОКАП", "в строку", "знак слева, слово справа"),
+        ("ВЕС СЛОВА", "основной",
+         f"штрих {m['st']:.0f} — {m['st'] / m['x'] * 100:.0f} % роста строчных"),
+        ("ЗНАК", "свободный терминал",
+         "полосу кольца режет сама стрелка, кроя по радиусу нет"),
+    ]
+    derived = [
+        ("высота знака", f"{m['asc'] + m['desc']:.0f}", "во весь рост слова"),
+        ("полоса кольца", f"{band:.1f}", f"{band / m['st']:.2f} штриха"),
+        ("просвет знак ↔ слово", f"{m['st'] * 2.5:.0f}", "2.5 штриха"),
+        ("охранное поле", f"{band:.1f}", "равно полосе кольца"),
+    ]
+    a = "".join(
+        f'<figure class="fcard fcard--pick"><figcaption><b>{t}</b>'
+        f'<span class="fcard__ch">{v}</span><p>{d}</p></figcaption></figure>'
+        for t, v, d in chosen)
+    b = ('<div class="scroll"><table>'
+         '<tr><th>величина</th><th>значение</th><th>откуда</th></tr>'
+         + "".join(f'<tr><td>{x}</td><td class="num">{y}</td>'
+                   f'<td class="note">{z}</td></tr>' for x, y, z in derived)
+         + '</table></div>')
+    return f'<div class="forms">{a}</div>{b}'
+
+
+FILE_ROWS = [
+    ("askqet-logo", "основной локап, в строку", "чёрный на белом · выворотка · mono"),
+    ("askqet-logo-small", "мелкий крой: плотный вес, просвет 7", "то же в трёх версиях"),
+    ("askqet-logo-stack", "стопкой: знак сверху, слово снизу", "то же в трёх версиях"),
+    ("askqet-mark", "знак отдельно", "прямой · выворотка · mono"),
+    ("askqet-icon", "квадратная плашка под иконку", "основной и мелкий крой"),
+    ("askqet-word", "слово отдельно", "прямой · mono"),
+    ("askqet-clearspace", "чертёж охранного поля", "—"),
+]
+
+
+def files_table():
+    head = "<tr><th>файл</th><th>что это</th><th>версии</th></tr>"
+    return ('<div class="scroll"><table>' + head
+            + "".join(f'<tr><td class="num">{a}</td><td>{b}</td>'
+                      f'<td class="note">{c}</td></tr>' for a, b, c in FILE_ROWS)
+            + '</table></div>'
+            '<p class="note">Версии с суффиксом <code>-mono</code> идут без '
+            'подложки и в <code>currentColor</code>: цвет задаётся со стороны '
+            'носителя. Всё в <code>logo/final/</code>.</p>')

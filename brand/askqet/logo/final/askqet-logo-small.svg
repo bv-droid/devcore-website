@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.514 132" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526.045 144.531" fill="none">
   <title>AskQet</title>
-  <rect width="513.514" height="132" fill="#FFFFFF"/>
-  <g transform="translate(20,92)"><g transform="translate(-17.381,-85.519) scale(0.966)">  <defs><mask id="m10013">
+  <rect width="526.045" height="144.531" fill="#FFFFFF"/>
+  <g transform="translate(26.265,98.265)"><g transform="translate(-17.381,-85.519) scale(0.966)">  <defs><mask id="m10004">
     <rect width="128" height="128" fill="black"/>
     <circle cx="60" cy="56" r="42" fill="white"/>
     <circle cx="60" cy="56" r="25" fill="black"/>
     <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#111111" mask="url(#m10013)"/>
+  <rect width="128" height="128" fill="#111111" mask="url(#m10004)"/>
   <path d="M70,68 L108,68 L108,106 L97.839,95.839 L84.404,109.274 L66.726,91.596 L80.161,78.161 Z" fill="#111111"/>
 </g><g transform="translate(124.407,0)"><g transform="translate(5,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M44.5,-26 A18.5,18.5 0 1 1 44.5,-26.003"/><path d="M44.5,-52 L44.5,0"/></g></g><g transform="translate(69,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.131,-42.827 A11.84,9.25 0 1 0 19.34,-26 A11.84,9.25 0 1 1 12.549,-9.173"/></g></g><g transform="translate(119.68,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7.5,-72 L7.5,0"/></g><path d="M44.107,-52 L22.893,-52 L0,-29.107 L0,-22.893 L22.893,0 L44.107,0 L18.107,-26 Z" fill="#111111"/></g><g transform="translate(171.787,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M44.5,-26 A18.5,18.5 0 1 1 44.5,-26.003"/><path d="M44.5,-52 L44.5,20"/></g></g><g transform="translate(235.787,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M44.5,-26 A18.5,18.5 0 1 0 32.327,-8.616"/><path d="M7.5,-26 L52,-26"/></g></g><g transform="translate(295.787,0)"><g fill="none" stroke="#111111" stroke-width="15" stroke-linecap="butt" stroke-linejoin="miter"><path d="M21.228,-66 L21.228,0"/><path d="M7.5,-52 L41.82,-52"/></g></g></g></g>
 </svg>

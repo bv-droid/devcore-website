@@ -282,6 +282,15 @@ def _wedge(a1, a2):
     return "M" + " L".join(f"{n(x)},{n(y)}" for x, y in pts) + " Z"
 
 
+def bbox(key=None, **over):
+    """Габарит знака в поле 128: (x0, y0, x1, y1). Считается, не задаётся."""
+    v = params(key, **over)
+    p = arrow_pts(v)
+    xs = [OX - R_OUT, OX + R_OUT] + [x for x, _ in p]
+    ys = [OY - R_OUT, OY + R_OUT] + [y for _, y in p]
+    return min(xs), min(ys), max(xs), max(ys)
+
+
 def ring_mask(v, with_arrow=True):
     d = arrow_path(v)
     body = [f'    <rect width="128" height="128" fill="black"/>',
