@@ -28,6 +28,7 @@ AUD = _load("tools/audit_v12.json")
 COL = _load("tokens/askqet-color.json")
 SIZE = _load("tools/size_limits.json")
 DEV = _load("tools/device_color.json")
+BRAND = _load("tokens/askqet-brand.json")
 
 L = "logo/v11/"
 F = "logo/final/"
@@ -96,6 +97,10 @@ EXTRA_CSS = """
 
 .pals{display:flex; flex-direction:column; gap:var(--s3); margin:var(--s3) 0}
 .pal{border:1px solid var(--line); border-radius:4px; padding:var(--s3)}
+.pal--pick{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent)}
+.duo figure{margin:0}
+.duo figcaption{margin-top:.45rem; font-family:var(--mono);
+  font-size:11px; color:var(--ink-3)}
 .pal__head{display:flex; align-items:baseline; gap:var(--s2); flex-wrap:wrap;
   margin-bottom:var(--s2)}
 .pal__head h3{margin:0; font-size:17px}
@@ -642,3 +647,69 @@ def print_table():
                  f'<td class="num">{"/".join(map(str, by["accent"]["cmyk"]))}</td>'
                  f'</tr>')
     return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+# ── фирменный цвет ───────────────────────────────────────────────────────────
+
+BRAND_PICK = "kofe-biryuza"
+
+
+def brand_block():
+    out = []
+    for key, d in BRAND.items():
+        pick = key == BRAND_PICK
+        sw = "".join(
+            f'<div class="sw"><i style="background:{d["colors"][r]}"></i>'
+            f'<b>{r}</b><em>{d["colors"][r]}</em></div>'
+            for r in ("paper", "ink", "accent", "machine", "note", "muted"))
+        rows = [("чернила на бумаге", f'{d["contrast"]["ink"]:.1f} : 1'),
+                ("акцент на бумаге", f'{d["contrast"]["accent"]:.1f} : 1'),
+                ("чернила ↔ акцент", f'{d["sep"]["ink ↔ accent"]:.3f}'),
+                ("то же при дальтонизме", f'{d["cvd"]["ink ↔ accent"]:.3f}'),
+                ("худшая пара при дальтонизме",
+                 f'{min(d["cvd"].values()):.3f}'),
+                ("сдвиг на широком гамуте", f'{d["device"]["гамут"]:.3f}')]
+        dl = "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in rows)
+        ok = ('<span class="tag tag--pass">всё проходит</span>' if not d["fails"]
+              else '<span class="tag tag--fail">' + "; ".join(d["fails"]) + '</span>')
+        out.append(
+            f'<article class="pal{" pal--pick" if pick else ""}">'
+            f'<div class="pal__head"><h3>{d["base"]} + {d["arrow"]}</h3>{ok}'
+            + ('<span class="tag tag--pass">рекомендую</span>' if pick else '')
+            + f'</div><div class="pal__sw">{sw}</div>'
+            f'<div class="duo">'
+            f'<figure><div>⟦logo/brand/{key}/askqet-arrow.svg⟧</div>'
+            f'<figcaption>только стрелка</figcaption></figure>'
+            f'<figure><div>⟦logo/brand/{key}/askqet-askqet.svg⟧</div>'
+            f'<figcaption>ask + стрелка</figcaption></figure></div>'
+            f'<div class="duo" style="margin-top:var(--s2)">'
+            f'<figure><div>⟦logo/brand/{key}/askqet-ui.svg⟧</div>'
+            f'<figcaption>светлая — основная</figcaption></figure>'
+            f'<figure><div>⟦logo/brand/{key}/askqet-ui-dark.svg⟧</div>'
+            f'<figcaption>тёмная — вторая</figcaption></figure></div>'
+            f'<div class="pal__num"><dl><dt class="h">замеры</dt>{dl}</dl></div>'
+            f'</article>')
+    return '<div class="pals">' + "".join(out) + '</div>'
+
+
+def brand_tokens():
+    d = BRAND[BRAND_PICK]
+    names = {"paper": "фон приложения", "surface": "карточка",
+             "line": "граница", "muted": "второстепенный текст",
+             "ink": "текст и логотип", "accent": "стрелка, действие, ссылки",
+             "machine": "ответ ИИ", "note": "пометка на полях",
+             "deep": "фон тёмной темы", "onDeep": "текст на тёмном",
+             "accentDark": "акцент на тёмном",
+             "machineDark": "ИИ на тёмном", "noteDark": "поля на тёмном",
+             "deepLine": "граница на тёмном",
+             "deepMuted": "второстепенный на тёмном"}
+    rows = ""
+    for r, v in d["colors"].items():
+        c = d["contrast"].get(r)
+        rows += (f'<tr><td class="num">{r}</td>'
+                 f'<td class="num">{v}</td>'
+                 f'<td>{names.get(r, "")}</td>'
+                 f'<td class="num">{f"{c:.1f} : 1" if c else "—"}</td></tr>')
+    return ('<div class="scroll"><table>'
+            '<tr><th>токен</th><th>значение</th><th>роль</th>'
+            '<th>контраст</th></tr>' + rows + '</table></div>')

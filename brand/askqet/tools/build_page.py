@@ -14,8 +14,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
 from page_body import (EXTRA_CSS, audit_overshoot, audit_seat, audit_spacing,
-                       before_after, color_thresholds, decisions, device_table,
-                       duo_block, files_table, fits, glare_table, gray_table,
+                       before_after, brand_block, brand_tokens,
+                       color_thresholds, decisions, device_table, duo_block,
+                       files_table, fits, glare_table, gray_table,
                        letter_fixes, lockups, material_table, narrow_table,
                        palettes_block, print_table, size_table, sizes_row,
                        spec_table, tails, type_block, weights)  # noqa: E402
@@ -248,8 +249,8 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <p class="eyebrow">DevCore · AskQet · логотип и цвет</p>
     <div class="mast__logo">⟦logo/v11/word/askqet-word-text.svg⟧</div>
-    <p class="mast__thesis">Логотип двухцветный, цвет проверен
-      <em>на пяти устройствах и на бумаге</em><span class="caret"></span></p>
+    <p class="mast__thesis">Чёрного нет, светлая тема основная,
+      <em>стрелка держит цвет</em><span class="caret"></span></p>
     <div class="mast__meta">
       <div>ШТРИХ<b>12 — 23 % роста</b></div>
       <div>ДИАГОНАЛИ<b>45°</b></div>
@@ -670,6 +671,58 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">16</span>
+      <h2>Фирменный цвет</h2></div>
+    <div class="col">
+      <p class="lede">Три решения приняты: <strong>чёрного в логотипе нет</strong>,
+        основа — тёмный серый или коричневый; <strong>стрелка</strong> — бирюза
+        <code>#0E6E66</code> или синий; <strong>основной цвет приложения —
+        светлый</strong>. Отсюда четыре сочетания, и все они посчитаны.</p>
+      <p>Формулировка «весь логотип кроме стрелки» допускает два чтения, и я не
+        стал угадывать: собраны оба. В первом акцентом окрашена только стрелка,
+        слово идёт целиком основой. Во втором акцент подхватывает и первые три
+        буквы — тогда логотип сам объясняет имя: <b>ask</b> — вопрос и стрелка,
+        <b>qet</b> — ответ и кольцо.</p>
+    </div>
+    {BRAND}
+
+    <h3>Что показал замер</h3>
+    <div class="col">
+      <p>Все четыре сочетания проходят пороги — но пришли они к этому
+        по-разному, и разница существенная.</p>
+      <p><b>Когда акцент холодный, машина не может быть тоже холодной.</b>
+        При протанопии и дейтеранопии синий и фиолетовый схлопываются:
+        первая версия с синей стрелкой и фиолетовым машинным давала
+        <strong>ΔEok 0.026</strong> — это один и тот же цвет для восьми
+        процентов мужчин. Роли пришлось пересобирать под каждый акцент.</p>
+      <p><b>С бирюзой система собирается естественно.</b> Машина —
+        фиолетовый <code>#6B2FB8</code>, поля — сепия <code>#8A4B1C</code>,
+        худшая пара при дальтонизме <strong>0.104</strong> на светлой теме и
+        0.087 на тёмной. Запас есть.</p>
+      <p><b>С синим — только на неудобных цветах.</b> Чтобы четыре роли
+        разошлись, машине приходится становиться приглушённо-лиловой
+        (<code>#6F5062</code>), а на тёмной теме — розовой с оливковыми
+        полями. Пороги держатся, но система выглядит собранной из того, что
+        осталось, а не выбранной.</p>
+      <p><strong>Рекомендую КОФЕ + БИРЮЗА.</strong> Тёплый коричневый даёт
+        справочнику бумажную интонацию, и он расходится с холодной бирюзой
+        по температуре, а не только по тону — такое различение переживает и
+        дальтонизм, и солнце. Графит нейтральнее, но своего характера у него
+        нет; для энциклопедии это потеря.</p>
+      <p class="note">Оговорка по бирюзе: она заметно менее насыщенная, чем
+        синий (C 0.082 против 0.156). На плашке кнопки и на мелкой иконке она
+        будет тише — это цена спокойного тона, и её стоит принять сознательно.</p>
+    </div>
+
+    <h3>Токены выбранного расклада</h3>
+    <div class="col"><p>Светлая тема — основная: <code>paper</code> задаёт вид
+      всего приложения, тёмная остаётся второй и нужна для ночи и для OLED.</p></div>
+    {TOKENS}
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">17</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.
@@ -729,6 +782,7 @@ def main():
                     ("{MATERIAL}", material_table), ("{DUO}", duo_block),
                     ("{DEVICE}", device_table), ("{GLARE}", glare_table),
                     ("{GRAY}", gray_table), ("{PRINTT}", print_table),
+                    ("{BRAND}", brand_block), ("{TOKENS}", brand_tokens),
                     ("{PALETTES}", palettes_block),
                     ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),
