@@ -15,8 +15,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
 from page_body import (EXTRA_CSS, audit_overshoot, audit_seat, audit_spacing,
                        before_after, color_thresholds, decisions, files_table,
-                       fits, letter_fixes, lockups, palettes_block, size_table,
-                       sizes_row, spec_table, tails, weights)  # noqa: E402
+                       fits, letter_fixes, lockups, material_table,
+                       narrow_table, palettes_block, size_table, sizes_row,
+                       spec_table, tails, type_block, weights)  # noqa: E402
 
 
 def read_svg(rel):
@@ -442,17 +443,71 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">10</span>
-      <h2>Охранное поле, размеры и файлы</h2></div>
+      <h2>Охранное поле</h2></div>
     <div class="col"><p class="lede">Охранное поле равно полосе кольца. Это
       не круглое число, а величина из построения: она меняется вместе со
       знаком и её нельзя забыть пересчитать.</p></div>
-    <div class="long">⟦logo/v11/askqet-clearspace.svg⟧</div>
-    <h3>Ширина локапа</h3>
-    {SIZES}
-    <div class="col"><p class="note">Нижняя граница снова задана просветом
-      знака: ему нужен минимум один пиксель. Отсюда 113 px для основного
-      локапа и 71 px для компактного, где просвет расширен.</p></div>
+    <div class="long">⟦logo/final/askqet-clearspace.svg⟧</div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec__head"><span class="sec__num">11</span>
+      <h2>Размеры</h2></div>
+    <div class="col">
+      <p class="lede">Раньше здесь стояла одна цифра, выведенная из одного
+        просвета. Это было неполно, а после перехода на равную толщину стало
+        ещё и неверно: знак уменьшился, просвет вместе с ним, и старое число
+        перестало соответствовать файлу. Здесь размер посчитан заново и
+        целиком.</p>
+      <p>Размер ограничивает не «общее ощущение», а <strong>самая узкая белая
+        деталь</strong>. Как только она тоньше пикселя, она затекает, и форма
+        меняется. Поэтому перечислены все критические просветы, у каждого
+        измерена ширина, и из неё выведены два предела: <strong>технический</strong>
+        — просвет равен пикселю, деталь ещё существует; <strong>комфортный</strong>
+        — полтора пикселя, деталь читается, а не угадывается.</p>
+    </div>
+    {NARROW}
+    <div class="col"><p class="note">Определяющий — просвет между кольцом и
+      стрелкой, 3.38 единицы. Он в два с половиной раза уже следующей по
+      узости детали, поэтому именно он задаёт нижнюю границу для всего
+      логотипа.</p></div>
+
+    <h3>Что и с какого размера ставить</h3>
     {SIZETABLE}
+    <div class="col">
+      <p>Здесь же обнаружилась ошибка в прежнем решении. Компактный локап был
+        собран на <strong>плотном</strong> весе слова — по интуиции, что
+        плотное лучше держит мелкий кегль. Замер показал обратное: плотный
+        штрих душит контрформы, и определяющим просветом становится не
+        просвет знака, а чаша <b>e</b>. Компактный крой на плотном весе жил
+        бы со 185 px — то есть почти не отличался бы от основного. Переведён
+        на основной вес: <strong>128 px против 210 px</strong>, и вот это уже
+        разница, ради которой он существует.</p>
+    </div>
+    {SIZES}
+
+    <h3>Рост строчных и кегль</h3>
+    <div class="col"><p>Слово живёт по своей самой узкой детали — половине
+      контрформы <b>e</b>. Отсюда минимальный рост строчных, а из него —
+      эквивалент кегля.</p></div>
+    {TYPE}
+    <div class="col"><p class="note">Важная оговорка: нарисованы шесть букв
+      слова, и это <strong>логотип, а не текстовая гарнитура</strong>. Для
+      статей энциклопедии нужен настоящий шрифт с полным набором, курсивом,
+      цифрами и казахской латиницей. Эти шесть букв к такой работе не готовы
+      и не должны в неё идти — их задача кончается на логотипе.</p></div>
+
+    <h3>Материал</h3>
+    <div class="col"><p>Тот же просвет пересчитан в миллиметры через
+      минимальную деталь, которую держит технология.</p></div>
+    {MATERIAL}
+    <div class="col"><p class="note">Вышивка основным кроем требует логотипа
+      от 168 мм — это нашивка на спину, а не на грудь. Для вышивки и тиснения
+      мелкого формата ставится знак отдельно, мелким кроем: ему хватает
+      16 мм по высоте.</p></div>
+
     <h3>Файлы</h3>
     {FILES}
   </div>
@@ -460,7 +515,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">11</span>
+    <div class="sec__head"><span class="sec__num">12</span>
       <h2>Цвет: как он проверяется</h2></div>
     <div class="col">
       <p class="lede">Продукт — <strong>энциклопедия бизнеса</strong>. Читатель
@@ -512,7 +567,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">12</span>
+    <div class="sec__head"><span class="sec__num">13</span>
       <h2>Пять раскладов</h2></div>
     <div class="col"><p class="lede">Роли во всех пяти одинаковы — бумага,
       чернила, редакция, машина, вспомогательный и три тёмных парных, —
@@ -526,7 +581,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">13</span>
+    <div class="sec__head"><span class="sec__num">14</span>
       <h2>Что дальше</h2></div>
     <div class="col">
       <p class="lede">Форма закрыта и перепроверена, цвет разложен на пять.
@@ -582,6 +637,8 @@ def main():
                     ("{OVERSHOOT}", audit_overshoot),
                     ("{SPACING}", audit_spacing), ("{SEAT}", audit_seat),
                     ("{THRESHOLDS}", color_thresholds),
+                    ("{NARROW}", narrow_table), ("{TYPE}", type_block),
+                    ("{MATERIAL}", material_table),
                     ("{PALETTES}", palettes_block),
                     ("{BEFORE}", before_after), ("{SPECS}", spec_table),
                     ("{FIXES}", letter_fixes), ("{WEIGHTS}", weights),

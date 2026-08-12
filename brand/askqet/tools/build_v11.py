@@ -533,7 +533,7 @@ def build_all():
     for ch in FIXES:
         out.append(write(d + f"fix/askqet-fix-{ch}.svg", letter_pair(ch)))
     out.append(write(d + "lockup/askqet-row-compact.svg",
-                     plate_lock(lockup_row, weight="bold", kind=MARK_SMALL)))
+                     plate_lock(lockup_row, weight="text", kind=MARK_SMALL)))
     return out
 
 

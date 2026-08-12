@@ -26,6 +26,7 @@ def _load(rel):
 M10 = _load("tools/measure_v10.json")
 AUD = _load("tools/audit_v12.json")
 COL = _load("tokens/askqet-color.json")
+SIZE = _load("tools/size_limits.json")
 
 L = "logo/v11/"
 F = "logo/final/"
@@ -83,6 +84,7 @@ EXTRA_CSS = """
 .sizes figcaption{margin-top:.55rem; font-family:var(--mono); font-size:11px;
   color:var(--ink-3)}
 .sizes .dead figcaption{color:var(--fail)}
+.sizes .warn figcaption{color:var(--warn)}
 
 .build{display:grid; gap:var(--s3); margin:var(--s4) 0;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:start}
@@ -266,15 +268,36 @@ def lockups():
 
 
 def sizes_row():
-    lim = math.ceil(V.min_width("text", "even"))
+    lim = SIZE["cuts"]["логотип, основной"]["tech"]
+    cmf = SIZE["cuts"]["логотип, основной"]["comfort"]
     out = []
-    for w in (420, 260, 180, 140, 110):
-        dead = "" if w >= lim else ' class="dead"'
-        mark = "просвет держится" if w >= lim else "просвет затёк"
-        out.append(f'<figure{dead} style="width:min({w}px,100%)">'
-                   f'<div>⟦{L}lockup/askqet-row.svg⟧</div>'
+    for w in (400, 300, 240, 210, 170, 140, 110):
+        if w >= cmf:
+            cls, mark = "", "читается"
+        elif w >= lim:
+            cls, mark = ' class="warn"', "на пределе"
+        else:
+            cls, mark = ' class="dead"', "просвет затёк"
+        out.append(f'<figure{cls} style="width:min({w}px,100%)">'
+                   f'<div>⟦{F}askqet-logo.svg⟧</div>'
                    f'<figcaption>{w} px<br>{mark}</figcaption></figure>')
     return '<div class="sizes">' + "".join(out) + '</div>'
+
+
+def narrow_table():
+    """Все критические просветы логотипа, от самого узкого."""
+    rows = sorted(SIZE["cuts"]["логотип, основной"]["rows"],
+                  key=lambda r: -r["logo_1"])
+    head = ("<tr><th>просвет</th><th>ширина, ед.</th>"
+            "<th>логотип при 1 px</th><th>при 1.5 px</th></tr>")
+    body = ""
+    for i, r in enumerate(rows):
+        bold = ' style="font-weight:650"' if i == 0 else ''
+        body += (f'<tr{bold}><td>{r["name"]}</td>'
+                 f'<td class="num">{r["width"]:.2f}</td>'
+                 f'<td class="num">{math.ceil(r["logo_1"])} px</td>'
+                 f'<td class="num">{math.ceil(r["logo_15"])} px</td></tr>')
+    return '<div class="scroll"><table>' + head + body + '</table></div>'
 
 
 # ── таблицы ──────────────────────────────────────────────────────────────────
@@ -303,19 +326,54 @@ def spec_table():
 
 
 def size_table():
-    rows = []
-    for key, title, weight, kind, fit in (
-            ("row", "В строку, основной", "text", V.MARK_KIND, "even"),
-            ("compact", "В строку, компактный", "bold", V.MARK_SMALL, "even")):
-        w = V.min_width(weight, fit, kind)
-        rows.append((title, V.WEIGHTS[weight]["title"].lower(),
-                     "мастер" if kind == V.MARK_KIND else "мелкий крой",
-                     f"{math.ceil(w)} px"))
-    head = ("<tr><th>локап</th><th>вес слова</th><th>крой знака</th>"
-            "<th>минимальная ширина</th></tr>")
-    return ('<div class="scroll"><table>' + head
-            + "".join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td>'
-                      f'<td class="num">{d}</td></tr>' for a, b, c, d in rows)
+    head = ("<tr><th>что ставим</th><th>определяющий просвет</th>"
+            "<th>технический</th><th>комфортный</th><th>печать 300 dpi</th></tr>")
+    rows = ""
+    for k, d in SIZE["cuts"].items():
+        rows += (f'<tr><td>{k}</td><td class="note">{d["driver"]}</td>'
+                 f'<td class="num">{d["tech"]} px</td>'
+                 f'<td class="num">{d["comfort"]} px</td>'
+                 f'<td class="num">{SIZE["print"][k]} мм</td></tr>')
+    for k, d in SIZE["cuts"].items():
+        if d["mark_tech"]:
+            rows += (f'<tr><td>знак отдельно, {k.split(", ")[1]} крой</td>'
+                     f'<td class="note">просвет кольцо ↔ стрелка</td>'
+                     f'<td class="num">{d["mark_tech"]} px</td>'
+                     f'<td class="num">{d["mark_comfort"]} px</td>'
+                     f'<td class="num">'
+                     f'{round(d["mark_comfort"] * 25.4 / 300, 1)} мм</td></tr>')
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+def material_table():
+    keys = list(SIZE["material"].keys())
+    head = ("<tr><th>технология</th><th>мин. деталь</th>"
+            + "".join(f"<th>{k}</th>" for k in keys) + "</tr>")
+    tech = [("офсет", 0.15), ("цифровая печать", 0.20), ("гравировка", 0.30),
+            ("шелкография", 0.35), ("тиснение", 0.50), ("вышивка", 1.20)]
+    rows = "".join(
+        f'<tr><td>{t}</td><td class="num">{mm:.2f} мм</td>'
+        + "".join(f'<td class="num">{SIZE["material"][k][t]:.0f} мм</td>'
+                  for k in keys) + '</tr>' for t, mm in tech)
+    return '<div class="scroll"><table>' + head + rows + '</table></div>'
+
+
+def type_block():
+    t = SIZE["type"]
+    rows = [
+        ("рост строчных, технический", f"{t['x_tech']:.1f} px",
+         "контрформа e равна пикселю"),
+        ("рост строчных, комфортный", f"{t['x_comfort']:.1f} px",
+         "контрформа e равна полутора пикселям"),
+        ("эквивалент кегля", f"{t['size_comfort']:.0f} px",
+         "при росте строчных 0.52 эм"),
+        ("слово отдельно", f"{SIZE['cuts']['слово отдельно']['comfort']} px",
+         "по ширине файла, комфортно"),
+    ]
+    return ('<div class="scroll"><table>'
+            '<tr><th>величина</th><th>значение</th><th>откуда</th></tr>'
+            + "".join(f'<tr><td>{a}</td><td class="num">{b}</td>'
+                      f'<td class="note">{c}</td></tr>' for a, b, c in rows)
             + '</table></div>')
 
 
@@ -351,7 +409,7 @@ def decisions():
 
 FILE_ROWS = [
     ("askqet-logo", "основной локап, в строку", "чёрный на белом · выворотка · mono"),
-    ("askqet-logo-small", "мелкий крой: плотный вес, просвет 7", "то же в трёх версиях"),
+    ("askqet-logo-small", "компактный: основной вес, просвет знака 7", "то же в трёх версиях"),
     ("askqet-logo-stack", "стопкой: знак сверху, слово снизу", "то же в трёх версиях"),
     ("askqet-mark", "знак отдельно", "прямой · выворотка · mono"),
     ("askqet-icon", "квадратная плашка под иконку", "основной и мелкий крой"),

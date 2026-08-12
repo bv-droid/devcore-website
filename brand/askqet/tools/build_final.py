@@ -112,9 +112,9 @@ FILES = [
     ("askqet-logo-invert.svg", lambda: _lock(KIND, WEIGHT, BG, INK)),
     ("askqet-logo-mono.svg", lambda: _lock(KIND, WEIGHT, CUR, None)),
     # мелкий крой
-    ("askqet-logo-small.svg", lambda: _lock(SMALL, "bold", INK, BG)),
-    ("askqet-logo-small-invert.svg", lambda: _lock(SMALL, "bold", BG, INK)),
-    ("askqet-logo-small-mono.svg", lambda: _lock(SMALL, "bold", CUR, None)),
+    ("askqet-logo-small.svg", lambda: _lock(SMALL, WEIGHT, INK, BG)),
+    ("askqet-logo-small-invert.svg", lambda: _lock(SMALL, WEIGHT, BG, INK)),
+    ("askqet-logo-small-mono.svg", lambda: _lock(SMALL, WEIGHT, CUR, None)),
     # стопкой
     ("askqet-logo-stack.svg", lambda: _stack(INK, BG)),
     ("askqet-logo-stack-invert.svg", lambda: _stack(BG, INK)),
