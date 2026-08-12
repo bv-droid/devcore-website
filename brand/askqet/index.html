@@ -208,124 +208,76 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   .caret{opacity:1}
 }
 
-.atom{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
-.atom:first-of-type{padding-top:0; border-top:0; margin-top:0}
-.atom__top{display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr);
+.v{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
+.v:first-of-type{padding-top:0; border-top:0; margin-top:0}
+.v__top{display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr);
   gap:var(--s4); align-items:start}
-.atom__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
+.v__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
   text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.atom__title{font-size:clamp(22px,2.7vw,30px); letter-spacing:-.03em; margin:0 0 .6em;
+.v__title{font-size:clamp(22px,2.7vw,30px); letter-spacing:-.03em; margin:0 0 .6em;
   font-weight:680}
-.atom__pair{display:grid; grid-template-columns:1fr 1fr; gap:2px; border-radius:6px;
-  overflow:hidden; border:1px solid var(--line)}
-.atom__pair svg{display:block; width:100%; height:auto}
-.atom__swatches{display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:var(--s2)}
-.atom__swatches div{padding:.5rem .55rem .6rem; font-family:var(--mono); font-size:10.5px;
-  line-height:1.5; min-height:56px; display:flex; flex-direction:column;
-  justify-content:flex-end}
-.atom__swatches b{font-size:11.5px; font-weight:500; display:block}
-
-/* ── Сетка применения ── */
-.uses{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:var(--s2); margin-top:var(--s3)}
-.use{border:1px solid var(--line); border-radius:8px; overflow:hidden;
-  display:flex; flex-direction:column}
-.use__box{padding:var(--s3); flex:1; display:flex; align-items:center;
-  justify-content:center; min-height:112px}
-.use__box--dark{background:#0B0C0E; color:#F5F4F0}
-.use__box--light{background:#F5F4F0; color:#15171B}
-.use__cap{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em;
-  text-transform:uppercase; color:var(--ink-3); padding:.5rem .75rem;
-  border-top:1px solid var(--line); background:var(--surface)}
-.ico{display:inline-block; vertical-align:middle}
-.ico svg{display:block; width:100%; height:100%}
-
-/* вкладка браузера */
-.tab{display:flex; align-items:center; gap:.5rem; background:#1B1E23; color:#C8CCD2;
-  border-radius:8px 8px 0 0; padding:.45rem .7rem; font-size:12px; width:100%;
-  max-width:190px; font-family:var(--sans)}
-.tab .ico{width:16px; height:16px; flex:none}
-/* чат */
-.chat{display:flex; gap:.6rem; align-items:flex-start; width:100%}
-.chat__av{width:30px; height:30px; border-radius:50%; flex:none; display:grid;
-  place-items:center; background:rgba(255,255,255,.07)}
-.chat__av .ico{width:18px; height:18px}
-.use__box--light .chat__av{background:rgba(0,0,0,.05)}
-.chat__msg{font-size:13.5px; line-height:1.5}
-/* инлайн */
-.inline{font-size:14px; line-height:1.65}
-.inline .ico{width:.78em; height:.78em; margin:0 .1em}
-/* список */
-.list{width:100%; font-size:13.5px; line-height:1.5}
-.list li{display:flex; gap:.55rem; align-items:flex-start; margin-bottom:.5rem}
-.list li:last-child{margin:0}
-.list .ico{width:13px; height:13px; margin-top:.28em; flex:none}
-/* кнопка */
-.btn{display:inline-flex; align-items:center; gap:.5rem; border-radius:999px;
-  padding:.6rem 1.1rem; font-size:14px; font-weight:600; border:0}
-.btn .ico{width:15px; height:15px}
-/* индикатор */
-.typing{display:flex; gap:.55rem; align-items:center}
-.typing .ico{width:18px; height:18px; animation:pulse 1.25s ease-in-out infinite}
-.typing .ico:nth-child(2){animation-delay:.18s}
-.typing .ico:nth-child(3){animation-delay:.36s}
-@keyframes pulse{0%,100%{opacity:.28} 45%{opacity:1}}
-/* иконка приложения */
-.appicon{width:72px; height:72px; border-radius:17px; display:grid; place-items:center}
-.appicon .ico{width:40px; height:40px}
-/* цитата с водяным знаком */
-.quote{position:relative; width:100%; font-size:13px; line-height:1.55;
-  padding:.7rem .8rem; border-radius:6px; background:rgba(255,255,255,.05)}
-.use__box--light .quote{background:rgba(0,0,0,.045)}
-.quote .ico{position:absolute; right:.55rem; bottom:.5rem; width:22px; height:22px;
-  opacity:.32}
-
-.risk{border-left:2px solid var(--fail); padding-left:var(--s2); margin-top:var(--s3)}
-.risk p{margin:0; font-size:14px; color:var(--ink-2)}
-.risk b{color:var(--ink)}
-.lockups{display:grid; gap:2px; margin-top:var(--s3); border:1px solid var(--line);
+.v__plates{display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px;
+  border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.v__plates svg{display:block; width:100%; height:auto}
+.v__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3);
+  flex-wrap:wrap}
+.v__sizes figure{margin:0; text-align:center}
+.v__sizes svg{display:block; border-radius:3px}
+.v__sizes .a svg{width:64px} .v__sizes .b svg{width:32px} .v__sizes .c svg{width:16px}
+.v__sizes figcaption{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);
+  margin-top:.45em}
+.v__lockups{display:grid; gap:2px; margin-top:var(--s3); border:1px solid var(--line);
   border-radius:6px; overflow:hidden}
-.lockups svg{display:block; width:100%; height:auto}
+.v__lockups svg{display:block; width:100%; height:auto}
+.v__note{border-left:2px solid var(--line-strong); padding-left:var(--s2);
+  margin-top:var(--s3); font-size:14px; color:var(--ink-2)}
+.v__note b{color:var(--ink)}
 
-.pick{display:grid; grid-template-columns:72px minmax(0,1fr); gap:var(--s3);
+.params{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:var(--s2); margin-top:var(--s3)}
+.params div{border:1px solid var(--line); border-radius:6px; padding:var(--s3);
+  background:var(--surface)}
+.params h4{margin:0 0 .35em; font-size:14.5px}
+.params p{margin:0; font-size:13.5px; color:var(--ink-2)}
+.params em{font-style:normal; font-family:var(--mono); font-size:11px;
+  color:var(--ink-3); display:block; margin-top:.5em; letter-spacing:.05em}
+
+.cpair{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px;
+  margin-top:var(--s3)}
+.cpair div{padding:.6rem .7rem .7rem; font-family:var(--mono); font-size:10.5px;
+  line-height:1.5; min-height:66px; display:flex; flex-direction:column;
+  justify-content:flex-end}
+.cpair b{font-size:11.5px; font-weight:500; display:block}
+
+.pick{display:grid; grid-template-columns:76px minmax(0,1fr); gap:var(--s3);
   align-items:center; border:1px solid var(--line); border-radius:6px;
   padding:var(--s2); background:var(--surface)}
 .pick + .pick{margin-top:var(--s2)}
-.pick .box{border-radius:6px; padding:var(--s1); background:#0B0C0E}
-.pick .box svg{display:block; width:100%; height:auto}
+.pick svg{display:block; width:100%; height:auto; border-radius:5px}
 .pick h4{margin:0 0 .25em} .pick p{margin:0; font-size:14.5px; color:var(--ink-2)}
 .flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
   border-radius:3px; border:1px solid currentColor; margin-left:.5em}
 .flag--ok{color:var(--pass)}
-.src{font-size:13.5px; color:var(--ink-3); margin-top:var(--s3)}
-.src a{color:var(--ink-2)}
-@media (prefers-reduced-motion:reduce){ .typing .ico{animation:none; opacity:1} }
-@media (max-width:760px){ .atom__top,.pick{grid-template-columns:1fr} }
+@media (max-width:760px){ .v__top,.pick{grid-template-columns:1fr} }
 
 </style>
-
-<svg class="filters" aria-hidden="true" style="position:absolute;width:0;height:0">
-  <filter id="cvd-deut" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix"
-    values="0.625 0.375 0 0 0  0.70 0.30 0 0 0  0 0.30 0.70 0 0  0 0 0 1 0"/></filter>
-</svg>
 
 <button class="theme-toggle" id="themeBtn" type="button">ТЕМА</button>
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 6 — знак как атом продукта</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 7 — кольцо и остриё</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Простой знак — это не маленькая картинка.
-      Это <em>знак препинания</em>, который умеет быть логотипом<span
-      class="caret"></span></p>
+    <p class="mast__thesis">Конструкция принята: разомкнутое кольцо — вопрос,
+      остриё — <em>ответ, уходящий вверх</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>АТОМОВ<b>4</b></div>
-      <div>ФИГУР В КАЖДОМ<b>одна или две</b></div>
-      <div>МЕСТ ПРИМЕНЕНИЯ<b>8 на каждый</b></div>
-      <div>МИНИМАЛЬНЫЙ РАЗМЕР<b>16 px</b></div>
+      <div>ИСПОЛНЕНИЙ<b>6</b></div>
+      <div>КОНСТРУКЦИЯ<b>одна</b></div>
+      <div>ПРОСВЕТ<b>5 единиц по всему контуру</b></div>
+      <div>ПРОВЕРКА<b>до 16 px</b></div>
     </div>
   </div>
 </header>
@@ -335,670 +287,688 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Исследование: во что превратился знак в ИИ-продуктах</h2></div>
+      <h2>Что именно работает в вашем варианте</h2></div>
     <div class="col">
-      <p class="lede">Продолжение прошлого разбора даёт неприятную, но полезную
-        картину. Пока бренды уходили в типографику, внутри самих ИИ-продуктов
-        случилось обратное: знак сжался до одного маленького глифа, который ставят
-        прямо в интерфейс — и почти все пришли к <strong>одной и той же
-        четырёхлучевой «искре»</strong>.</p>
-      <p>Google выпустил по ней отдельное исследование — «Rise of the AI Sparkle
-        Icon». Искра стоит в Gemini, в поиске Google, в ChatGPT, в Spotify, в
-        Facebook: она помечает всё, что сделано машиной. В 2025-м Google перекрасил
-        её в четыре фирменных цвета, но форму не тронул. К концу года Slate вышел
-        с текстом «AI-инструменты используют одну и ту же иконку — и это проблема».</p>
-      <p>Отсюда два вывода, и оба прямо отвечают на задачу.</p>
+      <p class="lede">Присланный знак решает задачу, которую все прошлые итерации
+        обходили: <strong>Q читается мгновенно, а внутри неё сидит смысл</strong> —
+        кольцо не замкнуто, потому что вопрос ещё открыт, а остриё уходит вверх,
+        потому что ответ найден. Это лучше любой из моих метафор, и дальше я не
+        придумываю новую, а разбираю вашу на параметры.</p>
+      <p>Разрыв в кольце везде получается одним способом: остриё рисуется в маске
+        сразу заливкой и обводкой, поэтому вокруг него остаётся ровный просвет в
+        5 единиц — тот самый воздух, который в вашем эскизе делает конструкцию
+        собранной. Меняются четыре вещи.</p>
     </div>
 
-    <div class="shift" style="display:grid;
-         grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s2);
-         margin-top:var(--s3)">
-      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
-           background:var(--surface)">
-        <h4 style="margin:0 0 .4em">Знак обязан быть атомом интерфейса</h4>
-        <p style="margin:0;font-size:14px;color:var(--ink-2)">Он ставится в строку
-          текста, в маркер списка, в кнопку, в аватар, в индикатор ожидания. Это не
-          «уменьшенный логотип», а самостоятельный элемент набора — значит и рисовать
-          его надо как знак препинания, а не как картинку.</p></div>
-      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
-           background:var(--surface)">
-        <h4 style="margin:0 0 .4em">Но именно поэтому нельзя брать искру</h4>
-        <p style="margin:0;font-size:14px;color:var(--ink-2)">Простое решение уже
-          занято всеми сразу. Искра сегодня означает не бренд, а категорию — примерно
-          как значок Wi-Fi. Знак, похожий на неё, будет читаться как «здесь есть ИИ»,
-          а не как «это askqet».</p></div>
+    <div class="params">
+      <div><h4>Форма острия</h4>
+        <p>Закладка с V-вырезом, чистый треугольник, контур, стрела со стержнем,
+          вертикальная стрелка.</p><em>шесть вершин → три</em></div>
+      <div><h4>Угол</h4>
+        <p>45° вверх-вправо — как в оригинале — либо строго вертикально в нижнем
+          разрыве.</p><em>диагональ / вертикаль</em></div>
+      <div><h4>Вес ответа</h4>
+        <p>Залитое остриё тяжелее кольца, контурное — легче. Это меняет, кто в
+          знаке главный.</p><em>заливка / контур</em></div>
+      <div><h4>Связность</h4>
+        <p>Остриё как отдельный объект в разрыве — или продолжение самого кольца,
+          одной краской.</p><em>два тела / одно</em></div>
     </div>
 
-    <div class="col">
-      <p style="margin-top:var(--s3)">Ниже четыре атома. Каждый — одна или две
-        фигуры, ни один не искра, и каждый показан сразу в восьми местах продукта:
-        вкладка, аватар, строка текста, список, кнопка, ожидание ответа, иконка
-        приложения, водяной знак. Если атом где-то ломается, это видно тут же.</p>
-      <p class="src">Источники:
-        <a href="https://design.google/library/ai-sparkle-icon-research-pozos-schmidt">Google
-        Design — Rise of the AI Sparkle Icon</a>,
-        <a href="https://slate.com/technology/2025/12/artificial-intelligence-tools-icon-google-gemini-chatgpt-design.html">Slate
-        — AI Tools All Use the Same Sparkly Icon</a>,
-        <a href="https://9to5google.com/2025/06/30/new-gemini-icon/">9to5Google —
-        Gemini sparkle gets the four-color treatment</a>,
-        <a href="https://www.informaticsinc.com/blog/november-2024/press-magic-iconography-sparkles-ai-tools">Informatics
-        — The Iconography of Sparkles in AI Tools</a>,
-        <a href="https://design.google/library/gemini-ai-visual-design">Google Design
-        — Gemini AI Visual Design</a>.</p>
-    </div>
+    <h3>Цветовая пара</h3>
+    <div class="col"><p>Цвета сняты с вашего эскиза и доведены до рабочей пары.
+      Одно правило обязательно: <strong>амбер — это заливка, а не текст</strong>.
+      На бумаге он даёт 1.83:1, поэтому тонкие линии и подписи им набирать нельзя;
+      всё, что нужно прочитать, идёт тёмно-синим.</p></div>
+    <div class="cpair"><div style="background:#F7A41C;color:#0B0C0E"><b>#F7A41C</b>кольцо · вопрос<br>L 0.78 · C 0.162 · H 72°<br>1.83:1 на бумаге</div><div style="background:#16304B;color:#F6F2E8"><b>#16304B</b>остриё · ответ<br>L 0.30 · C 0.059 · H 251°<br>12.04:1 на бумаге</div><div style="background:#FFB233;color:#0B0C0E"><b>#FFB233</b>кольцо на тёмном<br>L 0.82 · C 0.158 · H 74°<br>10.10:1 </div><div style="background:#F4F2ED;color:#0B0C0E"><b>#F4F2ED</b>остриё на тёмном<br>L 0.96 · C 0.007 · H 89°<br>16.25:1 </div></div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре атома, каждый — в восьми местах</h2></div>
+      <h2>Шесть исполнений</h2></div>
+    <div class="col"><p class="lede">Каждое показано на бумаге, на тёмном и в одну
+      краску, плюс ряд 64 / 32 / 16 px — там сразу видно, что переживает мелкий
+      размер.</p></div>
     
-<article class="atom">
-  <div class="atom__top">
+<article class="v">
+  <div class="v__top">
     <div>
-      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F5F4F0"/>
-  <g color="#C2410C">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <defs><mask id="r7002">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7002)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#F4F2ED"/>
+
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7003">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r7003)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
 
 </svg></div>
-      <div class="atom__swatches">
-        <div style="background:#FF7A3D;color:#0B0C0E"><b>#FF7A3D</b>на тёмном<br>
-          7.55:1 · H 43°</div>
-        <div style="background:#C2410C;color:#F6F2E8"><b>#C2410C</b>на светлом<br>
-          4.71:1 · H 38°</div>
-      </div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+
+</svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="atom__id">Атом 1 · «:»</p>
-      <h3 class="atom__title">QOS NÚKTE · Қос нүкте — двоеточие</h3>
-      <p>Двоеточие — знак, после которого в любом языке идёт ответ. Верхняя точка раскрыта в кольцо (вопрос ещё открыт), нижняя сплошная (ответ закрыт). Две фигуры, больше ничего.</p>
-      <p class="note">Ставится после имени везде, где бренд говорит: «askqet:». В чате пульсирует как индикатор набора, в списке служит маркером, в CLI — приглашением ввода.</p>
-      <p class="note" style="margin-top:.8em">Тёплый киноварь: единственный акцент во всём интерфейсе. Всё остальное — нейтраль, поэтому атом всегда самый заметный объект на экране.</p>
+      <p class="v__id">Исполнение 1</p>
+      <h3 class="v__title">BELGI · закладка</h3>
+      <p>Исполнение с референса: диагональное плечо сверху и V-вырез снизу. Остриё читается и как стрелка вверх, и как закладка — «этот ответ сохранён».</p>
+      <div class="v__note"><b>Чем платим.</b> Самая узнаваемая и самая сложная форма из шести: шесть вершин против трёх у остальных. В 16 px V-вырез схлопывается.</div>
     </div>
   </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-<div class="uses">
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="tab"><span class="ico" style="color:#FF7A3D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7004">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7004)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>
-        askqet — ответ по запросу</div>
-    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="chat">
-      <div class="chat__av" style="color:#FF7A3D"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span></div>
-      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
-    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><p class="inline" style="margin:0">
-      Срок сдачи ФНО 100.00 — до 31 марта
-      <span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>
-      следующего года.</p></div>
-    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
-      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>Проверить регистрацию</li>
-      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>Сверить ставку</li>
-      <li><span class="ico" style="color:#C2410C"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>Подать отчёт</li>
-    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light">
-      <button class="btn" type="button"
-        style="background:#C2410C;color:#F5F4F0">
-        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span>Спросить</button>
-    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="typing" style="color:#FF7A3D">
-      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="appicon" style="background:#FF7A3D;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span></div>
-    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="quote">
-      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
-      <span class="ico" style="color:#FF7A3D"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
-</div>
-  <div class="risk"><p><b>Чем платим.</b> Двоеточие не патентуется. Узнаваемость держится на дисциплине: одна и та же пара «кольцо + точка» с одним и тем же ритмом.</p></div>
-  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#0B0C0E"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-</g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#F5F4F0"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#C2410C">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-</g></g>
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7005">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7005)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#F4F2ED"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
-<article class="atom">
-  <div class="atom__top">
+<article class="v">
+  <div class="v__top">
     <div>
-      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F5F4F0"/>
-  <g color="#1240FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-</g>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <defs><mask id="r7007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7007)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#F4F2ED"/>
+
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7008">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r7008)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
 
 </svg></div>
-      <div class="atom__swatches">
-        <div style="background:#7C93FF;color:#0B0C0E"><b>#7C93FF</b>на тёмном<br>
-          6.96:1 · H 273°</div>
-        <div style="background:#1240FF;color:#F6F2E8"><b>#1240FF</b>на светлом<br>
-          5.96:1 · H 265°</div>
-      </div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+
+</svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="atom__id">Атом 2 · «⌐»</p>
-      <h3 class="atom__title">QUYRYQ · Құйрық — хвост</h3>
-      <p>Один штрих: вниз и поворот влево. Тот самый хвост, что есть у латинской q, у прописной Q и у казахской Қ — три алфавита, одна деталь.</p>
-      <p class="note">Подчёркивает найденный ответ, оборачивает цитату, тянется как полоса загрузки, ставится как маркер сноски. Одна фигура во всех ролях, меняется только длина.</p>
-      <p class="note" style="margin-top:.8em">Синий шариковой ручки. Цвет подписи, а не цвет технологии — он объясняет, что знак служит подтверждением.</p>
+      <p class="v__id">Исполнение 2</p>
+      <h3 class="v__title">USH · остриё</h3>
+      <p>То же построение, но остриё сведено к треугольнику вдоль луча 45°. Три вершины, ничего лишнего — предельно простая версия конструкции.</p>
+      <div class="v__note"><b>Чем платим.</b> Лучшая мелкоразмерная форма семейства: треугольник держится до 16 px без единой правки.</div>
     </div>
   </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-<div class="uses">
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="tab"><span class="ico" style="color:#7C93FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7009">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7009)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>
-        askqet — ответ по запросу</div>
-    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="chat">
-      <div class="chat__av" style="color:#7C93FF"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span></div>
-      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
-    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><p class="inline" style="margin:0">
-      Срок сдачи ФНО 100.00 — до 31 марта
-      <span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>
-      следующего года.</p></div>
-    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
-      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>Проверить регистрацию</li>
-      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>Сверить ставку</li>
-      <li><span class="ico" style="color:#1240FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>Подать отчёт</li>
-    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light">
-      <button class="btn" type="button"
-        style="background:#1240FF;color:#F5F4F0">
-        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span>Спросить</button>
-    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="typing" style="color:#7C93FF">
-      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="appicon" style="background:#7C93FF;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span></div>
-    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="quote">
-      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
-      <span class="ico" style="color:#7C93FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
-</div>
-  <div class="risk"><p><b>Чем платим.</b> В отрыве от слова читается как «J». Первый год обязателен локап рядом.</p></div>
-  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#0B0C0E"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-</g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#F5F4F0"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#1240FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-</g></g>
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7010)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#F4F2ED"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
-<article class="atom">
-  <div class="atom__top">
+<article class="v">
+  <div class="v__top">
     <div>
-      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F5F4F0"/>
-  <g color="#00795A">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <defs><mask id="r7012">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7012)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#F4F2ED" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7013">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r7013)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
 
 </svg></div>
-      <div class="atom__swatches">
-        <div style="background:#2FD9A4;color:#0B0C0E"><b>#2FD9A4</b>на тёмном<br>
-          10.79:1 · H 166°</div>
-        <div style="background:#00795A;color:#F6F2E8"><b>#00795A</b>на светлом<br>
-          4.91:1 · H 167°</div>
-      </div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7011">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+
+</svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="atom__id">Атом 3 · «↳»</p>
-      <h3 class="atom__title">JAUAP · Жауап — ответ</h3>
-      <p>Уголок, которым в любом треде обозначают ответ на реплику. Вместо стрелки — точка: ответ не указывает направление, он приземляется.</p>
-      <p class="note">Родной элемент интерфейса: он и логотип, и разметка ответа в переписке, и маркер источника, и иконка «показать решение». Пользователь уже знает, что он значит.</p>
-      <p class="note" style="margin-top:.8em">Изумруд как единственная краска: он не встречается ни у Kaspi, ни у Halyk в этой светлоте и не читается как «успешно выполнено» при таком размере.</p>
+      <p class="v__id">Исполнение 3</p>
+      <h3 class="v__title">KONTUR · контурное остриё</h3>
+      <p>То же остриё, что в USH, но не залито, а прочерчено. Знак становится легче и тише: вопрос остаётся плотным, ответ — воздушным.</p>
+      <div class="v__note"><b>Чем платим.</b> Единственная версия, где вес ответа меньше веса вопроса. В 16 px контур в 12 единиц схлопывается — там нужен залитый дубль.</div>
     </div>
   </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-<div class="uses">
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="tab"><span class="ico" style="color:#2FD9A4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7014">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7014)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>
-        askqet — ответ по запросу</div>
-    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="chat">
-      <div class="chat__av" style="color:#2FD9A4"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span></div>
-      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
-    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><p class="inline" style="margin:0">
-      Срок сдачи ФНО 100.00 — до 31 марта
-      <span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>
-      следующего года.</p></div>
-    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
-      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>Проверить регистрацию</li>
-      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>Сверить ставку</li>
-      <li><span class="ico" style="color:#00795A"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>Подать отчёт</li>
-    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light">
-      <button class="btn" type="button"
-        style="background:#00795A;color:#F5F4F0">
-        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span>Спросить</button>
-    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="typing" style="color:#2FD9A4">
-      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="appicon" style="background:#2FD9A4;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span></div>
-    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="quote">
-      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
-      <span class="ico" style="color:#2FD9A4"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-
-</svg></span></div></div>
-    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
-</div>
-  <div class="risk"><p><b>Чем платим.</b> Самый узнаваемый и самый неоригинальный из четырёх: уголок ответа есть в любом мессенджере.</p></div>
-  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#0B0C0E"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-</g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
-  
-  <rect width="383.66" height="118" fill="#F5F4F0"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#00795A">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-</g></g>
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7015">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7015)"/>
+  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#F4F2ED" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
-<article class="atom">
-  <div class="atom__top">
+<article class="v">
+  <div class="v__top">
     <div>
-      <div class="atom__pair"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#F5F4F0"/>
-  <g color="#0F7392">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <defs><mask id="r7017">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7017)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#F4F2ED" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#F4F2ED"/>
+
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7018">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r7018)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
 
 </svg></div>
-      <div class="atom__swatches">
-        <div style="background:#5CD5FF;color:#0B0C0E"><b>#5CD5FF</b>на тёмном<br>
-          11.57:1 · H 224°</div>
-        <div style="background:#0F7392;color:#F6F2E8"><b>#0F7392</b>на светлом<br>
-          4.91:1 · H 226°</div>
-      </div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+
+</svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="atom__id">Атом 4 · «/»</p>
-      <h3 class="atom__title">DEM · Дем — штрих</h3>
-      <p>Наклонный штрих, тонкий сверху и плотный снизу: вопрос входит лёгким, ответ выходит весомым. Одна фигура без единой кривой.</p>
-      <p class="note">Разделяет, перечисляет, задаёт ритм в наборе, работает дробью в датах и путях. Живёт в тексте, потому что это и есть знак препинания.</p>
-      <p class="note" style="margin-top:.8em">Голубой одного семейства с DevCore #00AEEF: не копия, но видимое родство. Сын узнаётся по отцу.</p>
+      <p class="v__id">Исполнение 4</p>
+      <h3 class="v__title">OQ · стрела</h3>
+      <p>У острия появляется стержень: ответ не просто указан, он вылетает из кольца наружу. Единственный вариант, где видно движение.</p>
+      <div class="v__note"><b>Чем платим.</b> Стержень удлиняет знак по диагонали и ломает квадратное поле — нужен свой отступ в макетах.</div>
     </div>
   </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-<div class="uses">
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="tab"><span class="ico" style="color:#5CD5FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7019">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7019)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7020">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7020)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#F4F2ED" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#F4F2ED"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div>
+</article>
 
-</svg></span>
-        askqet — ответ по запросу</div>
-    </div><figcaption class="use__cap">вкладка · 16 px</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="chat">
-      <div class="chat__av" style="color:#5CD5FF"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+<article class="v">
+  <div class="v__top">
+    <div>
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7021">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
 
-</svg></span></div>
-      <div class="chat__msg">Ставка НДС в Казахстане с 2026 года — 16 %.</div>
-    </div></div><figcaption class="use__cap">аватар в переписке</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><p class="inline" style="margin:0">
-      Срок сдачи ФНО 100.00 — до 31 марта
-      <span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <defs><mask id="r7022">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7022)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#F4F2ED"/>
 
-</svg></span>
-      следующего года.</p></div>
-    <figcaption class="use__cap">метка источника в строке · 1 em</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light"><ul class="list" style="margin:0;padding:0">
-      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7023">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r7023)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
 
-</svg></span>Проверить регистрацию</li>
-      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7021">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
 
-</svg></span>Сверить ставку</li>
-      <li><span class="ico" style="color:#0F7392"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7021">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
 
-</svg></span>Подать отчёт</li>
-    </ul></div><figcaption class="use__cap">маркер списка</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--light">
-      <button class="btn" type="button"
-        style="background:#0F7392;color:#F5F4F0">
-        <span class="ico" style="color:#F5F4F0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7021">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
 
-</svg></span>Спросить</button>
-    </div><figcaption class="use__cap">кнопка действия</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="typing" style="color:#5CD5FF">
-      <span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>16</figcaption></figure></div>
+    </div>
+    <div>
+      <p class="v__id">Исполнение 5</p>
+      <h3 class="v__title">TIK · строго вверх</h3>
+      <p>Стрелка не наклонена, а стоит вертикально в нижнем разрыве кольца. Читается спокойнее и жёстче: не полёт, а результат.</p>
+      <div class="v__note"><b>Чем платим.</b> Вертикаль спорит с окружностью — знак перестаёт быть Q и становится ближе к пиктограмме «загрузка вверх».</div>
+    </div>
+  </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7024">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7024)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7025">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r7025)"/>
+  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#F4F2ED"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg></div>
+</article>
 
-</svg></span><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+<article class="v">
+  <div class="v__top">
+    <div>
+      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
 
-</svg></span></div></div>
-    <figcaption class="use__cap">идёт поиск ответа</figcaption></figure>
-
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark">
-      <div class="appicon" style="background:#5CD5FF;color:#0B0C0E"><span class="ico"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#0E1621"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#FFB233" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#FFB233"/>
 
-</svg></span></div>
-    </div><figcaption class="use__cap">иконка приложения</figcaption></figure>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#16304B" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#16304B"/>
 
-  <figure class="use" style="margin:0">
-    <div class="use__box use__box--dark"><div class="quote">
-      «Фискальный накопитель обязателен для всех ККМ с 2024 года.»
-      <span class="ico" style="color:#5CD5FF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg></div>
+      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
 
-</svg></span></div></div>
-    <figcaption class="use__cap">водяной знак на расшаренном ответе</figcaption></figure>
-</div>
-  <div class="risk"><p><b>Чем платим.</b> Слэш есть у материнского бренда — родство читается, но самостоятельность придётся набирать цветом и ритмом.</p></div>
-  <div class="lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="383.66" height="118" fill="#0B0C0E"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F5F4F0" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-</g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.66 118" fill="none">
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
+
+</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="383.66" height="118" fill="#F5F4F0"/>
-  <g transform="translate(20,80)"><g transform="translate(0,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#15171B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g><g transform="translate(315.5,-64) scale(0.46)" color="#0F7392">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-</g></g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
+
+</svg><figcaption>16</figcaption></figure></div>
+    </div>
+    <div>
+      <p class="v__id">Исполнение 6</p>
+      <h3 class="v__title">ÓSU · рост</h3>
+      <p>Кольцо не разомкнуто чужой формой, а само переходит в остриё: терминал разрастается и уходит вверх-вправо. Одна форма, одна краска, никакого второго объекта.</p>
+      <div class="v__note"><b>Чем платим.</b> Единственная версия, живущая в одну краску без потерь. Взамен исчезает диалог двух цветов — вопрос и ответ больше не различаются.</div>
+    </div>
+  </div>
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  
+  <rect width="443.9" height="118" fill="#F4F2ED"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  
+  <rect width="443.9" height="118" fill="#0E1621"/>
+  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#FFB233" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#FFB233"/>
+</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
   </div>
@@ -1008,35 +978,39 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span><h2>Сводка</h2></div>
     <div class="scroll">
-      <table><thead><tr><th>Атом</th><th>Фигур</th><th>16 px</th>
-        <th>В строке текста</th><th>Своё значение</th><th>Занятость формы</th></tr></thead>
+      <table><thead><tr><th>Исполнение</th><th>Вершин у острия</th><th>16 px</th>
+        <th>Одна краска</th><th>Что читается вторым слоем</th></tr></thead>
       <tbody>
-        <tr><td>QOS NÚKTE «:»</td><td class="num">2</td>
+        <tr><td>BELGI · закладка</td><td class="num">6</td>
+          <td><span class="tag tag--warn">V-вырез схлопывается</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
-          <td><span class="tag tag--pass">после него идёт ответ</span></td>
-          <td class="note">форма общая — держится ритмом</td></tr>
-        <tr><td>QUYRYQ «⌐»</td><td class="num">1</td>
+          <td class="note">сохранённый ответ, закладка</td></tr>
+        <tr><td>USH · остриё</td><td class="num">3</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--warn">нужен свой кегль</span></td>
-          <td><span class="tag tag--pass">хвост q, Q и Қ</span></td>
-          <td class="note">свободна, но абстрактна</td></tr>
-        <tr><td>JAUAP «↳»</td><td class="num">2</td>
+          <td class="note">отправка, «send»</td></tr>
+        <tr><td>KONTUR</td><td class="num">3</td>
+          <td><span class="tag tag--warn">нужен залитый дубль</span></td>
           <td><span class="tag tag--pass">да</span></td>
+          <td class="note">лёгкость, черновик</td></tr>
+        <tr><td>OQ · стрела</td><td class="num">3 + стержень</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">понятно без обучения</span></td>
-          <td class="note">занята мессенджерами</td></tr>
-        <tr><td>DEM «/»</td><td class="num">1</td>
+          <td class="note">запуск, движение наружу</td></tr>
+        <tr><td>TIK · вертикаль</td><td class="num">7</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
-          <td><span class="tag tag--warn">значение придётся назначить</span></td>
-          <td class="note">слэш уже у DevCore — родство</td></tr>
+          <td class="note">загрузка вверх — и это мешает</td></tr>
+        <tr><td>ÓSU · рост</td><td class="num">3, слито с кольцом</td>
+          <td><span class="tag tag--pass">держится</span></td>
+          <td><span class="tag tag--pass">рождён в одну краску</span></td>
+          <td class="note">обновление, цикл</td></tr>
       </tbody></table>
     </div>
-    <div class="col"><p class="note">Все четыре проходят AA на обоих фонах — у
-      каждого своя пара светлот на один тон, потому что один hex не может быть
-      контрастным и на чёрном, и на белом. Это записано в паре, а не оставлено
-      верстальщику.</p></div>
+    <div class="col"><p class="note">Колонка «второй слой» — то, что зритель
+      прочитает поверх Q. Это не всегда плюс: у TIK вторым слоем идёт пиктограмма
+      загрузки, у ÓSU — иконка «обновить». У USH и OQ второй слой работает на
+      продукт: отправить вопрос, получить ответ.</p></div>
   </div>
 </section>
 
@@ -1044,70 +1018,86 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>QOS NÚKTE — двоеточие.</strong> Оно уже значит
-        «дальше идёт ответ», причём в казахском, русском и английском одинаково.
-        Ничего не нужно объяснять: знак работает с первой секунды, а имя с ним
-        превращается в фразу — <code>askqet:</code></p>
-      <p>И он честнее всех отвечает на требование «жить во всём продукте». Кольцо
-        и точка — это готовый индикатор ожидания, маркер списка, приглашение в
-        консоли, аватар и фавикон. Ни в одной из восьми ролей его не пришлось
-        перерисовывать.</p>
-      <p><strong>Вторым держу QUYRYQ.</strong> Он единственный собственный, а не
-        заимствованный у пунктуации: хвост, общий для трёх алфавитов. Берите его,
-        если важнее уникальность формы, а не мгновенная понятность.</p>
+      <p class="lede"><strong>USH.</strong> Это ваш знак, с которого снято всё
+        лишнее: та же конструкция, тот же угол, тот же просвет — но остриё сведено
+        к трём вершинам. За счёт этого он единственный проходит 16 px без правок и
+        единственный, чей второй смысловой слой работает на продукт: треугольник
+        под 45° читается как «отправить».</p>
+      <p><strong>Ваш BELGI держу вторым и не отбрасываю.</strong> У него больше
+        характера: V-вырез превращает остриё в закладку, и знак начинает говорить
+        «ответ сохранён», а не только «ответ найден». Если бренд идёт в сторону
+        библиотеки ответов, а не поисковой строки — берите его, а для фавикона
+        держите USH как мелкоразмерный дубль. Это законная пара: конструкция одна,
+        отличие только в вырезе.</p>
     </div>
     <div style="margin-top:var(--s3)">
-      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#FF7A3D">  <circle cx="64" cy="40" r="15" fill="none" stroke="currentColor" stroke-width="9"/>
-  <circle cx="64" cy="92" r="17" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
+  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
 
-</svg></div>
-        <div><h4>QOS NÚKTE · «:»<span class="flag flag--ok">беру</span></h4>
-          <p>Понятен без обучения, работает во всех восьми ролях, две фигуры.</p></div></div>
-      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg>
+        <div><h4>USH · остриё<span class="flag flag--ok">беру</span></h4>
+          <p>Ваша конструкция в минимальной форме. Три вершины, держит 16 px.</p></div></div>
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#7C93FF">  <path d="M78,24 L78,76 C78,92 68,100 50,100" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
+  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
 
-</svg></div>
-        <div><h4>QUYRYQ · «⌐»</h4>
-          <p>Единственный полностью собственный. Требует времени на узнавание.</p></div></div>
-      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg>
+        <div><h4>BELGI · закладка</h4>
+          <p>Ваш исходный вариант. Больше характера, сложнее форма.</p></div></div>
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#2FD9A4">  <path d="M40,30 L40,80 L72,80" fill="none" stroke="currentColor" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="97" cy="80" r="11" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
 
-</svg></div>
-        <div><h4>JAUAP · «↳»</h4>
-          <p>Самый понятный и самый неоригинальный: уголок ответа есть везде.</p></div></div>
-      <div class="pick"><div class="box"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg>
+        <div><h4>OQ · стрела</h4>
+          <p>Единственный с движением: ответ вылетает из кольца наружу.</p></div></div>
+      <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
-  <rect width="128" height="128" fill="#0B0C0E"/>
-  <g color="#5CD5FF">  <path d="M86,16 L96,16 L54,112 L34,112 Z" fill="currentColor"/>
-</g>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
+  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
 
-</svg></div>
-        <div><h4>DEM · «/»</h4>
-          <p>Родство с DevCore читается сразу. Своё значение придётся назначать.</p></div></div>
+</svg>
+        <div><h4>ÓSU · рост</h4>
+          <p>Одна связная форма и одна краска. Взамен теряется диалог двух цветов.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать атом — дальше собираю рабочий набор: SVG-спрайт под интерфейс,
-        размерную сетку (16/20/24/32), правила отступов, motion для ожидания и
-        токены в двух темах.<br>
-        2. Лицензировать наборный шрифт с казахской латиницей и кириллицей: три из
-        четырёх атомов — знаки препинания, и они обязаны совпадать по ритму с
-        текстовым шрифтом продукта.<br>
+      <p>1. Выбрать исполнение — дальше собираю рабочий набор: сетка построения с
+        размерами, размерный ряд 16/20/24/32/48, охранное поле, версии в одну
+        краску и в выворотку, анимация (кольцо дорисовывается, остриё выходит).<br>
+        2. Зафиксировать правило: амбер — заливка, тёмно-синий — всё, что читают.
+        Без этого знак развалится в первом же чужом макете.<br>
         3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42. Для пунктуационного знака охрана идёт
-        по локапу целиком, а не по одной фигуре — это надо учесть в заявке.</p>
+        товарный знак по классам 9, 35, 42.</p>
     </div>
   </div>
 </section>
@@ -1116,11 +1106,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
-      имени и контекста DevCore. Предыдущие итерации остались в репозитории:
-      <code>logo/01-jaryq</code>, <code>logo/v2</code> … <code>logo/v5</code>.
-      Всё пересобирается командой <code>python3 tools/build.py &amp;&amp; python3
-      tools/build_v6.py &amp;&amp; python3 tools/build_page.py</code>.</p>
+    <p>Конструкция и цвет — из варианта заказчика. Предыдущие итерации остались в
+      репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
+      <code>logo/v6</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v7.py &amp;&amp;
+      python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 

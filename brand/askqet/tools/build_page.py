@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — итерация 6: атом продукта.
+Собирает brand/askqet/index.html — итерация 7: кольцо и остриё.
 
-Запуск:  python3 tools/build_page.py   (после build.py и build_v6.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v7.py)
 """
 
 import os
@@ -12,8 +12,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from build_v6 import ATOMS  # noqa: E402
-from page_body import EXTRA_CSS, atom_block  # noqa: E402
+from build_v7 import VARIANTS  # noqa: E402
+from page_body import EXTRA_CSS, variant_block, pair_block  # noqa: E402
 
 
 def read_svg(rel):
@@ -237,25 +237,19 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 {EXTRA_CSS}
 </style>
 
-<svg class="filters" aria-hidden="true" style="position:absolute;width:0;height:0">
-  <filter id="cvd-deut" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix"
-    values="0.625 0.375 0 0 0  0.70 0.30 0 0 0  0 0.30 0.70 0 0  0 0 0 1 0"/></filter>
-</svg>
-
 <button class="theme-toggle" id="themeBtn" type="button">ТЕМА</button>
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 6 — знак как атом продукта</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 7 — кольцо и остриё</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Простой знак — это не маленькая картинка.
-      Это <em>знак препинания</em>, который умеет быть логотипом<span
-      class="caret"></span></p>
+    <p class="mast__thesis">Конструкция принята: разомкнутое кольцо — вопрос,
+      остриё — <em>ответ, уходящий вверх</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>АТОМОВ<b>4</b></div>
-      <div>ФИГУР В КАЖДОМ<b>одна или две</b></div>
-      <div>МЕСТ ПРИМЕНЕНИЯ<b>8 на каждый</b></div>
-      <div>МИНИМАЛЬНЫЙ РАЗМЕР<b>16 px</b></div>
+      <div>ИСПОЛНЕНИЙ<b>6</b></div>
+      <div>КОНСТРУКЦИЯ<b>одна</b></div>
+      <div>ПРОСВЕТ<b>5 единиц по всему контуру</b></div>
+      <div>ПРОВЕРКА<b>до 16 px</b></div>
     </div>
   </div>
 </header>
@@ -265,65 +259,51 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Исследование: во что превратился знак в ИИ-продуктах</h2></div>
+      <h2>Что именно работает в вашем варианте</h2></div>
     <div class="col">
-      <p class="lede">Продолжение прошлого разбора даёт неприятную, но полезную
-        картину. Пока бренды уходили в типографику, внутри самих ИИ-продуктов
-        случилось обратное: знак сжался до одного маленького глифа, который ставят
-        прямо в интерфейс — и почти все пришли к <strong>одной и той же
-        четырёхлучевой «искре»</strong>.</p>
-      <p>Google выпустил по ней отдельное исследование — «Rise of the AI Sparkle
-        Icon». Искра стоит в Gemini, в поиске Google, в ChatGPT, в Spotify, в
-        Facebook: она помечает всё, что сделано машиной. В 2025-м Google перекрасил
-        её в четыре фирменных цвета, но форму не тронул. К концу года Slate вышел
-        с текстом «AI-инструменты используют одну и ту же иконку — и это проблема».</p>
-      <p>Отсюда два вывода, и оба прямо отвечают на задачу.</p>
+      <p class="lede">Присланный знак решает задачу, которую все прошлые итерации
+        обходили: <strong>Q читается мгновенно, а внутри неё сидит смысл</strong> —
+        кольцо не замкнуто, потому что вопрос ещё открыт, а остриё уходит вверх,
+        потому что ответ найден. Это лучше любой из моих метафор, и дальше я не
+        придумываю новую, а разбираю вашу на параметры.</p>
+      <p>Разрыв в кольце везде получается одним способом: остриё рисуется в маске
+        сразу заливкой и обводкой, поэтому вокруг него остаётся ровный просвет в
+        5 единиц — тот самый воздух, который в вашем эскизе делает конструкцию
+        собранной. Меняются четыре вещи.</p>
     </div>
 
-    <div class="shift" style="display:grid;
-         grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s2);
-         margin-top:var(--s3)">
-      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
-           background:var(--surface)">
-        <h4 style="margin:0 0 .4em">Знак обязан быть атомом интерфейса</h4>
-        <p style="margin:0;font-size:14px;color:var(--ink-2)">Он ставится в строку
-          текста, в маркер списка, в кнопку, в аватар, в индикатор ожидания. Это не
-          «уменьшенный логотип», а самостоятельный элемент набора — значит и рисовать
-          его надо как знак препинания, а не как картинку.</p></div>
-      <div style="border:1px solid var(--line);border-radius:6px;padding:var(--s3);
-           background:var(--surface)">
-        <h4 style="margin:0 0 .4em">Но именно поэтому нельзя брать искру</h4>
-        <p style="margin:0;font-size:14px;color:var(--ink-2)">Простое решение уже
-          занято всеми сразу. Искра сегодня означает не бренд, а категорию — примерно
-          как значок Wi-Fi. Знак, похожий на неё, будет читаться как «здесь есть ИИ»,
-          а не как «это askqet».</p></div>
+    <div class="params">
+      <div><h4>Форма острия</h4>
+        <p>Закладка с V-вырезом, чистый треугольник, контур, стрела со стержнем,
+          вертикальная стрелка.</p><em>шесть вершин → три</em></div>
+      <div><h4>Угол</h4>
+        <p>45° вверх-вправо — как в оригинале — либо строго вертикально в нижнем
+          разрыве.</p><em>диагональ / вертикаль</em></div>
+      <div><h4>Вес ответа</h4>
+        <p>Залитое остриё тяжелее кольца, контурное — легче. Это меняет, кто в
+          знаке главный.</p><em>заливка / контур</em></div>
+      <div><h4>Связность</h4>
+        <p>Остриё как отдельный объект в разрыве — или продолжение самого кольца,
+          одной краской.</p><em>два тела / одно</em></div>
     </div>
 
-    <div class="col">
-      <p style="margin-top:var(--s3)">Ниже четыре атома. Каждый — одна или две
-        фигуры, ни один не искра, и каждый показан сразу в восьми местах продукта:
-        вкладка, аватар, строка текста, список, кнопка, ожидание ответа, иконка
-        приложения, водяной знак. Если атом где-то ломается, это видно тут же.</p>
-      <p class="src">Источники:
-        <a href="https://design.google/library/ai-sparkle-icon-research-pozos-schmidt">Google
-        Design — Rise of the AI Sparkle Icon</a>,
-        <a href="https://slate.com/technology/2025/12/artificial-intelligence-tools-icon-google-gemini-chatgpt-design.html">Slate
-        — AI Tools All Use the Same Sparkly Icon</a>,
-        <a href="https://9to5google.com/2025/06/30/new-gemini-icon/">9to5Google —
-        Gemini sparkle gets the four-color treatment</a>,
-        <a href="https://www.informaticsinc.com/blog/november-2024/press-magic-iconography-sparkles-ai-tools">Informatics
-        — The Iconography of Sparkles in AI Tools</a>,
-        <a href="https://design.google/library/gemini-ai-visual-design">Google Design
-        — Gemini AI Visual Design</a>.</p>
-    </div>
+    <h3>Цветовая пара</h3>
+    <div class="col"><p>Цвета сняты с вашего эскиза и доведены до рабочей пары.
+      Одно правило обязательно: <strong>амбер — это заливка, а не текст</strong>.
+      На бумаге он даёт 1.83:1, поэтому тонкие линии и подписи им набирать нельзя;
+      всё, что нужно прочитать, идёт тёмно-синим.</p></div>
+    {PAIR}
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Четыре атома, каждый — в восьми местах</h2></div>
-    {ATOMS}
+      <h2>Шесть исполнений</h2></div>
+    <div class="col"><p class="lede">Каждое показано на бумаге, на тёмном и в одну
+      краску, плюс ряд 64 / 32 / 16 px — там сразу видно, что переживает мелкий
+      размер.</p></div>
+    {VARIANTS}
   </div>
 </section>
 
@@ -331,35 +311,39 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">03</span><h2>Сводка</h2></div>
     <div class="scroll">
-      <table><thead><tr><th>Атом</th><th>Фигур</th><th>16 px</th>
-        <th>В строке текста</th><th>Своё значение</th><th>Занятость формы</th></tr></thead>
+      <table><thead><tr><th>Исполнение</th><th>Вершин у острия</th><th>16 px</th>
+        <th>Одна краска</th><th>Что читается вторым слоем</th></tr></thead>
       <tbody>
-        <tr><td>QOS NÚKTE «:»</td><td class="num">2</td>
+        <tr><td>BELGI · закладка</td><td class="num">6</td>
+          <td><span class="tag tag--warn">V-вырез схлопывается</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
-          <td><span class="tag tag--pass">после него идёт ответ</span></td>
-          <td class="note">форма общая — держится ритмом</td></tr>
-        <tr><td>QUYRYQ «⌐»</td><td class="num">1</td>
+          <td class="note">сохранённый ответ, закладка</td></tr>
+        <tr><td>USH · остриё</td><td class="num">3</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--warn">нужен свой кегль</span></td>
-          <td><span class="tag tag--pass">хвост q, Q и Қ</span></td>
-          <td class="note">свободна, но абстрактна</td></tr>
-        <tr><td>JAUAP «↳»</td><td class="num">2</td>
+          <td class="note">отправка, «send»</td></tr>
+        <tr><td>KONTUR</td><td class="num">3</td>
+          <td><span class="tag tag--warn">нужен залитый дубль</span></td>
           <td><span class="tag tag--pass">да</span></td>
+          <td class="note">лёгкость, черновик</td></tr>
+        <tr><td>OQ · стрела</td><td class="num">3 + стержень</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">понятно без обучения</span></td>
-          <td class="note">занята мессенджерами</td></tr>
-        <tr><td>DEM «/»</td><td class="num">1</td>
+          <td class="note">запуск, движение наружу</td></tr>
+        <tr><td>TIK · вертикаль</td><td class="num">7</td>
+          <td><span class="tag tag--pass">держится</span></td>
           <td><span class="tag tag--pass">да</span></td>
-          <td><span class="tag tag--pass">это и есть пунктуация</span></td>
-          <td><span class="tag tag--warn">значение придётся назначить</span></td>
-          <td class="note">слэш уже у DevCore — родство</td></tr>
+          <td class="note">загрузка вверх — и это мешает</td></tr>
+        <tr><td>ÓSU · рост</td><td class="num">3, слито с кольцом</td>
+          <td><span class="tag tag--pass">держится</span></td>
+          <td><span class="tag tag--pass">рождён в одну краску</span></td>
+          <td class="note">обновление, цикл</td></tr>
       </tbody></table>
     </div>
-    <div class="col"><p class="note">Все четыре проходят AA на обоих фонах — у
-      каждого своя пара светлот на один тон, потому что один hex не может быть
-      контрастным и на чёрном, и на белом. Это записано в паре, а не оставлено
-      верстальщику.</p></div>
+    <div class="col"><p class="note">Колонка «второй слой» — то, что зритель
+      прочитает поверх Q. Это не всегда плюс: у TIK вторым слоем идёт пиктограмма
+      загрузки, у ÓSU — иконка «обновить». У USH и OQ второй слой работает на
+      продукт: отправить вопрос, получить ответ.</p></div>
   </div>
 </section>
 
@@ -367,44 +351,42 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>QOS NÚKTE — двоеточие.</strong> Оно уже значит
-        «дальше идёт ответ», причём в казахском, русском и английском одинаково.
-        Ничего не нужно объяснять: знак работает с первой секунды, а имя с ним
-        превращается в фразу — <code>askqet:</code></p>
-      <p>И он честнее всех отвечает на требование «жить во всём продукте». Кольцо
-        и точка — это готовый индикатор ожидания, маркер списка, приглашение в
-        консоли, аватар и фавикон. Ни в одной из восьми ролей его не пришлось
-        перерисовывать.</p>
-      <p><strong>Вторым держу QUYRYQ.</strong> Он единственный собственный, а не
-        заимствованный у пунктуации: хвост, общий для трёх алфавитов. Берите его,
-        если важнее уникальность формы, а не мгновенная понятность.</p>
+      <p class="lede"><strong>USH.</strong> Это ваш знак, с которого снято всё
+        лишнее: та же конструкция, тот же угол, тот же просвет — но остриё сведено
+        к трём вершинам. За счёт этого он единственный проходит 16 px без правок и
+        единственный, чей второй смысловой слой работает на продукт: треугольник
+        под 45° читается как «отправить».</p>
+      <p><strong>Ваш BELGI держу вторым и не отбрасываю.</strong> У него больше
+        характера: V-вырез превращает остриё в закладку, и знак начинает говорить
+        «ответ сохранён», а не только «ответ найден». Если бренд идёт в сторону
+        библиотеки ответов, а не поисковой строки — берите его, а для фавикона
+        держите USH как мелкоразмерный дубль. Это законная пара: конструкция одна,
+        отличие только в вырезе.</p>
     </div>
     <div style="margin-top:var(--s3)">
-      <div class="pick"><div class="box">{P_QOSNUKTE}</div>
-        <div><h4>QOS NÚKTE · «:»<span class="flag flag--ok">беру</span></h4>
-          <p>Понятен без обучения, работает во всех восьми ролях, две фигуры.</p></div></div>
-      <div class="pick"><div class="box">{P_QUYRYQ}</div>
-        <div><h4>QUYRYQ · «⌐»</h4>
-          <p>Единственный полностью собственный. Требует времени на узнавание.</p></div></div>
-      <div class="pick"><div class="box">{P_JAUAP}</div>
-        <div><h4>JAUAP · «↳»</h4>
-          <p>Самый понятный и самый неоригинальный: уголок ответа есть везде.</p></div></div>
-      <div class="pick"><div class="box">{P_DEM}</div>
-        <div><h4>DEM · «/»</h4>
-          <p>Родство с DevCore читается сразу. Своё значение придётся назначать.</p></div></div>
+      <div class="pick">{P_USH}
+        <div><h4>USH · остриё<span class="flag flag--ok">беру</span></h4>
+          <p>Ваша конструкция в минимальной форме. Три вершины, держит 16 px.</p></div></div>
+      <div class="pick">{P_BELGI}
+        <div><h4>BELGI · закладка</h4>
+          <p>Ваш исходный вариант. Больше характера, сложнее форма.</p></div></div>
+      <div class="pick">{P_OQ}
+        <div><h4>OQ · стрела</h4>
+          <p>Единственный с движением: ответ вылетает из кольца наружу.</p></div></div>
+      <div class="pick">{P_OSU}
+        <div><h4>ÓSU · рост</h4>
+          <p>Одна связная форма и одна краска. Взамен теряется диалог двух цветов.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать атом — дальше собираю рабочий набор: SVG-спрайт под интерфейс,
-        размерную сетку (16/20/24/32), правила отступов, motion для ожидания и
-        токены в двух темах.<br>
-        2. Лицензировать наборный шрифт с казахской латиницей и кириллицей: три из
-        четырёх атомов — знаки препинания, и они обязаны совпадать по ритму с
-        текстовым шрифтом продукта.<br>
+      <p>1. Выбрать исполнение — дальше собираю рабочий набор: сетка построения с
+        размерами, размерный ряд 16/20/24/32/48, охранное поле, версии в одну
+        краску и в выворотку, анимация (кольцо дорисовывается, остриё выходит).<br>
+        2. Зафиксировать правило: амбер — заливка, тёмно-синий — всё, что читают.
+        Без этого знак развалится в первом же чужом макете.<br>
         3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
-        товарный знак по классам 9, 35, 42. Для пунктуационного знака охрана идёт
-        по локапу целиком, а не по одной фигуре — это надо учесть в заявке.</p>
+        товарный знак по классам 9, 35, 42.</p>
     </div>
   </div>
 </section>
@@ -413,11 +395,11 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Открытых данных о продукте AskQet нет, позиционирование реконструировано из
-      имени и контекста DevCore. Предыдущие итерации остались в репозитории:
-      <code>logo/01-jaryq</code>, <code>logo/v2</code> … <code>logo/v5</code>.
-      Всё пересобирается командой <code>python3 tools/build.py &amp;&amp; python3
-      tools/build_v6.py &amp;&amp; python3 tools/build_page.py</code>.</p>
+    <p>Конструкция и цвет — из варианта заказчика. Предыдущие итерации остались в
+      репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
+      <code>logo/v6</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v7.py &amp;&amp;
+      python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
 
@@ -434,25 +416,25 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 """
 
 
-V6 = "logo/v6/"
+V7 = "logo/v7/"
 
 
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
     blocks = []
-    for i, key in enumerate(ATOMS, start=1):
-        atom = read_svg(f"{V6}{key}/askqet-{key}.svg")
-        lock = (read_svg(f"{V6}{key}/askqet-{key}-lockup-dark.svg")
-                + read_svg(f"{V6}{key}/askqet-{key}-lockup-light.svg"))
-        blocks.append(atom_block(
-            key, atom,
-            read_svg(f"{V6}{key}/askqet-{key}-dark.svg"),
-            read_svg(f"{V6}{key}/askqet-{key}-light.svg"),
-            lock, i))
-    html = html.replace("{ATOMS}", "\n".join(blocks))
-    for key in ATOMS:
+    for i, key in enumerate(VARIANTS, start=1):
+        base = f"{V7}{key}/askqet-{key}"
+        plates = (read_svg(base + ".svg") + read_svg(base + "-dark.svg")
+                  + read_svg(base + "-mono.svg"))
+        light = read_svg(base + ".svg")
+        sizes = [("a", light, "64"), ("b", light, "32"), ("c", light, "16")]
+        lockups = read_svg(base + "-lockup.svg") + read_svg(base + "-lockup-dark.svg")
+        blocks.append(variant_block(key, plates, sizes, lockups, i))
+    html = html.replace("{VARIANTS}", "\n".join(blocks))
+    html = html.replace("{PAIR}", pair_block())
+    for key in ("ush", "belgi", "oq", "osu"):
         html = html.replace("{P_" + key.upper() + "}",
-                            read_svg(f"{V6}{key}/askqet-{key}-dark.svg"))
+                            read_svg(f"{V7}{key}/askqet-{key}.svg"))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)

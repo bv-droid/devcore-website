@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <defs><mask id="r7016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="58" cy="58" r="44" fill="white"/>
+    <circle cx="58" cy="58" r="25" fill="black"/>
+    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
+  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+
+</svg>
