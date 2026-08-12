@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает brand/askqet/index.html — итерация 7: кольцо и остриё.
+Собирает brand/askqet/index.html — итерация 8: кольцо и флаг.
 
-Запуск:  python3 tools/build_page.py   (после build.py и build_v7.py)
+Запуск:  python3 tools/build_page.py   (после build.py и build_v8.py)
 """
 
 import os
@@ -12,8 +12,8 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT  # noqa: E402
-from build_v7 import VARIANTS  # noqa: E402
-from page_body import EXTRA_CSS, variant_block, pair_block  # noqa: E402
+from build_v8 import FLIES  # noqa: E402
+from page_body import EXTRA_CSS, variant_block, pair_block, specs_block  # noqa: E402
 
 
 def read_svg(rel):
@@ -241,15 +241,15 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 7 — кольцо и остриё</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 8 — кольцо и флаг</p>
     <div class="mast__logo">⟦logo/01-jaryq/askqet-wordmark.svg⟧</div>
-    <p class="mast__thesis">Конструкция принята: разомкнутое кольцо — вопрос,
-      остриё — <em>ответ, уходящий вверх</em><span class="caret"></span></p>
+    <p class="mast__thesis">Ваш эскиз, построенный по сетке: <em>каждый радиус,
+      угол и просвет посчитан</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>ИСПОЛНЕНИЙ<b>6</b></div>
-      <div>КОНСТРУКЦИЯ<b>одна</b></div>
-      <div>ПРОСВЕТ<b>5 единиц по всему контуру</b></div>
-      <div>ПРОВЕРКА<b>до 16 px</b></div>
+      <div>ВАРИАНТОВ КРАЯ<b>4</b></div>
+      <div>ПРОСВЕТ<b>5 по всему контуру</b></div>
+      <div>РАДИУС УГЛОВ<b>2.5 · единый</b></div>
+      <div>СЕТКА<b>8</b></div>
     </div>
   </div>
 </header>
@@ -259,91 +259,55 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Что именно работает в вашем варианте</h2></div>
+      <h2>Как я прочитал эскиз</h2></div>
     <div class="col">
-      <p class="lede">Присланный знак решает задачу, которую все прошлые итерации
-        обходили: <strong>Q читается мгновенно, а внутри неё сидит смысл</strong> —
-        кольцо не замкнуто, потому что вопрос ещё открыт, а остриё уходит вверх,
-        потому что ответ найден. Это лучше любой из моих метафор, и дальше я не
-        придумываю новую, а разбираю вашу на параметры.</p>
-      <p>Разрыв в кольце везде получается одним способом: остриё рисуется в маске
-        сразу заливкой и обводкой, поэтому вокруг него остаётся ровный просвет в
-        5 единиц — тот самый воздух, который в вашем эскизе делает конструкцию
-        собранной. Меняются четыре вещи.</p>
+      <p class="lede">Разомкнутое кольцо, из разрыва вверх выходит мачта, от неё
+        вправо летит полотнище с зубчатым краем. Кольцо — открытый вопрос, флаг —
+        поднятый ответ. По сравнению с прошлой итерацией знак прибавил смысла:
+        остриё просто указывало, флаг <strong>заявляет</strong>.</p>
+      <p>Премиальность тут не в эффектах, а в том, что от руки на маркерной доске
+        задать невозможно: одинаковая толщина полосы по всей дуге, ровно один
+        радиус на всех углах и <strong>одинаковый просвет между кольцом и флагом
+        по всему контуру</strong>. Последнее — главное. На эскизе просвет гуляет
+        от 0 до нескольких сантиметров, и именно это читается как «набросок».</p>
+      <p>Технически просвет берётся не на глаз: флаг рисуется в маске
+        одновременно заливкой и обводкой шириной 2 × (просвет + радиус), поэтому
+        кольцо отступает от него ровно на 5 единиц в любой точке — и на прямой,
+        и в вырезе, и на остром угле.</p>
     </div>
 
-    <div class="params">
-      <div><h4>Форма острия</h4>
-        <p>Закладка с V-вырезом, чистый треугольник, контур, стрела со стержнем,
-          вертикальная стрелка.</p><em>шесть вершин → три</em></div>
-      <div><h4>Угол</h4>
-        <p>45° вверх-вправо — как в оригинале — либо строго вертикально в нижнем
-          разрыве.</p><em>диагональ / вертикаль</em></div>
-      <div><h4>Вес ответа</h4>
-        <p>Залитое остриё тяжелее кольца, контурное — легче. Это меняет, кто в
-          знаке главный.</p><em>заливка / контур</em></div>
-      <div><h4>Связность</h4>
-        <p>Остриё как отдельный объект в разрыве — или продолжение самого кольца,
-          одной краской.</p><em>два тела / одно</em></div>
+    <div class="build">
+      <div class="build__art">⟦logo/v8/askqet-construction.svg⟧</div>
+      <div>{SPECS}</div>
     </div>
-
-    <h3>Цветовая пара</h3>
-    <div class="col"><p>Цвета сняты с вашего эскиза и доведены до рабочей пары.
-      Одно правило обязательно: <strong>амбер — это заливка, а не текст</strong>.
-      На бумаге он даёт 1.83:1, поэтому тонкие линии и подписи им набирать нельзя;
-      всё, что нужно прочитать, идёт тёмно-синим.</p></div>
-    {PAIR}
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Шесть исполнений</h2></div>
-    <div class="col"><p class="lede">Каждое показано на бумаге, на тёмном и в одну
-      краску, плюс ряд 64 / 32 / 16 px — там сразу видно, что переживает мелкий
-      размер.</p></div>
+      <h2>Четыре края полотнища</h2></div>
+    <div class="col"><p class="lede">Кольцо, мачта, вылет и просвет во всех четырёх
+      одинаковы — меняется только край. Каждый показан на бумаге, на тёмном и в
+      одну краску, плюс ряд 56 / 28 / 16 px.</p></div>
     {VARIANTS}
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Сводка</h2></div>
-    <div class="scroll">
-      <table><thead><tr><th>Исполнение</th><th>Вершин у острия</th><th>16 px</th>
-        <th>Одна краска</th><th>Что читается вторым слоем</th></tr></thead>
-      <tbody>
-        <tr><td>BELGI · закладка</td><td class="num">6</td>
-          <td><span class="tag tag--warn">V-вырез схлопывается</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">сохранённый ответ, закладка</td></tr>
-        <tr><td>USH · остриё</td><td class="num">3</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">отправка, «send»</td></tr>
-        <tr><td>KONTUR</td><td class="num">3</td>
-          <td><span class="tag tag--warn">нужен залитый дубль</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">лёгкость, черновик</td></tr>
-        <tr><td>OQ · стрела</td><td class="num">3 + стержень</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">запуск, движение наружу</td></tr>
-        <tr><td>TIK · вертикаль</td><td class="num">7</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">загрузка вверх — и это мешает</td></tr>
-        <tr><td>ÓSU · рост</td><td class="num">3, слито с кольцом</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">рождён в одну краску</span></td>
-          <td class="note">обновление, цикл</td></tr>
-      </tbody></table>
+    <div class="sec__head"><span class="sec__num">03</span><h2>Цвет</h2></div>
+    <div class="col">
+      <p class="lede">Пара с вашего первого варианта, доведённая до рабочей: амбер
+        на кольце, тёмно-синий на флаге. ΔEok между ними 0.527 — самый большой
+        разрыв пары за всю работу, поэтому знак не рассыпается ни в мелком
+        размере, ни в печати.</p>
+      <p><strong>Правило, которое надо зафиксировать сразу: амбер — заливка, а не
+        текст.</strong> На бумаге он даёт 1.83:1. Им можно залить кольцо, плашку,
+        подложку — но нельзя набрать ни строки и нельзя провести тонкую линию.
+        Всё, что читают, идёт тёмно-синим.</p>
     </div>
-    <div class="col"><p class="note">Колонка «второй слой» — то, что зритель
-      прочитает поверх Q. Это не всегда плюс: у TIK вторым слоем идёт пиктограмма
-      загрузки, у ÓSU — иконка «обновить». У USH и OQ второй слой работает на
-      продукт: отправить вопрос, получить ответ.</p></div>
+    {PAIR}
   </div>
 </section>
 
@@ -351,41 +315,39 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>USH.</strong> Это ваш знак, с которого снято всё
-        лишнее: та же конструкция, тот же угол, тот же просвет — но остриё сведено
-        к трём вершинам. За счёт этого он единственный проходит 16 px без правок и
-        единственный, чей второй смысловой слой работает на продукт: треугольник
-        под 45° читается как «отправить».</p>
-      <p><strong>Ваш BELGI держу вторым и не отбрасываю.</strong> У него больше
-        характера: V-вырез превращает остриё в закладку, и знак начинает говорить
-        «ответ сохранён», а не только «ответ найден». Если бренд идёт в сторону
-        библиотеки ответов, а не поисковой строки — берите его, а для фавикона
-        держите USH как мелкоразмерный дубль. Это законная пара: конструкция одна,
-        отличие только в вырезе.</p>
+      <p class="lede"><strong>QARLYǴASH — ласточкин хвост.</strong> Это ровно ваш
+        эскиз, только вырез посчитан: один клин глубиной 11 единиц строго по
+        нормали к краю, на середине его длины. Он даёт знаку характер, которого
+        нет у прямого края, и при этом остаётся одной формой без лишних вершин.</p>
+      <p><strong>TÚZU обязателен как пара к нему</strong> — не как альтернатива.
+        Ниже 24 px вырез схлопывается в грязь, поэтому мелкий размер, фавикон и
+        тиснение идут прямым краем. Это стандартная практика: у знака две
+        размерные версии, отличие ровно в одной детали.</p>
     </div>
     <div style="margin-top:var(--s3)">
-      <div class="pick">{P_USH}
-        <div><h4>USH · остриё<span class="flag flag--ok">беру</span></h4>
-          <p>Ваша конструкция в минимальной форме. Три вершины, держит 16 px.</p></div></div>
-      <div class="pick">{P_BELGI}
-        <div><h4>BELGI · закладка</h4>
-          <p>Ваш исходный вариант. Больше характера, сложнее форма.</p></div></div>
-      <div class="pick">{P_OQ}
-        <div><h4>OQ · стрела</h4>
-          <p>Единственный с движением: ответ вылетает из кольца наружу.</p></div></div>
-      <div class="pick">{P_OSU}
-        <div><h4>ÓSU · рост</h4>
-          <p>Одна связная форма и одна краска. Взамен теряется диалог двух цветов.</p></div></div>
+      <div class="pick">{P_QARLYGASH}
+        <div><h4>QARLYǴASH · ласточкин хвост<span class="flag flag--ok">беру</span></h4>
+          <p>Ваш эскиз в построенном виде. Характер без усложнения формы.</p></div></div>
+      <div class="pick">{P_TUZU}
+        <div><h4>TÚZU · прямой край<span class="flag flag--ok">пара к нему</span></h4>
+          <p>Мелкий размер, фавикон, тиснение, одна краска.</p></div></div>
+      <div class="pick">{P_QYRLY}
+        <div><h4>QYRLY · гранёный</h4>
+          <p>Ближе всего к зигзагу на рисунке, но шесть вершин — дорого в мелком.</p></div></div>
+      <div class="pick">{P_USHTAGAN}
+        <div><h4>USHTAǴAN · вымпел</h4>
+          <p>Самый динамичный. Ломает квадратное поле — нужен свой отступ.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать исполнение — дальше собираю рабочий набор: сетка построения с
-        размерами, размерный ряд 16/20/24/32/48, охранное поле, версии в одну
-        краску и в выворотку, анимация (кольцо дорисовывается, остриё выходит).<br>
-        2. Зафиксировать правило: амбер — заливка, тёмно-синий — всё, что читают.
-        Без этого знак развалится в первом же чужом макете.<br>
-        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+      <p>1. Подтвердить край — дальше собираю производственный набор: размерный ряд
+        16/20/24/32/48/64 с указанием, где переключаться на прямой край, охранное
+        поле, выворотка, версия в одну краску, кривые для вырубки и тиснения.<br>
+        2. Зафиксировать правило амбера в гайде первой же строкой.<br>
+        3. Анимация: кольцо дорисовывается по часовой, мачта выходит вверх,
+        полотнище разворачивается вправо. Три такта, всего 900 мс.<br>
+        4. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
         товарный знак по классам 9, 35, 42.</p>
     </div>
   </div>
@@ -395,10 +357,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Конструкция и цвет — из варианта заказчика. Предыдущие итерации остались в
-      репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v6</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v7.py &amp;&amp;
+    <p>Конструкция, цвет и пропорции — из эскизов заказчика. Предыдущие итерации
+      остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
+      <code>logo/v7</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v8.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>
@@ -416,25 +378,26 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 """
 
 
-V7 = "logo/v7/"
+V8 = "logo/v8/"
 
 
 def main():
     html = PAGE.replace("{EXTRA_CSS}", EXTRA_CSS)
     blocks = []
-    for i, key in enumerate(VARIANTS, start=1):
-        base = f"{V7}{key}/askqet-{key}"
+    for i, key in enumerate(FLIES, start=1):
+        base = f"{V8}{key}/askqet-{key}"
         plates = (read_svg(base + ".svg") + read_svg(base + "-dark.svg")
                   + read_svg(base + "-mono.svg"))
         light = read_svg(base + ".svg")
-        sizes = [("a", light, "64"), ("b", light, "32"), ("c", light, "16")]
+        sizes = [("a", light, "56"), ("b", light, "28"), ("c", light, "16")]
         lockups = read_svg(base + "-lockup.svg") + read_svg(base + "-lockup-dark.svg")
         blocks.append(variant_block(key, plates, sizes, lockups, i))
     html = html.replace("{VARIANTS}", "\n".join(blocks))
     html = html.replace("{PAIR}", pair_block())
-    for key in ("ush", "belgi", "oq", "osu"):
+    html = html.replace("{SPECS}", specs_block())
+    for key in FLIES:
         html = html.replace("{P_" + key.upper() + "}",
-                            read_svg(f"{V7}{key}/askqet-{key}.svg"))
+                            read_svg(f"{V8}{key}/askqet-{key}.svg"))
     html = re.sub(r"⟦([^⟧]+)⟧", embed, html)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)

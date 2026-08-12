@@ -210,20 +210,19 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 .v{padding-top:var(--s5); border-top:1px solid var(--line); margin-top:var(--s5)}
 .v:first-of-type{padding-top:0; border-top:0; margin-top:0}
-.v__top{display:grid; grid-template-columns:minmax(0,320px) minmax(0,1fr);
+.v__top{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr);
   gap:var(--s4); align-items:start}
 .v__id{font-family:var(--mono); font-size:12px; letter-spacing:.15em;
   text-transform:uppercase; color:var(--accent); margin:0 0 .5em}
-.v__title{font-size:clamp(22px,2.7vw,30px); letter-spacing:-.03em; margin:0 0 .6em;
+.v__title{font-size:clamp(21px,2.6vw,29px); letter-spacing:-.03em; margin:0 0 .6em;
   font-weight:680}
 .v__plates{display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px;
   border:1px solid var(--line); border-radius:6px; overflow:hidden}
 .v__plates svg{display:block; width:100%; height:auto}
-.v__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3);
-  flex-wrap:wrap}
+.v__sizes{display:flex; align-items:flex-end; gap:var(--s3); margin-top:var(--s3)}
 .v__sizes figure{margin:0; text-align:center}
 .v__sizes svg{display:block; border-radius:3px}
-.v__sizes .a svg{width:64px} .v__sizes .b svg{width:32px} .v__sizes .c svg{width:16px}
+.v__sizes .a svg{width:56px} .v__sizes .b svg{width:28px} .v__sizes .c svg{width:16px}
 .v__sizes figcaption{font-family:var(--mono); font-size:10.5px; color:var(--ink-3);
   margin-top:.45em}
 .v__lockups{display:grid; gap:2px; margin-top:var(--s3); border:1px solid var(--line);
@@ -233,14 +232,16 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   margin-top:var(--s3); font-size:14px; color:var(--ink-2)}
 .v__note b{color:var(--ink)}
 
-.params{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:var(--s2); margin-top:var(--s3)}
-.params div{border:1px solid var(--line); border-radius:6px; padding:var(--s3);
-  background:var(--surface)}
-.params h4{margin:0 0 .35em; font-size:14.5px}
-.params p{margin:0; font-size:13.5px; color:var(--ink-2)}
-.params em{font-style:normal; font-family:var(--mono); font-size:11px;
-  color:var(--ink-3); display:block; margin-top:.5em; letter-spacing:.05em}
+.build{display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr);
+  gap:var(--s4); align-items:start; margin-top:var(--s3)}
+.build__art{border:1px solid var(--line); border-radius:6px; overflow:hidden}
+.build__art svg{display:block; width:100%; height:auto}
+.specs{display:grid; gap:2px}
+.specs div{display:grid; grid-template-columns:1fr auto; gap:var(--s2);
+  padding:.5rem .7rem; background:var(--surface); font-size:14px}
+.specs span{font-family:var(--mono); font-variant-numeric:tabular-nums;
+  color:var(--ink)}
+.specs em{font-style:normal; color:var(--ink-2)}
 
 .cpair{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px;
   margin-top:var(--s3)}
@@ -249,7 +250,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   justify-content:flex-end}
 .cpair b{font-size:11.5px; font-weight:500; display:block}
 
-.pick{display:grid; grid-template-columns:76px minmax(0,1fr); gap:var(--s3);
+.pick{display:grid; grid-template-columns:72px minmax(0,1fr); gap:var(--s3);
   align-items:center; border:1px solid var(--line); border-radius:6px;
   padding:var(--s2); background:var(--surface)}
 .pick + .pick{margin-top:var(--s2)}
@@ -258,7 +259,7 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 .flag{display:inline-block; font-family:var(--mono); font-size:11px; padding:.1em .45em;
   border-radius:3px; border:1px solid currentColor; margin-left:.5em}
 .flag--ok{color:var(--pass)}
-@media (max-width:760px){ .v__top,.pick{grid-template-columns:1fr} }
+@media (max-width:760px){ .v__top,.pick,.build{grid-template-columns:1fr} }
 
 </style>
 
@@ -266,18 +267,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <header class="mast">
   <div class="wrap">
-    <p class="eyebrow">DevCore · AskQet · итерация 7 — кольцо и остриё</p>
+    <p class="eyebrow">DevCore · AskQet · итерация 8 — кольцо и флаг</p>
     <div class="mast__logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 323.5 108" fill="none">
   
   <g transform="translate(12,84)"><g transform="translate(0,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g>
 </svg></div>
-    <p class="mast__thesis">Конструкция принята: разомкнутое кольцо — вопрос,
-      остриё — <em>ответ, уходящий вверх</em><span class="caret"></span></p>
+    <p class="mast__thesis">Ваш эскиз, построенный по сетке: <em>каждый радиус,
+      угол и просвет посчитан</em><span class="caret"></span></p>
     <div class="mast__meta">
-      <div>ИСПОЛНЕНИЙ<b>6</b></div>
-      <div>КОНСТРУКЦИЯ<b>одна</b></div>
-      <div>ПРОСВЕТ<b>5 единиц по всему контуру</b></div>
-      <div>ПРОВЕРКА<b>до 16 px</b></div>
+      <div>ВАРИАНТОВ КРАЯ<b>4</b></div>
+      <div>ПРОСВЕТ<b>5 по всему контуру</b></div>
+      <div>РАДИУС УГЛОВ<b>2.5 · единый</b></div>
+      <div>СЕТКА<b>8</b></div>
     </div>
   </div>
 </header>
@@ -287,50 +288,54 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">01</span>
-      <h2>Что именно работает в вашем варианте</h2></div>
+      <h2>Как я прочитал эскиз</h2></div>
     <div class="col">
-      <p class="lede">Присланный знак решает задачу, которую все прошлые итерации
-        обходили: <strong>Q читается мгновенно, а внутри неё сидит смысл</strong> —
-        кольцо не замкнуто, потому что вопрос ещё открыт, а остриё уходит вверх,
-        потому что ответ найден. Это лучше любой из моих метафор, и дальше я не
-        придумываю новую, а разбираю вашу на параметры.</p>
-      <p>Разрыв в кольце везде получается одним способом: остриё рисуется в маске
-        сразу заливкой и обводкой, поэтому вокруг него остаётся ровный просвет в
-        5 единиц — тот самый воздух, который в вашем эскизе делает конструкцию
-        собранной. Меняются четыре вещи.</p>
+      <p class="lede">Разомкнутое кольцо, из разрыва вверх выходит мачта, от неё
+        вправо летит полотнище с зубчатым краем. Кольцо — открытый вопрос, флаг —
+        поднятый ответ. По сравнению с прошлой итерацией знак прибавил смысла:
+        остриё просто указывало, флаг <strong>заявляет</strong>.</p>
+      <p>Премиальность тут не в эффектах, а в том, что от руки на маркерной доске
+        задать невозможно: одинаковая толщина полосы по всей дуге, ровно один
+        радиус на всех углах и <strong>одинаковый просвет между кольцом и флагом
+        по всему контуру</strong>. Последнее — главное. На эскизе просвет гуляет
+        от 0 до нескольких сантиметров, и именно это читается как «набросок».</p>
+      <p>Технически просвет берётся не на глаз: флаг рисуется в маске
+        одновременно заливкой и обводкой шириной 2 × (просвет + радиус), поэтому
+        кольцо отступает от него ровно на 5 единиц в любой точке — и на прямой,
+        и в вырезе, и на остром угле.</p>
     </div>
 
-    <div class="params">
-      <div><h4>Форма острия</h4>
-        <p>Закладка с V-вырезом, чистый треугольник, контур, стрела со стержнем,
-          вертикальная стрелка.</p><em>шесть вершин → три</em></div>
-      <div><h4>Угол</h4>
-        <p>45° вверх-вправо — как в оригинале — либо строго вертикально в нижнем
-          разрыве.</p><em>диагональ / вертикаль</em></div>
-      <div><h4>Вес ответа</h4>
-        <p>Залитое остриё тяжелее кольца, контурное — легче. Это меняет, кто в
-          знаке главный.</p><em>заливка / контур</em></div>
-      <div><h4>Связность</h4>
-        <p>Остриё как отдельный объект в разрыве — или продолжение самого кольца,
-          одной краской.</p><em>два тела / одно</em></div>
-    </div>
+    <div class="build">
+      <div class="build__art"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <g opacity="0.35"><path d="M8,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M16,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M24,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M32,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M40,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M48,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M56,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M64,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M72,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M80,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M88,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M96,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M104,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M112,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M120,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,8 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,16 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,24 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,32 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,40 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,48 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,56 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,64 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,72 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,80 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,88 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,96 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,104 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,112 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,120 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/></g>
+  <circle cx="56" cy="76" r="44" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="56" cy="76" r="26" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M56,24 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M4,76 H108" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="56" cy="76" r="1.2" fill="#5B6B7E"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="none" stroke="#16304B" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M56,76 L100,76" stroke="#16304B" stroke-width="0.8" fill="none"/>
+  <text x="60" y="73" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">O</text>
+  <text x="68" y="73.5" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">R 44 / 26</text>
+  <text x="50" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">мачта 14</text>
+  <text x="88" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">вылет 114</text>
+  <text x="6" y="122" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">просвет 5 · радиус углов 2.5 · сетка 8</text>
 
-    <h3>Цветовая пара</h3>
-    <div class="col"><p>Цвета сняты с вашего эскиза и доведены до рабочей пары.
-      Одно правило обязательно: <strong>амбер — это заливка, а не текст</strong>.
-      На бумаге он даёт 1.83:1, поэтому тонкие линии и подписи им набирать нельзя;
-      всё, что нужно прочитать, идёт тёмно-синим.</p></div>
-    <div class="cpair"><div style="background:#F7A41C;color:#0B0C0E"><b>#F7A41C</b>кольцо · вопрос<br>L 0.78 · C 0.162 · H 72°<br>1.83:1 на бумаге</div><div style="background:#16304B;color:#F6F2E8"><b>#16304B</b>остриё · ответ<br>L 0.30 · C 0.059 · H 251°<br>12.04:1 на бумаге</div><div style="background:#FFB233;color:#0B0C0E"><b>#FFB233</b>кольцо на тёмном<br>L 0.82 · C 0.158 · H 74°<br>10.10:1 </div><div style="background:#F4F2ED;color:#0B0C0E"><b>#F4F2ED</b>остриё на тёмном<br>L 0.96 · C 0.007 · H 89°<br>16.25:1 </div></div>
+</svg></div>
+      <div><div class="specs"><div><em>центр кольца</em><span>O (56, 76)</span></div><div><em>радиусы</em><span>R 44 / 26 · полоса 18</span></div><div><em>мачта</em><span>x 50…64 · ширина 14</span></div><div><em>верх полотнища</em><span>y 14</span></div><div><em>вылет</em><span>x 114</span></div><div><em>просвет кольцо ↔ флаг</em><span>5 по всему контуру</span></div><div><em>радиус углов</em><span>2.5 · единый</span></div><div><em>сетка</em><span>8</span></div></div></div>
+    </div>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">02</span>
-      <h2>Шесть исполнений</h2></div>
-    <div class="col"><p class="lede">Каждое показано на бумаге, на тёмном и в одну
-      краску, плюс ряд 64 / 32 / 16 px — там сразу видно, что переживает мелкий
-      размер.</p></div>
+      <h2>Четыре края полотнища</h2></div>
+    <div class="col"><p class="lede">Кольцо, мачта, вылет и просвет во всех четырёх
+      одинаковы — меняется только край. Каждый показан на бумаге, на тёмном и в
+      одну краску, плюс ряд 56 / 28 / 16 px.</p></div>
     
 <article class="v">
   <div class="v__top">
@@ -338,109 +343,109 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7001">
+  <defs><mask id="r8001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r7002">
+  <defs><mask id="r8002">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7002)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#F4F2ED"/>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8002)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7003">
+  <defs><mask id="r8003">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r7003)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r8003)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg></div>
       <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7001">
+  <defs><mask id="r8001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7001">
+  <defs><mask id="r8001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7001">
+  <defs><mask id="r8001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="v__id">Исполнение 1</p>
-      <h3 class="v__title">BELGI · закладка</h3>
-      <p>Исполнение с референса: диагональное плечо сверху и V-вырез снизу. Остриё читается и как стрелка вверх, и как закладка — «этот ответ сохранён».</p>
-      <div class="v__note"><b>Чем платим.</b> Самая узнаваемая и самая сложная форма из шести: шесть вершин против трёх у остальных. В 16 px V-вырез схлопывается.</div>
+      <p class="v__id">Край 1</p>
+      <h3 class="v__title">TÚZU · прямой край</h3>
+      <p>Полотнище — прямоугольный треугольник: одна линия от вылета до мачты. Самая тихая и самая технологичная версия, ближе всего к флагу на схеме, а не к штандарту.</p>
+      <div class="v__note"><b>Чем платим.</b> Три вершины у полотнища. Единственный вариант, который не теряет ни одной детали в 16 px.</div>
     </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7004">
+  <rect width="443.82" height="122" fill="#F4F2ED"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8004">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7004)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8004)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7005">
+  <rect width="443.82" height="122" fill="#0E1621"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8005">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7005)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#F4F2ED"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8005)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
@@ -450,109 +455,109 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7006">
+  <defs><mask id="r8006">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r7007">
+  <defs><mask id="r8007">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7007)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#F4F2ED"/>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8007)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7008">
+  <defs><mask id="r8008">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r7008)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r8008)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg></div>
       <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7006">
+  <defs><mask id="r8006">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7006">
+  <defs><mask id="r8006">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7006">
+  <defs><mask id="r8006">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="v__id">Исполнение 2</p>
-      <h3 class="v__title">USH · остриё</h3>
-      <p>То же построение, но остриё сведено к треугольнику вдоль луча 45°. Три вершины, ничего лишнего — предельно простая версия конструкции.</p>
-      <div class="v__note"><b>Чем платим.</b> Лучшая мелкоразмерная форма семейства: треугольник держится до 16 px без единой правки.</div>
+      <p class="v__id">Край 2</p>
+      <h3 class="v__title">QARLYǴASH · ласточкин хвост</h3>
+      <p>В край врезан один клин — классический раздвоенный вымпел. Ровно то, что нарисовано на эскизе, только вырез посчитан: глубина 13 единиц строго по нормали к краю.</p>
+      <div class="v__note"><b>Чем платим.</b> Вырез читается от 24 px. Ниже — схлопывается, нужен прямой дубль.</div>
     </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7009">
+  <rect width="443.82" height="122" fill="#F4F2ED"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8009">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7009)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8009)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7010">
+  <rect width="443.82" height="122" fill="#0E1621"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8010">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7010)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#F4F2ED"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8010)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
@@ -562,109 +567,109 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7011">
+  <defs><mask id="r8011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r7012">
+  <defs><mask id="r8012">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7012)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#F4F2ED" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8012)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7013">
+  <defs><mask id="r8013">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r7013)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r8013)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg></div>
       <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7011">
+  <defs><mask id="r8011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7011">
+  <defs><mask id="r8011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7011">
+  <defs><mask id="r8011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7011)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="v__id">Исполнение 3</p>
-      <h3 class="v__title">KONTUR · контурное остриё</h3>
-      <p>То же остриё, что в USH, но не залито, а прочерчено. Знак становится легче и тише: вопрос остаётся плотным, ответ — воздушным.</p>
-      <div class="v__note"><b>Чем платим.</b> Единственная версия, где вес ответа меньше веса вопроса. В 16 px контур в 12 единиц схлопывается — там нужен залитый дубль.</div>
+      <p class="v__id">Край 3</p>
+      <h3 class="v__title">QYRLY · гранёный край</h3>
+      <p>Край сломан дважды: внутрь и наружу. Это ближе всего к рисунку от руки, где полотнище идёт зигзагом — но каждый излом стоит на своей доле длины, а не на глаз.</p>
+      <div class="v__note"><b>Чем платим.</b> Самая сложная форма из четырёх: шесть вершин на краю. Требует прямого дубля уже с 32 px.</div>
     </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7014">
+  <rect width="443.82" height="122" fill="#F4F2ED"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8014">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7014)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#16304B" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8014)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7015">
+  <rect width="443.82" height="122" fill="#0E1621"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8015">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="black" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7015)"/>
-  <path d="M101.841,14.159 L80.627,63.657 L52.343,35.373 Z" fill="none" stroke="#F4F2ED" stroke-width="12" stroke-linejoin="miter" stroke-linecap="butt"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8015)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
 
@@ -674,301 +679,109 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
       <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7016">
+  <defs><mask id="r8016">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r7017">
+  <defs><mask id="r8017">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7017)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#F4F2ED" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#F4F2ED"/>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8017)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7018">
+  <defs><mask id="r8018">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r7018)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#16304B" mask="url(#r8018)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg></div>
       <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7016">
+  <defs><mask id="r8016">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>56</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7016">
+  <defs><mask id="r8016">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+</svg><figcaption>28</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7016">
+  <defs><mask id="r8016">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg><figcaption>16</figcaption></figure></div>
     </div>
     <div>
-      <p class="v__id">Исполнение 4</p>
-      <h3 class="v__title">OQ · стрела</h3>
-      <p>У острия появляется стержень: ответ не просто указан, он вылетает из кольца наружу. Единственный вариант, где видно движение.</p>
-      <div class="v__note"><b>Чем платим.</b> Стержень удлиняет знак по диагонали и ломает квадратное поле — нужен свой отступ в макетах.</div>
+      <p class="v__id">Край 4</p>
+      <h3 class="v__title">USHTAǴAN · вымпел</h3>
+      <p>Край не садится на мачту, а вытягивается в остриё: полотнище становится вымпелом и уводит взгляд вправо-вниз, к слову.</p>
+      <div class="v__note"><b>Чем платим.</b> Самый динамичный и самый широкий: знак перестаёт быть квадратным, в макетах нужен свой отступ справа.</div>
     </div>
   </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7019">
+  <rect width="443.82" height="122" fill="#F4F2ED"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8019">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7019)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8019)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
   
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7020">
+  <rect width="443.82" height="122" fill="#0E1621"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8020">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7020)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#F4F2ED" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#F4F2ED"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-</article>
-
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7021">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <defs><mask id="r7022">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7022)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#F4F2ED"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7023">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#16304B" mask="url(#r7023)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-
-</svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7021">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7021">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7021">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7021)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-
-</svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Исполнение 5</p>
-      <h3 class="v__title">TIK · строго вверх</h3>
-      <p>Стрелка не наклонена, а стоит вертикально в нижнем разрыве кольца. Читается спокойнее и жёстче: не полёт, а результат.</p>
-      <div class="v__note"><b>Чем платим.</b> Вертикаль спорит с окружностью — знак перестаёт быть Q и становится ближе к пиктограмме «загрузка вверх».</div>
-    </div>
-  </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
-  
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7024">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7024)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#16304B"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
-  
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <defs><mask id="r7025">
-    <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
-  </mask></defs>
-  <rect width="128" height="128" fill="#FFB233" mask="url(#r7025)"/>
-  <path d="M88,52 L110,82 L99,82 L99,114 L77,114 L77,82 L66,82 Z" fill="#F4F2ED"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg></div>
-</article>
-
-<article class="v">
-  <div class="v__top">
-    <div>
-      <div class="v__plates"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#0E1621"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#FFB233" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#FFB233"/>
-
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#16304B" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#16304B"/>
-
-</svg></div>
-      <div class="v__sizes"><figure class="a"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
-
-</svg><figcaption>64</figcaption></figure><figure class="b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
-
-</svg><figcaption>32</figcaption></figure><figure class="c"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  
-  <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
-
-</svg><figcaption>16</figcaption></figure></div>
-    </div>
-    <div>
-      <p class="v__id">Исполнение 6</p>
-      <h3 class="v__title">ÓSU · рост</h3>
-      <p>Кольцо не разомкнуто чужой формой, а само переходит в остриё: терминал разрастается и уходит вверх-вправо. Одна форма, одна краска, никакого второго объекта.</p>
-      <div class="v__note"><b>Чем платим.</b> Единственная версия, живущая в одну краску без потерь. Взамен исчезает диалог двух цветов — вопрос и ответ больше не различаются.</div>
-    </div>
-  </div>
-  <div class="v__lockups"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
-  
-  <rect width="443.9" height="118" fill="#F4F2ED"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#16304B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
-</svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.9 118" fill="none">
-  
-  <rect width="443.9" height="118" fill="#0E1621"/>
-  <g transform="translate(12,84)"><g transform="translate(0,-68) scale(0.9) translate(-14,-14)">  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#FFB233" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#FFB233"/>
-</g><g transform="translate(120.4,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8020)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
 </svg></div>
 </article>
   </div>
@@ -976,41 +789,18 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <section class="sec">
   <div class="wrap">
-    <div class="sec__head"><span class="sec__num">03</span><h2>Сводка</h2></div>
-    <div class="scroll">
-      <table><thead><tr><th>Исполнение</th><th>Вершин у острия</th><th>16 px</th>
-        <th>Одна краска</th><th>Что читается вторым слоем</th></tr></thead>
-      <tbody>
-        <tr><td>BELGI · закладка</td><td class="num">6</td>
-          <td><span class="tag tag--warn">V-вырез схлопывается</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">сохранённый ответ, закладка</td></tr>
-        <tr><td>USH · остриё</td><td class="num">3</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">отправка, «send»</td></tr>
-        <tr><td>KONTUR</td><td class="num">3</td>
-          <td><span class="tag tag--warn">нужен залитый дубль</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">лёгкость, черновик</td></tr>
-        <tr><td>OQ · стрела</td><td class="num">3 + стержень</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">запуск, движение наружу</td></tr>
-        <tr><td>TIK · вертикаль</td><td class="num">7</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">да</span></td>
-          <td class="note">загрузка вверх — и это мешает</td></tr>
-        <tr><td>ÓSU · рост</td><td class="num">3, слито с кольцом</td>
-          <td><span class="tag tag--pass">держится</span></td>
-          <td><span class="tag tag--pass">рождён в одну краску</span></td>
-          <td class="note">обновление, цикл</td></tr>
-      </tbody></table>
+    <div class="sec__head"><span class="sec__num">03</span><h2>Цвет</h2></div>
+    <div class="col">
+      <p class="lede">Пара с вашего первого варианта, доведённая до рабочей: амбер
+        на кольце, тёмно-синий на флаге. ΔEok между ними 0.527 — самый большой
+        разрыв пары за всю работу, поэтому знак не рассыпается ни в мелком
+        размере, ни в печати.</p>
+      <p><strong>Правило, которое надо зафиксировать сразу: амбер — заливка, а не
+        текст.</strong> На бумаге он даёт 1.83:1. Им можно залить кольцо, плашку,
+        подложку — но нельзя набрать ни строки и нельзя провести тонкую линию.
+        Всё, что читают, идёт тёмно-синим.</p>
     </div>
-    <div class="col"><p class="note">Колонка «второй слой» — то, что зритель
-      прочитает поверх Q. Это не всегда плюс: у TIK вторым слоем идёт пиктограмма
-      загрузки, у ÓSU — иконка «обновить». У USH и OQ второй слой работает на
-      продукт: отправить вопрос, получить ответ.</p></div>
+    <div class="cpair"><div style="background:#F7A41C;color:#0B0C0E"><b>#F7A41C</b>кольцо · вопрос<br>L 0.78 · C 0.162 · H 72°<br>1.83:1 на бумаге</div><div style="background:#16304B;color:#F6F2E8"><b>#16304B</b>флаг · ответ<br>L 0.30 · C 0.059 · H 251°<br>12.04:1 на бумаге</div><div style="background:#FFB233;color:#0B0C0E"><b>#FFB233</b>кольцо на тёмном<br>L 0.82 · C 0.158 · H 74°<br>10.10:1 </div><div style="background:#F4F2ED;color:#0B0C0E"><b>#F4F2ED</b>флаг на тёмном<br>L 0.96 · C 0.007 · H 89°<br>16.25:1 </div></div>
   </div>
 </section>
 
@@ -1018,85 +808,87 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
   <div class="wrap">
     <div class="sec__head"><span class="sec__num">04</span><h2>Что беру</h2></div>
     <div class="col">
-      <p class="lede"><strong>USH.</strong> Это ваш знак, с которого снято всё
-        лишнее: та же конструкция, тот же угол, тот же просвет — но остриё сведено
-        к трём вершинам. За счёт этого он единственный проходит 16 px без правок и
-        единственный, чей второй смысловой слой работает на продукт: треугольник
-        под 45° читается как «отправить».</p>
-      <p><strong>Ваш BELGI держу вторым и не отбрасываю.</strong> У него больше
-        характера: V-вырез превращает остриё в закладку, и знак начинает говорить
-        «ответ сохранён», а не только «ответ найден». Если бренд идёт в сторону
-        библиотеки ответов, а не поисковой строки — берите его, а для фавикона
-        держите USH как мелкоразмерный дубль. Это законная пара: конструкция одна,
-        отличие только в вырезе.</p>
+      <p class="lede"><strong>QARLYǴASH — ласточкин хвост.</strong> Это ровно ваш
+        эскиз, только вырез посчитан: один клин глубиной 11 единиц строго по
+        нормали к краю, на середине его длины. Он даёт знаку характер, которого
+        нет у прямого края, и при этом остаётся одной формой без лишних вершин.</p>
+      <p><strong>TÚZU обязателен как пара к нему</strong> — не как альтернатива.
+        Ниже 24 px вырез схлопывается в грязь, поэтому мелкий размер, фавикон и
+        тиснение идут прямым краем. Это стандартная практика: у знака две
+        размерные версии, отличие ровно в одной детали.</p>
     </div>
     <div style="margin-top:var(--s3)">
       <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7006">
+  <defs><mask id="r8006">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7006)"/>
-  <path d="M103.255,12.745 L75.678,67.192 L48.808,40.322 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8006)"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg>
-        <div><h4>USH · остриё<span class="flag flag--ok">беру</span></h4>
-          <p>Ваша конструкция в минимальной форме. Три вершины, держит 16 px.</p></div></div>
+        <div><h4>QARLYǴASH · ласточкин хвост<span class="flag flag--ok">беру</span></h4>
+          <p>Ваш эскиз в построенном виде. Характер без усложнения формы.</p></div></div>
       <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7001">
+  <defs><mask id="r8001">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7001)"/>
-  <path d="M72,84 L94,62 L114,62 L114,116 L93,96 L72,116 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8001)"/>
+  <path d="M50,14 L114,14 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg>
-        <div><h4>BELGI · закладка</h4>
-          <p>Ваш исходный вариант. Больше характера, сложнее форма.</p></div></div>
+        <div><h4>TÚZU · прямой край<span class="flag flag--ok">пара к нему</span></h4>
+          <p>Мелкий размер, фавикон, тиснение, одна краска.</p></div></div>
       <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <defs><mask id="r7016">
+  <defs><mask id="r8011">
     <rect width="128" height="128" fill="black"/>
-    <circle cx="58" cy="58" r="44" fill="white"/>
-    <circle cx="58" cy="58" r="25" fill="black"/>
-    <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="black" stroke-width="25" stroke-linejoin="round" stroke-linecap="round"/>
-    <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="black" stroke="black" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
   </mask></defs>
-  <rect width="128" height="128" fill="#F7A41C" mask="url(#r7016)"/>
-  <path d="M60.828,55.172 L100.426,15.574" fill="none" stroke="#16304B" stroke-width="15" stroke-linejoin="round" stroke-linecap="round"/>
-  <path d="M103.255,12.745 L99.719,45.979 L70.021,16.281 Z" fill="#16304B"/>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8011)"/>
+  <path d="M50,14 L114,14 L93.204,13.951 L87.635,36.23 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg>
-        <div><h4>OQ · стрела</h4>
-          <p>Единственный с движением: ответ вылетает из кольца наружу.</p></div></div>
+        <div><h4>QYRLY · гранёный</h4>
+          <p>Ближе всего к зигзагу на рисунке, но шесть вершин — дорого в мелком.</p></div></div>
       <div class="pick"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   
   <rect width="128" height="128" fill="#F4F2ED"/>
-  <path d="M80.176,84.429 A34.5,34.5 0 1 1 69.8,25.581" fill="none" stroke="#F7A41C" stroke-width="19" stroke-linecap="butt"/>
-  <path d="M108.46,56.144 L92.904,97.156 L67.448,71.701 Z" fill="#F7A41C"/>
+  <defs><mask id="r8016">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#F7A41C" mask="url(#r8016)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#16304B" stroke="#16304B" stroke-width="5" stroke-linejoin="round"/>
 
 </svg>
-        <div><h4>ÓSU · рост</h4>
-          <p>Одна связная форма и одна краска. Взамен теряется диалог двух цветов.</p></div></div>
+        <div><h4>USHTAǴAN · вымпел</h4>
+          <p>Самый динамичный. Ломает квадратное поле — нужен свой отступ.</p></div></div>
     </div>
 
     <h3>Что дальше</h3>
     <div class="col">
-      <p>1. Выбрать исполнение — дальше собираю рабочий набор: сетка построения с
-        размерами, размерный ряд 16/20/24/32/48, охранное поле, версии в одну
-        краску и в выворотку, анимация (кольцо дорисовывается, остриё выходит).<br>
-        2. Зафиксировать правило: амбер — заливка, тёмно-синий — всё, что читают.
-        Без этого знак развалится в первом же чужом макете.<br>
-        3. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
+      <p>1. Подтвердить край — дальше собираю производственный набор: размерный ряд
+        16/20/24/32/48/64 с указанием, где переключаться на прямой край, охранное
+        поле, выворотка, версия в одну краску, кривые для вырубки и тиснения.<br>
+        2. Зафиксировать правило амбера в гайде первой же строкой.<br>
+        3. Анимация: кольцо дорисовывается по часовой, мачта выходит вверх,
+        полотнище разворачивается вправо. Три такта, всего 900 мс.<br>
+        4. Проверить <code>askqet.kz</code> / <code>.com</code> / <code>.ai</code> и
         товарный знак по классам 9, 35, 42.</p>
     </div>
   </div>
@@ -1106,10 +898,10 @@ th{font-family:var(--mono); font-size:11.5px; letter-spacing:.11em; text-transfo
 
 <footer class="foot">
   <div class="wrap">
-    <p>Конструкция и цвет — из варианта заказчика. Предыдущие итерации остались в
-      репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
-      <code>logo/v6</code>. Всё пересобирается командой
-      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v7.py &amp;&amp;
+    <p>Конструкция, цвет и пропорции — из эскизов заказчика. Предыдущие итерации
+      остались в репозитории: <code>logo/01-jaryq</code>, <code>logo/v2</code> …
+      <code>logo/v7</code>. Всё пересобирается командой
+      <code>python3 tools/build.py &amp;&amp; python3 tools/build_v8.py &amp;&amp;
       python3 tools/build_page.py</code>.</p>
   </div>
 </footer>

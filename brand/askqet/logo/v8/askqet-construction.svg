@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — построение</title>
+  <rect width="128" height="128" fill="#F4F2ED"/>
+  <g opacity="0.35"><path d="M8,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M16,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M24,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M32,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M40,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M48,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M56,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M64,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M72,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M80,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M88,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M96,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M104,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M112,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M120,0 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,8 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,16 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,24 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,32 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,40 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,48 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,56 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,64 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,72 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,80 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,88 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,96 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,104 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,112 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/><path d="M0,120 H128" fill="none" stroke="#8FA0B4" stroke-width="0.6"/></g>
+  <circle cx="56" cy="76" r="44" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="56" cy="76" r="26" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M56,24 V128" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <path d="M4,76 H108" fill="none" stroke="#8FA0B4" stroke-width="0.6" stroke-dasharray="3 3"/>
+  <circle cx="56" cy="76" r="1.2" fill="#5B6B7E"/>
+  <path d="M50,14 L114,14 L82.15,18.451 L64,45 L64,58 L50,58 Z" fill="none" stroke="#16304B" stroke-width="1" stroke-linejoin="round"/>
+  <path d="M56,76 L100,76" stroke="#16304B" stroke-width="0.8" fill="none"/>
+  <text x="60" y="73" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">O</text>
+  <text x="68" y="73.5" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">R 44 / 26</text>
+  <text x="50" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">мачта 14</text>
+  <text x="88" y="11" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">вылет 114</text>
+  <text x="6" y="122" font-family="ui-monospace,monospace" font-size="4.6" fill="#5B6B7E">просвет 5 · радиус углов 2.5 · сетка 8</text>
+
+</svg>

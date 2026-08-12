@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 443.82 122" fill="none">
+  <title>AskQet</title>
+  <rect width="443.82" height="122" fill="#0E1621"/>
+  <g transform="translate(12,86)"><g transform="translate(0,-72) scale(0.92) translate(-10,-10)">  <defs><mask id="r8020">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="56" cy="76" r="44" fill="white"/>
+    <circle cx="56" cy="76" r="26" fill="black"/>
+    <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="black" stroke="black" stroke-width="15" stroke-linejoin="round"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#FFB233" mask="url(#r8020)"/>
+  <path d="M50,14 L114,14 L122,40 L78.784,26.421 L64,45 L64,58 L50,58 Z" fill="#F4F2ED" stroke="#F4F2ED" stroke-width="5" stroke-linejoin="round"/>
+</g><g transform="translate(120.32,0)"><g transform="translate(0,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,-4.5"/></g></g><g transform="translate(58,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M30.5,-32.2 A13,9.2 0 1 0 17.5,-23"/><path d="M17.5,-23 A13,9.2 0 1 1 4.5,-13.8"/></g></g><g transform="translate(105,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M4.5,-59.5 L4.5,-4.5"/><path d="M36,-41.5 L4.5,-16"/><path d="M15,-24.5 L36,-4.5"/></g></g><g transform="translate(157.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="23" cy="-23" r="18.5"/><path d="M41.5,-37 L41.5,14.5"/></g></g><g transform="translate(215.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M41.5,-23 A18.5,18.5 0 1 0 37.172,-11.108"/><path d="M4.5,-23 L41.5,-23"/></g></g><g transform="translate(273.5,0)"><g stroke="#F4F2ED" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M11,-53.5 L11,-4.5"/><path d="M4.5,-37 L21.5,-37"/></g></g></g></g>
+</svg>
