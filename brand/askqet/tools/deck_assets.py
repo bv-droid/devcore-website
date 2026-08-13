@@ -60,6 +60,9 @@ def words():
     На титуле презентации имя стояло набранным системной антиквой. Это
     подмена того же рода, что и «не чёрный» в коде: слово рисовалось
     отдельно, под знак, и именно оно обязано стоять там, где называют имя.
+
+    Начертание одно. Веса были собраны раньше и сняты по решению заказчика:
+    у логотипа не бывает «варианта потоньше», он либо тот, либо не тот.
     """
     out = []
     m = V.metrics(F.WEIGHT)
@@ -70,19 +73,6 @@ def words():
         f'  <g transform="translate({n(pad)},{n(pad + m["asc"])})">{body}</g>\n',
         box=(w + pad * 2, m["asc"] + m["desc"] + pad * 2), title="askqet")))
 
-    # три веса друг под другом: видно, что растёт штрих, а не размер
-    els, y, wmax = [], pad, 0.0
-    for key in ("light", "text", "bold"):
-        mm = V.metrics(key)
-        b, ww, _ = V.wordmark(key, "cut", CUR)
-        els.append(f'<g transform="translate({n(pad)},{n(y + mm["asc"])})">{b}</g>')
-        els.append(f'<text x="{n(pad)}" y="{n(y - 6)}" fill="{CUR}" '
-                   f'font-size="11" opacity="0.55" letter-spacing="1.6">'
-                   f'{V.WEIGHTS[key]["title"]} · {V.WEIGHTS[key]["note"]}</text>')
-        y += mm["asc"] + mm["desc"] + pad * 2.2
-        wmax = max(wmax, ww)
-    out.append(write("logo/deck/weights.svg", svg(
-        "  " + "".join(els) + "\n", box=(wmax + pad * 2, y), title="Веса")))
     return out
 
 
