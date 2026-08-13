@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 478.859 137.6" fill="none">
+  <title>AskQet</title>
+<defs>
+  <filter id="ow1" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="d"/>
+    <feFlood flood-color="#73716C"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="om2" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="d"/>
+    <feFlood flood-color="#87CCA4"/>
+    <feComposite in2="d" operator="in" result="o"/>
+    <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+  <g transform="translate(22.8,94.8)"><g filter="url(#om2)"><g transform="translate(-13.5,-75.122) scale(0.75)">  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="14" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#87CCA4"/>
+</g></g><g filter="url(#ow1)" transform="translate(97.5,0)"><g transform="translate(5,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,0"/></g></g><g transform="translate(70.56,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M26.927,-44.901 A13.299,10.39 0 1 0 19.299,-26 A13.299,10.39 0 1 1 11.671,-7.099"/></g></g><g transform="translate(121.158,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M6,-72 L6,0"/></g><path d="M40.061,-52 L23.939,-52 L0,-28.061 L0,-23.939 L23.939,0 L40.061,0 L14.061,-26 Z" fill="#87CCA4"/></g><g transform="translate(165.519,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 1 47.56,-26.004"/><path d="M47.56,-52 L47.56,20"/></g></g><g transform="translate(233.179,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M47.56,-26 A20.78,20.78 0 1 0 33.887,-6.473"/><path d="M6,-26 L53.56,-26"/></g></g><g transform="translate(285.439,0)"><g fill="none" stroke="#87CCA4" stroke-width="12" stroke-linecap="butt" stroke-linejoin="miter"><path d="M19.728,-66 L19.728,0"/><path d="M6,-52 L40.32,-52"/></g></g></g></g>
+
+</svg>
