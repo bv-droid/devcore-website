@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <mask id="sil1">
+    <rect width="128" height="128" fill="white" mask="url(#m10001)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="white"/>
+  </mask>
+</defs>
+  <g mask="url(#sil1)">
+    <rect x="0" y="8" width="128" height="4.388" fill="#514F4A"/>
+    <rect x="0" y="14.988" width="128" height="4.202" fill="#514F4A"/>
+    <rect x="0" y="21.789" width="128" height="4.021" fill="#514F4A"/>
+    <rect x="0" y="28.411" width="128" height="3.845" fill="#514F4A"/>
+    <rect x="0" y="34.856" width="128" height="3.674" fill="#514F4A"/>
+    <rect x="0" y="41.13" width="128" height="3.507" fill="#514F4A"/>
+    <rect x="0" y="47.238" width="128" height="3.345" fill="#514F4A"/>
+    <rect x="0" y="53.183" width="128" height="3.187" fill="#514F4A"/>
+    <rect x="0" y="58.97" width="128" height="3.034" fill="#514F4A"/>
+    <rect x="0" y="64.604" width="128" height="2.884" fill="#514F4A"/>
+    <rect x="0" y="70.088" width="128" height="2.738" fill="#514F4A"/>
+    <rect x="0" y="75.426" width="128" height="2.596" fill="#514F4A"/>
+    <rect x="0" y="80.623" width="128" height="2.458" fill="#514F4A"/>
+    <rect x="0" y="85.681" width="128" height="2.324" fill="#514F4A"/>
+    <rect x="0" y="90.605" width="128" height="2.193" fill="#514F4A"/>
+    <rect x="0" y="95.398" width="128" height="2.066" fill="#514F4A"/>
+    <rect x="0" y="100.064" width="128" height="1.942" fill="#514F4A"/>
+    <rect x="0" y="104.606" width="128" height="1.821" fill="#514F4A"/>
+    <rect x="0" y="109.028" width="128" height="1.704" fill="#514F4A"/>
+    <rect x="0" y="113.332" width="128" height="1.59" fill="#514F4A"/>
+    <rect x="0" y="117.521" width="128" height="1.478" fill="#514F4A"/>
+    <rect x="0" y="121.6" width="128" height="1.37" fill="#514F4A"/>
+  </g>
+
+</svg>

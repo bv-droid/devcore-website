@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#F9F3ED"/>
+  <defs><mask id="m10003">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <rect width="128" height="128" fill="#514F4A" mask="url(#m10003)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/>
+  <path d="M49.968,78.899 L42.744,95.386" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M40.971,72.214 L27.269,83.887" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M35.799,62.269 L18.374,66.783" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M35.492,51.064 L17.846,47.511" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M40.112,40.852 L25.793,29.945" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M48.73,33.684 L40.615,17.617" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M59.613,31.003 L59.335,13.005" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M70.574,33.346 L78.188,17.036" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M79.41,40.244 L93.385,28.899" stroke="#F9F3ED" stroke-width="2.1"/>
+  <path d="M84.344,50.309 L101.871,46.211" stroke="#F9F3ED" stroke-width="2.1"/>
+
+</svg>
