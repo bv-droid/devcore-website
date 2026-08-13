@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10008">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <mask id="sil11">
+    <rect width="128" height="128" fill="white" mask="url(#m10008)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="white"/>
+  </mask>
+  <clipPath id="cl12"><path d="M0,0 H128 V44 L0,96 Z"/></clipPath>
+  <clipPath id="cl13"><path d="M0,96 L128,44 V128 H0 Z"/></clipPath>
+</defs>
+  <g mask="url(#sil11)">
+    <g clip-path="url(#cl12)"><rect width="128" height="128" fill="#514F4A"/></g>
+    <g clip-path="url(#cl13)">
+      <path d="M-20,2 L148,-58" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,6.6 L148,-53.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,11.2 L148,-48.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,15.8 L148,-44.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,20.4 L148,-39.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,25 L148,-35" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,29.6 L148,-30.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,34.2 L148,-25.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,38.8 L148,-21.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,43.4 L148,-16.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,48 L148,-12" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,52.6 L148,-7.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,57.2 L148,-2.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,61.8 L148,1.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,66.4 L148,6.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,71 L148,11" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,75.6 L148,15.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,80.2 L148,20.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,84.8 L148,24.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,89.4 L148,29.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,94 L148,34" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,98.6 L148,38.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,103.2 L148,43.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,107.8 L148,47.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,112.4 L148,52.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,117 L148,57" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,121.6 L148,61.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,126.2 L148,66.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,130.8 L148,70.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,135.4 L148,75.4" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,140 L148,80" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,144.6 L148,84.6" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,149.2 L148,89.2" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,153.8 L148,93.8" stroke="#514F4A" stroke-width="1.6"/>
+      <path d="M-20,158.4 L148,98.4" stroke="#514F4A" stroke-width="1.6"/>
+    </g>
+  </g>
+
+</svg>

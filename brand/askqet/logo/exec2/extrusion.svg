@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+</defs>
+  <g transform="translate(8.1,8.1)"><g><rect width="128" height="128" fill="#D2D0CA" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#D2D0CA"/></g></g>
+  <g transform="translate(7.2,7.2)"><g><rect width="128" height="128" fill="#D2D0CA" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#D2D0CA"/></g></g>
+  <g transform="translate(6.3,6.3)"><g><rect width="128" height="128" fill="#D2D0CA" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#D2D0CA"/></g></g>
+  <g transform="translate(5.4,5.4)"><g><rect width="128" height="128" fill="#D2D0CA" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#D2D0CA"/></g></g>
+  <g transform="translate(4.5,4.5)"><g><rect width="128" height="128" fill="#D2D0CA" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#D2D0CA"/></g></g>
+  <g transform="translate(3.6,3.6)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g transform="translate(2.7,2.7)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g transform="translate(1.8,1.8)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g transform="translate(0.9,0.9)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g><rect width="128" height="128" fill="#514F4A" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g>
+
+</svg>
