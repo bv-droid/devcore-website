@@ -46,7 +46,7 @@ def screen():
     """Разворот справочника. Серая база, зелёный акцент, бордо на полях."""
     return f'''<article class="scr">
   <header class="scr__bar">
-    <span class="scr__logo">⟦logo/outline/leaf.svg⟧</span>
+    <span class="scr__logo">⟦logo/outline/askqet.svg⟧</span>
     <nav class="scr__nav"><span>Налоги</span><span>Труд</span><span>Отчётность</span></nav>
     <span class="scr__btn">Спросить</span>
   </header>
@@ -113,7 +113,7 @@ def slide(kind, num, eyebrow, body, wide=False):
 slide("title", "", "", f'''
   <div class="title">
     <h1 class="title__logo"><span class="sr">AskQet</span>
-      ⟦logo/outline/leaf.svg⟧</h1>
+      ⟦logo/outline/askqet.svg⟧</h1>
     <p class="title__sub">Энциклопедия предпринимателя</p>
     <p class="title__note">Знак, слово и цвет. Что решено, что измерено
       и что осталось выбрать.</p>
@@ -139,7 +139,7 @@ slide("std", "01", "Предмет", '''
 slide("std", "02", "Знак", '''
   <h2>Q, собранная из вопроса и ответа</h2>
   <div class="mark-show">
-    <div class="mark-show__big">⟦logo/outline/leaf-glyph.svg⟧</div>
+    <div class="mark-show__big">⟦logo/outline/askqet-glyph.svg⟧</div>
     <div class="cols cols--one">
       <p>Незамкнутое кольцо и стрелка вместе читаются как <b>Q</b> — первая
         буква имени. Кольцо остаётся открытым: справочник не закрывает тему,
@@ -274,7 +274,7 @@ slide("std", "11", "Цена приёма", '''
       воздух, и его посчитали.</p>
   </div>
   <div class="mks mks--two">
-    <figure class="mk"><div>⟦logo/outline/leaf-glyph.svg⟧</div>
+    <figure class="mk"><div>⟦logo/outline/askqet-glyph.svg⟧</div>
       <figcaption><b>Просвет 7.0</b><span>после обводки остаётся 2.25 —
         читается</span></figcaption></figure>
     <figure class="mk"><div>⟦logo/deck/glyph.svg⟧</div>
@@ -298,16 +298,23 @@ slide("std", "12", "Палитра", '''
     текста и действий. Тон один, разводит только светлота — иначе ссылка на
     светлом фоне не читалась бы.</p>''')
 
-slide("std", "13", "Три прочтения", '''
-  <h2>Куда именно идёт зелёный</h2>
-  <p class="lede">Формулировка допускает несколько прочтений, и вместо
-    угадывания собраны все три. Слово у всех одинаковое: светло-зелёное
-    с серой обводкой. Различается знак.</p>
-  ''' + marks_row() + '''
-  <p class="note">Рекомендую <b>ВЕСЬ ЛИСТ</b>. Логотип становится одним
-    цветом и одной формой — это и есть простота, которую вы просите. Серая
-    обводка при этом делает всю работу по читаемости, а зелёный отвечает
-    только за характер.</p>''')
+slide("std", "13", "Знак", '''
+  <h2>У знака и у слова обводка разного цвета</h2>
+  <p class="lede">В этом весь приём. Кольцо серое — база. Стрелка
+    светло-зелёная. Обводка знака <b>светло-зелёная</b>, обводка слова
+    <b>серая</b>. Зелёный обходит знак каймой и заливает слово.</p>
+  <div class="mks mks--two">
+    <figure class="mk"><div>⟦logo/outline/askqet-glyph.svg⟧</div>
+      <figcaption><b>Знак</b><span>серое кольцо, зелёная стрелка,
+        зелёная обводка</span></figcaption></figure>
+    <figure class="mk"><div>⟦logo/outline/word.svg⟧</div>
+      <figcaption><b>Слово</b><span>зелёная заливка, серая
+        обводка</span></figcaption></figure>
+  </div>
+  <p class="note">Одно следствие назову: у стрелки обводка того же цвета,
+    что заливка, — значит своего края к бумаге у неё нет. На светлом фоне
+    она читается мягко. Если нужен чёткий силуэт, стрелке можно оставить
+    серую обводку, как у слова.</p>''')
 
 slide("wide", "14", "Инструмент", '''
   <h2>Как это живёт на странице</h2>
