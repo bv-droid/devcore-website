@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <rect width="128" height="128" fill="#F9F3ED"/>
+  <g transform="translate(0,0) scale(0.5)">
+    <circle cx="60" cy="56" r="34" fill="none" stroke="#D2D0CA" stroke-width="16"/>
+    <path d="M61.335,89.974 A34,34 0 0 1 28.258,68.185" fill="none" stroke="#514F4A" stroke-width="16" stroke-linecap="butt"/>
+  </g>
+  <g transform="translate(64,0) scale(0.5)">
+    <circle cx="60" cy="56" r="34" fill="none" stroke="#D2D0CA" stroke-width="16"/>
+    <path d="M61.335,89.974 A34,34 0 0 1 38.259,29.859" fill="none" stroke="#514F4A" stroke-width="16" stroke-linecap="butt"/>
+  </g>
+  <g transform="translate(0,64) scale(0.5)">
+    <circle cx="60" cy="56" r="34" fill="none" stroke="#D2D0CA" stroke-width="16"/>
+    <path d="M61.335,89.974 A34,34 0 1 1 77.765,27.01" fill="none" stroke="#514F4A" stroke-width="16" stroke-linecap="butt"/>
+  </g>
+  <g transform="translate(64,64) scale(0.5)">
+    <circle cx="60" cy="56" r="34" fill="none" stroke="#D2D0CA" stroke-width="16"/>
+    <path d="M61.335,89.974 A34,34 0 1 1 93.162,63.504" fill="none" stroke="#514F4A" stroke-width="16" stroke-linecap="butt"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/>
+  </g>
+  <path d="M64,2 V126 M2,64 H126" stroke="#E8E5E0" stroke-width="1"/>
+
+</svg>

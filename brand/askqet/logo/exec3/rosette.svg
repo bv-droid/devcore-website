@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10004">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+</defs>
+  <g transform="rotate(0 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g transform="rotate(60 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g transform="rotate(120 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g transform="rotate(180 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+  <g transform="rotate(240 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g transform="rotate(300 64 64) translate(64,10) scale(0.44) translate(-60,-56)"><g><rect width="128" height="128" fill="#84817C" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#84817C"/></g></g>
+
+</svg>

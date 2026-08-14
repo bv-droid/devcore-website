@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+  <circle cx="60" cy="56" r="42" fill="none" stroke="#514F4A" stroke-width="1.1" opacity="1.0"/>
+  <circle cx="60" cy="56" r="26" fill="none" stroke="#514F4A" stroke-width="1.1" opacity="1.0"/>
+  <circle cx="60" cy="56" r="34" fill="none" stroke="#514F4A" stroke-width="0.7" opacity="0.45"/>
+  <path d="M4,56 h112 M60,0 v112" stroke="#514F4A" stroke-width="0.7" opacity="0.45" stroke-dasharray="5 4"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#514F4A" stroke-width="1.4"/>
+  <circle cx="68" cy="68" r="1.7" fill="#514F4A"/>
+  <circle cx="108" cy="68" r="1.7" fill="#514F4A"/>
+  <circle cx="108" cy="108" r="1.7" fill="#514F4A"/>
+  <circle cx="97.192" cy="97.192" r="1.7" fill="#514F4A"/>
+  <circle cx="77.393" cy="116.991" r="1.7" fill="#514F4A"/>
+  <circle cx="59.009" cy="98.607" r="1.7" fill="#514F4A"/>
+  <circle cx="78.808" cy="78.808" r="1.7" fill="#514F4A"/>
+
+</svg>
