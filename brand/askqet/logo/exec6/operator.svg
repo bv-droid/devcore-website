@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10002">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+</defs>
+  <rect x="14" y="24" width="87.08" height="3.4" fill="#84817C"/>
+  <rect x="14" y="36" width="77.743" height="3.4" fill="#84817C"/>
+  <rect x="14" y="48" width="30" height="3.4" fill="#84817C"/>
+  <g transform="translate(47.252,40.041) scale(0.097)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10002)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <rect x="62.739" y="48" width="51.261" height="3.4" fill="#84817C"/>
+  <rect x="14" y="60" width="88.744" height="3.4" fill="#84817C"/>
+  <rect x="14" y="72" width="44.117" height="3.4" fill="#84817C"/>
+
+</svg>

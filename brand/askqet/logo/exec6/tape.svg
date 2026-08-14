@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10012">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <clipPath id="tc6"><rect x="0" y="46" width="128" height="36"/></clipPath>
+  <g id="tp5"><g transform="translate(-5.4,-4.2) scale(0.3)"><g><rect width="128" height="128" fill="#F9F3ED" mask="url(#m10012)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#F9F3ED"/></g></g></g>
+</defs>
+  <rect x="0" y="46" width="128" height="36" fill="#514F4A"/>
+  <g clip-path="url(#tc6)">
+    <use href="#tp5" x="-12" y="49"/>
+    <use href="#tp5" x="23" y="49"/>
+    <use href="#tp5" x="58" y="49"/>
+    <use href="#tp5" x="93" y="49"/>
+    <use href="#tp5" x="128" y="49"/>
+    <use href="#tp5" x="163" y="49"/>
+  </g>
+
+</svg>

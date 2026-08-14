@@ -24,8 +24,15 @@ const rd = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
 
 const SMALL = [46, 26, 16];
 
+// Мелкий ряд имеет смысл там, где карточка — марка. Для системных
+// подходов (знак как контейнер, как сетка, как набор частей) он врёт:
+// в 16 px система не живёт по устройству, а не по слабости приёма.
 const card = it => {
   const src = rd(`${D.folder}/${it.key}.svg`);
+  const small = D.small === false ? '' : `
+  <div class="row">
+    ${SMALL.map(s => `<figure style="--s:${s}px">${src}<figcaption>${s}</figcaption></figure>`).join('')}
+  </div>`;
   return `
 <section class="card">
   <header>
@@ -34,10 +41,7 @@ const card = it => {
     <span class="means">${it.means}</span>
   </header>
   <div class="big">${src}</div>
-  <p class="note">${it.note}</p>
-  <div class="row">
-    ${SMALL.map(s => `<figure style="--s:${s}px">${src}<figcaption>${s}</figcaption></figure>`).join('')}
-  </div>
+  <p class="note">${it.note}</p>${small}
 </section>`;
 };
 

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <clipPath id="wn1"><circle cx="60" cy="56" r="26"/></clipPath>
+</defs>
+  <g clip-path="url(#wn1)">
+  <rect x="39" y="39" width="41.115" height="2.2" fill="#84817C"/>
+  <rect x="39" y="44" width="39.396" height="2.2" fill="#84817C"/>
+  <rect x="39" y="49" width="34.739" height="2.2" fill="#84817C"/>
+  <rect x="39" y="54" width="33.454" height="2.2" fill="#84817C"/>
+  <rect x="39" y="59" width="31.585" height="2.2" fill="#84817C"/>
+  <rect x="39" y="64" width="39.815" height="2.2" fill="#84817C"/>
+  <rect x="39" y="69" width="16.719" height="2.2" fill="#84817C"/>
+  </g>
+  <rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/>
+
+</svg>

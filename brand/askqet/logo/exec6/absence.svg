@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10010">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <mask id="sil3">
+    <rect width="128" height="128" fill="white" mask="url(#m10010)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="white"/>
+  </mask>
+  <mask id="ab4">
+    <rect width="128" height="128" fill="white"/>
+    <rect width="128" height="128" fill="black" mask="url(#sil3)"/>
+  </mask>
+</defs>
+  <g mask="url(#ab4)">
+  <rect x="10" y="10" width="93.568" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="15.6" width="77.818" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="21.2" width="94.467" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="26.8" width="78.716" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="32.4" width="95.365" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="38" width="79.614" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="43.6" width="96.264" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="49.2" width="80.513" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="54.8" width="97.162" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="60.4" width="81.411" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="66" width="98.06" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="71.6" width="82.31" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="77.2" width="98.959" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="82.8" width="83.208" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="88.4" width="99.857" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="94" width="84.106" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="99.6" width="100.756" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="105.2" width="85.005" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="110.8" width="101.654" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="116.4" width="85.903" height="2.6" fill="#514F4A"/>
+  <rect x="10" y="122" width="102.552" height="2.6" fill="#514F4A"/>
+  </g>
+
+</svg>
