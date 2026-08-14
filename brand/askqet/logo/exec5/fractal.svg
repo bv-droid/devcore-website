@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <mask id="sil8">
+    <rect width="128" height="128" fill="white" mask="url(#m10006)"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="white"/>
+  </mask>
+  <defs><mask id="m10007">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <g id="ft9"><g transform="translate(-2.7,-2.1) scale(0.15)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10007)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g></g>
+</defs>
+  <g mask="url(#sil8)">
+    <use href="#ft9" x="0" y="0"/>
+    <use href="#ft9" x="15.6" y="0"/>
+    <use href="#ft9" x="31.2" y="0"/>
+    <use href="#ft9" x="46.8" y="0"/>
+    <use href="#ft9" x="62.4" y="0"/>
+    <use href="#ft9" x="78" y="0"/>
+    <use href="#ft9" x="93.6" y="0"/>
+    <use href="#ft9" x="109.2" y="0"/>
+    <use href="#ft9" x="124.8" y="0"/>
+    <use href="#ft9" x="0" y="17.549"/>
+    <use href="#ft9" x="15.6" y="17.549"/>
+    <use href="#ft9" x="31.2" y="17.549"/>
+    <use href="#ft9" x="46.8" y="17.549"/>
+    <use href="#ft9" x="62.4" y="17.549"/>
+    <use href="#ft9" x="78" y="17.549"/>
+    <use href="#ft9" x="93.6" y="17.549"/>
+    <use href="#ft9" x="109.2" y="17.549"/>
+    <use href="#ft9" x="124.8" y="17.549"/>
+    <use href="#ft9" x="0" y="35.097"/>
+    <use href="#ft9" x="15.6" y="35.097"/>
+    <use href="#ft9" x="31.2" y="35.097"/>
+    <use href="#ft9" x="46.8" y="35.097"/>
+    <use href="#ft9" x="62.4" y="35.097"/>
+    <use href="#ft9" x="78" y="35.097"/>
+    <use href="#ft9" x="93.6" y="35.097"/>
+    <use href="#ft9" x="109.2" y="35.097"/>
+    <use href="#ft9" x="124.8" y="35.097"/>
+    <use href="#ft9" x="0" y="52.646"/>
+    <use href="#ft9" x="15.6" y="52.646"/>
+    <use href="#ft9" x="31.2" y="52.646"/>
+    <use href="#ft9" x="46.8" y="52.646"/>
+    <use href="#ft9" x="62.4" y="52.646"/>
+    <use href="#ft9" x="78" y="52.646"/>
+    <use href="#ft9" x="93.6" y="52.646"/>
+    <use href="#ft9" x="109.2" y="52.646"/>
+    <use href="#ft9" x="124.8" y="52.646"/>
+    <use href="#ft9" x="0" y="70.195"/>
+    <use href="#ft9" x="15.6" y="70.195"/>
+    <use href="#ft9" x="31.2" y="70.195"/>
+    <use href="#ft9" x="46.8" y="70.195"/>
+    <use href="#ft9" x="62.4" y="70.195"/>
+    <use href="#ft9" x="78" y="70.195"/>
+    <use href="#ft9" x="93.6" y="70.195"/>
+    <use href="#ft9" x="109.2" y="70.195"/>
+    <use href="#ft9" x="124.8" y="70.195"/>
+    <use href="#ft9" x="0" y="87.744"/>
+    <use href="#ft9" x="15.6" y="87.744"/>
+    <use href="#ft9" x="31.2" y="87.744"/>
+    <use href="#ft9" x="46.8" y="87.744"/>
+    <use href="#ft9" x="62.4" y="87.744"/>
+    <use href="#ft9" x="78" y="87.744"/>
+    <use href="#ft9" x="93.6" y="87.744"/>
+    <use href="#ft9" x="109.2" y="87.744"/>
+    <use href="#ft9" x="124.8" y="87.744"/>
+    <use href="#ft9" x="0" y="105.292"/>
+    <use href="#ft9" x="15.6" y="105.292"/>
+    <use href="#ft9" x="31.2" y="105.292"/>
+    <use href="#ft9" x="46.8" y="105.292"/>
+    <use href="#ft9" x="62.4" y="105.292"/>
+    <use href="#ft9" x="78" y="105.292"/>
+    <use href="#ft9" x="93.6" y="105.292"/>
+    <use href="#ft9" x="109.2" y="105.292"/>
+    <use href="#ft9" x="124.8" y="105.292"/>
+    <use href="#ft9" x="0" y="122.841"/>
+    <use href="#ft9" x="15.6" y="122.841"/>
+    <use href="#ft9" x="31.2" y="122.841"/>
+    <use href="#ft9" x="46.8" y="122.841"/>
+    <use href="#ft9" x="62.4" y="122.841"/>
+    <use href="#ft9" x="78" y="122.841"/>
+    <use href="#ft9" x="93.6" y="122.841"/>
+    <use href="#ft9" x="109.2" y="122.841"/>
+    <use href="#ft9" x="124.8" y="122.841"/>
+  </g>
+
+</svg>

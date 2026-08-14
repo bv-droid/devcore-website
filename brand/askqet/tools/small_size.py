@@ -56,6 +56,8 @@ SETS = [
                "storyboard", "rosette", "concentric", "moire", "long_shadow"]),
     ("exec4", ["pen", "sketch", "perspective", "weave", "dial",
                "level", "loupe", "refract", "register", "pixel"]),
+    ("exec5", ["rimlight", "reflection", "blur", "wave", "fuse",
+               "overprint", "fractal", "mirror", "crop", "exploded"]),
 ]
 
 TITLES = {
@@ -75,6 +77,10 @@ TITLES = {
     "weave": "ПЛЕТЕНИЕ", "dial": "ШКАЛА", "level": "УРОВЕНЬ",
     "loupe": "ЛУПА", "refract": "ПРЕЛОМЛЕНИЕ", "register": "ПРИВОДКА",
     "pixel": "ПИКСЕЛЬ",
+    "rimlight": "КОНТРОВОЙ СВЕТ", "reflection": "ОТРАЖЕНИЕ", "blur": "СМАЗ",
+    "wave": "ВОЛНА", "fuse": "СЛИЯНИЕ", "overprint": "НАДПЕЧАТКА",
+    "fractal": "ФРАКТАЛ", "mirror": "ЗЕРКАЛО", "crop": "ОБРЕЗ",
+    "exploded": "РАЗНЕСЁННАЯ СХЕМА",
 }
 
 

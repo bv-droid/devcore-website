@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10004">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <filter id="fu7" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="3.4" result="b"/>
+    <feColorMatrix in="b" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 24 -11" result="g"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="g" operator="in"/>
+  </filter>
+</defs>
+  <g filter="url(#fu7)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10004)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+
+</svg>

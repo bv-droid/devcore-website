@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10002">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <linearGradient id="fg4" x1="0" y1="0.577" x2="0" y2="1">
+    <stop offset="0" stop-color="#B4B4B4"/>
+    <stop offset="0.58" stop-color="#000000"/>
+  </linearGradient>
+  <mask id="fm5"><rect width="128" height="128" fill="url(#fg4)"/></mask>
+</defs>
+  <g transform="translate(24.94,1.32) scale(0.62)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10002)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g mask="url(#fm5)"><g transform="translate(0,147.709) scale(1,-1)"><g transform="translate(24.94,1.32) scale(0.62)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10002)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g></g></g>
+  <line x1="8" y1="73.855" x2="120" y2="73.855" stroke="#D2D0CA" stroke-width="0.8"/>
+
+</svg>
