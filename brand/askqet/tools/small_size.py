@@ -54,6 +54,8 @@ SETS = [
                "halftone", "verticals", "grain", "extrusion", "split"]),
     ("exec3", ["wireframe", "punched", "ribbon", "stamp", "watermark",
                "storyboard", "rosette", "concentric", "moire", "long_shadow"]),
+    ("exec4", ["pen", "sketch", "perspective", "weave", "dial",
+               "level", "loupe", "refract", "register", "pixel"]),
 ]
 
 TITLES = {
@@ -69,6 +71,10 @@ TITLES = {
     "stamp": "ШТАМП", "watermark": "ВОДЯНОЙ ЗНАК", "storyboard": "РАСКАДРОВКА",
     "rosette": "РОЗЕТКА", "concentric": "КОНЦЕНТРИКА", "moire": "МУАР",
     "long_shadow": "ДЛИННАЯ ТЕНЬ",
+    "pen": "ПЕРО", "sketch": "НАБРОСОК", "perspective": "ПЕРСПЕКТИВА",
+    "weave": "ПЛЕТЕНИЕ", "dial": "ШКАЛА", "level": "УРОВЕНЬ",
+    "loupe": "ЛУПА", "refract": "ПРЕЛОМЛЕНИЕ", "register": "ПРИВОДКА",
+    "pixel": "ПИКСЕЛЬ",
 }
 
 

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10001">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <filter id="sk1" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.592" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+  <filter id="sk2" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.939" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+  <filter id="sk3" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.374" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+  <filter id="sk4" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.367" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+  <filter id="sk5" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.45" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+  <filter id="sk6" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.284" result="a"/>
+    <feMorphology in="SourceAlpha" operator="dilate" radius="0.01" result="b"/>
+    <feComposite in="a" in2="b" operator="out" result="ring"/>
+    <feFlood flood-color="#514F4A"/>
+    <feComposite in2="ring" operator="in"/>
+  </filter>
+</defs>
+  <g opacity="0.396" transform="translate(-1.647,2.464) rotate(-0.142,60,56)" filter="url(#sk1)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g opacity="0.409" transform="translate(2.374,-0.613) rotate(0.551,60,56)" filter="url(#sk2)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g opacity="0.363" transform="translate(2.462,-0.676) rotate(-1.855,60,56)" filter="url(#sk3)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g opacity="0.315" transform="translate(1.96,0.663) rotate(0.033,60,56)" filter="url(#sk4)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g opacity="0.27" transform="translate(-0.689,1.432) rotate(1.644,60,56)" filter="url(#sk5)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g opacity="0.342" transform="translate(-1.352,-0.835) rotate(1.358,60,56)" filter="url(#sk6)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10001)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+
+</svg>

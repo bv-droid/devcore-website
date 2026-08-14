@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10006">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+  <mask id="rm13"><rect width="128" height="128" fill="white"/><rect x="0" y="60" width="128" height="26" fill="black"/></mask>
+  <clipPath id="rc14"><rect x="0" y="60" width="128" height="26"/></clipPath>
+</defs>
+  <g mask="url(#rm13)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10006)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <g clip-path="url(#rc14)"><g transform="translate(7,73) scale(1,1.14) translate(0,-73)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10006)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g></g>
+  <line x1="0" y1="60" x2="128" y2="60" stroke="#D2D0CA" stroke-width="0.8"/>
+  <line x1="0" y1="86" x2="128" y2="86" stroke="#D2D0CA" stroke-width="0.8"/>
+
+</svg>
