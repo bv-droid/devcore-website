@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet — построение</title>
+  <rect width="128" height="128" fill="#F9F3ED"/>
+  <g opacity="0.5"><path d="M8,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M16,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M24,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M32,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M40,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M48,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M56,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M64,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M72,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M80,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M88,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M96,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M104,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M112,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M120,0 V128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,8 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,16 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,24 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,32 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,40 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,48 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,56 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,64 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,72 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,80 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,88 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,96 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,104 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,112 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/><path d="M0,120 H128" fill="none" stroke="#B9B4AC" stroke-width="0.4"/></g>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="none" stroke="#D2D0CA" stroke-width="9.0" stroke-linejoin="round"/>
+  <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#F9F3ED" stroke="#514F4A" stroke-width="0.5" stroke-linejoin="round"/>
+  <path d="M78.808,78.808 L97.192,97.192" fill="none" stroke="#B9B4AC" stroke-width="0.4" stroke-dasharray="2.4 1.8"/>
+  <text x="99.192" y="100.192" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">ребро граней</text>
+  <path d="M16,30 H42" fill="none" stroke="#514F4A" stroke-width="0.85"/>
+  <path d="M16,37 H42" fill="none" stroke="#514F4A" stroke-width="1.5"/>
+  <text x="44" y="31.2" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">контур 0.85 на свету</text>
+  <text x="44" y="38.2" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">контур 1.5 в тени</text>
+  <path d="M16,48 H42" fill="none" stroke="#514F4A" stroke-width="1.45"/>
+  <path d="M16,49.78 H42" fill="none" stroke="#84817C" stroke-width="1.39345"/>
+  <path d="M16,46.22 H42" fill="none" stroke="#84817C" stroke-width="1.39345"/>
+  <text x="44" y="49.2" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">штрих и вал: смещение 0.58, ширина ×0.96</text>
+  <rect x="3" y="109.2" width="122" height="16.8" fill="#F9F3ED" opacity="0.92"/>
+  <text x="6" y="113.6" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">зазор режется маской: контур стрелки, обводка 9</text>
+  <text x="6" y="118.2" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">штрих стрелки обрезан по контуру, острий нет</text>
+  <text x="6" y="122.8" font-family="ui-monospace,monospace" font-size="3.4" fill="#84817C" font-size="3.4" text-anchor="start">острия 1.5 только на двух свободных концах спирали</text>
+
+</svg>
