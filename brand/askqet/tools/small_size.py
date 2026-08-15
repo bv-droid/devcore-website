@@ -62,6 +62,7 @@ SETS = [
     # своему устройству, мерить её этой линейкой бессмысленно.
     ("exec7", ["stress", "letterpress", "guilloche", "burin", "microtext",
                "hallmark", "corrected", "hairline", "cartouche", "foredge"]),
+    ("engraving", ["along", "across", "cross", "stipple", "white"]),
 ]
 
 TITLES = {
@@ -90,6 +91,8 @@ TITLES = {
     "microtext": "МИКРОТЕКСТ", "hallmark": "КЛЕЙМО",
     "corrected": "КОРРЕКЦИЯ", "hairline": "ВОЛОСЯНАЯ ЛИНИЯ",
     "cartouche": "КАРТУШ", "foredge": "ТОРЕЦ",
+    "along": "ПО ФОРМЕ", "across": "ПОПЕРЁК", "cross": "ПЕРЕКРЁСТНАЯ",
+    "stipple": "ПУНКТИРНАЯ", "white": "БЕЛЫЙ ШТРИХ",
 }
 
 
