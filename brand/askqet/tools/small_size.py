@@ -64,6 +64,7 @@ SETS = [
                "hallmark", "corrected", "hairline", "cartouche", "foredge"]),
     ("engraving", ["along", "across", "cross", "stipple", "white"]),
     ("engraving2", ["spiral", "ondule", "etching", "drypoint", "mezzotint"]),
+    ("spiral-burr", ["even", "dark", "both"]),
 ]
 
 TITLES = {
@@ -96,6 +97,8 @@ TITLES = {
     "stipple": "ПУНКТИРНАЯ", "white": "БЕЛЫЙ ШТРИХ",
     "spiral": "СПИРАЛЬ", "ondule": "ОНДЮЛЕ", "etching": "ОФОРТ",
     "drypoint": "СУХАЯ ИГЛА", "mezzotint": "МЕЦЦО-ТИНТО",
+    "even": "СПИРАЛЬ+ИГЛА РОВНЫЙ", "dark": "СПИРАЛЬ+ИГЛА В ТЕНЯХ",
+    "both": "СПИРАЛЬ+ИГЛА ДВУСТ.",
 }
 
 
