@@ -58,6 +58,10 @@ SETS = [
                "level", "loupe", "refract", "register", "pixel"]),
     ("exec5", ["rimlight", "reflection", "blur", "wave", "fuse",
                "overprint", "fractal", "mirror", "crop", "exploded"]),
+    # Шестой десяток — подходы, а не приёмы: в 16 px система не живёт по
+    # своему устройству, мерить её этой линейкой бессмысленно.
+    ("exec7", ["stress", "letterpress", "guilloche", "burin", "microtext",
+               "hallmark", "corrected", "hairline", "cartouche", "foredge"]),
 ]
 
 TITLES = {
@@ -81,6 +85,11 @@ TITLES = {
     "wave": "ВОЛНА", "fuse": "СЛИЯНИЕ", "overprint": "НАДПЕЧАТКА",
     "fractal": "ФРАКТАЛ", "mirror": "ЗЕРКАЛО", "crop": "ОБРЕЗ",
     "exploded": "РАЗНЕСЁННАЯ СХЕМА",
+    "stress": "КОНТРАСТНАЯ ОСЬ", "letterpress": "ЛЕТТЕРПРЕСС",
+    "guilloche": "ГИЛЬОШ", "burin": "РЕЗЦОВАЯ ГРАВЮРА",
+    "microtext": "МИКРОТЕКСТ", "hallmark": "КЛЕЙМО",
+    "corrected": "КОРРЕКЦИЯ", "hairline": "ВОЛОСЯНАЯ ЛИНИЯ",
+    "cartouche": "КАРТУШ", "foredge": "ТОРЕЦ",
 }
 
 

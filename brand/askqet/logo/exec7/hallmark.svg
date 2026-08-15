@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <title>AskQet</title>
+<defs>
+  <defs><mask id="m10005">
+    <rect width="128" height="128" fill="black"/>
+    <circle cx="60" cy="56" r="42" fill="white"/>
+    <circle cx="60" cy="56" r="26" fill="black"/>
+    <path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="black" stroke="black" stroke-width="9" stroke-linejoin="round" stroke-miterlimit="8"/>
+  </mask></defs>
+</defs>
+  <path d="M17.5,56.5 Q17.5,53.5 20.5,53.5 L31.5,53.5 Q34.5,53.5 34.5,56.5 L34.5,71.5 Q34.5,74.5 31.5,74.5 L20.5,74.5 Q17.5,74.5 17.5,71.5 Z" fill="none" stroke="#514F4A" stroke-width="1.1"/>
+  <path d="M43.5,53.5 L60.5,53.5 L60.5,67.15 Q52,77.125 43.5,67.15 Z" fill="none" stroke="#514F4A" stroke-width="1.1"/>
+  <path d="M78,53.5 L86.5,64 L78,74.5 L69.5,64 Z" fill="none" stroke="#514F4A" stroke-width="1.1"/>
+  <path d="M99.07,53.5 L108.93,53.5 L112.5,57.07 L112.5,70.93 L108.93,74.5 L99.07,74.5 L95.5,70.93 L95.5,57.07 Z" fill="none" stroke="#514F4A" stroke-width="1.1"/>
+  <g transform="translate(18.66,56.369) scale(0.117)"><g><rect width="128" height="128" fill="#514F4A" mask="url(#m10005)"/><path d="M68,68 L108,68 L108,108 L97.192,97.192 L77.393,116.991 L59.009,98.607 L78.808,78.808 Z" fill="#514F4A"/></g></g>
+  <circle cx="52" cy="60" r="2.4" fill="#514F4A"/>
+  <rect x="48" y="66" width="8" height="2.2" fill="#514F4A"/>
+  <rect x="73.5" y="59.1" width="9" height="1.8" fill="#514F4A"/>
+  <rect x="73.5" y="63.1" width="9" height="1.8" fill="#514F4A"/>
+  <rect x="73.5" y="67.1" width="9" height="1.8" fill="#514F4A"/>
+  <circle cx="104" cy="64" r="5.2" fill="none" stroke="#514F4A" stroke-width="2.4"/>
+  <line x1="14" y1="82" x2="114" y2="82" stroke="#D2D0CA" stroke-width="0.6"/>
+
+</svg>
