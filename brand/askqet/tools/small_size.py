@@ -63,6 +63,7 @@ SETS = [
     ("exec7", ["stress", "letterpress", "guilloche", "burin", "microtext",
                "hallmark", "corrected", "hairline", "cartouche", "foredge"]),
     ("engraving", ["along", "across", "cross", "stipple", "white"]),
+    ("engraving2", ["spiral", "ondule", "etching", "drypoint", "mezzotint"]),
 ]
 
 TITLES = {
@@ -93,6 +94,8 @@ TITLES = {
     "cartouche": "КАРТУШ", "foredge": "ТОРЕЦ",
     "along": "ПО ФОРМЕ", "across": "ПОПЕРЁК", "cross": "ПЕРЕКРЁСТНАЯ",
     "stipple": "ПУНКТИРНАЯ", "white": "БЕЛЫЙ ШТРИХ",
+    "spiral": "СПИРАЛЬ", "ondule": "ОНДЮЛЕ", "etching": "ОФОРТ",
+    "drypoint": "СУХАЯ ИГЛА", "mezzotint": "МЕЦЦО-ТИНТО",
 }
 
 

@@ -166,7 +166,8 @@ def ribbon(pts, ws):
     return poly(left + right[::-1])
 
 
-def strokes(pts, inside, invert=False, only_dark=None, scale=1.0):
+def strokes(pts, inside, invert=False, only_dark=None, scale=1.0,
+            const=None):
     """Осевая линия → набор штрихов внутри фигуры, с остриями на концах."""
     out = []
     for run in runs(pts, inside):
@@ -175,7 +176,10 @@ def strokes(pts, inside, invert=False, only_dark=None, scale=1.0):
         ws = []
         for p, s_ in zip(seg, acc):
             b = bright(p)
-            t = thickness(1.0 - b) if invert else thickness(b)
+            if const is not None:
+                t = const
+            else:
+                t = thickness(1.0 - b) if invert else thickness(b)
             if only_dark is not None and b > only_dark:
                 t = 0.0
             ws.append(t * taper_at(s_, acc[-1]) * scale)
