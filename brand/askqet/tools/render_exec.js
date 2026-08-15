@@ -59,7 +59,7 @@ const html = `
   .means { margin-left: auto; font-size: 12px; color: ${D.muted};
            letter-spacing: .04em }
   .big { display: flex; justify-content: center; padding: 14px 0 6px }
-  .big svg { width: ${D.big || 258}px; height: ${D.big || 258}px; display: block }
+  .big svg { width: ${D.big || 258}px; height: auto; display: block }
   .note { font-size: 13.5px; color: ${D.muted}; min-height: 62px }
   .row { display: flex; align-items: flex-end; gap: 26px; margin-top: 12px;
          border-top: 1px solid ${D.line}; padding-top: 14px }

@@ -129,17 +129,23 @@ def gap_mask():
                  f'stroke-linejoin="round"/>\n  </mask>\n')
 
 
-def field(clean, fade):
-    """Витки спирали и вал вдоль них: нажим в полосе, волосок в поле."""
+def field(clean, fade, hair=None):
+    """Витки спирали и вал вдоль них: нажим в полосе, волосок в поле.
+
+    hair — толщина волоска в поле. Ноль убирает поле совсем: в локапе
+    рядом со словом диск из волосков задаёт оптический размер логотипа
+    вместо самого знака, и это решается отдельно.
+    """
     pts = spiral_points()
     inside = in_band if clean else in_ring
+    hair = SP_OUT if hair is None else hair
 
     def w_of(p):
         if inside(p):
             return thickness(bright(p))
         if not clean and near_arrow(p):
             return 0.0
-        return SP_OUT * (fade_at(p) if fade else 1.0)
+        return hair * (fade_at(p) if fade else 1.0)
 
     burr = []
     for d in (BURR_SHIFT, -BURR_SHIFT):
@@ -150,7 +156,7 @@ def field(clean, fade):
     return burr, ribbons(pts, [w_of(p) for p in pts], clean)
 
 
-def build(clean=False, fade=False, light=False):
+def build(clean=False, fade=False, light=False, hair=None):
     saved = E.B_MAX
     if light:
         E.B_MAX = B_MAX_TIGHT
@@ -158,7 +164,7 @@ def build(clean=False, fade=False, light=False):
         cid = _id("ar")
         defs = (f'  <clipPath id="{cid}">'
                 f'<path d="{V10.arrow_path(V)}"/></clipPath>\n')
-        rb, rl = field(clean, fade)
+        rb, rl = field(clean, fade, hair)
         ring = draw(rb, MUTED) + "\n" + draw(rl) + "\n"
         if clean:
             mid, mdefs = gap_mask()
