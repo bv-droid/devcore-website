@@ -66,6 +66,7 @@ SETS = [
     ("engraving2", ["spiral", "ondule", "etching", "drypoint", "mezzotint"]),
     ("spiral-burr", ["even", "dark", "both"]),
     ("spiral-arrow", ["solid", "engraved", "burr"]),
+    ("spiral-unified", ["one", "along", "across"]),
 ]
 
 TITLES = {
@@ -102,7 +103,21 @@ TITLES = {
     "both": "СПИРАЛЬ+ИГЛА ДВУСТ.",
     "solid": "СТРЕЛКА СПЛОШНАЯ", "engraved": "СТРЕЛКА ГРАВИРОВАННАЯ",
     "burr": "СТРЕЛКА С ВАЛОМ",
+    "one": "ЕДИНЫЙ ХОД",
 }
+
+# Имена файлов повторяются в разных папках: along и across есть и у школ
+# штриха, и у ходов стрелки. Пока опись была плоской, вторая пара молча
+# затирала первую в словаре — измерялись одни и те же файлы дважды, а
+# два исполнения не измерялись вовсе. Отсюда составной ключ.
+OVERRIDE = {
+    "spiral-unified/along": "СВОЙ ХОД",
+    "spiral-unified/across": "ПОПЕРЁК ХОДА",
+}
+
+
+def title_of(folder, key):
+    return OVERRIDE.get(f"{folder}/{key}", TITLES[key])
 
 
 def reference():
@@ -205,7 +220,8 @@ def build():
     files = {"_plain": os.path.join(ROOT, reference())}
     for folder, keys in SETS:
         for k in keys:
-            files[k] = os.path.join(ROOT, f"logo/{folder}/{k}.svg")
+            files[f"{folder}/{k}"] = os.path.join(
+                ROOT, f"logo/{folder}/{k}.svg")
     tmp = os.environ.get("TMPDIR", "/tmp")
     px = shoot(files, SIZE, tmp)
     ref = px["_plain"]
@@ -217,13 +233,13 @@ def build():
     rows = []
     for folder, keys in SETS:
         for k in keys:
-            cur = px[k]
+            cur = px[f"{folder}/{k}"]
             diff = sum(abs(a - b) for a, b in zip(cur, ref)) / len(ref) / span
             ia = [max(0.0, max(ref) - v) for v in cur]
             ib = [max(0.0, max(ref) - v) for v in ref]
             ink = sum(ia) / span
             both = sum(min(a, b) for a, b in zip(ia, ib))
-            rows.append(dict(key=k, title=TITLES[k], set=folder,
+            rows.append(dict(key=k, title=title_of(folder, k), set=folder,
                              diff=diff, density=ink / ref_ink,
                              hit=both / max(sum(ia), 1e-9),
                              cover=both / sum(ib),
