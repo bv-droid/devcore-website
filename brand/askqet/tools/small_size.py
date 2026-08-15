@@ -65,6 +65,7 @@ SETS = [
     ("engraving", ["along", "across", "cross", "stipple", "white"]),
     ("engraving2", ["spiral", "ondule", "etching", "drypoint", "mezzotint"]),
     ("spiral-burr", ["even", "dark", "both"]),
+    ("spiral-arrow", ["solid", "engraved", "burr"]),
 ]
 
 TITLES = {
@@ -99,6 +100,8 @@ TITLES = {
     "drypoint": "СУХАЯ ИГЛА", "mezzotint": "МЕЦЦО-ТИНТО",
     "even": "СПИРАЛЬ+ИГЛА РОВНЫЙ", "dark": "СПИРАЛЬ+ИГЛА В ТЕНЯХ",
     "both": "СПИРАЛЬ+ИГЛА ДВУСТ.",
+    "solid": "СТРЕЛКА СПЛОШНАЯ", "engraved": "СТРЕЛКА ГРАВИРОВАННАЯ",
+    "burr": "СТРЕЛКА С ВАЛОМ",
 }
 
 
