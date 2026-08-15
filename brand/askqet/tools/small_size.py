@@ -69,6 +69,7 @@ SETS = [
     ("spiral-unified", ["one", "along", "across"]),
     ("spiral-final", ["v0", "v1", "v2", "v3"]),
     ("spiral-up", ["axis", "steep", "vertical"]),
+    ("spiral-axis", ["w0", "w1", "w2", "w3"]),
 ]
 
 TITLES = {
@@ -110,6 +111,8 @@ TITLES = {
     "v3": "ДОВОДКА ИТОГ",
     "axis": "ВВЕРХ ПО ОСИ", "steep": "ВВЕРХ КРУТО",
     "vertical": "ВВЕРХ ВЕРТИКАЛЬ",
+    "w0": "ОСЬ w0", "w1": "ОСЬ + РЕЗ", "w2": "ОСЬ + ПОЛЕ",
+    "w3": "ОСЬ ИТОГ",
 }
 
 # Имена файлов повторяются в разных папках: along и across есть и у школ
