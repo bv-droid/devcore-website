@@ -515,12 +515,12 @@ def shape(ch, sp):
                 box[0] = min(box[0], hit[0] - sll)
                 box[2] = max(box[2], hit[0] + slr)
     wedges = traps(strokes, st, sp["trap"]) if sp["trap"] > 0.0 else []
-    return rings, serifs, wedges, box
+    return rings, serifs, wedges, box, strokes
 
 
 def glyph(ch, sp, color="currentColor"):
     """(тело, левый апрош, ширина габарита, правый апрош)."""
-    rings, serifs, wedges, box = shape(ch, sp)
+    rings, serifs, wedges, box, _ = shape(ch, sp)
     dx = -box[0]
     out = []
     for g in rings:
@@ -547,6 +547,62 @@ def glyph(ch, sp, color="currentColor"):
         body = f'<g transform="matrix(1,0,{n(-k)},1,0,0)">{body}</g>'
     lsb, rsb = V.SIDE[ch]
     return body, lsb * sp["wd"], box[2] - box[0], rsb * sp["wd"]
+
+
+def line_strokes(word, sp, track=0.0):
+    """Осевые всей строки в координатах строки — для расчёта зазоров.
+
+    Нужно там, где строки ставят вплотную и надо знать, где именно они
+    сталкиваются. Наклон сюда не входит: он накладывается преобразованием
+    поверх готового контура, а зазоры считаются по прямому начертанию.
+
+    Концы прутков ОБРЕЗАЮТСЯ по своим же полуплоскостям. Осевая длиннее
+    буквы: чтобы срез вышел горизонтальным, конец продлевают на полтора
+    штриха и потом режут контур. Если отдать осевую как есть, у каждой
+    стойки окажется восемнадцать единиц несуществующей краски снизу и
+    сверху — и любой расчёт зазора между строками превратится в кашу.
+    """
+    out, x = [], 0.0
+    for i, ch in enumerate(word):
+        _, _, _, box, strokes = shape(ch, sp)
+        lsb, rsb = V.SIDE[ch][0] * sp["wd"], V.SIDE[ch][1] * sp["wd"]
+        if i:
+            x += V.KERN.get(word[i - 1] + ch, 0.0) * sp["wd"] + track
+        ox = x + lsb - box[0]
+        for s in strokes:
+            keep = [i for i, p in enumerate(s["pts"])
+                    if all((p[0] - cx) * nx + (p[1] - cy) * ny >= 0.0
+                           for cx, cy, nx, ny in s["cuts"])]
+            if not keep:
+                continue
+            out.append(dict(pts=[(s["pts"][i][0] + ox, s["pts"][i][1])
+                                 for i in keep],
+                            ws=[s["ws"][i] for i in keep]))
+        x += lsb + (box[2] - box[0]) + rsb
+    return out
+
+
+def line_rings(word, sp, track=0.0):
+    """Готовые контуры всей строки в координатах строки.
+
+    Для зазоров между строками этого мало — считать надо по КОНТУРУ, а не
+    по осевой. Осевая с полушириной моделирует конец прутка круглой
+    шапкой, а он срезан плоско: у стойки на базовой такая модель находит
+    шесть единиц краски, которых нет, и любой плотный набор выглядит
+    столкновением. Контур уже обрезан по срезам и врать не может.
+    """
+    out, x = [], 0.0
+    for i, ch in enumerate(word):
+        rings, _, _, box, _ = shape(ch, sp)
+        lsb, rsb = V.SIDE[ch][0] * sp["wd"], V.SIDE[ch][1] * sp["wd"]
+        if i:
+            x += V.KERN.get(word[i - 1] + ch, 0.0) * sp["wd"] + track
+        ox = x + lsb - box[0]
+        for g in rings:
+            for r in g:
+                out.append([(p[0] + ox, p[1]) for p in r])
+        x += lsb + (box[2] - box[0]) + rsb
+    return out
 
 
 def line(word, sp, track=0.0, color="currentColor"):
