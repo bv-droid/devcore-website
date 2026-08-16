@@ -86,7 +86,8 @@ def metrics(st):
 def style(**kw):
     """Начертание — шесть чисел поверх скелета."""
     s = dict(st=12.0, wd=1.0, slant=0.0, contrast=0.0, stress=0.0,
-             serif=0.0, trap=0.0, tail=0.0, drop=0.0, ribbon=1.0, bias=0.0)
+             serif=0.0, trap=0.0, tail=0.0, drop=0.0, ribbon=1.0, bias=0.0,
+             cut="notch")
     s.update(kw)
     return s
 
@@ -502,10 +503,41 @@ def tail_notch(strokes, m, sp):
             v = m["st"] * sp["tail"]
             b = m["st"] * sp["bias"]
             out = m["st"] * 0.25
-            return ("M" + " L".join(f"{n(a)},{n(bb)}" for a, bb in (
-                (xc + b, py - v), (xc + hw + out, py + out),
-                (xc - hw - out, py + out))) + " Z")
+            return notch_path(sp.get("cut", "notch"), xc, hw, py, v, b, out,
+                              m["st"])
     return None
+
+
+def notch_path(kind, xc, hw, py, v, b, out, st):
+    """Чем именно обрезан конец ляссе.
+
+    Все шесть — срезы самой буквы на одной и той же линии py, глубиной v,
+    и все выходят за кромку на out: иначе на срезе остаётся волосок краски.
+    Разное здесь только одно — как лента обрезана, и это ровно тот выбор,
+    который делают, когда ленту действительно режут.
+    """
+    l, r = xc - hw - out, xc + hw + out
+    lo, hi = py + out, py - v
+
+    def poly(*pts):
+        return "M" + " L".join(f"{n(a)},{n(bb)}" for a, bb in pts) + " Z"
+
+    if kind == "notch":                       # ласточкин хвост, вершиной вверх
+        return poly((xc + b, hi), (r, lo), (l, lo))
+    if kind == "point":                       # острый конец: срезаны углы
+        return poly((l, hi), (xc + b, py), (r, hi), (r, lo), (l, lo))
+    if kind == "slant":                       # один косой срез наискось
+        return poly((l, hi), (r, py), (r, lo), (l, lo))
+    if kind == "step":                        # прямая ступень, в угол уголков
+        return poly((l, hi), (xc, hi), (xc, lo), (l, lo))
+    if kind == "split":                       # прорез вдоль: две ленты
+        w = st * 0.34
+        return poly((xc - w / 2, py - v * 1.7), (xc + w / 2, py - v * 1.7),
+                    (xc + w / 2, lo), (xc - w / 2, lo))
+    if kind == "fold":                        # поперечный прорез: перегиб
+        w = st * 0.3
+        return poly((l, py - v), (r, py - v), (r, py - v + w), (l, py - v + w))
+    raise ValueError(kind)
 
 
 def shape(ch, sp):

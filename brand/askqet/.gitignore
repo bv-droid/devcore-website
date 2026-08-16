@@ -3,3 +3,5 @@ __pycache__/
 
 # черновики замера: рендер-вход, который пишут hanging.py и другие
 logo/**/_m-*.svg
+logo/**/_i-*.svg
+logo/**/_g-*.svg
