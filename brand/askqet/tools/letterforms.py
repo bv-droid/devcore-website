@@ -22,6 +22,10 @@ AskQet — начертания: один скелет, семейство ст�
     contrast  утоньшение поперечин      контраст, ось стресса
     serif     брусковая подсечка        Кларендон
     trap      вырез в пазухах           чернильная ловушка
+    tail      вырез на конце хвоста q   ляссе
+    drop      удлинение хвоста q        ляссе
+    ribbon    расширение хвоста q       ляссе
+    bias      перекос выреза            косой срез ленты
 
 Ни одно из шести не выдумано под эффект, каждое — ось настоящего
 шрифтового семейства.
@@ -82,7 +86,7 @@ def metrics(st):
 def style(**kw):
     """Начертание — шесть чисел поверх скелета."""
     s = dict(st=12.0, wd=1.0, slant=0.0, contrast=0.0, stress=0.0,
-             serif=0.0, trap=0.0)
+             serif=0.0, trap=0.0, tail=0.0, drop=0.0, ribbon=1.0, bias=0.0)
     s.update(kw)
     return s
 
@@ -473,9 +477,42 @@ def _wedge(M, u, reach, st, amount):
 
 # ── Буква целиком ────────────────────────────────────────────────────────────
 
+def tail_notch(strokes, m, sp):
+    """Вырез ляссе на конце хвоста q.
+
+    Хвост — единственная деталь логотипа, которая свисает под строку, и
+    единственная, у которой конец свободен: у всех прочих терминалов рядом
+    есть либо базовая, либо другая буква. Поэтому ляссе можно сделать
+    только здесь — и это не украшение поверх буквы, а её собственный срез.
+
+    Вырез строится маской, тем же способом, что и чернильная ловушка:
+    треугольник вершиной вверх, основанием ниже линии среза, чтобы кромка
+    гарантированно разрезалась, а не оставляла волосок.
+    """
+    for s in strokes:
+        for px, py, nx, ny in s["cuts"]:
+            if abs(nx) > 0.02 or ny > 0:
+                continue
+            if abs(py - m["desc"]) > 0.5:
+                continue
+            hit = cross_x(s["pts"], s["ws"], py, s["closed"])
+            if not hit:
+                continue
+            xc, hw = hit
+            v = m["st"] * sp["tail"]
+            b = m["st"] * sp["bias"]
+            out = m["st"] * 0.25
+            return ("M" + " L".join(f"{n(a)},{n(bb)}" for a, bb in (
+                (xc + b, py - v), (xc + hw + out, py + out),
+                (xc - hw - out, py + out))) + " Z")
+    return None
+
+
 def shape(ch, sp):
     """Контуры буквы, вырезы под маску и габарит — в координатах шрифта."""
     m = metrics(sp["st"])
+    if ch == "q" and sp.get("drop"):
+        m["desc"] += sp["drop"]
     st = m["st"]
     strokes = skeleton(ch, m)
     auto_cuts(strokes, m)
@@ -486,6 +523,14 @@ def shape(ch, sp):
         s["cuts"] = [(px * wd, py, nx / wd, ny) for px, py, nx, ny in s["cuts"]]
         s["ws"] = widths(s["pts"], st * s["wf"], s["closed"],
                          sp["contrast"], sp["stress"])
+        if ch == "q" and sp.get("ribbon", 1.0) != 1.0:
+            # Лента расширяется ТОЛЬКО ниже базовой и плавно: скачок
+            # толщины на базовой читался бы как обрыв штриха.
+            k = sp["ribbon"]
+            for i, (px, py) in enumerate(s["pts"]):
+                if py > 0.0:
+                    t = min(1.0, py / max(m["desc"], 1e-6))
+                    s["ws"][i] *= 1.0 + (k - 1.0) * t
         r = ribbon(s["pts"], s["ws"], s["closed"])
         for P in s["cuts"]:
             N = (P[2], P[3])
@@ -515,6 +560,10 @@ def shape(ch, sp):
                 box[0] = min(box[0], hit[0] - sll)
                 box[2] = max(box[2], hit[0] + slr)
     wedges = traps(strokes, st, sp["trap"]) if sp["trap"] > 0.0 else []
+    if ch == "q" and sp.get("tail"):
+        cut = tail_notch(strokes, m, sp)
+        if cut:
+            wedges = wedges + [cut]
     return rings, serifs, wedges, box, strokes
 
 
