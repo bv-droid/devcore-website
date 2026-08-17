@@ -134,5 +134,9 @@
    "own": 0.0859375,
    "gap": 0.0
   }
+ },
+ "chosen": {
+  "clamp": "diag",
+  "lasse": "notch"
  }
 }

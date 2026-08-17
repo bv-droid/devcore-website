@@ -78,6 +78,13 @@ import letterforms as L  # noqa: E402
 import hanging as H  # noqa: E402
 from verify import (ASC, XH, DESC, ST, LEAD, ARM, TAIL, inner,  # noqa: E402
                     blanks)
+from color import ACCENTS, scheme, parts, icon_parts  # noqa: E402
+
+# Выбор заказчика по обоим листам: уголки — ДИАГОНАЛЬ, ляссе — ЛАСТОЧКИН
+# ХВОСТ. Оба совпали с принятым раньше, и это не «ничего не изменилось»:
+# до этого листа они стояли по умолчанию, а теперь — после перебора
+# тринадцати вариантов, с названной ценой каждого отвергнутого.
+CHOSEN = dict(clamp="diag", lasse="notch")
 
 PAD = 26.0
 THICK = ST * 1.20              # принятая толщина уголка
@@ -448,9 +455,27 @@ if __name__ == "__main__":
                  f"{d['form']:.2f}, отличие от пустышки {d['blank']:.2f}"
                  f"{same}."))
 
+    # Закрывающая карточка: обе детали в принятом виде и в принятом цвете.
+    # Литера и логотип рядом — это и есть знак целиком.
+    acc = dict((k, v) for k, _, v, _ in ACCENTS)["berlin"]
+    C = scheme(acc, "tail")
+    write("logo/pair/z-final.svg",
+          pane([icon_parts(ind, C), parts(ind, C)]))
+    d, g = ml[CHOSEN["lasse"]], mc[CHOSEN["clamp"]]
+    items.append(dict(
+        key="z-final", num=f"{len(items) + 1:02d}", title="ПРИНЯТО",
+        means="диагональ и ласточкин хвост",
+        note=f"Обе детали остались прежними — но теперь они выбраны, а не "
+             f"стоят по умолчанию: против них было тринадцать вариантов, и "
+             f"у каждого отвергнутого названа цена. Уголки диагональные, "
+             f"зазор до букв {g['gap']:.1f} единиц, форма {g['form']:.2f}. "
+             f"Ляссе ласточкиным хвостом, снимает {d['area']:.0f} единиц² "
+             f"краски. Акцент на ленте, берлинская лазурь {acc}."))
+
     with open(os.path.join(ROOT, "tools/pair.json"), "w",
               encoding="utf-8") as f:
-        json.dump(dict(lasse=ml, clamp=mc), f, ensure_ascii=False, indent=1)
+        json.dump(dict(lasse=ml, clamp=mc, chosen=CHOSEN),
+                  f, ensure_ascii=False, indent=1)
     with open(os.path.join(ROOT, "tools/pair_sheet.json"), "w",
               encoding="utf-8") as f:
         json.dump(dict(folder="logo/pair", paper=PAPER, ink=INK, muted=MUTED,
@@ -496,3 +521,9 @@ if __name__ == "__main__":
           f"единиц²) и живёт до {ml['notch']['alive']} px — он и остаётся "
           f"сильнейшим. Прорез и перегиб умирают на "
           f"{ml['fold']['alive']} px, то есть в аватаре их нет вовсе.")
+
+    print(f"\nПРИНЯТО: уголки — {dict((k, t) for k, t, _, _ in CLAMPS)[CHOSEN['clamp']]}, "
+          f"ляссе — {dict((k, t) for k, t, _, _, _ in LASSE)[CHOSEN['lasse']]}.\n"
+          f"Обе детали прежние, но выбраны против тринадцати вариантов, а "
+          f"не оставлены по умолчанию.\nЗнак закрыт: набор, ляссе, уголки, "
+          f"цвет. Дальше — рабочие файлы и алфавит.")
