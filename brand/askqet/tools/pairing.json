@@ -304,6 +304,63 @@
    }
   },
   {
+   "name": "NimbusSans-Regular",
+   "fit": {
+    "x_em": {
+     "value": 0.516,
+     "off": -0.08707692307692298,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0775193798449612,
+     "off": -0.1184209721183041,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.4127906976744187,
+     "off": 0.0203488372093024,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "tabular": true,
+   "missing": {}
+  },
+  {
+   "name": "Sora-Regular",
+   "fit": {
+    "x_em": {
+     "value": 0.4238095238095238,
+     "off": -0.2501831501831501,
+     "ok": false
+    },
+    "o_x": {
+     "value": 1.2659176029962547,
+     "off": 0.035718178904904134,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.8164794007490637,
+     "off": 0.31190178942987934,
+     "ok": false
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһі",
+    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+   }
+  },
+  {
    "name": "fonts-japanese-gothic",
    "fit": {
     "x_em": {
