@@ -1,0 +1,90 @@
+{
+ "lite": "#366DBE",
+ "dark": "#5A92E7",
+ "tint": "#E0ECFF",
+ "deep": "#366DBE",
+ "photo": "#CFC7BB",
+ "stats": {
+  "main": {
+   "word": 7.4289125453726115,
+   "corner": 7.4289125453726115,
+   "tail": 4.6653046871076835,
+   "min": 4.6653046871076835,
+   "ok": true,
+   "tail_seen": true,
+   "one_ink": false
+  },
+  "dark": {
+   "word": 13.033802763410849,
+   "corner": 13.033802763410849,
+   "tail": 4.579132582708244,
+   "min": 4.579132582708244,
+   "ok": true,
+   "tail_seen": true,
+   "one_ink": false
+  },
+  "one": {
+   "word": 7.4289125453726115,
+   "corner": 7.4289125453726115,
+   "tail": 7.4289125453726115,
+   "min": 7.4289125453726115,
+   "ok": true,
+   "tail_seen": false,
+   "one_ink": true
+  },
+  "accent": {
+   "word": 4.6653046871076835,
+   "corner": 4.6653046871076835,
+   "tail": 4.6653046871076835,
+   "min": 4.6653046871076835,
+   "ok": true,
+   "tail_seen": false,
+   "one_ink": true
+  },
+  "knock": {
+   "word": 13.033802763410849,
+   "corner": 13.033802763410849,
+   "tail": 13.033802763410849,
+   "min": 13.033802763410849,
+   "ok": true,
+   "tail_seen": false,
+   "one_ink": true
+  },
+  "plate": {
+   "word": 4.6653046871076835,
+   "corner": 4.6653046871076835,
+   "tail": 4.6653046871076835,
+   "min": 4.6653046871076835,
+   "ok": true,
+   "tail_seen": false,
+   "one_ink": true
+  },
+  "tint": {
+   "word": 6.860408842579025,
+   "corner": 6.860408842579025,
+   "tail": 4.308288371047664,
+   "min": 4.308288371047664,
+   "ok": true,
+   "tail_seen": true,
+   "one_ink": false
+  },
+  "duo": {
+   "word": 7.4289125453726115,
+   "corner": 4.6653046871076835,
+   "tail": 4.6653046871076835,
+   "min": 4.6653046871076835,
+   "ok": true,
+   "tail_seen": true,
+   "one_ink": false
+  },
+  "photo": {
+   "word": 3.050993690639024,
+   "corner": 3.050993690639024,
+   "tail": 3.050993690639024,
+   "min": 3.050993690639024,
+   "ok": true,
+   "tail_seen": false,
+   "one_ink": true
+  }
+ }
+}
