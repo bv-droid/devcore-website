@@ -87,7 +87,7 @@ def style(**kw):
     """Начертание — шесть чисел поверх скелета."""
     s = dict(st=12.0, wd=1.0, slant=0.0, contrast=0.0, stress=0.0,
              serif=0.0, trap=0.0, tail=0.0, drop=0.0, ribbon=1.0, bias=0.0,
-             cut="notch")
+             cut="notch", spine=False)
     s.update(kw)
     return s
 
@@ -508,7 +508,11 @@ def tail_notch(strokes, m, sp):
             if not hit:
                 continue
             xc, hw = hit
-            v = m["st"] * sp["tail"]
+            # Глубина выреза берётся от ФАКТИЧЕСКОЙ ширины ленты, а не от
+            # штриха: так у ласточкина хвоста один и тот же угол, насколько
+            # бы лента ни расширилась книзу. При ribbon=1.0 полуширина
+            # равна половине штриха, и число выходит прежнее — 1.1 штриха.
+            v = 2.0 * hw * sp["tail"]
             b = m["st"] * sp["bias"]
             out = m["st"] * 0.25
             return notch_path(sp.get("cut", "notch"), xc, hw, py, v, b, out,
@@ -548,36 +552,72 @@ def notch_path(kind, xc, hw, py, v, b, out, st):
     raise ValueError(kind)
 
 
+# Ляссе как правило шрифта, а не деталь буквы q.
+#
+# Довод взят у D&AD 2025: там спрашивали, несёт ли марку сам шрифт, когда
+# логотипа рядом нет. У нас ответа не было — ляссе жило на одной букве.
+#
+# Первая попытка ответить была неверной и её надо назвать: я ставил
+# насечку на КАЖДЫЙ свободный терминал. Отрисовал, посмотрел — набор
+# читается не как рисунок, а как повреждение: у h, n, a плоские верхушки
+# оказались выщерблены без всякой причины. Насечка — конец ЛЕНТЫ, а лента
+# бывает только там, где штрих свисает под строку и его конец свободен.
+#
+# Значит правило не «на всех терминалах», а «на всех выносных вниз».
+# Искать их не надо: tail_notch сам берёт только тот срез, который стоит
+# ровно на глубине свеса и смотрит вниз. У букв без свеса он не найдёт
+# ничего и вернёт None. Ось spine просто снимает запрет «только q».
+SPINE = "буквы со свесом получают ленту, а не одна q"
+
+
 def shape(ch, sp):
     """Контуры буквы, вырезы под маску и габарит — в координатах шрифта."""
     m = metrics(sp["st"])
-    if ch == "q" and sp.get("drop"):
+    ribbed = ch == "q" or sp.get("spine")
+    if ribbed and sp.get("drop"):
         m["desc"] += sp["drop"]
     st = m["st"]
     strokes = skeleton(ch, m)
     auto_cuts(strokes, m)
     wd = sp["wd"]
-    rings, serifs = [], []
+    rings, serifs, metric = [], [], []
     for s in strokes:
         s["pts"] = [(x * wd, y) for x, y in s["pts"]]
         s["cuts"] = [(px * wd, py, nx / wd, ny) for px, py, nx, ny in s["cuts"]]
         s["ws"] = widths(s["pts"], st * s["wf"], s["closed"],
                          sp["contrast"], sp["stress"])
-        if ch == "q" and sp.get("ribbon", 1.0) != 1.0:
+        plain = list(s["ws"])
+        if ribbed and sp.get("ribbon", 1.0) != 1.0:
             # Лента расширяется ТОЛЬКО ниже базовой и плавно: скачок
             # толщины на базовой читался бы как обрыв штриха.
+            #
+            # Разгон — ровно один штрих, а не весь свес. Сначала лента
+            # расширялась до самого низа, и на длинном свесе выходил не
+            # ляссе, а КИНЖАЛ: сплошной клин от базовой до острия. Ляссе
+            # параллельно само себе. Один штрих — наименьшее расстояние,
+            # на котором толщина меняется, не читаясь обрывом.
             k = sp["ribbon"]
             for i, (px, py) in enumerate(s["pts"]):
                 if py > 0.0:
-                    t = min(1.0, py / max(m["desc"], 1e-6))
+                    t = min(1.0, py / max(st, 1e-6))
                     s["ws"][i] *= 1.0 + (k - 1.0) * t
-        r = ribbon(s["pts"], s["ws"], s["closed"])
-        for P in s["cuts"]:
-            N = (P[2], P[3])
-            L = math.hypot(*N) or 1.0
-            r = [clip_half(x, (P[0], P[1]), (N[0] / L, N[1] / L)) for x in r]
-        rings.append([x for x in r if len(x) > 2])
-    xs = [p[0] for g in rings for r in g for p in r]
+        def cut_all(ws):
+            r = ribbon(s["pts"], ws, s["closed"])
+            for P in s["cuts"]:
+                N = (P[2], P[3])
+                Lp = math.hypot(*N) or 1.0
+                r = [clip_half(x, (P[0], P[1]), (N[0] / Lp, N[1] / Lp))
+                     for x in r]
+            return [x for x in r if len(x) > 2]
+
+        rings.append(cut_all(s["ws"]))
+        # Ширина буквы считается по НЕрасширенной ленте: ляссе свисает над
+        # апрошами и ширину знака не трогает. Иначе расширение хвоста q
+        # раздвигало бы e и t — я это увидел не глазом, а по замеру: блок
+        # с лентой стал шире на 3.2 единицы, всё отрисовалось мельче, и
+        # просветы «потеряли» шаг растекания на ровном месте.
+        metric.append(rings[-1] if plain == s["ws"] else cut_all(plain))
+    xs = [p[0] for g in metric for r in g for p in r]
     ys = [p[1] for g in rings for r in g for p in r]
     box = [min(xs), min(ys), max(xs), max(ys)]
     if sp["serif"] > 0.0:
@@ -600,7 +640,7 @@ def shape(ch, sp):
                 box[0] = min(box[0], hit[0] - sll)
                 box[2] = max(box[2], hit[0] + slr)
     wedges = traps(strokes, st, sp["trap"]) if sp["trap"] > 0.0 else []
-    if ch == "q" and sp.get("tail"):
+    if ribbed and sp.get("tail"):
         cut = tail_notch(strokes, m, sp)
         if cut:
             wedges = wedges + [cut]
