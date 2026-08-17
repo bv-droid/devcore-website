@@ -1,0 +1,138 @@
+{
+ "book": {
+  "ink": 7.4289125453726115,
+  "accent": 4.6653046871076835,
+  "de": 0.18528599303888316,
+  "cvd": 0.15571594868983474,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F9F3ED",
+   "ink": "#514F4A",
+   "muted": "#A19D97",
+   "line": "#CCC7C1",
+   "accent": "#366DBE"
+  }
+ },
+ "form": {
+  "ink": 18.733663902900595,
+  "accent": 18.733663902900595,
+  "de": 0.0,
+  "cvd": 0.0,
+  "has_accent": false,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#FFFFFF",
+   "ink": "#121212",
+   "muted": "#7D7D7D",
+   "line": "#BCBCBC",
+   "accent": "#121212"
+  }
+ },
+ "archive": {
+  "ink": 8.677791526916472,
+  "accent": 4.6712553650331285,
+  "de": 0.1629241844774323,
+  "cvd": 0.1301775176123913,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F4EDE2",
+   "ink": "#4E3F32",
+   "muted": "#9D9285",
+   "line": "#C7BFB2",
+   "accent": "#955C38"
+  }
+ },
+ "seal": {
+  "ink": 11.037968137849571,
+  "accent": 4.5219873275792795,
+  "de": 0.2636250395696951,
+  "cvd": 0.1653964919285909,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F6F2ED",
+   "ink": "#3F322E",
+   "muted": "#958C86",
+   "line": "#C4BEB8",
+   "accent": "#BC484B"
+  }
+ },
+ "steppe": {
+  "ink": 9.584513945332146,
+  "accent": 4.5449573984231435,
+  "de": 0.20146977106184225,
+  "cvd": 0.17669389980216132,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F6F0E1",
+   "ink": "#463B2F",
+   "muted": "#999082",
+   "line": "#C6BFB1",
+   "accent": "#976202"
+  }
+ },
+ "terminal": {
+  "ink": 12.846212582314214,
+  "accent": 4.6793292940956706,
+  "de": 0.25768113968692663,
+  "cvd": 0.24494284667535796,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F6F9FB",
+   "ink": "#262F38",
+   "muted": "#878D93",
+   "line": "#BDC1C6",
+   "accent": "#0078A7"
+  }
+ },
+ "night": {
+  "ink": 15.497143701340047,
+  "accent": 4.644550898509886,
+  "de": 0.36971290151756936,
+  "cvd": 0.3400031960145074,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#121417",
+   "ink": "#EDEBE7",
+   "muted": "#727775",
+   "line": "#3D4344",
+   "accent": "#4780D2"
+  }
+ },
+ "duo": {
+  "ink": 7.4289125453726115,
+  "accent": 4.639896611779327,
+  "de": 0.19436421034272494,
+  "cvd": 0.16158023944102792,
+  "has_accent": true,
+  "ok_ink": true,
+  "ok_acc": true,
+  "ok": true,
+  "palette": {
+   "paper": "#F9F3ED",
+   "ink": "#514F4A",
+   "muted": "#A19D97",
+   "line": "#CCC7C1",
+   "accent": "#306DC4"
+  }
+ }
+}
