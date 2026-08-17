@@ -1,0 +1,41 @@
+/* AskQet — система набора. Собрано tools/fixture.py,
+   руками не правится: числа выводятся из знака и замеров. */
+:root {
+  --font: 'Commissioner', system-ui, sans-serif;
+  --lead: 1.5;
+  --lead-floor: 0.85;
+  --x-сноска: 12.9px;
+  --size-сноска: 23.9px;
+  --x-подпись: 14.4px;
+  --size-подпись: 26.6px;
+  --x-текст: 16.0px;
+  --size-текст: 29.6px;
+  --x-подзаголовок: 17.8px;
+  --size-подзаголовок: 32.9px;
+  --x-заголовок: 19.8px;
+  --size-заголовок: 36.6px;
+  --paper: #F4EDE2;
+  --ink: #392B1E;
+  --muted: #706B63;
+  --accent: #B03D41;
+  --rule: #978677;        /* несущая: держит 3.0 */
+  --hair: #D9C7B7;        /* декоративная */
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #1C1611;
+    --ink: #F4EDE2;
+    --muted: #857F7A;
+    --accent: #D15B5C;
+    --rule: #716153;
+    --hair: #3E3023;
+  }
+}
+:root[data-theme='dark'] {
+  --paper: #1C1611;
+  --ink: #F4EDE2;
+  --muted: #857F7A;
+  --accent: #D15B5C;
+  --rule: #716153;
+  --hair: #3E3023;
+}
