@@ -63,7 +63,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build import ROOT, n, svg, write  # noqa: E402
-from engraving import INK, PAPER, MUTED, LINE  # noqa: E402
+from brand import INK, PAPER, MUTED, LINE  # noqa: E402
 from counters import shoot  # noqa: E402
 from running_head import optical_edges, SCALE, MARGIN  # noqa: E402
 import letterforms as L  # noqa: E402

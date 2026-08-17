@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271.958 198.28" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.208 198.28" fill="none">
   <title>AskQet</title>
-  <rect width="271.958" height="198.28" fill="#F9F3ED"/>
-  <g transform="translate(26,26)"><path d="M0,0 H96.781 V15.6 H15.6 V64.363 H0 Z" fill="#514F4A"/><path d="M219.958,146.28 H123.176 V130.68 H204.358 V81.917 H219.958 Z" fill="#514F4A"/><g transform="translate(27.3,27.3)"><rect width="98.8" height="32.24" fill="#514F4A"/><rect x="66.558" y="59.44" width="98.8" height="32.24" fill="#514F4A"/></g></g>
+  <rect width="272.208" height="198.28" fill="#F4EDE2"/>
+  <g transform="translate(26,26)"><path d="M0,0 H96.891 V15.6 H15.6 V64.363 H0 Z" fill="#392B1E"/><path d="M220.208,146.28 H123.316 V130.68 H204.608 V81.917 H220.208 Z" fill="#392B1E"/><g transform="translate(27.3,27.3)"><rect width="98.8" height="32.24" fill="#392B1E"/><rect x="66.808" y="59.44" width="98.8" height="32.24" fill="#392B1E"/></g></g>
 
 </svg>

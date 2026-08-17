@@ -761,7 +761,7 @@ SPECIMEN = [
 
 
 def specimen():
-    from engraving import INK, PAPER, MUTED
+    from brand import INK, PAPER, MUTED
     pad, lead = 34.0, 96.0
     rows, wmax = [], 0.0
     for i, (name, sp) in enumerate(SPECIMEN):

@@ -1,9 +1,9 @@
 {
  "folder": "logo/forms",
- "paper": "#F9F3ED",
- "ink": "#514F4A",
- "muted": "#84817C",
- "line": "#D2D0CA",
+ "paper": "#F4EDE2",
+ "ink": "#392B1E",
+ "muted": "#706B63",
+ "line": "#C8C3BC",
  "small": false,
  "cols": 2,
  "big": 300,

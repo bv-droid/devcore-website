@@ -1,0 +1,432 @@
+[
+ {
+  "section": "ПАЛИТРА",
+  "what": "чернила",
+  "a_src": "brand (единый источник)",
+  "a": "#392B1E",
+  "b_src": "premium.json (принятая)",
+  "b": "#392B1E",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "чернила: старая краска",
+  "a_src": "engraving (palette_v2)",
+  "a": "#514F4A",
+  "b_src": "brand",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "краска своего времени, живёт в разборах"
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "бумага",
+  "a_src": "brand (единый источник)",
+  "a": "#F4EDE2",
+  "b_src": "premium.json (принятая)",
+  "b": "#F4EDE2",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "бумага: старая краска",
+  "a_src": "engraving (palette_v2)",
+  "a": "#F9F3ED",
+  "b_src": "brand",
+  "b": "#F4EDE2",
+  "state": "ЗАПИСЬ",
+  "note": "краска своего времени, живёт в разборах"
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "полутон",
+  "a_src": "brand (единый источник)",
+  "a": "#706B63",
+  "b_src": "premium.json (принятая)",
+  "b": "#706B63",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "полутон: старая краска",
+  "a_src": "engraving (palette_v2)",
+  "a": "#84817C",
+  "b_src": "brand",
+  "b": "#706B63",
+  "state": "ЗАПИСЬ",
+  "note": "краска своего времени, живёт в разборах"
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "линейка",
+  "a_src": "brand (единый источник)",
+  "a": "#C8C3BC",
+  "b_src": "premium.json (принятая)",
+  "b": "#C8C3BC",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "линейка: старая краска",
+  "a_src": "engraving (palette_v2)",
+  "a": "#D2D0CA",
+  "b_src": "brand",
+  "b": "#C8C3BC",
+  "state": "ЗАПИСЬ",
+  "note": "краска своего времени, живёт в разборах"
+ },
+ {
+  "section": "ПАЛИТРА",
+  "what": "акцент",
+  "a_src": "color.json (запись листа)",
+  "a": "#436BA7",
+  "b_src": "premium.json (принятый)",
+  "b": "#B03D41",
+  "state": "ЗАПИСЬ",
+  "note": "лист решал КУДА ложится цвет; его синий отменён в color2"
+ },
+ {
+  "section": "ЛИСТЫ",
+  "what": "alphabet",
+  "a_src": "alphabet_sheet.json",
+  "a": "#392B1E",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "approach",
+  "a_src": "approach_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "восемь цветовых миров до выбора"
+ },
+ {
+  "section": "ЛИСТЫ",
+  "what": "awards",
+  "a_src": "awards_sheet.json",
+  "a": "#392B1E",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ЛИСТЫ",
+  "what": "carriers",
+  "a_src": "carriers_sheet.json",
+  "a": "#392B1E",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "collab",
+  "a_src": "collab_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "три исполнения коллаборации"
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "color2",
+  "a_src": "color2_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "пара акцентов синего мира, отменённого бордо"
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "color",
+  "a_src": "color_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "перебор акцентов; его собственный синий отменён в color2"
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "pair",
+  "a_src": "pair_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "перебор срезов ляссе и геометрий уголка"
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "premium",
+  "a_src": "premium_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "доводка оснастки: показывает «было» рядом со «стало»"
+ },
+ {
+  "section": "ЛИСТЫ",
+  "what": "verify",
+  "a_src": "verify_sheet.json",
+  "a": "#392B1E",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ИСТОРИЯ",
+  "what": "ways",
+  "a_src": "ways_sheet.json",
+  "a": "#514F4A",
+  "b_src": "premium.json",
+  "b": "#392B1E",
+  "state": "ЗАПИСЬ",
+  "note": "девять исполнений синего мира"
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "штрих",
+  "a_src": "verify.ST",
+  "a": 13.0,
+  "b_src": "weights.TEXT_ST",
+  "b": 13.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "штрих",
+  "a_src": "verify.ST",
+  "a": 13.0,
+  "b_src": "weights.json основной",
+  "b": 13.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "outline.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "carriers.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "book.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "color.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "icon.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "уголок",
+  "a_src": "verify: ST × 1.20",
+  "a": 15.6,
+  "b_src": "clamps.THICK",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "охранное поле",
+  "a_src": "verify.inner(THICK)",
+  "a": 27.3,
+  "b_src": "outline.GUARD",
+  "b": 27.3,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "охранное поле",
+  "a_src": "verify.inner(THICK)",
+  "a": 27.3,
+  "b_src": "carriers.GUARD",
+  "b": 27.3,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "охранное поле",
+  "a_src": "verify.inner(THICK)",
+  "a": 27.3,
+  "b_src": "book.GUARD",
+  "b": 27.3,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "втяжка",
+  "a_src": "hanging (замер)",
+  "a": 66.80755525218362,
+  "b_src": "verify.json",
+  "b": 66.80755525218362,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "интерлиньяж",
+  "a_src": "verify.LEAD",
+  "a": 74.0,
+  "b_src": "verify.json",
+  "b": 74.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "воздух строк",
+  "a_src": "verify: LEAD − XH",
+  "a": 22.0,
+  "b_src": "verify.AIR",
+  "b": 22.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ГЕОМЕТРИЯ",
+  "what": "толщина уголка выбрана",
+  "a_src": "verify.json pick",
+  "a": 15.6,
+  "b_src": "verify: ST × 1.20",
+  "b": 15.6,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПРЕДЕЛЫ",
+  "what": "логотип жив от",
+  "a_src": "verify.json",
+  "a": 45.714285714285715,
+  "b_src": "документ",
+  "b": 46.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПРЕДЕЛЫ",
+  "what": "ляссе жив до",
+  "a_src": "verify.json",
+  "a": 56,
+  "b_src": "документ",
+  "b": 56.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПРЕДЕЛЫ",
+  "what": "цвет ленты от",
+  "a_src": "color.json icon_floor",
+  "a": 24,
+  "b_src": "документ (вписано)",
+  "b": 24.0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПРЕДЕЛЫ",
+  "what": "литера жива от",
+  "a_src": "icon.json",
+  "a": 21.0,
+  "b_src": "документ (вписано)",
+  "b": 21.0,
+  "state": "СХОДИТСЯ",
+  "note": "лист печатает 21 px"
+ },
+ {
+  "section": "ПРОИЗВОДСТВО",
+  "what": "логотип: расхождений внутри фигуры",
+  "a_src": "outline.json",
+  "a": 0,
+  "b_src": "должно быть",
+  "b": 0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "ПРОИЗВОДСТВО",
+  "what": "литера: расхождений внутри фигуры",
+  "a_src": "outline.json",
+  "a": 0,
+  "b_src": "должно быть",
+  "b": 0,
+  "state": "СХОДИТСЯ",
+  "note": ""
+ },
+ {
+  "section": "УГОЛКИ",
+  "what": "зазор рамки",
+  "a_src": "verify (в знаке)",
+  "a": 11.700000000000001,
+  "b_src": "clamps.json (air)",
+  "b": 22.0,
+  "state": "ОТКРЫТО",
+  "note": "лист принят, знак не переведён"
+ },
+ {
+  "section": "УГОЛКИ",
+  "what": "разброс зазора",
+  "a_src": "clamps.json (сейчас)",
+  "a": 13.781236188216953,
+  "b_src": "должно быть",
+  "b": 0.0,
+  "state": "ОТКРЫТО",
+  "note": "это и есть претензия заказчика"
+ }
+]
