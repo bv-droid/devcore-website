@@ -161,6 +161,9 @@ def _k_diagonals(m):
     return out
 
 
+S_BASED = {"s"}                 # литеры, чья осевая берётся у s
+
+
 def skeleton(ch, m):
     """Осевые буквы. Каждый пруток: точки, доля штриха, замкнутость, срезы.
 
@@ -175,8 +178,13 @@ def skeleton(ch, m):
         V.GLYPH[ch](m, "cut") if ch == "q" else V.GLYPH[ch](m)
     finally:
         V._arc, V._line = o_arc, o_line
-    if ch == "s":
-        rec = [s_centreline(m)]
+    # s строит свой путь строкой, минуя примитивы, — записывать нечего, и
+    # её осевая берётся отдельно. Список открыт, потому что на s могут
+    # строиться составные литеры (ş): у них к осевой добавляется то, что
+    # записалось от диакритического знака. Для самой s запись пуста, и
+    # поведение не меняется ни на волос.
+    if ch in S_BASED:
+        rec = [s_centreline(m)] + [list(p) for p in REC]
     else:
         rec = [list(p) for p in REC]
     out = []
