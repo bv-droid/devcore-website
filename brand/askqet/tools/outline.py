@@ -51,7 +51,10 @@ from build import ROOT, n, svg, write  # noqa: E402
 from counters import shoot, binary  # noqa: E402
 import hanging as H  # noqa: E402
 import letterforms as L  # noqa: E402
-from verify import (ASC, DESC, ST, LEAD, ARM, SP, inner)  # noqa: E402
+from verify import (ASC, DESC, ST, LEAD, ARM, SP, inner,  # noqa: E402
+                    frame as V_frame, clamp_rects as V_clamp_rects,
+                    frame_box as V_frame_box,
+                    frame_simple as V_simple)  # noqa: E402
 
 THICK = ST * 1.20
 GUARD = inner(THICK)
@@ -167,25 +170,29 @@ def flat_line(word, sp, dy=0.0):
 
 # ── Знак плоскими контурами ──────────────────────────────────────────────────
 
-def brackets(W, Hh):
-    ax, ay, t = W * ARM, Hh * ARM, THICK
-    return [[[(0, 0), (ax, 0), (ax, t), (t, t), (t, ay), (0, ay)]],
-            [[(W, Hh), (W - ax, Hh), (W - ax, Hh - t), (W - t, Hh - t),
-              (W - t, Hh - ay), (W, Hh - ay)]]]
+def rect_ring(r, dx, dy):
+    """Прямоугольник уголка как контур, со сдвигом в координаты знака."""
+    return [[(r[0] - dx, r[1] - dy), (r[2] - dx, r[1] - dy),
+             (r[2] - dx, r[3] - dy), (r[0] - dx, r[3] - dy)]]
 
 
 def flat_mark(ind, sp=SP):
+    """Знак плоскими контурами. Постановка уголков БЕРЁТСЯ у verify.
+
+    Прежде здесь строилась своя пара уголков — доля габарита и своя
+    коробка. Сводная сверка показала, чем кончается, когда одно и то же
+    считают в двух местах: постановка чинилась в знаке, а производственный
+    комплект остался бы с прежней.
+    """
+    F = V_frame(ind, THICK, sp)
+    X0, Y0, X1, Y1 = V_frame_box(F)
     g1, _ = flat_line("ask", sp, ASC)
     g2, _ = flat_line("qet", sp, ASC + LEAD)
     g2 = [[[(x + ind, y) for x, y in r] for r in g] for g in g2]
-    r1, r2 = L.line_rings("ask", sp), L.line_rings("qet", sp)
-    w0 = max(max(q[0] for r in r1 for q in r),
-             ind + max(q[0] for r in r2 for q in r))
-    h0 = ASC + LEAD + max(q[1] for r in r2 for q in r)
-    W, Hh = w0 + GUARD * 2, h0 + GUARD * 2
-    letters = [[[(x + GUARD, y + GUARD) for x, y in r] for r in g]
+    letters = [[[(x - X0, y - Y0) for x, y in r] for r in g]
                for g in g1 + g2]
-    return letters, brackets(W, Hh), W, Hh
+    clamps = [rect_ring(r, X0, Y0) for r in V_clamp_rects(F)]
+    return letters, clamps, X1 - X0, Y1 - Y0
 
 
 def flat_letter(sp=SP):
@@ -197,11 +204,13 @@ def flat_letter(sp=SP):
     y0 = min(q[1] for rr in r for q in rr)
     y1 = max(q[1] for rr in r for q in rr)
     w0, h0 = x1 - x0, y1 - y0
-    W, Hh = w0 + GUARD * 2, h0 + GUARD * 2
+    F = V_simple(w0, h0, THICK)
+    p = F["pad"]
     lsb = L.V.SIDE["q"][0] * sp["wd"]
-    letters = [[[(x - x0 + GUARD + lsb, y - y0 + GUARD) for x, y in r]
+    letters = [[[(x - x0 + p + lsb, y - y0 + p) for x, y in r]
                 for r in g] for g in groups]
-    return letters, brackets(W, Hh), W, Hh
+    clamps = [rect_ring(r, 0.0, 0.0) for r in V_clamp_rects(F)]
+    return letters, clamps, F["x1"], F["y1"]
 
 
 def plate(letters, corners, W, Hh, ink, seal, bg=None):

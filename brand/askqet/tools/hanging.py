@@ -81,8 +81,18 @@ CLEAR = 0.5                    # требуемый зазор между стр
 
 # ── Замер ────────────────────────────────────────────────────────────────────
 
+# Краска ЗАМЕРА, а не краска бренда. Оптический край — свойство формы, и
+# от цвета зависеть не должен, но зависел: плашки мерились принятой
+# краской, а sRGB-сглаживание кладёт полупокрытые пиксели нелинейно, и
+# при переводе на #392B1E вместо #514F4A втяжка уехала с 66.6 на 66.8 без
+# единой правки геометрии. Нормировка массы на размах помогла не до конца
+# — мешает гамма. Поэтому форма мерится чёрным по белому: у этой пары
+# размах полный, и нелинейности нечего сдвигать.
+M_INK, M_PAPER = "#000000", "#FFFFFF"
+
+
 def _plate(body, W, H, key):
-    src = svg(f'  <rect width="{n(W)}" height="{n(H)}" fill="{PAPER}"/>\n'
+    src = svg(f'  <rect width="{n(W)}" height="{n(H)}" fill="{M_PAPER}"/>\n'
               f'  {body}\n', box=(W, H), title="")
     path = write(f"logo/hanging/_m-{key}.svg", src)
     return dict(key=key, path=os.path.join(ROOT, path),
@@ -93,7 +103,7 @@ def optics(items):
     """Оптические края набора строк и отдельных литер."""
     jobs, meta = [], {}
     for key, text in items:
-        body, _ = L.line(text, BASE, 0.0, INK)
+        body, _ = L.line(text, BASE, 0.0, M_INK)
         rings = L.line_rings(text, BASE)
         x1 = max(p[0] for r in rings for p in r)
         W, H = x1 + MARGIN * 2, ASC + DESC + MARGIN * 2

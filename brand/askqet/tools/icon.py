@@ -57,7 +57,7 @@ import forms as F1  # noqa: E402
 import forms2 as F2  # noqa: E402
 from forms import icon_svg, silhouette, ICON  # noqa: E402
 from verify import (PAD, ASC, XH, DESC, ST, LEAD, SP, ARM,  # noqa: E402
-                    inner, mark, blanks)
+                    inner, mark, blanks, frame_simple, clamp_rects)
 
 
 THICK = ST * 1.20              # принятая толщина уголка
@@ -173,16 +173,21 @@ def c_tail(ind):
 
 
 def wrap(content, ind, thick=THICK):
-    """Уголки вокруг содержимого — те же, что у полного знака."""
+    """Уголки вокруг содержимого — по объявленному исключению из правила.
+
+    У полного знака плечо кончается у колонки выносных. Здесь колонки нет:
+    двух строк нет, вынос либо один, либо его нет совсем — останавливать
+    плечо не у чего, и оно остаётся долей габарита. Зазор и охранное поле
+    при этом те же, что у знака, и берутся из verify, а не считаются тут.
+    """
     body, w0, h0 = content(ind)
-    p = inner(thick)
-    W, Hh = w0 + p * 2, h0 + p * 2
-    ax, ay = W * ARM, Hh * ARM
-    tl = f'M0,0 H{n(ax)} V{n(thick)} H{n(thick)} V{n(ay)} H0 Z'
-    br = (f'M{n(W)},{n(Hh)} H{n(W - ax)} V{n(Hh - thick)} H{n(W - thick)} '
-          f'V{n(Hh - ay)} H{n(W)} Z')
-    return (f'<path d="{tl}" fill="{INK}"/><path d="{br}" fill="{INK}"/>'
-            f'<g transform="translate({n(p)},{n(p)})">{body}</g>'), W, Hh
+    F = frame_simple(w0, h0, thick)
+    p = F["pad"]
+    o = "".join(f'<rect x="{n(r[0])}" y="{n(r[1])}" '
+                f'width="{n(r[2] - r[0])}" height="{n(r[3] - r[1])}" '
+                f'fill="{INK}"/>' for r in clamp_rects(F))
+    return (o + f'<g transform="translate({n(p)},{n(p)})">{body}</g>',
+            F["x1"], F["y1"])
 
 
 def bare(content, ind, thick=THICK):

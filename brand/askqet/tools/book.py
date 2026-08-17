@@ -293,8 +293,14 @@ footer { margin-top:3.5rem; padding-top:1.5rem;
 """
 
 
+def load(name):
+    with open(os.path.join(ROOT, f"tools/{name}.json"), encoding="utf-8") as f:
+        return json.load(f)
+
+
 def build():
     ind = H.measure()["ind"]["letter"]
+    VER, COL = load("verify"), load("color")
     P = json.load(open(os.path.join(ROOT, "tools/premium.json"),
                        encoding="utf-8"))["palette"]
     D = dark_world(P)
@@ -370,11 +376,19 @@ def build():
         f'<dt>{esc(a)}</dt><dd>{esc(b)}</dd><dd class="why">{esc(c)}</dd>'
         for a, b, c in spec)
 
+    # Пределы читаются из свежих прогонов, а не вписываются сюда числом.
+    # Вписанное руками переживает знак: перевод уголков сдвинул порог
+    # цвета ленты с 24 px на 32, и строка «от 24 px» осталась бы враньём,
+    # которого никто не заметит. Сводная сверка ловит такое, но лучше,
+    # чтобы ловить было нечего.
     limits = [
-        ("логотип", "от 46 px", "по ширине знака — очко букв шире двух пикселей"),
-        ("ляссе", "до 56 px", "ниже два зубца выреза сливаются в один"),
+        ("логотип", f"от {VER['counters']['wmin']:.0f} px",
+         "по ширине знака — очко букв шире двух пикселей"),
+        ("ляссе", f"до {VER['tail']['alive']:.0f} px",
+         "ниже два зубца выреза сливаются в один"),
         ("литера", "от 21 px", "малый знак для аватара и фавикона"),
-        ("цвет ленты", "от 24 px", "ниже пятно меньше четырёх пикселей — уже не цвет"),
+        ("цвет ленты", f"от {COL['icon_floor']:.0f} px",
+         "ниже пятно меньше четырёх пикселей — уже не цвет"),
     ]
     lim_html = "".join(
         f'<tr><td>{esc(a)}</td><td class="num">{esc(b)}</td>'

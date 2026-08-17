@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.208 198.28" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292.308 218.88" fill="none">
   <title>AskQet</title>
-  <rect width="272.208" height="198.28" fill="#F4EDE2"/>
-  <g transform="translate(26,26)"><path d="M0,0 H96.891 V15.6 H15.6 V64.363 H0 Z" fill="#392B1E"/><path d="M220.208,146.28 H123.316 V130.68 H204.608 V81.917 H220.208 Z" fill="#392B1E"/><g transform="translate(27.3,27.3)"><rect width="98.8" height="32.24" fill="#392B1E"/><rect x="66.808" y="59.44" width="98.8" height="32.24" fill="#392B1E"/></g></g>
+  <rect width="292.308" height="218.88" fill="#F4EDE2"/>
+  <g transform="translate(26,26)"><rect x="0" y="0" width="105.735" height="15.6" fill="#392B1E"/><rect x="0" y="0" width="15.6" height="73.427" fill="#392B1E"/><rect x="134.572" y="151.28" width="105.735" height="15.6" fill="#392B1E"/><rect x="224.708" y="93.453" width="15.6" height="73.427" fill="#392B1E"/><g transform="translate(37.6,37.6)"><rect width="98.8" height="32.24" fill="#392B1E"/><rect x="66.308" y="59.44" width="98.8" height="32.24" fill="#392B1E"/></g></g>
 
 </svg>

@@ -53,7 +53,11 @@ from counters import shoot, binary  # noqa: E402
 from engraving import INK, PAPER, MUTED, LINE  # noqa: E402
 import letterforms as L  # noqa: E402
 import hanging as H  # noqa: E402
-from verify import ASC, XH, DESC, ST, LEAD, SP, ARM, inner  # noqa: E402
+from verify import (ASC, XH, DESC, ST, LEAD, SP, ARM,  # noqa: E402
+                    inner, frame as V_frame,
+                    clamp_rects as V_clamp_rects,
+                    frame_box as V_frame_box,
+                    frame_simple as V_simple)
 from icon import c_letter, THICK  # noqa: E402
 
 
@@ -112,13 +116,12 @@ def below(body, x, y, cut, W, Hh):
             f'<g transform="translate({n(x)},{n(y)})">{body}</g></g>')
 
 
-def brackets(W, Hh, col):
-    ax, ay = W * ARM, Hh * ARM
-    tl = f'M0,0 H{n(ax)} V{n(THICK)} H{n(THICK)} V{n(ay)} H0 Z'
-    br = (f'M{n(W)},{n(Hh)} H{n(W - ax)} V{n(Hh - THICK)} H{n(W - THICK)} '
-          f'V{n(Hh - ay)} H{n(W)} Z')
-    return (f'<path d="{tl}" fill="{col}"/>'
-            f'<path d="{br}" fill="{col}"/>')
+def brackets(F, col, dx=0.0, dy=0.0):
+    """Пара уголков по готовой рамке. Постановка считается в verify."""
+    return "".join(
+        f'<rect x="{n(r[0] - dx)}" y="{n(r[1] - dy)}" '
+        f'width="{n(r[2] - r[0])}" height="{n(r[3] - r[1])}" fill="{col}"/>'
+        for r in V_clamp_rects(F))
 
 
 def parts(ind, C):
@@ -136,20 +139,16 @@ def parts(ind, C):
     """
     b1, _ = L.line("ask", SP, 0.0, C["word"])
     b2, _ = L.line("qet", SP, 0.0, C["word"])
-    r1, r2 = L.line_rings("ask", SP), L.line_rings("qet", SP)
-    w0 = max(max(p[0] for r in r1 for p in r),
-             ind + max(p[0] for r in r2 for p in r))
-    bot = LEAD + max(p[1] for r in r2 for p in r)
-    h0 = ASC + bot
-    p = inner(THICK)
-    W, Hh = w0 + p * 2, h0 + p * 2
-    base = p + ASC + LEAD
-    o = [brackets(W, Hh, C["corner"]),
-         f'<g transform="translate({n(p)},{n(p + ASC)})">{b1}</g>',
-         f'<g transform="translate({n(p + ind)},{n(base)})">{b2}</g>']
+    F = V_frame(ind, THICK, SP)
+    X0, Y0, X1, Y1 = V_frame_box(F)
+    W, Hh = X1 - X0, Y1 - Y0
+    base = ASC + LEAD - Y0
+    o = [brackets(F, C["corner"], X0, Y0),
+         f'<g transform="translate({n(-X0)},{n(ASC - Y0)})">{b1}</g>',
+         f'<g transform="translate({n(ind - X0)},{n(base)})">{b2}</g>']
     if C["tail"] != C["word"]:
         bq, _ = L.line("q", SP, 0.0, C["tail"])
-        o.append(below(bq, p + ind, base, base + OV, W, Hh))
+        o.append(below(bq, ind - X0, base, base + OV, W, Hh))
     return "".join(o), W, Hh
 
 
@@ -157,9 +156,10 @@ def icon_parts(ind, C):
     """Литера q в уголках, с той же отсечкой ленты по базовой."""
     body, w0, h0 = c_letter(ind)
     body = body.replace(INK, C["word"])
-    p = inner(THICK)
-    W, Hh = w0 + p * 2, h0 + p * 2
-    o = [brackets(W, Hh, C["corner"]),
+    F = V_simple(w0, h0, THICK)
+    p = F["pad"]
+    W, Hh = F["x1"], F["y1"]
+    o = [brackets(F, C["corner"]),
          f'<g transform="translate({n(p)},{n(p)})">{body}</g>']
     if C["tail"] != C["word"]:
         tail = body.replace(C["word"], C["tail"])

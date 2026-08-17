@@ -83,20 +83,25 @@ def fmt(v):
 # ── Источники ────────────────────────────────────────────────────────────────
 
 def html_numbers():
-    """Числа, напечатанные в документе: их сверяем с теми, что он обещал."""
+    """Числа, напечатанные в документе — разбором строк таблицы пределов.
+
+    Первый заход брал их первым попавшимся совпадением «от N px» и
+    сравнивал с числом, вписанным ЗДЕСЬ ЖЕ. То есть сверка проверяла
+    документ против собственной константы, а не против документа: когда
+    перевод уголков сдвинул порог цвета ленты с 24 px на 32, документ
+    честно пересобрался, а сверка продолжала ругаться на своё старое 24.
+    Мерка, у которой есть свой ответ, — не мерка.
+    """
     p = os.path.join(ROOT, "askqet.html")
     if not os.path.exists(p):
         return {}
     with open(p, encoding="utf-8") as f:
         s = f.read()
-    out = {}
-    for key, rx in (("wmin", r"от (\d+) px</td>"),
-                    ("tail", r"до (\d+) px</td>"),
-                    ("letter", r"от (21|\d+) px</td>")):
-        m = re.search(rx, s)
-        if m:
-            out[key] = float(m.group(1))
-    out["hex"] = set(x.upper() for x in re.findall(r"#[0-9A-Fa-f]{6}", s))
+    out = dict(hex=set(x.upper() for x in re.findall(r"#[0-9A-Fa-f]{6}", s)))
+    for label, num in re.findall(
+            r"<td>([^<]+)</td><td class=\"num\">(?:от|до)\s*([\d.]+)\s*px",
+            s):
+        out[label.strip()] = float(num)
     return out
 
 
@@ -178,34 +183,41 @@ if __name__ == "__main__":
 
     # ── Пределы ──────────────────────────────────────────────────────────
     check("ПРЕДЕЛЫ", "логотип жив от", "verify.json",
-          vj["counters"]["wmin"], "документ", doc.get("wmin"), tol=0.6)
+          vj["counters"]["wmin"], "документ", doc.get("логотип"), tol=0.6)
     check("ПРЕДЕЛЫ", "ляссе жив до", "verify.json", vj["tail"]["alive"],
-          "документ", doc.get("tail"), tol=0.6)
+          "документ", doc.get("ляссе"), tol=0.6)
     check("ПРЕДЕЛЫ", "цвет ленты от", "color.json icon_floor",
-          cj["icon_floor"], "документ (вписано)", 24.0)
-    if ij:
-        floors = [i for i in ij.get("items", []) if i.get("key") == "letter"]
-        check("ПРЕДЕЛЫ", "литера жива от", "icon.json",
-              ij.get("floor", {}).get("letter") if isinstance(
-                  ij.get("floor"), dict) else 21.0,
-              "документ (вписано)", 21.0, note="лист печатает 21 px")
+          cj["icon_floor"], "документ", doc.get("цвет ленты"))
+    check("ПРЕДЕЛЫ", "литера жива от", "icon.py (лист печатает)", 21.0,
+          "документ", doc.get("литера"))
 
     # ── Производство ─────────────────────────────────────────────────────
     for k, v in oj["check"].items():
         check("ПРОИЗВОДСТВО", f"{k}: расхождений внутри фигуры",
               "outline.json", v["deep"], "должно быть", 0, tol=0.0)
 
-    # ── Открытое ─────────────────────────────────────────────────────────
+    # ── Уголки: постановка переведена, и это проверяется замером ─────────
     if cmj:
         pick = cmj["pick"]
-        gap_new = cmj["res"][pick]["worst"]
-        check("УГОЛКИ", "зазор рамки", "verify (в знаке)",
-              V.inner(V.ST * 1.20) - V.ST * 1.20,
-              f"clamps.json ({pick})", gap_new, state="ОТКРЫТО",
-              note="лист принят, знак не переведён")
-        check("УГОЛКИ", "разброс зазора", "clamps.json (сейчас)",
-              cmj["res"]["now"]["off"], "должно быть", 0.0, tol=0.05,
-              state="ОТКРЫТО", note="это и есть претензия заказчика")
+        check("УГОЛКИ", "зазор рамки", "verify (в знаке)", V.GAP,
+              f"clamps.json ({pick})", cmj["res"][pick]["worst"])
+        # Главное: все четыре плеча стоят от краски на одном расстоянии.
+        # Считается прямо на построении verify, а не берётся из листа.
+        F = V.frame(ind)
+        cl = [min(CM.dist(p, r) for p in CM.geom(ind)["pts"])
+              for r in V.clamp_rects(F)]
+        check("УГОЛКИ", "разброс зазора", "verify.frame (замер)",
+              max(cl) - min(cl), "должно быть", 0.0, tol=0.05)
+        check("УГОЛКИ", "наименьший зазор", "verify.frame (замер)",
+              min(cl), "verify.GAP", V.GAP)
+
+    # ── Замер не должен зависеть от краски ───────────────────────────────
+    a = HG.measure()["ind"]["letter"]
+    HG.INK, HG.PAPER = "#514F4A", "#F9F3ED"
+    b = HG.measure()["ind"]["letter"]
+    HG.INK, HG.PAPER = BR.INK, BR.PAPER
+    check("ЗАМЕР", "втяжка при чужой краске", "принятой краской", a,
+          "прежней краской", b, tol=0.001)
 
     with open(os.path.join(ROOT, "tools/audit.json"), "w",
               encoding="utf-8") as f:
