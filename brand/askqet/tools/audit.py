@@ -206,8 +206,15 @@ if __name__ == "__main__":
         F = V.frame(ind)
         cl = [min(CM.dist(p, r) for p in CM.geom(ind)["pts"])
               for r in V.clamp_rects(F)]
-        check("УГОЛКИ", "разброс зазора", "verify.frame (замер)",
-              max(cl) - min(cl), "должно быть", 0.0, tol=0.05)
+        # Разброс держится строкой ОТКРЫТО, а не молча прощается: стойка
+        # укорочена ниже предела 0.82 сознательно, и цена этого решения
+        # обязана печататься каждым прогоном.
+        sp = max(cl) - min(cl)
+        check("УГОЛКИ", "разброс зазора", "verify.frame (замер)", sp,
+              "было бы 0 при стойке 0.82", 0.0, tol=0.05,
+              state=(None if V.VERT >= V.VERT_FREE else "ОТКРЫТО"),
+              note=f"объявленная цена стойки {V.VERT:.2f}; "
+                   f"без цены — {V.VERT_FREE:.2f}")
         check("УГОЛКИ", "наименьший зазор", "verify.frame (замер)",
               min(cl), "verify.GAP", V.GAP)
 
