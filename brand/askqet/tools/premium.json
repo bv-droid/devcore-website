@@ -1,0 +1,32 @@
+{
+ "palette": {
+  "paper": "#F4EDE2",
+  "ink": "#392B1E",
+  "accent": "#B03D41",
+  "muted": "#706B63",
+  "line": "#C8C3BC",
+  "field": "#B03D41"
+ },
+ "rec": {
+  "ink": "#392B1E",
+  "accent": "#B03D41",
+  "ink_L": 0.3,
+  "ink_C": 0.03,
+  "acc_L": 0.525,
+  "pairs": 23,
+  "paper_c": 0.016,
+  "warm_paper": 0.016486511449174214,
+  "warm_ink": 0.030265199382566343,
+  "pigment": 0.7135832300917958
+ },
+ "was": {
+  "paper": "#F4EDE2",
+  "ink": "#4E3F32",
+  "muted": "#9D9285",
+  "line": "#C7BFB2",
+  "accent": "#B94548",
+  "field": "#B94548"
+ },
+ "cvd_before": 0.10625622090666206,
+ "cvd_after": 0.15661683678857086
+}
