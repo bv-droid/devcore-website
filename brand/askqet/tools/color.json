@@ -20,7 +20,9 @@
    },
    "cvd_min": 0.13338386556512194,
    "dl": 0.09870066237329672,
-   "ok": true
+   "ok_paper": true,
+   "ok_dark": false,
+   "ok": false
   },
   "petrol": {
    "hex": "#1A738F",
@@ -35,7 +37,9 @@
    },
    "cvd_min": 0.11415086291396409,
    "dl": 0.09077888299682552,
-   "ok": true
+   "ok_paper": true,
+   "ok_dark": false,
+   "ok": false
   },
   "indigo": {
    "hex": "#5A65AB",
@@ -50,7 +54,9 @@
    },
    "cvd_min": 0.11855412817279956,
    "dl": 0.102186678853532,
-   "ok": true
+   "ok_paper": true,
+   "ok_dark": false,
+   "ok": false
   },
   "plum": {
    "hex": "#8B5A86",
@@ -65,7 +71,9 @@
    },
    "cvd_min": 0.10729457768343764,
    "dl": 0.10873209758581842,
-   "ok": true
+   "ok_paper": true,
+   "ok_dark": false,
+   "ok": false
   },
   "gold": {
    "hex": "#836615",
@@ -80,7 +88,9 @@
    },
    "cvd_min": 0.11936069313404929,
    "dl": 0.09745357862456133,
-   "ok": true
+   "ok_paper": true,
+   "ok_dark": false,
+   "ok": false
   }
  },
  "tail_px": {

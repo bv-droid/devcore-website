@@ -223,7 +223,16 @@ def check(accent):
     out["cvd_min"] = min(out["cvd"].values())
     la, li = oklch(accent)[0], oklch(INK)[0]
     out["dl"] = abs(la - li)
-    out["ok"] = (out["wcag_paper"] >= MIN_WCAG and out["cvd_min"] >= MIN_DE)
+    # Порог на тёмном сначала считался и не применялся: wcag_dark лежал в
+    # словаре, а в вердикт не входил, и выворотка проходила проверку,
+    # которую на деле не проходит. Теперь входит — и не проходит ни один
+    # из пяти. Это не отменяет лист: правило «акцент живёт на ляссе»
+    # верное, а вот одной краской его не исполнить. Разбор и починка —
+    # в tools/color2.py, где акцент становится ПАРОЙ светлот.
+    out["ok_paper"] = (out["wcag_paper"] >= MIN_WCAG
+                       and out["cvd_min"] >= MIN_DE)
+    out["ok_dark"] = out["wcag_dark"] >= MIN_WCAG
+    out["ok"] = out["ok_paper"] and out["ok_dark"]
     return out
 
 
@@ -354,7 +363,11 @@ if __name__ == "__main__":
     ind = hm["ind"]["letter"]
     stats = {k: check(v) for k, _, v, _ in ACCENTS}
     good = [k for k, _, _, _ in ACCENTS if stats[k]["ok"]]
-    pick = max(good or [ACCENTS[0][0]], key=lambda k: stats[k]["cvd_min"])
+    # Выбор идёт по бумаге: на тёмном не проходит никто, и требовать
+    # обоих значит не выбрать ничего. Это и есть диагноз, а не отбор.
+    on_paper = [k for k, _, _, _ in ACCENTS if stats[k]["ok_paper"]]
+    pick = max(good or on_paper or [ACCENTS[0][0]],
+               key=lambda k: stats[k]["cvd_min"])
     accent = dict((k, v) for k, _, v, _ in ACCENTS)[pick]
     ptitle = dict((k, t) for k, t, _, _ in ACCENTS)[pick]
 
@@ -406,12 +419,18 @@ if __name__ == "__main__":
         s = stats[key]
         v = "годен" if s["ok"] else (
             "тонет на бумаге" if s["wcag_paper"] < MIN_WCAG
-            else "сливается при дальтонизме")
+            else "сливается при дальтонизме" if s["cvd_min"] < MIN_DE
+            else f"тонет на тёмном ({s['wcag_dark']:.2f})")
         print(f"{title[:21]:<22}{s['wcag_paper']:>10.2f}{s['wcag_ink']:>12.2f}"
               f"{s['dl']:>7.3f}" + "".join(f"{s['cvd'][k]:>9.3f}"
                                               for k in CVD) + f"   {v}")
-    print(f"\nвыбран {ptitle} {accent}: из годных у него наибольший запас "
-          f"при дальтонизме ({stats[pick]['cvd_min']:.3f})\n")
+    print(f"\nвыбран {ptitle} {accent}: наибольший запас при дальтонизме "
+          f"({stats[pick]['cvd_min']:.3f})")
+    if not good:
+        print(f"но НИ ОДИН из пяти не держит тёмное поле: порог "
+              f"{MIN_WCAG:.1f}, лучший {max(s['wcag_dark'] for s in stats.values()):.2f}.\n"
+              f"Одной краской на двух фонах задача не решается — разбор и "
+              f"починка в tools/color2.py.\n")
     print(f"лента в литере, {share * 100:.1f} % площади знака, в пикселях")
     for s in SIZES:
         mark = "" if px[s] >= MIN_SPOT else "  — уже не цвет, а грязь"
