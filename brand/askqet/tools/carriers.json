@@ -1,0 +1,62 @@
+{
+ "card": {
+  "mark_px": 102.0,
+  "guard": 24.444444444444443,
+  "kind": "логотип",
+  "low": 4.546222014670486,
+  "floor": 46.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ },
+ "letterhead": {
+  "mark_px": 168.0,
+  "guard": 93.33333333333333,
+  "kind": "логотип",
+  "low": 4.546222014670486,
+  "floor": 46.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ },
+ "envelope": {
+  "mark_px": 149.60000000000002,
+  "guard": 48.888888888888886,
+  "kind": "логотип",
+  "low": 4.546222014670486,
+  "floor": 46.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ },
+ "spine": {
+  "mark_px": 62.400000000000006,
+  "guard": 15.750356006365143,
+  "kind": "литера",
+  "low": 4.574207109049593,
+  "floor": 21.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ },
+ "avatar": {
+  "mark_px": 161.92000000000002,
+  "guard": 40.87015456010648,
+  "kind": "литера",
+  "low": 5.030431429647624,
+  "floor": 21.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ },
+ "cover": {
+  "mark_px": 248.64,
+  "guard": 65.77777777777777,
+  "kind": "логотип",
+  "low": 4.574207109049593,
+  "floor": 46.0,
+  "ok_size": true,
+  "ok_contrast": true,
+  "ok": true
+ }
+}
