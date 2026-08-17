@@ -1,0 +1,526 @@
+{
+ "candidates": {
+  "Commissioner": {
+   "share": 0.5401929260450161,
+   "step": 1.112152099609375,
+   "scale": [
+    {
+     "role": "сноска",
+     "x": 12.935749905125755,
+     "size": 23.94653702675065,
+     "body": false
+    },
+    {
+     "role": "подпись",
+     "x": 14.386521417007382,
+     "size": 26.63219143267438,
+     "body": false
+    },
+    {
+     "role": "текст",
+     "x": 16.0,
+     "size": 29.619047619047617,
+     "body": true
+    },
+    {
+     "role": "подзаголовок",
+     "x": 17.79443359375,
+     "size": 32.94088599795386,
+     "body": false
+    },
+    {
+     "role": "заголовок",
+     "x": 19.79011668264866,
+     "size": 36.63527552561745,
+     "body": false
+    }
+   ],
+   "floor": 0.85,
+   "lead": 1.5,
+   "sweep": [
+    {
+     "lead": 0.75,
+     "bands": 0,
+     "lines": 1,
+     "merged": true
+    },
+    {
+     "lead": 0.8,
+     "bands": 2,
+     "lines": 3,
+     "merged": true
+    },
+    {
+     "lead": 0.85,
+     "bands": 4,
+     "lines": 5,
+     "merged": false
+    },
+    {
+     "lead": 0.9,
+     "bands": 4,
+     "lines": 5,
+     "merged": false
+    },
+    {
+     "lead": 0.95,
+     "bands": 4,
+     "lines": 5,
+     "merged": false
+    },
+    {
+     "lead": 1.0,
+     "bands": 5,
+     "lines": 6,
+     "merged": false
+    },
+    {
+     "lead": 1.05,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.1,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.15,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.2,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.25,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.3,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.35,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.4,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.45,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.5,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.55,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.6,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.65,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.7,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.75,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.8,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.85,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.9,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 1.95,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 2.0,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 2.05,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 2.1,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 2.15,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    },
+    {
+     "lead": 2.2,
+     "bands": 10,
+     "lines": 11,
+     "merged": false
+    }
+   ],
+   "body": {
+    "role": "текст",
+    "x": 16.0,
+    "size": 29.619047619047617,
+    "body": true
+   }
+  },
+  "Geologica": {
+   "share": 0.532258064516129,
+   "step": 1.112152099609375,
+   "scale": [
+    {
+     "role": "сноска",
+     "x": 12.935749905125755,
+     "size": 24.303530124781723,
+     "body": false
+    },
+    {
+     "role": "подпись",
+     "x": 14.386521417007382,
+     "size": 27.02922205619569,
+     "body": false
+    },
+    {
+     "role": "текст",
+     "x": 16.0,
+     "size": 30.060606060606062,
+     "body": true
+    },
+    {
+     "role": "подзаголовок",
+     "x": 17.79443359375,
+     "size": 33.431966145833336,
+     "body": false
+    },
+    {
+     "role": "заголовок",
+     "x": 19.79011668264866,
+     "size": 37.18143134315809,
+     "body": false
+    }
+   ],
+   "floor": 0.8,
+   "lead": 1.5,
+   "sweep": [
+    {
+     "lead": 0.75,
+     "bands": 0,
+     "lines": 1,
+     "merged": true
+    },
+    {
+     "lead": 0.8,
+     "bands": 3,
+     "lines": 4,
+     "merged": false
+    },
+    {
+     "lead": 0.85,
+     "bands": 3,
+     "lines": 4,
+     "merged": false
+    },
+    {
+     "lead": 0.9,
+     "bands": 3,
+     "lines": 4,
+     "merged": false
+    },
+    {
+     "lead": 0.95,
+     "bands": 3,
+     "lines": 4,
+     "merged": false
+    },
+    {
+     "lead": 1.0,
+     "bands": 5,
+     "lines": 6,
+     "merged": false
+    },
+    {
+     "lead": 1.05,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.1,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.15,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.2,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.25,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.3,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.35,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.4,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.45,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.5,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.55,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.6,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.65,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.7,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.75,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.8,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.85,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.9,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 1.95,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 2.0,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 2.05,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 2.1,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 2.15,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    },
+    {
+     "lead": 2.2,
+     "bands": 9,
+     "lines": 10,
+     "merged": false
+    }
+   ],
+   "body": {
+    "role": "текст",
+    "x": 16.0,
+    "size": 30.060606060606062,
+    "body": true
+   }
+  }
+ },
+ "mark_lead": 1.4230769230769231,
+ "contrast": {
+  "light": [
+   {
+    "what": "текст на фоне",
+    "wcag": 11.739483338572743,
+    "need": 4.5,
+    "cvd": 0.6447967877394343,
+    "ok": true
+   },
+   {
+    "what": "ссылка на фоне",
+    "wcag": 5.030431429647624,
+    "need": 4.5,
+    "cvd": 0.4162227442635417,
+    "ok": true
+   },
+   {
+    "what": "полутон на фоне",
+    "wcag": 4.546222014670486,
+    "need": 4.5,
+    "cvd": 0.4177528195383978,
+    "ok": true
+   },
+   {
+    "what": "линейка на фоне",
+    "wcag": 1.5063702631108158,
+    "need": 3.0,
+    "cvd": 0.12851627158550563,
+    "ok": false
+   }
+  ],
+  "dark": [
+   {
+    "what": "текст на фоне",
+    "wcag": 15.40520378784571,
+    "need": 4.5,
+    "cvd": 0.7413110181594117,
+    "ok": true
+   },
+   {
+    "what": "ссылка на фоне",
+    "wcag": 4.574207109049593,
+    "need": 4.5,
+    "cvd": 0.3479380511973864,
+    "ok": true
+   },
+   {
+    "what": "полутон на фоне",
+    "wcag": 4.533301015771762,
+    "need": 4.5,
+    "cvd": 0.392141762250389,
+    "ok": true
+   },
+   {
+    "what": "линейка на фоне",
+    "wcag": 1.4145113841683532,
+    "need": 3.0,
+    "cvd": 0.11384723398627428,
+    "ok": false
+   }
+  ]
+ },
+ "dark": {
+  "bg": "#1C1611",
+  "ink": "#F4EDE2",
+  "accent": "#D15B5C",
+  "muted": "#857F7A",
+  "line": "#37322E"
+ }
+}

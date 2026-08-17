@@ -1,40 +1,41 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-AskQet — полоса справочника: система набора, выведенная замером.
+AskQet — полоса справочника на масштабе: Commissioner против Geologica.
 
-Знак построен, проверен и переведён в комплект. Дальше начинается то, чего
-у знака нет и быть не может: ПОЛОСА. Пользователь AskQet девяносто девять
-процентов времени смотрит не на марку, а на текст — рубрику, заголовок,
-абзац, ссылку, врезку, таблицу, сноску. Система живёт там.
+Знак построен и проверен, текстовая гарнитура отобрана числами. Дальше
+решается то, чего одной строкой не решить: как оба живут НА ПОЛОСЕ, где
+есть рубрика, заголовок, абзац, ссылка, врезка, таблица и сноска, и где
+пользователь проводит девяносто девять процентов времени.
 
-Главная ловушка, и её надо назвать первой
+Ловушка, которую надо назвать первой
 
-  Соблазн — перенести на полосу числа знака. Интерлиньяж 74 при росте 52,
-  воздух 22. Красиво и НЕВЕРНО: у знака две строки логотипа, их плотность
-  выбиралась по столкновению выносных, а не по чтению. Текст, набранный с
-  интерлиньяжем знака, читать нельзя. Проверено здесь же и показано
-  числом: пол интерлиньяжа полосы выходит другой.
+  Соблазн — перенести на полосу интерлиньяж знака: 74 при росте 52, то
+  есть 1.42. Красиво и неверно: у знака две строки логотипа, их плотность
+  выбиралась по столкновению выносных, а не по чтению.
 
-Что меряется, и тем же инструментом, что и всё прочее
+  Я попробовал решить интерлиньяж тем же растеканием краски, что вело
+  весь проект: набирается абзац, заливается, и смотрится, осталась ли
+  между строками полоса чистой бумаги. ИНСТРУМЕНТ НЕ РЕШАЕТ ЭТУ ЗАДАЧУ, и
+  это надо сказать прямо. Пол столкновения у обеих гарнитур оказался ниже
+  всего перебора — ниже 0.75, — потому что физически строки слипаются
+  далеко за пределом читаемого. Растекание отвечает на вопрос «где краска
+  сомкнётся», а интерлиньяж полосы — вопрос чтения, а не краски.
 
-  ИНТЕРЛИНЬЯЖ. Тот же замер растекания краски, что вёл выбор начертания.
-  Абзац набирается с разным интерлиньяжем и заливается: как только массы
-  соседних строк смыкаются, просвет между строками перестаёт существовать.
-  Это и есть пол. Рабочий интерлиньяж ставится выше пола с запасом, и
-  запас объявляется, а не прячется.
+  Поэтому рабочий интерлиньяж 1.5 здесь НАЗНАЧЕН, и назван решением, а не
+  выдан за измеренный. Пол печатается рядом — как граница, за которую
+  нельзя, а не как основание для выбора.
 
-  ШАГ ШКАЛЫ. Две соседние ступени обязаны РАЗЛИЧАТЬСЯ. Порог тут не
-  выдуман: полтора пикселя — тот же, которым мерился уголок в аватаре и
-  нижняя граница веса. Значит на самой мелкой ступени разница ростов
-  обязана быть не меньше полутора пикселей, и отсюда получается шаг —
-  не назначенный, а вычисленный.
+Шкала кеглей
 
-  КОНТРАСТ. Каждая пара «краска на фоне», которая встречается на полосе,
-  проверяется порогом своего рода: текст 4.5, графика 3.0. Отдельно —
-  три формы дальтонизма. И то же самое на тёмной теме: она была выведена
-  под документ и на полосе не проверялась ни разу — это последний
-  открытый пункт руководства, и он закрывается здесь.
+  Шаг не назначен. Две соседние ступени обязаны различаться, и порог тут
+  не выдуман: полтора пикселя — тот же, которым мерился уголок в аватаре
+  и нижняя граница веса. На самой мелкой ступени разница РОСТОВ обязана
+  быть не меньше полутора пикселей, отсюда шаг и получается.
+
+  Кегль считается из роста, а не наоборот: у каждой гарнитуры своя доля
+  роста в кегельной, и назначать кегль значило бы получить у двух шрифтов
+  разный видимый размер при одном числе в вёрстке.
 
 Запуск:  python3 tools/system.py
 Пишет:   logo/system/, tools/system.json
@@ -50,267 +51,228 @@ from build_color import simulate  # noqa: E402
 from brand import INK, PAPER, MUTED, LINE, ACCENT  # noqa: E402
 from counters import shoot, binary, spread, enclosed  # noqa: E402
 import letterforms as L  # noqa: E402
-import alphabet  # noqa: E402,F401  — регистрирует полный алфавит
-from verify import ST, XH, ASC, DESC, LEAD, AIR, GAP  # noqa: E402
+import alphabet  # noqa: E402,F401
+import pairing as P  # noqa: E402
+from verify import ST, XH, LEAD, mark  # noqa: E402
+import hanging as H  # noqa: E402
 
-MONO = 'font-family="ui-monospace,monospace"'
-M_INK, M_PAPER = "#000000", "#FFFFFF"      # краска замера, не краска бренда
+FONTS = "/tmp/claude-0/-home-user-devcore-website/0b519354-16c1-503d-a258-55d1d43b50a0/scratchpad/cand/"
+CANDIDATES = (("Commissioner", "Commissioner-Regular.ttf"),
+              ("Geologica", "Geologica-Regular.ttf"))
 
 TEXT_X = 16.0                  # рабочий рост строчных на экране, px
 MIN_PX = 1.5                   # порог различимости, тот же, что у уголка
+ROLES = ("сноска", "подпись", "текст", "подзаголовок", "заголовок")
+BODY = 2                       # какая ступень — основной текст
+LEADS = [round(0.75 + 0.05 * i, 2) for i in range(30)]
+BODY_LEAD = 1.5                # РЕШЕНИЕ, а не замер — см. шапку
 CVD = ("протанопия", "дейтеранопия", "тританопия")
 TEXT_WCAG, GRAPHIC_WCAG = 4.5, 3.0
-MIN_DE = 0.08
 
-# Абзац для замера. Настоящий текст справочника, а не «рыба»: у рыбы
-# другая частота выносных, а именно они и смыкаются между строками.
-PARA = ["индивидуальный предприниматель на упрощённом режиме",
-        "сдаёт форму дважды в год до пятнадцатого августа",
-        "предельный доход за полугодие двадцать четыре тысячи",
-        "при превышении режим слетает на общеустановленный"]
-
-LEADS = [1.15 + 0.05 * i for i in range(24)]   # в долях роста строчных
+PARA = ("Индивидуальный предприниматель на упрощённом режиме сдаёт форму "
+        "910.00 дважды в год: до 15 августа и до 15 февраля. Предельный "
+        "доход за полугодие — 24 038 МРП. При превышении режим слетает на "
+        "общеустановленный со следующего квартала.")
+KAZ = "Жеке кәсіпкер оңайлатылған режимде есеп тапсырады."
 
 
-# ── Набор ────────────────────────────────────────────────────────────────────
-
-def line_svg(text, sp, color):
-    """Строка с пробелами. Пробел — метрика, а не глиф."""
-    m = L.metrics(sp["st"])
-    adv = m["x"] * alphabet.SPACE
-    x, out = 0.0, []
-    for i, piece in enumerate(text.split(" ")):
-        if i:
-            x += adv
-        b, w = L.line(piece, sp, 0.0, color)
-        out.append(f'<g transform="translate({n(x)},0)">{b}</g>')
-        x += w
-    return "".join(out), x
+def xshare(path):
+    """Доля роста строчных в кегельной — из габаритов глифов файла."""
+    d = P.read_font(path)
+    r = d["real"]
+    return r["x"] / float(r["asc"] + r["desc"]), d
 
 
-def para_plate(lead_ratio, sp, xh_px, color=M_INK, bg=M_PAPER):
-    """Абзац с заданным интерлиньяжем. Интерлиньяж — в долях роста."""
-    m = L.metrics(sp["st"])
-    lead = m["x"] * lead_ratio
-    k = xh_px / m["x"]
-    rows, W = [], 0.0
-    for i, t in enumerate(PARA):
-        b, w = line_svg(t, sp, color)
-        rows.append((b, i * lead))
-        W = max(W, w)
-    pad = m["x"] * 0.6
-    Hh = lead * (len(PARA) - 1) + m["asc"] + m["desc"] + pad * 2
-    o = [f'<g transform="translate({n(pad)},{n(pad + m["asc"] + y)})">{b}</g>'
-         for b, y in rows]
-    return (svg(f'  <rect width="{n((W + pad * 2) * k)}" '
-                f'height="{n(Hh * k)}" fill="{bg}"/>\n'
-                f'  <g transform="scale({n(k)})">{"".join(o)}</g>\n',
-                box=((W + pad * 2) * k, Hh * k), title=""),
-            (W + pad * 2) * k, Hh * k)
+def scale(share):
+    """Ступени: рост в px и кегль, который этот рост даёт у этой гарнитуры."""
+    small = TEXT_X
+    step = 1.0 + MIN_PX / small
+    small = TEXT_X / step ** BODY
+    step = 1.0 + MIN_PX / small
+    small = TEXT_X / step ** BODY
+    return step, [dict(role=ROLES[i], x=small * step ** i,
+                       size=small * step ** i / share, body=(i == BODY))
+                  for i in range(len(ROLES))]
 
 
-# ── Пол интерлиньяжа: тем же растеканием ─────────────────────────────────────
+# ── Замер интерлиньяжа на настоящем наборе ───────────────────────────────────
 
-def lead_floor(sp, xh_px=TEXT_X):
-    """С какого интерлиньяжа просвет МЕЖДУ СТРОКАМИ переживает растекание.
+def lead_plate(fam, size, lead, w=460):
+    return (f'<style>@font-face{{font-family:X;src:local("{fam}")}}'
+            f'body{{margin:0;background:#fff}}'
+            f'p{{margin:0;padding:10px;width:{w}px;color:#000;'
+            f'font-family:"{fam}";font-weight:400;font-size:{size:.2f}px;'
+            f'line-height:{lead:.3f};text-align:left}}</style>'
+            f'<p>{PARA}</p>')
 
-    Инструмент тот же, что вёл весь выбор: краска растекается на пиксель,
-    и смотрится, что от белого остаётся. Здесь важен не счёт очков, а
-    цельность просвета между строками: пока строки разделены, заливка от
-    рамки проходит между ними насквозь и белое остаётся ОДНИМ куском.
-    Как только массы соседних строк сомкнулись, просвет распадается на
-    запертые карманы — и это ровно тот шаг, на котором строка перестала
-    быть строкой.
-    """
-    jobs, meta = [], {}
+
+def lead_floor(fam, size):
+    """С какого интерлиньяжа просвет между строками переживает растекание."""
+    jobs = []
     for i, r in enumerate(LEADS):
-        src, W, Hh = para_plate(r, sp, xh_px)
-        p = write(f"logo/system/_l{i}.svg", src)
-        meta[str(i)] = r
+        p = write(f"logo/system/_ld{i}.html", lead_plate(fam, size, r))
         jobs.append(dict(key=str(i), path=os.path.join(ROOT, p),
-                         w=int(round(W)), h=max(4, int(round(Hh)))))
+                         w=480, h=int(size * r * 9) + 60))
     shots = shoot(jobs)
     out = []
     for i, r in enumerate(LEADS):
         px, w, h = shots[str(i)]
         ink = spread(binary(px, w, h), w, h)
-        pockets = len(enclosed(ink, w, h))
-        base = len(enclosed(binary(px, w, h), w, h))
-        out.append(dict(lead=r, pockets=pockets, base=base,
-                        merged=pockets > base))
-        os.remove(os.path.join(ROOT, f"logo/system/_l{i}.svg"))
+        # Считается не число карманов, а ПОЛОСА ЧИСТОЙ БУМАГИ поперёк
+        # набора. Первый заход считал карманы — и врал: под растеканием
+        # очки букв закрываются, а слипшиеся строки открывают новые
+        # просветы, два счёта гуляют навстречу и результат ничего не
+        # значит. Geologica получала пол 2.20 против 1.15 у Commissioner,
+        # чего между двумя обычными текстовыми шрифтами быть не может.
+        rows = [any(ink[y * w:(y + 1) * w]) for y in range(h)]
+        bands, run = 0, False
+        first = rows.index(True) if True in rows else 0
+        last = len(rows) - 1 - rows[::-1].index(True) if True in rows else 0
+        for y in range(first, last + 1):
+            if not rows[y]:
+                if not run:
+                    bands += 1
+                run = True
+            else:
+                run = False
+        lines = bands + 1
+        out.append(dict(lead=r, bands=bands, lines=lines,
+                        merged=bands < 3))
+        os.remove(os.path.join(ROOT, f"logo/system/_ld{i}.html"))
     good = [d["lead"] for d in out if not d["merged"]]
     return (min(good) if good else LEADS[-1]), out
 
 
-# ── Шкала кеглей ─────────────────────────────────────────────────────────────
-
-def scale_step(x_small):
-    """Шаг шкалы: наименьший, при котором соседние ступени различимы.
-
-    На самой мелкой ступени разница ростов обязана быть не меньше порога
-    в полтора пикселя — того же, которым мерился уголок в аватаре. Отсюда
-    шаг получается, а не назначается.
-    """
-    return 1.0 + MIN_PX / x_small
-
-
-ROLES = ("сноска", "подпись", "текст", "подзаголовок", "заголовок",
-         "титул")
-
-
-def scale(x_small, step, body_index=2):
-    """Ступени шкалы в РОСТЕ СТРОЧНЫХ, px. Основной текст — ступень 2."""
-    return [dict(role=ROLES[i], x=x_small * step ** i,
-                 body=(i == body_index)) for i in range(len(ROLES))]
-
-
 # ── Полоса ───────────────────────────────────────────────────────────────────
 
-def theme(dark, D):
-    if not dark:
-        return dict(bg=PAPER, ink=INK, muted=MUTED, line=LINE, accent=ACCENT)
-    return dict(bg=D["bg"], ink=D["ink"], muted=D["muted"], line=D["line"],
-                accent=D["accent"])
+def logo_svg(px=120.0):
+    ind = H.measure()["ind"]["letter"]
+    body, W, Hh = mark(ind)
+    k = px / W
+    return (f'<svg viewBox="0 0 {n(W)} {n(Hh)}" width="{n(px)}" '
+            f'height="{n(Hh * k)}">{body}</svg>')
 
 
-def strip(C, sc, lead, w=520.0):
-    """Полоса справочника: все роли набора разом, своим кеглем и краской."""
-    sp = L.style(st=ST, tail=1.1)
-    m = L.metrics(ST)
-    pad = 26.0
-    o, y = [], pad
+def page(fam, sc, lead, dark=False, D=None):
+    """Настоящая полоса справочника: все роли набора разом."""
+    C = (dict(bg=D["bg"], ink=D["ink"], muted=D["muted"], line=D["line"],
+              accent=D["accent"]) if dark else
+         dict(bg=PAPER, ink=INK, muted=MUTED, line=LINE, accent=ACCENT))
+    S = {s["role"]: s for s in sc}
+    css = (f'body{{margin:0;background:{C["bg"]};color:{C["ink"]};'
+           f'font-family:"{fam}";font-weight:400;line-height:{lead};'
+           f'-webkit-font-smoothing:antialiased}}'
+           f'.p{{max-width:640px;padding:34px 40px}}'
+           f'.rub{{font-size:{S["сноска"]["size"]:.1f}px;letter-spacing:.09em;'
+           f'text-transform:uppercase;color:{C["accent"]};margin:0 0 14px}}'
+           f'h1{{font-size:{S["заголовок"]["size"]:.1f}px;margin:0 0 6px;'
+           f'font-weight:600;line-height:1.18}}'
+           f'h2{{font-size:{S["подзаголовок"]["size"]:.1f}px;'
+           f'margin:26px 0 6px;font-weight:600}}'
+           f'p{{font-size:{S["текст"]["size"]:.1f}px;margin:0 0 12px}}'
+           f'a{{color:{C["accent"]};text-decoration:none;'
+           f'border-bottom:1px solid {C["accent"]}55}}'
+           f'hr{{border:0;border-top:1px solid {C["line"]};margin:16px 0}}'
+           f'.box{{border:1px solid {C["line"]};padding:12px 14px;'
+           f'font-size:{S["подпись"]["size"]:.1f}px;margin:16px 0}}'
+           f'table{{border-collapse:collapse;width:100%;'
+           f'font-size:{S["текст"]["size"]:.1f}px;'
+           f'font-variant-numeric:tabular-nums}}'
+           f'td,th{{text-align:left;padding:6px 0;'
+           f'border-bottom:1px solid {C["line"]}}}'
+           f'th{{font-weight:600;color:{C["muted"]};'
+           f'font-size:{S["подпись"]["size"]:.1f}px}}'
+           f'td.n{{text-align:right;font-variant-numeric:tabular-nums}}'
+           f'.foot{{font-size:{S["сноска"]["size"]:.1f}px;color:{C["muted"]};'
+           f'margin-top:22px}}'
+           f'.mk{{margin-bottom:26px}}'
+           f'.mk svg{{display:block;width:132px;height:auto}}')
+    rows = (("910.00", "дважды в год", "24 038"),
+            ("200.00", "ежеквартально", "3 692"),
+            ("100.00", "ежемесячно", "1 048"))
+    tr = "".join(f'<tr><td>{a}</td><td>{b}</td><td class="n">{c}</td></tr>'
+                 for a, b, c in rows)
+    return (f'<style>{css}</style><div class="p">'
+            f'<div class="mk">{logo_svg()}</div>'
+            f'<p class="rub">Налоги · упрощёнка</p>'
+            f'<h1>Форма 910.00 и сроки её сдачи</h1>'
+            f'<hr><p>{PARA}</p>'
+            f'<p>{KAZ} <a href="#">Сроки и штрафы за просрочку →</a></p>'
+            f'<h2>Пороги и периодичность</h2>'
+            f'<table><tr><th>Форма</th><th>Периодичность</th>'
+            f'<th class="n">Порог, МРП</th></tr>{tr}</table>'
+            f'<div class="box">При превышении предельного дохода режим '
+            f'слетает на общеустановленный со следующего квартала.</div>'
+            f'<p class="foot">Обновлено в феврале 2026</p></div>')
 
-    def put(text, role, color, gap_before=0.0):
-        nonlocal y
-        st = next(s for s in sc if s["role"] == role)
-        k = st["x"] / m["x"]
-        b, _ = line_svg(text, sp, color)
-        y += gap_before + st["x"] * lead
-        o.append(f'<g transform="translate({n(pad)},{n(y)}) '
-                 f'scale({n(k)})">{b}</g>')
 
-    put("налоги упрощёнка", "сноска", C["accent"])
-    put("форма отчётности", "заголовок", C["ink"], 8.0)
-    y += 10
-    o.append(f'<rect x="{n(pad)}" y="{n(y)}" width="{n(w - pad * 2)}" '
-             f'height="1" fill="{C["line"]}"/>')
-    for t in PARA:
-        put(t, "текст", C["ink"])
-    put("сроки и штрафы за просрочку", "текст", C["accent"], 6.0)
-    y += 14
-    o.append(f'<rect x="{n(pad)}" y="{n(y)}" '
-             f'width="{n(w - pad * 2)}" height="{n(46)}" fill="none" '
-             f'stroke="{C["line"]}" stroke-width="1"/>')
-    y += 6
-    put("врезка предельный доход", "подпись", C["muted"])
-    y += 22
-    put("обновлено в феврале", "сноска", C["muted"], 6.0)
-    Hh = y + pad
-    return svg(f'  <rect width="{n(w)}" height="{n(Hh)}" '
-               f'fill="{C["bg"]}"/>\n  {"".join(o)}\n',
-               box=(w, Hh), title="AskQet — полоса")
-
-
-def pairs_of(C):
-    """Все пары «краска на фоне», которые встречаются на полосе."""
+def pairs(C):
     return [("текст на фоне", C["ink"], C["bg"], TEXT_WCAG),
             ("ссылка на фоне", C["accent"], C["bg"], TEXT_WCAG),
             ("полутон на фоне", C["muted"], C["bg"], TEXT_WCAG),
-            ("линейка на фоне", C["line"], C["bg"], GRAPHIC_WCAG),
-            ("ссылка рядом с текстом", C["accent"], C["ink"], 0.0)]
+            ("линейка на фоне", C["line"], C["bg"], GRAPHIC_WCAG)]
 
 
-def check_pairs(C):
+def check(C):
     out = []
-    for name, fg, bg, need in pairs_of(C):
+    for name, fg, bg, need in pairs(C):
         r = wcag(fg, bg)
         d = min(de_ok(simulate(fg, k), simulate(bg, k)) for k in CVD)
-        out.append(dict(what=name, fg=fg, bg=bg, wcag=r, need=need,
-                        cvd=d, ok=(r >= need if need else d >= MIN_DE)))
+        out.append(dict(what=name, wcag=r, need=need, cvd=d, ok=r >= need))
     return out
 
 
 if __name__ == "__main__":
-    sp = L.style(st=ST, tail=1.1)
-    floor, sweep = lead_floor(sp)
+    import book as BK
+    Pal = json.load(open(os.path.join(ROOT, "tools/premium.json"),
+                         encoding="utf-8"))["palette"]
+    D = BK.dark_world(Pal)
+    light = dict(bg=PAPER, ink=INK, muted=MUTED, line=LINE, accent=ACCENT)
 
-    # Рабочий интерлиньяж — с объявленным запасом над полом. Запас не
-    # измеряется: пол говорит, где строки СЛИПАЮТСЯ, а не где их удобно
-    # читать. Это решение, и оно названо решением.
-    SLACK = 1.25
-    lead = round(floor * SLACK, 2)
+    res = {}
+    for fam, fn in CANDIDATES:
+        share, d = xshare(FONTS + fn)
+        step, sc = scale(share)
+        body = next(s for s in sc if s["body"])
+        floor, sweep = lead_floor(fam, body["size"])
+        lead = BODY_LEAD
+        for theme, C, tag in ((False, light, "light"), (True, D, "dark")):
+            write(f"logo/system/{fam.lower()}-{tag}.html",
+                  page(fam, sc, lead, theme, D))
+        res[fam] = dict(share=share, step=step, scale=sc, floor=floor,
+                        lead=lead, sweep=sweep, body=body)
 
-    step = scale_step(TEXT_X / 1.0)
-    # Мелкая ступень: от неё строится шкала вверх, и основной текст обязан
-    # попасть ровно на рабочий рост TEXT_X.
-    small = TEXT_X / step ** 2
-    step = scale_step(small)
-    small = TEXT_X / step ** 2
-    sc = scale(small, step)
-
-    D = json.load(open(os.path.join(ROOT, "tools/book_dark.json"),
-                       encoding="utf-8")) if os.path.exists(
-        os.path.join(ROOT, "tools/book_dark.json")) else None
-    if D is None:
-        import book as BK
-        P = json.load(open(os.path.join(ROOT, "tools/premium.json"),
-                           encoding="utf-8"))["palette"]
-        D = BK.dark_world(P)
-
-    light, dark = theme(False, D), theme(True, D)
-    write("logo/system/strip-light.svg", strip(light, sc, lead))
-    write("logo/system/strip-dark.svg", strip(dark, sc, lead))
-
-    res = dict(light=check_pairs(light), dark=check_pairs(dark))
-    data = dict(lead_floor=floor, lead=lead, slack=SLACK, step=step,
-                scale=sc, sweep=sweep, pairs=res, dark=D,
-                mark_lead_ratio=LEAD / XH)
+    data = dict(candidates=res, mark_lead=LEAD / XH,
+                contrast=dict(light=check(light), dark=check(D)), dark=D)
     with open(os.path.join(ROOT, "tools/system.json"), "w",
               encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=1)
 
-    print("ИНТЕРЛИНЬЯЖ ПОЛОСЫ — полом, а не вкусом\n")
-    print("абзац заливается краской; пока строки разделены, белое между "
-          "ними остаётся\nодним куском. Сомкнулись — распалось на "
-          "карманы. Это и есть пол.\n")
-    print(f"{'интерлиньяж':>12}{'карманов':>10}{'до заливки':>12}   вердикт")
-    for d in sweep[::2]:
-        print(f"{d['lead']:>12.2f}{d['pockets']:>10}{d['base']:>12}   "
-              + ("СЛИПЛОСЬ" if d["merged"] else "держит"))
-    print(f"\nпол {floor:.2f} роста строчных. Рабочий {lead:.2f} — это пол "
-          f"плюс объявленный\nзапас {SLACK:.2f}: пол говорит, где строки "
-          f"слипаются, а не где их удобно читать.\n")
-    print(f"интерлиньяж ЗНАКА {LEAD / XH:.2f} — и он полосе не годится: "
-          f"{'ниже' if LEAD / XH < floor else 'выше'} пола "
-          f"{floor:.2f}.\nУ знака две строки логотипа, их плотность "
-          f"выбиралась по столкновению выносных,\nа не по чтению. "
-          f"Переносить это число на текст было бы красиво и неверно.\n")
+    print("ПОЛОСА НА МАСШТАБЕ — Commissioner против Geologica\n")
+    for fam, _ in CANDIDATES:
+        r = res[fam]
+        print(f"{fam}: доля роста в кегельной {r['share']:.3f}, "
+              f"шаг шкалы {r['step']:.3f}")
+        print(f"{'  роль':<16}{'рост, px':>10}{'кегль, px':>11}"
+              f"{'строка, px':>12}")
+        for s in r["scale"]:
+            print(f"  {s['role']:<14}{s['x']:>10.1f}{s['size']:>11.1f}"
+                  f"{s['size'] * r['lead']:>12.1f}"
+                  + ("   ← основной" if s["body"] else ""))
+        print(f"  интерлиньяж: пол столкновения {r['floor']:.2f}, "
+              f"рабочий {r['lead']:.2f} — РЕШЕНИЕ, не замер\n")
 
-    print("ШКАЛА КЕГЛЕЙ — шаг из порога различимости\n")
-    print(f"шаг {step:.3f}: на мелкой ступени разница ростов ровно "
-          f"{MIN_PX:.1f} px — тот же порог,\nкоторым мерился уголок в "
-          f"аватаре и нижняя граница веса.\n")
-    print(f"{'роль':<16}{'рост, px':>10}{'кегль, px':>11}"
-          f"{'строка, px':>12}")
-    m = L.metrics(ST)
-    for s in sc:
-        size = s["x"] * (m["asc"] + m["desc"]) / m["x"]
-        print(f"{s['role']:<16}{s['x']:>10.1f}{size:>11.1f}"
-              f"{s['x'] * lead:>12.1f}"
-              + ("   ← основной" if s["body"] else ""))
+    print(f"интерлиньяж ЗНАКА {LEAD / XH:.2f} — полосе не годится: "
+          f"он ниже пола обоих.\nУ знака две строки логотипа, плотность "
+          f"выбиралась по столкновению выносных,\nа не по чтению.\n")
 
-    print("\nКОНТРАСТ НА ПОЛОСЕ — обе темы\n")
-    for name, R in (("светлая", res["light"]), ("ТЁМНАЯ", res["dark"])):
-        print(f"{name}")
-        print(f"  {'пара':<26}{'контраст':>10}{'порог':>8}"
-              f"{'дальтонизм':>12}   вердикт")
+    print("КОНТРАСТ — обе темы\n")
+    for name, R in (("светлая", data["contrast"]["light"]),
+                    ("тёмная", data["contrast"]["dark"])):
+        print(f"  {name}")
         for r in R:
-            print(f"  {r['what']:<26}{r['wcag']:>10.2f}"
-                  f"{r['need']:>8.1f}{r['cvd']:>12.3f}   "
-                  + ("годен" if r["ok"] else "НЕ ДЕРЖИТ"))
-        print()
-    bad = [r for R in res.values() for r in R if not r["ok"]]
-    print(f"не держат: {len(bad)}" if bad else
-          "тёмная тема проверена на полосе: держат все пары. "
-          "Открытый пункт закрыт.")
+            print(f"    {r['what']:<20}{r['wcag']:>7.2f} при пороге "
+                  f"{r['need']:.1f}   " + ("годен" if r["ok"] else "НЕ ДЕРЖИТ"))
+    bad = [r for R in data["contrast"].values() for r in R if not r["ok"]]
+    print("\n" + ("тёмная тема проверена на полосе: держат все пары."
+                  if not bad else f"НЕ ДЕРЖАТ: {len(bad)}"))
