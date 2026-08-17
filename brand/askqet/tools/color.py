@@ -53,7 +53,7 @@ from counters import shoot, binary  # noqa: E402
 from engraving import INK, PAPER, MUTED, LINE  # noqa: E402
 import letterforms as L  # noqa: E402
 import hanging as H  # noqa: E402
-from verify import ASC, XH, DESC, ST, LEAD, SP, ARM, inner  # noqa: E402
+from verify import ASC, XH, DESC, ST, LEAD, MARK, ARM, inner  # noqa: E402
 from icon import c_letter, THICK  # noqa: E402
 
 
@@ -112,6 +112,18 @@ def below(body, x, y, cut, W, Hh):
             f'<g transform="translate({n(x)},{n(y)})">{body}</g></g>')
 
 
+def letter_base():
+    """Где у литеры базовая, считая от верха её габарита.
+
+    Раньше это писалось как h0 − DESC: у литеры со свесом в 20 единиц низ
+    габарита и был низом свеса. С лентой свес стал длиннее, и формула
+    молча поехала бы — отсечка ушла бы внутрь чаши. Базовая берётся у
+    контуров: она там, где y = 0.
+    """
+    r = L.line_rings("q", MARK)
+    return -min(p[1] for rr in r for p in rr)
+
+
 def brackets(W, Hh, col):
     ax, ay = W * ARM, Hh * ARM
     tl = f'M0,0 H{n(ax)} V{n(THICK)} H{n(THICK)} V{n(ay)} H0 Z'
@@ -134,9 +146,9 @@ def parts(ind, C):
     базовой, а на ov ниже: иначе синим становился заодно свес чашки —
     мазок сбоку от штриха, читаемый как брак печати, а не как лента.
     """
-    b1, _ = L.line("ask", SP, 0.0, C["word"])
-    b2, _ = L.line("qet", SP, 0.0, C["word"])
-    r1, r2 = L.line_rings("ask", SP), L.line_rings("qet", SP)
+    b1, _ = L.line("ask", MARK, 0.0, C["word"])
+    b2, _ = L.line("qet", MARK, 0.0, C["word"])
+    r1, r2 = L.line_rings("ask", MARK), L.line_rings("qet", MARK)
     w0 = max(max(p[0] for r in r1 for p in r),
              ind + max(p[0] for r in r2 for p in r))
     bot = LEAD + max(p[1] for r in r2 for p in r)
@@ -148,7 +160,7 @@ def parts(ind, C):
          f'<g transform="translate({n(p)},{n(p + ASC)})">{b1}</g>',
          f'<g transform="translate({n(p + ind)},{n(base)})">{b2}</g>']
     if C["tail"] != C["word"]:
-        bq, _ = L.line("q", SP, 0.0, C["tail"])
+        bq, _ = L.line("q", MARK, 0.0, C["tail"])
         o.append(below(bq, p + ind, base, base + OV, W, Hh))
     return "".join(o), W, Hh
 
@@ -163,7 +175,7 @@ def icon_parts(ind, C):
          f'<g transform="translate({n(p)},{n(p)})">{body}</g>']
     if C["tail"] != C["word"]:
         tail = body.replace(C["word"], C["tail"])
-        o.append(below(tail, p, p, p + (h0 - DESC) + OV, W, Hh))
+        o.append(below(tail, p, p, p + letter_base() + OV, W, Hh))
     return "".join(o), W, Hh
 
 
@@ -249,7 +261,7 @@ def tail_pixels(ind):
     body, w0, h0 = c_letter(ind)
     p = inner(THICK)
     W, Hh = w0 + p * 2, h0 + p * 2
-    only = below(body, p, p, p + (h0 - DESC) + OV, W, Hh)
+    only = below(body, p, p, p + letter_base() + OV, W, Hh)
     path = "logo/color/_ribbon.svg"
     write(path, svg(f'  <rect width="{n(W)}" height="{n(Hh)}" '
                     f'fill="{PAPER}"/>\n  {only}\n', box=(W, Hh),

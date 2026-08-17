@@ -51,7 +51,7 @@ from build import ROOT, n, svg, write  # noqa: E402
 from counters import shoot, binary  # noqa: E402
 import hanging as H  # noqa: E402
 import letterforms as L  # noqa: E402
-from verify import (ASC, DESC, ST, LEAD, ARM, SP, inner)  # noqa: E402
+from verify import (ASC, DESC, ST, LEAD, ARM, MARK, inner)  # noqa: E402
 
 THICK = ST * 1.20
 GUARD = inner(THICK)
@@ -174,7 +174,7 @@ def brackets(W, Hh):
               (W - t, Hh - ay), (W, Hh - ay)]]]
 
 
-def flat_mark(ind, sp=SP):
+def flat_mark(ind, sp=MARK):
     g1, _ = flat_line("ask", sp, ASC)
     g2, _ = flat_line("qet", sp, ASC + LEAD)
     g2 = [[[(x + ind, y) for x, y in r] for r in g] for g in g2]
@@ -188,7 +188,7 @@ def flat_mark(ind, sp=SP):
     return letters, brackets(W, Hh), W, Hh
 
 
-def flat_letter(sp=SP):
+def flat_letter(sp=MARK):
     """Литера: одна q в уголках, тоже плоско."""
     groups, _ = flat_glyph("q", sp)
     r = L.line_rings("q", sp)

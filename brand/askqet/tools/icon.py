@@ -56,7 +56,7 @@ import hanging as H  # noqa: E402
 import forms as F1  # noqa: E402
 import forms2 as F2  # noqa: E402
 from forms import icon_svg, silhouette, ICON  # noqa: E402
-from verify import (PAD, ASC, XH, DESC, ST, LEAD, SP, ARM,  # noqa: E402
+from verify import (PAD, ASC, XH, DESC, ST, LEAD, SP, MARK, ARM,  # noqa: E402
                     inner, mark, blanks)
 
 
@@ -118,9 +118,15 @@ def c_share(ind):
 
 def c_letter(ind):
     """Одна q с ляссе. Из шести литер это единственная своя: a, s, k, e, t
-    есть у всех, q с хвостом-закладкой — только у нас."""
-    b, _ = L.line("q", SP, 0.0, INK)
-    r = L.line_rings("q", SP)
+    есть у всех, q с хвостом-закладкой — только у нас.
+
+    Здесь начертание ЗНАКОВОЕ, а не наборное: у литеры лента полной длины,
+    как у логотипа. Остальные пять кандидатов на этом листе остаются на
+    наборном SP — это исторический перебор, и переписывать его задним
+    числом под сегодняшний знак нечестно.
+    """
+    b, _ = L.line("q", MARK, 0.0, INK)
+    r = L.line_rings("q", MARK)
     x0 = min(p[0] for rr in r for p in rr)
     x1 = max(p[0] for rr in r for p in rr)
     y0 = min(p[1] for rr in r for p in rr)
