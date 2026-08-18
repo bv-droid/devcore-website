@@ -81,6 +81,16 @@ AskQet — сводная сверка: совпадает ли система �
   умолчание браузера. Новый С BOM — UTF-8. Три байта решают то, чего
   не решает разметка, и теперь они сверяются по байтам файла.
 
+  ТЕМА ОДНА. Решение заказчика: интерфейс только светлый. Опасность
+  здесь тихая — объявление тёмной темы, оставшееся в одном файле из
+  трёх, будет годами переключать палитру по настройке браузера, и никто
+  не заметит: у того, кто правил, тема светлая. Отсюда раздел ТЕМА, пять
+  строк. Проверено отказом: вернёшь @media в документ — расходятся две.
+
+  Числа тёмного поля не выброшены. Они выведены, держат все пороги и
+  остались ЗАПИСЬЮ; в оснастку не уходят, потому что объявление, которое
+  никто не применяет, со временем расходится с системой молча.
+
 Запуск:  python3 tools/audit.py
 Пишет:   tools/audit.json
 """
@@ -135,7 +145,7 @@ def html_text():
     прогона по системным шрифтам. Ни один модуль этого не поймал —
     каждый проверял СВОЁ, а противоречие лежало МЕЖДУ набором и текстом.
     """
-    p = os.path.join(ROOT, "askqet.html")
+    p = os.path.join(ROOT, "askqet-brandbook.html")
     if not os.path.exists(p):
         return ""
     # utf-8-sig, а не utf-8: документ пишется с BOM, и при обычном utf-8
@@ -155,7 +165,7 @@ def html_numbers():
     честно пересобрался, а сверка продолжала ругаться на своё старое 24.
     Мерка, у которой есть свой ответ, — не мерка.
     """
-    p = os.path.join(ROOT, "askqet.html")
+    p = os.path.join(ROOT, "askqet-brandbook.html")
     if not os.path.exists(p):
         return {}
     with open(p, encoding="utf-8") as f:
@@ -299,9 +309,9 @@ if __name__ == "__main__":
             miss = "".join("".join(v) for v in cands[fam]["missing"].values())
             check("НАБОР", "покрытие принятой", "pairing (чего нет)",
                   miss or "полное", "должно быть", "полное")
-        check("НАБОР", "гарнитура документа", "askqet.html (набран)",
+        check("НАБОР", "гарнитура документа", "брендбук (набран)",
               fam if f"'{fam}'" in src else "чужая", "tokens (принята)", fam)
-        check("НАБОР", "интерлиньяж документа", "askqet.html (набран)",
+        check("НАБОР", "интерлиньяж документа", "брендбук (набран)",
               float(re.search(r"line-height:([\d.]+);", src).group(1))
               if re.search(r"line-height:([\d.]+);", src) else None,
               "tokens (принят)", tokj["lead"], tol=0.001)
@@ -329,18 +339,18 @@ if __name__ == "__main__":
         # заголовке, читается как windows-1251 — «Знак» превращается в
         # «Р—РЅР°Рє». <meta charset> тут проигрывает: заголовок сервера
         # старше него, а на диске старше умолчание браузера.
-        with open(os.path.join(ROOT, "askqet.html"), "rb") as fh:
+        with open(os.path.join(ROOT, "askqet-brandbook.html"), "rb") as fh:
             raw = fh.read(3)
-        check("ДОКУМЕНТ", "кодировка закреплена BOM", "askqet.html (байты)",
+        check("ДОКУМЕНТ", "кодировка закреплена BOM", "брендбук (байты)",
               "есть" if raw == b"\xef\xbb\xbf" else "нет",
               "должен быть", "есть")
-        check("ДОКУМЕНТ", "объявлен doctype", "askqet.html",
+        check("ДОКУМЕНТ", "объявлен doctype", "askqet-brandbook.html",
               "есть" if src.lstrip().lower().startswith("<!doctype html>")
               else "нет", "должен быть", "есть")
-        check("ДОКУМЕНТ", "объявлена кодировка", "askqet.html",
+        check("ДОКУМЕНТ", "объявлена кодировка", "askqet-brandbook.html",
               "есть" if 'charset="utf-8"' in head.lower() else "нет",
               "должна быть", "есть")
-        check("ДОКУМЕНТ", "объявлен язык", "askqet.html",
+        check("ДОКУМЕНТ", "объявлен язык", "askqet-brandbook.html",
               "есть" if 'lang="ru"' in head.lower() else "нет",
               "должен быть", "есть")
         # Комментарии выкидываются: в них ЛЕЖИТ РАССКАЗ о прежнем
@@ -350,9 +360,9 @@ if __name__ == "__main__":
         # не учёл: @import url('https://…') прошёл мимо — то есть мерка
         # не поймала бы ровно ту строку, из-за которой всё и случилось.
         ext = re.findall(r"""(?:url\(|src=|href=)['"]?https?://""", bare)
-        check("ДОКУМЕНТ", "внешних запросов", "askqet.html", len(ext),
+        check("ДОКУМЕНТ", "внешних запросов", "askqet-brandbook.html", len(ext),
               "должно быть", 0, tol=0.0)
-        check("ДОКУМЕНТ", "гарнитура вшита", "askqet.html",
+        check("ДОКУМЕНТ", "гарнитура вшита", "askqet-brandbook.html",
               "да" if "font/woff2;base64," in bare else "нет",
               "должна быть", "да")
 
@@ -361,6 +371,7 @@ if __name__ == "__main__":
     # Высота поля — не «сорок восемь, как у всех», а строка плюс две
     # мелкие ступени. Проверяется здесь, потому что разойтись ей есть с
     # чем: ступень живёт в spacing, строка в наборе, а само поле в parts.
+    tokcss_p = os.path.join(ROOT, "tokens/askqet-system.css")
     ptj, spj = load("parts"), load("spacing")
     if ptj and spj and tokj:
         inside = min(r["px"] for r in spj["steps"])
@@ -381,20 +392,58 @@ if __name__ == "__main__":
               tol=0.01)
         # Ошибка обязана расходиться с акцентом при ХУДШЕМ дальтонизме.
         # Запас тонок, и потому он сверяется, а не подразумевается.
-        for tag in ("light", "dark"):
-            e = (ptj.get("error") or {}).get(tag)
-            if e:
-                check("ЧАСТИ", f"ошибка ≠ акцент, {tag}",
-                      "замер при дальтонизме", e["de"], "порог",
-                      ptj["margin"]["threshold"],
-                      state=("СХОДИТСЯ" if e["de"] >= ptj["margin"]["threshold"]
-                             else "РАСХОДИТСЯ"),
-                      note=f"запас {e['de'] - ptj['margin']['threshold']:.3f}")
+        e = (ptj.get("error") or {}).get("light")
+        if e:
+            check("ЧАСТИ", "ошибка ≠ акцент", "замер при дальтонизме",
+                  e["de"], "порог", ptj["margin"]["threshold"],
+                  state=("СХОДИТСЯ" if e["de"] >= ptj["margin"]["threshold"]
+                         else "РАСХОДИТСЯ"),
+                  note=f"запас {e['de'] - ptj['margin']['threshold']:.3f}")
+        ed = (ptj.get("error") or {}).get("dark")
+        if ed:
+            check("ЧАСТИ", "ошибка на тёмном", "выведена и держит порог",
+                  ed["hex"], "в оснастку не идёт", ed["hex"], state="ЗАПИСЬ",
+                  note="тема одна, светлая — решение заказчика")
         # И то же число обязано стоять в оснастке, а не только в прогоне.
         pt = (tokj.get("parts") or {})
         check("ЧАСТИ", "оснастка знает высоту", "tokens",
               (pt.get("height") if pt else None), "parts.json",
               ptj["height"], tol=0.05)
+
+    # ── Тема одна, и это проверяется, а не подразумевается ──────────────
+    #
+    # Решение заказчика: интерфейс только светлый. Опасность тут тихая —
+    # объявление тёмной темы, оставшееся в одном файле из трёх, будет
+    # годами переключать палитру по настройке браузера, и никто не
+    # заметит: у того, кто правил, тема светлая.
+    if src:
+        for what, hay, where in (
+                ("документ", src, "askqet-brandbook.html"),
+                ("оснастка", open(tokcss_p, encoding="utf-8").read()
+                 if os.path.exists(tokcss_p) else "",
+                 "tokens/askqet-system.css")):
+            bare = re.sub(r"/\*.*?\*/", "", hay, flags=re.S)
+            n_dark = (bare.count("prefers-color-scheme")
+                      + bare.count("data-theme"))
+            check("ТЕМА", f"тёмных правил: {what}", where, n_dark,
+                  "должно быть", 0, tol=0.0)
+        check("ТЕМА", "объявлено в документе", "color-scheme",
+              "light" if "color-scheme: light;" in src else "не light",
+              "должно быть", "light")
+    if tokj:
+        check("ТЕМА", "оснастка называет тему", "tokens",
+              tokj.get("theme", "не названа"), "должно быть",
+              "только светлая")
+        check("ТЕМА", "тёмные числа в записи", "tokens",
+              "есть" if tokj.get("dark_record") else "нет",
+              "должны быть", "есть")
+
+    # ── Оглавление обязано совпадать с разделами ────────────────────────
+    if src:
+        secs = len(re.findall(r'<section id="r\d+"', src))
+        toc = len(re.findall(r'class="t-n"', src))
+        check("ДОКУМЕНТ", "оглавление против разделов", "пунктов", toc,
+              "разделов", secs, tol=0.0)
 
     # ── Токены обязаны ЧИТАТЬСЯ браузером, а не просто быть написаны ────
     #
@@ -403,8 +452,8 @@ if __name__ == "__main__":
     # недействительным, и браузер молча выбрасывает всю строку: в файле
     # токен есть, в вёрстке его нет. Молча — самое опасное слово здесь,
     # и потому токены теперь читаются обратно ИЗ БРАУЗЕРА.
-    tokcss = os.path.join(ROOT, "tokens/askqet-system.css")
-    if os.path.exists(tokcss):
+    if os.path.exists(tokcss_p):
+        tokcss = tokcss_p
         js = ("const {chromium}=require('playwright');const fs=require('fs');"
               "(async()=>{const css=fs.readFileSync(process.argv[2],'utf8');"
               "const ns=[...css.matchAll(/^\\s*(--[^:]+):/gm)]"

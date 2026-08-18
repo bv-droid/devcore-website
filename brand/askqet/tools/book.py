@@ -17,13 +17,38 @@ color.parts. Поэтому руководство не может разойт�
   тёмное поле для них выведено тем же правилом, что и всё остальное, а не
   взято из синего листа.
 
+Брендбук, а не лист
+
+  Документ открывается ОБЛОЖКОЙ со знаком и оглавлением: первое, что
+  видит читатель, обязано быть тем, ради чего он открыл файл. Разделы
+  пронумерованы, и номер стоит в поле рядом с рубрикой.
+
+  Оглавление собирается ИЗ САМОЙ разметки проходом number_sections, а не
+  пишется рядом: писать его руками значит завести второй список
+  разделов, и он разойдётся с первым при первой же вставке.
+
+  Заведена печать: разделы не рвутся посередине, обложка и оглавление
+  уходят на свои страницы. Брендбук рассылают PDF, и это надо было
+  предусмотреть, а не оставлять браузеру.
+
+Тема одна
+
+  Светлая — решение заказчика. Тёмные переопределения сняты из CSS
+  целиком: объявление, которое никто не применяет, со временем
+  расходится с системой молча. Числа тёмного поля остались записью.
+
+  Это про ТЕМУ, а не про печать: исполнения знака на тёмном поле —
+  выворотка, тёмная обложка, чёрная сумка — остаются и держатся в
+  разделе исполнений.
+
 Запуск:  python3 tools/book.py
-Пишет:   askqet.html
+Пишет:   askqet-brandbook.html
 """
 
 import html
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -174,6 +199,37 @@ def fig_tail(ind, P):
             f'role="img" aria-label="Ляссе на хвосте q">{"".join(o)}</svg>')
 
 
+def number_sections(html):
+    """Номера разделов и оглавление — ИЗ САМОЙ разметки, а не рядом с ней.
+
+    Писать оглавление руками значит завести второй список разделов, и он
+    разойдётся с первым при первой же вставке. Здесь список ровно один:
+    разделы в документе. Номер проставляется в поле рядом с рубрикой,
+    заголовок и объём каждого раздела читаются оттуда же.
+    """
+    pat = re.compile(
+        r'<section>\s*\n\s*<div class="aside">([^<]+)</div>', re.M)
+    parts, toc, pos, i = [], [], 0, 0
+    for m in pat.finditer(html):
+        i += 1
+        name = m.group(1).strip()
+        # Заголовок раздела — первый h2 после рубрики.
+        h = re.search(r"<h2>(.*?)</h2>", html[m.end():m.end() + 4000], re.S)
+        title = re.sub(r"<[^>]+>", "", h.group(1)).strip() if h else name
+        sid = f"r{i:02d}"
+        parts.append(html[pos:m.start()])
+        parts.append(f'<section id="{sid}">\n'
+                     f'  <div class="aside"><span class="a-n">'
+                     f'{i:02d}</span>{name}</div>')
+        pos = m.end()
+        toc.append(f'<li><span class="t-n">{i:02d}</span>'
+                   f'<a href="#{sid}">{title}</a>'
+                   f'<span class="t-w">{name.lower()}</span></li>')
+    parts.append(html[pos:])
+    out = "".join(parts)
+    return out.replace("@ОГЛАВЛЕНИЕ@", "".join(toc))
+
+
 # ── Сборка ───────────────────────────────────────────────────────────────────
 
 CSS = """
@@ -184,7 +240,12 @@ CSS = """
    знака. Внешних запросов в документе больше нет ни одного. */
 @ШРИФТ@
 :root {
-  color-scheme: light dark;
+  /* Тема одна — светлая. Прежде здесь стояло light dark и три блока
+     переопределений: браузер по своей настройке подменял всю палитру.
+     Решение заказчика — только светлая, и объявление обязано
+     соответствовать, иначе руководство ночью показывает систему,
+     которой нет. */
+  color-scheme: light;
   --paper:@paper@; --ink:@ink@; --muted:@muted@;
   --rule:@rule@; --hair:@hair@; --seal:@accent@; --err:@error@;
   --sunk:@sunk@;
@@ -195,18 +256,6 @@ CSS = """
   --text: 'Commissioner', Georgia, 'Iowan Old Style', serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
   --measure: 34rem;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
-    --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
-    --err:@derror@;
-  }
-}
-:root[data-theme="dark"] {
-  --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
-  --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
-  --err:@derror@;
 }
 /* Образец полосы набирается ПРИНЯТЫМИ токенами, а не стилем документа:
    иначе он показывал бы не систему, а вёрстку руководства. Если сети нет
@@ -306,6 +355,56 @@ body {
   -webkit-font-smoothing:antialiased;
 }
 .page { max-width:60rem; margin:0 auto; padding:4rem 1.5rem 6rem }
+
+/* ── Обложка ─────────────────────────────────────────────────────────
+   Брендбук открывается знаком, а не оглавлением: первое, что видит
+   читатель, обязано быть тем, ради чего он открыл файл. */
+.cover{ min-height:88vh; display:flex; flex-direction:column;
+  justify-content:center; border-bottom:2px solid var(--seal);
+  padding-bottom:3rem; margin-bottom:3rem }
+.cover .c-mark{ max-width:26rem; margin:0 0 2.6rem }
+.cover .c-mark svg{ width:100%; height:auto }
+.cover h1{ margin:0 0 .6rem }
+.cover .c-sub{ font-size:1.1rem; color:var(--muted); max-width:var(--measure);
+  margin:0 0 2.2rem }
+.cover dl{ display:grid; grid-template-columns:auto 1fr; gap:.35rem 1.2rem;
+  margin:0; font-family:var(--mono); font-size:.78rem }
+.cover dt{ color:var(--muted); text-transform:uppercase;
+  letter-spacing:.1em }
+.cover dd{ margin:0 }
+
+/* ── Оглавление ──────────────────────────────────────────────────── */
+.toc{ margin:0 0 4rem }
+.toc h2{ font-size:1.05rem; margin:0 0 1rem }
+.toc ol{ list-style:none; margin:0; padding:0;
+  columns:2; column-gap:2.5rem }
+.toc li{ break-inside:avoid; border-bottom:1px solid var(--hair);
+  padding:.5rem 0; display:flex; gap:.8rem; align-items:baseline }
+.toc .t-n{ font-family:var(--mono); font-size:.75rem; color:var(--seal);
+  min-width:1.6rem }
+.toc a{ color:var(--ink); text-decoration:none }
+.toc a:hover{ text-decoration:underline }
+.toc .t-w{ margin-left:auto; font-family:var(--mono); font-size:.7rem;
+  color:var(--muted) }
+
+/* Номер раздела — в поле, рядом с рубрикой. */
+.aside .a-n{ display:block; font-size:1.4rem; color:var(--seal);
+  margin-bottom:.3rem; letter-spacing:0 }
+
+/* ── Печать ──────────────────────────────────────────────────────────
+   Брендбук печатают и рассылают PDF. Разделы не рвутся посередине,
+   краска остаётся своей, а ссылки на экране остаются ссылками. */
+@media print{
+  body{ font-size:10.5pt; background:#fff }
+  .page{ max-width:none; padding:0 }
+  .cover{ min-height:auto; page-break-after:always }
+  .toc{ page-break-after:always }
+  section{ page-break-inside:avoid; border-bottom:0;
+    padding:1.4rem 0 }
+  h2{ page-break-after:avoid }
+  figure, table, .strip{ page-break-inside:avoid }
+  .aside{ position:static }
+}
 
 /* Колонтитул — тот же приём, что и в знаке: рубрика вперёд набора. */
 .head { border-bottom:2px solid var(--seal); padding-bottom:1.5rem }
@@ -465,11 +564,7 @@ def build():
     for k, v in dict(
             paper=P["paper"], ink=P["ink"], muted=P["muted"], line=P["line"],
             accent=P["accent"], sunk=hex_of(0.925, 0.014, 82.0),
-            dbg=D["bg"], dink=D["ink"], dmuted=D["muted"], dline=D["line"],
-            daccent=D["accent"],
-            dsunk=hex_of(0.255, 0.012, DARK_H),
             rule=TOK["light"]["rule"], hair=TOK["light"]["hair"],
-            drule=TOK["dark"]["rule"], dhair=TOK["dark"]["hair"],
             lead=str(TOK["lead"]),
             **{"fs-small": f'{TOK["scale"][0]["size"] * DEMO_K:.1f}',
                "fs-body": f'{body_size * DEMO_K:.1f}',
@@ -483,8 +578,7 @@ def build():
                "border": f'{PRT["border"]:.0f}',
                "focus": f'{PRT["focus"]:.0f}',
                "radius": f'{PRT["radius"]:.0f}',
-               "error": PRT["error"]["light"]["hex"],
-               "derror": PRT["error"]["dark"]["hex"]}).items():
+               "error": PRT["error"]["light"]["hex"]}).items():
         css = css.replace(f"@{k}@", v)
 
     # Исполнения пересчитаны на принятой палитре, а не перенесены с синего.
@@ -645,7 +739,6 @@ def build():
     sp_m = SPC["measure"]
 
     L_ = TOK["light"]
-    D_ = TOK["dark"]
 
     # Легенда демо: каждый видимый кусок — против числа, которое им
     # правит. Без неё образец остаётся картинкой: красиво и непонятно,
@@ -689,29 +782,22 @@ def build():
         f'<tr><td>{esc(a_)}</td><td><code>{esc(b_)}</code></td>'
         f'<td>{esc(c_)}</td></tr>' for a_, b_, c_ in legend)
 
-    # Обе линейки показываются НА ОБЕИХ подложках, и запас считается каждой
-    # к своему фону. Печатать на тёмной полосе светлые значения значило бы
-    # выдавать краску одной темы за краску другой — ровно та подмена, из-за
-    # которой в проекте однажды жили две палитры сразу.
+    # Тема одна, и подложка одна. Прежде здесь стояли обе — на бумаге и
+    # на тёмном; тёмные строки сняты вместе с темой, чтобы руководство не
+    # показывало краску, которой в оснастке больше нет.
     rule_html = "".join(
         f'<li><div class="chip" style="background:{v};'
         f'outline:1px solid {bg};outline-offset:-1px"></div>'
         f'<b>{esc(k)}</b><span>{v}<br>{wcag(v, bg):.2f} {to}<br>'
         f'{esc(why)}</span></li>'
         for k, v, bg, to, why in (
-            ("несущая · бумага", L_["rule"], L_["bg"], "к бумаге",
+            ("линейка несущая", L_["rule"], L_["bg"], "к бумаге",
              "разделяет строки таблицы: без неё порог читают от соседней "
              "формы. Держит графический порог 3.0"),
-            ("несущая · тёмное", D_["rule"], D_["bg"], "к тёмному",
-             "та же работа на тёмной полосе. Ходом краска идёт в другую "
-             "сторону — светлее фона, а не темнее, — а запас держится "
-             "тот же"),
-            ("декоративная · бумага", L_["hair"], L_["bg"], "к бумаге",
+            ("линейка декоративная", L_["hair"], L_["bg"], "к бумаге",
              "под заголовком и рамка врезки. Не несёт ничего: заголовок "
              "отделён кеглем, врезка отступом"),
-            ("декоративная · тёмное", D_["hair"], D_["bg"], "к тёмному",
-             "и здесь то же отношение к своему фону. Линейка задана "
-             "запасом, а не краской: краска у тем разная, работа одна")))
+            ))
 
     # Три прежних пункта закрыты решениями заказчика: чистота знака ведётся
     # им самим, прописные сняты, кириллицу мы не рисуем. Открытым остаётся
@@ -750,6 +836,12 @@ def build():
          "переключатель, всплывающая подсказка, постраничная навигация и "
          "поведение полосы на узком экране. Числа для них уже есть — "
          "брать их неоткуда, кроме принятых."),
+        ("тёмная тема", "Снята решением заказчика: тема одна, светлая. "
+         "Числа тёмного поля выведены и держат все пороги — они остались "
+         "записью в tokens/askqet-system.json и в fixture.py, но в "
+         "оснастку не уходят. Цена названа: на телефоне ночью бумага "
+         "светит в глаза, и переключателя у читателя нет. Понадобится "
+         "тема — числа готовы."),
         ("группировка", "Пол отступа замерен, а сам ряд ступеней — "
          "решение: инструмента, который отличал бы «полторы строки» от "
          "«двух» по тому, как читатель их группирует, у меня нет. "
@@ -792,19 +884,32 @@ def build():
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Руководство по знаку AskQet: построение,
  цвет, набор и пределы. Каждое число замерено, а не назначено.">
-<title>Знак AskQet</title>
+<title>AskQet — брендбук</title>
 <style>{css}</style>
 </head>
 <body>
 <div class="page">
-<header class="head">
-  <p class="rubric">Руководство по знаку · редакция от построения</p>
-  <h1>Знак AskQet</h1>
-  <p class="standfirst">Двухстрочный логотип, литера для мелкого формата и
-  цветовая система к ним. Всё, что здесь названо, выведено замером и
-  собрано этим же кодом — документ не может разойтись со знаком, потому
-  что берёт числа из тех же модулей.</p>
+<header class="cover">
+  <div class="c-mark">{fig_mark(ind, C, 420)}</div>
+  <p class="rubric">Брендбук · редакция от построения</p>
+  <h1>AskQet</h1>
+  <p class="c-sub">Знак, набор, цвет и части страницы справочника по
+  казахстанскому праву. Всё, что здесь названо, выведено замером и собрано
+  этим же кодом: руководство не может разойтись со знаком, потому что
+  берёт числа из тех же модулей.</p>
+  <dl>
+    <dt>гарнитура</dt><dd>{esc(fam)}, SIL OFL — вшита в этот файл</dd>
+    <dt>тема</dt><dd>одна, светлая</dd>
+    <dt>сверок</dt><dd>{len(AUD)} · расходится {st.get("РАСХОДИТСЯ", 0)}
+      · открыто {st.get("ОТКРЫТО", 0)}</dd>
+    <dt>собрано</dt><dd>tools/book.py — правится код, не файл</dd>
+  </dl>
 </header>
+
+<nav class="toc">
+  <h2>Что внутри</h2>
+  <ol>@ОГЛАВЛЕНИЕ@</ol>
+</nav>
 
 <section>
   <div class="aside">Знак</div>
@@ -1131,8 +1236,7 @@ def build():
     условиях — держать текстовый порог к своей бумаге и отстоять от
     акцента <em>при любом дальтонизме</em>. Ближайший годный тон отстоит
     на {PRT["error"]["light"]["turn"]:.0f}° —
-    <code>{PRT["error"]["light"]["hex"]}</code> на бумаге и
-    <code>{PRT["error"]["dark"]["hex"]}</code> на тёмном.</p>
+    <code>{PRT["error"]["light"]["hex"]}</code>.</p>
     <p>Первый перебор выбрал было бордо потемнее: разницу набирала одна
     светлота, мерка её засчитывала, а глаз читает такую краску как «тот же
     акцент, только темнее». Тон пришлось проверять отдельно — на светлоте
@@ -1149,6 +1253,10 @@ def build():
   <div class="aside">Исполнения</div>
   <div class="body">
     <h2>Шесть разрешённых</h2>
+    <p class="lede">Здесь речь о ПЕЧАТИ, а не о теме. Тема у интерфейса
+    одна, светлая; но чёрная сумка, тёмная обложка и выворотка на вывеске
+    никуда не делись, и знак обязан на них работать. Ниже — шесть полей,
+    на которых он разрешён, и запас к каждому.</p>
     <p>Знак ставят не только на бумагу: его гравируют, бьют штампом, шьют,
     печатают в одну краску на накладной. Для каждого случая исполнение
     названо заранее — иначе его придумают на месте. Число рядом с именем —
@@ -1275,7 +1383,9 @@ def build():
 
 
 if __name__ == "__main__":
-    out = os.path.join(ROOT, "askqet.html")
+    # Имя файла — то, что читатель увидит в своих Загрузках.
+    # «askqet.html» ни о чём не говорит; брендбук называется брендбуком.
+    out = os.path.join(ROOT, "askqet-brandbook.html")
     # BOM — САМОЕ СИЛЬНОЕ объявление кодировки, какое есть у файла.
     #
     # <meta charset> в шапке уже стоит, но его перебивает заголовок
@@ -1288,7 +1398,7 @@ if __name__ == "__main__":
     # выше meta, выше настроек. Три байта, и кодировку больше никто не
     # угадывает. Кодек utf-8-sig пишет его сам.
     with open(out, "w", encoding="utf-8-sig") as f:
-        f.write(build())
+        f.write(number_sections(build()))
     print(f"собрано: {os.path.relpath(out, ROOT)}")
     print("числа взяты из verify.py, hanging.py и premium.json —")
     print("документ пересобирается вместе со знаком и разойтись не может.")

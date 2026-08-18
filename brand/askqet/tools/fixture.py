@@ -106,7 +106,6 @@ def check(C):
 
 def css(tok):
     L = tok["light"]
-    D = tok["dark"]
     S = tok["scale"]
     rows = "".join(f"  --x-{s['role']}: {s['x']:.1f}px;\n"
                    f"  --size-{s['role']}: {s['size']:.1f}px;\n" for s in S)
@@ -135,8 +134,6 @@ def css(tok):
              f"  --error: {pt['error']['light']['hex']};"
              f"   /* цвет ВСПОМОГАТЕЛЬНЫЙ: несут слово и знак */\n"
              if pt and pt.get("error", {}).get("light") else "")
-    derr = (f"    --error: {pt['error']['dark']['hex']};\n"
-            if pt and pt.get("error", {}).get("dark") else "")
     return (f"/* AskQet — система набора. Собрано tools/fixture.py,\n"
             f"   руками не правится: числа выводятся из знака и замеров. */\n"
             f":root {{\n"
@@ -149,18 +146,20 @@ def css(tok):
             f"  --rule: {L['rule']};        /* несущая: держит 3.0 */\n"
             f"  --hair: {L['hair']};        /* декоративная */\n"
             f"}}\n"
-            f"@media (prefers-color-scheme: dark) {{\n"
-            f"  :root:not([data-theme='light']) {{\n"
-            f"    --paper: {D['bg']};\n    --ink: {D['ink']};\n"
-            f"    --muted: {D['muted']};\n    --accent: {D['accent']};\n"
-            f"    --rule: {D['rule']};\n    --hair: {D['hair']};\n"
-            f"{derr}"
-            f"  }}\n}}\n"
-            f":root[data-theme='dark'] {{\n"
-            f"  --paper: {D['bg']};\n  --ink: {D['ink']};\n"
-            f"  --muted: {D['muted']};\n  --accent: {D['accent']};\n"
-            f"  --rule: {D['rule']};\n  --hair: {D['hair']};\n"
-            f"{derr.replace('    ', '  ')}}}\n")
+            f"\n/* ТЁМНОЙ ТЕМЫ У ИНТЕРФЕЙСА НЕТ — решение заказчика.\n"
+            f"\n"
+            f"   Тёмное поле выводилось и держало все пороги; его числа\n"
+            f"   остались записью в tokens/askqet-system.json под ключом\n"
+            f"   dark_record и в tools/fixture.py. Из оснастки они убраны:\n"
+            f"   объявление, которое никто не применяет, со временем\n"
+            f"   расходится с системой молча.\n"
+            f"\n"
+            f"   Цена решения названа: на телефоне ночью бумага светит в\n"
+            f"   глаза, и переключателя у читателя нет.\n"
+            f"\n"
+            f"   Это про ТЕМУ, а не про печать. Знак на тёмном поле\n"
+            f"   остаётся: выворотка и тёмная подложка — исполнения, и они\n"
+            f"   держатся в руководстве. */\n")
 
 
 if __name__ == "__main__":
@@ -182,9 +181,13 @@ if __name__ == "__main__":
     body = next(s for s in sc if s["body"])
     floor, _ = S.lead_floor(FAMILY, body["size"])
 
+    # dark остаётся ЗАПИСЬЮ: работа сделана и проверена, но в оснастку не
+    # уходит. Держать его рядом с принятым под тем же именем значило бы
+    # обещать тему, которой нет.
     tok = dict(family=FAMILY, share=share, step=step, scale=sc,
-               lead=S.BODY_LEAD, lead_floor=floor, light=light, dark=dark,
-               checks=dict(light=check(light), dark=check(dark)))
+               lead=S.BODY_LEAD, lead_floor=floor, light=light,
+               dark_record=dark, theme="только светлая",
+               checks=dict(light=check(light), dark_record=check(dark)))
     # Ступени отступа и мера — из своего прогона, если он был. Считать их
     # здесь заново значило бы завести второй источник одного числа, а
     # против этого и заведена сверка.
@@ -232,8 +235,9 @@ if __name__ == "__main__":
 
     print("\nПРОВЕРКА ПАР\n")
     bad = 0
-    for name, R in (("светлая", tok["checks"]["light"]),
-                    ("тёмная", tok["checks"]["dark"])):
+    for name, R in (("светлая — ПРИНЯТА", tok["checks"]["light"]),
+                    ("тёмная — ЗАПИСЬ, в оснастку не идёт",
+                     tok["checks"]["dark_record"])):
         print(f"  {name}")
         for r in R:
             v = "годен" if r["ok"] else "НЕ ДЕРЖИТ"
@@ -242,6 +246,14 @@ if __name__ == "__main__":
                   f"{r['need']:.1f}   дальтонизм {r['cvd']:.3f}   {v}")
     print()
     print("держат все пары." if not bad else f"НЕ ДЕРЖАТ: {bad}")
+    print(f"\nТЁМНОЙ ТЕМЫ У ИНТЕРФЕЙСА НЕТ — решение заказчика. Числа "
+          f"выведены и держат\nвсе пороги; они остаются записью, но в "
+          f"оснастку не уходят: объявление,\nкоторое никто не применяет, "
+          f"со временем расходится с системой молча.")
+    print("Цена названа: на телефоне ночью бумага светит в глаза, и "
+          "переключателя\nу читателя нет.")
+    print("Это про ТЕМУ, а не про печать: знак на тёмном поле остаётся "
+          "исполнением.")
     print(f"\nтокены: tokens/askqet-system.css и .json — шкала, "
-          f"интерлиньяж и обе темы\nодним файлом. Правятся не руками, а "
-          f"этим модулем.")
+          f"интерлиньяж, отступы,\nчасти и одна тема. Правятся не руками, "
+          f"а этим модулем.")

@@ -44,7 +44,7 @@
   "rule": "#978677",
   "hair": "#D9C7B7"
  },
- "dark": {
+ "dark_record": {
   "bg": "#1C1611",
   "ink": "#F4EDE2",
   "muted": "#857F7A",
@@ -52,6 +52,7 @@
   "rule": "#716153",
   "hair": "#3E3023"
  },
+ "theme": "только светлая",
  "checks": {
   "light": [
    {
@@ -109,7 +110,7 @@
     "ok": true
    }
   ],
-  "dark": [
+  "dark_record": [
    {
     "what": "текст на фоне",
     "fg": "#F4EDE2",
