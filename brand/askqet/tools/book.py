@@ -32,7 +32,7 @@ from build_color import simulate  # noqa: E402
 import hanging as H  # noqa: E402
 import letterforms as L  # noqa: E402
 from verify import (ASC, XH, DESC, ST, LEAD, AIR, ARM, TAIL,  # noqa: E402
-                    SP, inner)
+                    SP, VERT, VERT_FREE, inner)
 from color import parts, icon_parts, CVD  # noqa: E402
 from color2 import hex_of  # noqa: E402
 
@@ -116,8 +116,14 @@ def fig_construction(ind, P):
     # Поле выносится ЗА габарит: внутри оно попадает под краску уголка и
     # становится невидимым — размер, которого не видно, хуже, чем никакого.
     g.append(dim(0, p, -16, f"поле {p:.1f}", above=True))
-    return (f'<svg viewBox="0 -46 {n(w0)} {n(h0 + 96)}" width="100%" '
-            f'role="img" aria-label="Построение знака">'
+    # Подпись стоит по СЕРЕДИНЕ своей стрелки, а стрелка «поля» начинается
+    # на самой кромке — значит половина подписи уходит за габарит. Поле
+    # кадра считается по самой длинной подписи, а не назначается: иначе
+    # размер обрезается ровно так, как обрезалось «поле 37.6» до «ле».
+    ch = max(len(f"поле {p:.1f}"), len(f"втяжка {ind:.1f}"))
+    pad = ch * 12 * 0.62 / 2 + 4
+    return (f'<svg viewBox="{n(-pad)} -46 {n(w0 + pad * 2)} {n(h0 + 96)}" '
+            f'width="100%" role="img" aria-label="Построение знака">'
             f'{"".join(g)}{body}</svg>')
 
 
@@ -164,29 +170,87 @@ def fig_tail(ind, P):
 # ── Сборка ───────────────────────────────────────────────────────────────────
 
 CSS = """
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:slnt,wght@-12,400;-12,600;0,400;0,600&display=swap');
+/* @import обязан стоять ПЕРВЫМ правилом — иначе браузер его
+   молча пропустит, и образец полосы наберётся системным шрифтом,
+   а руководство станет показывать не ту систему, о которой пишет. */
 :root {
   color-scheme: light dark;
   --paper:@paper@; --ink:@ink@; --muted:@muted@;
-  --rule:@line@; --seal:@accent@;
+  --rule:@rule@; --hair:@hair@; --seal:@accent@;
   --sunk:@sunk@;
-  --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  /* Руководство набрано ТЕМ ЖЕ шрифтом, что описывает. Пока гарнитуры
+     не было, тут стояла Georgia; оставить её теперь значило бы, что
+     документ противоречит собственной странице. Georgia осталась
+     запасной на случай, когда сети нет. */
+  --text: 'Commissioner', Georgia, 'Iowan Old Style', serif;
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
   --measure: 34rem;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
-    --rule:@dline@; --seal:@daccent@; --sunk:@dsunk@;
+    --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
   }
 }
 :root[data-theme="dark"] {
   --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
-  --rule:@dline@; --seal:@daccent@; --sunk:@dsunk@;
+  --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
 }
+/* Образец полосы набирается ПРИНЯТЫМИ токенами, а не стилем документа:
+   иначе он показывал бы не систему, а вёрстку руководства. Если сети нет
+   и гарнитура не установлена, подставится системная — пропорции поедут,
+   числа останутся, и об этом сказано в тексте рядом. */
+.strip{
+  --f:'Commissioner',system-ui,sans-serif;
+  font-family:var(--f); line-height:@lead@;
+  background:var(--paper); color:var(--ink);
+  border:1px solid var(--rule); padding:1.6rem 1.8rem; margin:1.4rem 0;
+  border-radius:2px;
+}
+.strip .s-rub{font-size:@fs-small@px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--seal);margin:0 0 .7rem}
+.strip .s-h{font-size:@fs-head@px;font-weight:600;margin:0 0 .5rem;
+  line-height:1.2;font-family:var(--f)}
+.strip .s-hair{border:0;border-top:1px solid @hair@;margin:.9rem 0}
+.strip .s-t{font-size:@fs-body@px;margin:0 0 .7rem;font-family:var(--f)}
+.strip .s-a{color:var(--seal);text-decoration:none;
+  border-bottom:1px solid var(--seal)}
+.strip .s-tab{width:100%;border-collapse:collapse;margin-top:.9rem;
+  font-size:@fs-body@px;font-variant-numeric:tabular-nums}
+/* Гарнитуру таблице надо назвать заново: общие правила документа ставят
+   в th и td.num моноширинный, и без этого образец полосы показывал бы
+   не ту гарнитуру, о которой говорит. */
+.strip .s-tab th{text-align:left;font-weight:600;color:var(--muted);
+  font-family:var(--f);text-transform:none;letter-spacing:0;
+  font-size:@fs-small@px;padding:.35rem 0;border-bottom:1px solid var(--rule)}
+.strip .s-tab td{padding:.35rem 0;border-bottom:1px solid var(--rule);
+  font-family:var(--f);font-size:@fs-body@px}
+.strip .s-tab .num{text-align:right;font-family:var(--f);
+  font-variant-numeric:tabular-nums}
+/* Курсив берётся у САМОЙ гарнитуры: у Commissioner есть ось наклона,
+   и настоящие -12° лучше синтетического сдвига, которым браузер
+   подделывает курсив в шрифте без него. */
+em { font-style: oblique 12deg }
+/* А цитируемая буква ставится ПРЯМО: разговор о её рисунке, и наклонять
+   образец значило бы показывать не то, о чём речь. */
+em.ch { font-style: normal }
+/* Пара знаков показывается самой гарнитурой и крупнее строки: спор
+   идёт о рисунке, а рисунок на кегле текста не разглядеть. */
+td.glyphs{font-family:'Commissioner',system-ui,sans-serif;
+  font-size:1.5rem;line-height:1.1;letter-spacing:.04em}
+td.glyphs, td.glyphs + td { vertical-align:middle }
+.tally{font-family:var(--mono);font-size:.92rem;letter-spacing:.02em;
+  padding:.7rem 0;border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule)}
+.tally b{color:var(--seal)}
 * { box-sizing: border-box }
 body {
   margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--serif); font-size:17px; line-height:1.62;
+  font-family:var(--text); font-size:17px; line-height:@lead@;
+  /* Интерлиньяж тот же, что принят системой: держать в документе
+     собственный значило бы описывать одну полосу, а показывать
+     другую. */
   -webkit-font-smoothing:antialiased;
 }
 .page { max-width:60rem; margin:0 auto; padding:4rem 1.5rem 6rem }
@@ -225,7 +289,7 @@ dl.spec dt { font-family:var(--mono); font-size:.78rem; color:var(--muted);
              text-transform:uppercase; letter-spacing:.06em }
 dl.spec dd { margin:0; font-family:var(--mono); font-size:.9rem;
              font-variant-numeric:tabular-nums; white-space:nowrap }
-dl.spec dd.why { font-family:var(--serif); font-size:.92rem;
+dl.spec dd.why { font-family:var(--text); font-size:.92rem;
                  color:var(--muted); white-space:normal }
 
 figure { margin:0; padding:1.5rem; background:var(--sunk);
@@ -263,7 +327,7 @@ code { font-family:var(--mono); font-size:.86em; background:var(--sunk);
 .ways b { display:block; font-family:var(--mono); font-size:.7rem;
           font-weight:400; text-transform:uppercase; letter-spacing:.07em;
           padding:.55rem .8rem; border-top:1px solid var(--rule) }
-.ways em { display:block; font-family:var(--serif); font-style:normal;
+.ways em { display:block; font-family:var(--text); font-style:normal;
            font-size:.78rem; color:var(--muted); padding:0 .8rem .7rem }
 
 .open { list-style:none; margin:0; padding:0 }
@@ -298,9 +362,21 @@ def load(name):
         return json.load(f)
 
 
+def load_tok():
+    with open(os.path.join(ROOT, "tokens/askqet-system.json"),
+              encoding="utf-8") as f:
+        return json.load(f)
+
+
 def build():
     ind = H.measure()["ind"]["letter"]
     VER, COL = load("verify"), load("color")
+    # Всё, что решено после первой редакции документа: гарнитура, шкала,
+    # цифры, постановка уголков и сводная сверка. Числа читаются из тех же
+    # прогонов, а не переписываются сюда.
+    TOK = load_tok()
+    PAIR, FIG, AUD, CLM = (load("pairing"), load("figures_ready"),
+                           load("audit"), load("clamps"))
     P = json.load(open(os.path.join(ROOT, "tools/premium.json"),
                        encoding="utf-8"))["palette"]
     D = dark_world(P)
@@ -317,7 +393,13 @@ def build():
             accent=P["accent"], sunk=hex_of(0.925, 0.014, 82.0),
             dbg=D["bg"], dink=D["ink"], dmuted=D["muted"], dline=D["line"],
             daccent=D["accent"],
-            dsunk=hex_of(0.255, 0.012, DARK_H)).items():
+            dsunk=hex_of(0.255, 0.012, DARK_H),
+            rule=TOK["light"]["rule"], hair=TOK["light"]["hair"],
+            drule=TOK["dark"]["rule"], dhair=TOK["dark"]["hair"],
+            lead=str(TOK["lead"]),
+            **{"fs-small": f'{TOK["scale"][0]["size"]:.1f}',
+               "fs-body": f'{[x for x in TOK["scale"] if x["body"]][0]["size"] * 0.62:.1f}',
+               "fs-head": f'{TOK["scale"][-1]["size"] * 0.62:.1f}'}).items():
         css = css.replace(f"@{k}@", v)
 
     # Исполнения пересчитаны на принятой палитре, а не перенесены с синего.
@@ -410,27 +492,126 @@ def build():
         f'<tr><td class="no">{esc(a)}</td><td>{esc(b)}</td></tr>'
         for a, b in forbidden)
 
+    # ── Набор: гарнитура, шкала, интерлиньяж ─────────────────────────────
+    fam = TOK["family"]
+    want = PAIR["want"]
+    cand = sorted((c for c in PAIR["candidates"]
+                   if c["source"] == "кандидат" and c["fit"]["x_em"]["value"]),
+                  key=lambda c: (bool(c["missing"]), c["mean"] or 9))
+
+    def crow(name, x, o, a, mean, cover, pick=False):
+        b0, b1 = ("<b>", "</b>") if pick else ("", "")
+        return (f'<tr><td>{b0}{esc(name)}{b1}</td>'
+                f'<td class="num">{x}</td><td class="num">{o}</td>'
+                f'<td class="num">{a}</td><td class="num">{mean}</td>'
+                f'<td>{esc(cover)}</td></tr>')
+
+    cand_html = crow("наш знак", f'{want["x_em"]:.3f}', f'{want["o_x"]:.3f}',
+                     f'{want["asc_x"]:.3f}', "—", "—")
+    cand_html += "".join(
+        crow(c["name"], f'{c["fit"]["x_em"]["value"]:.3f}',
+             f'{c["fit"]["o_x"]["value"]:.3f}',
+             f'{c["fit"]["asc_x"]["value"]:.3f}',
+             f'{c["mean"] * 100:.0f} %',
+             ("полное" if not c["missing"] else
+              "нет " + " ".join("".join(c["missing"].values()))),
+             c["name"] == fam)
+        for c in cand)
+    scale_html = "".join(
+        f'<tr><td>{esc(s["role"])}</td>'
+        f'<td class="num">{s["x"]:.1f}</td>'
+        f'<td class="num">{s["size"]:.1f}</td>'
+        f'<td class="num">{s["size"] * TOK["lead"]:.1f}</td></tr>'
+        for s in TOK["scale"])
+    # Пара показывается САМОЙ гарнитурой: разговор о том, различимы ли
+    # знаки, а набранные шрифтом документа знаки — не те, о которых речь.
+    fig_html = "".join(
+        f'<tr><td class="glyphs">{esc(p[0])}</td>'
+        f'<td class="num">{p[1]:.2f}</td></tr>'
+        for p in FIG["pairs"][:5])
+    seat = FIG["seat"]
+    dseat = abs(seat["them"]["fig_x"] - seat["ours"]["fig_x"]) \
+        / seat["ours"]["fig_x"] * 100
+
+    # ── Сводная сверка ───────────────────────────────────────────────────
+    st = {}
+    for r in AUD:
+        st[r["state"]] = st.get(r["state"], 0) + 1
+    opened = [r for r in AUD if r["state"] == "ОТКРЫТО"]
+    def num(v):
+        """Число в документе округляется. Полная разрядность питона —
+        не точность, а шум: 6.582517521030255 читается хуже, чем 6.58,
+        и обещает знаки, которых замер не даёт."""
+        return f"{v:.2f}" if isinstance(v, (int, float)) else esc(v)
+
+    open_rows = "".join(
+        f'<tr><td>{esc(r["what"])}</td>'
+        f'<td class="num">{num(r["a"])}</td>'
+        f'<td class="num">{num(r["b"])}</td>'
+        f'<td>{esc(r["note"])}</td></tr>' for r in opened)
+
+    L_ = TOK["light"]
+    D_ = TOK["dark"]
+    # Обе линейки показываются НА ОБЕИХ подложках, и запас считается каждой
+    # к своему фону. Печатать на тёмной полосе светлые значения значило бы
+    # выдавать краску одной темы за краску другой — ровно та подмена, из-за
+    # которой в проекте однажды жили две палитры сразу.
+    rule_html = "".join(
+        f'<li><div class="chip" style="background:{v};'
+        f'outline:1px solid {bg};outline-offset:-1px"></div>'
+        f'<b>{esc(k)}</b><span>{v}<br>{wcag(v, bg):.2f} {to}<br>'
+        f'{esc(why)}</span></li>'
+        for k, v, bg, to, why in (
+            ("несущая · бумага", L_["rule"], L_["bg"], "к бумаге",
+             "разделяет строки таблицы: без неё порог читают от соседней "
+             "формы. Держит графический порог 3.0"),
+            ("несущая · тёмное", D_["rule"], D_["bg"], "к тёмному",
+             "та же работа на тёмной полосе. Ходом краска идёт в другую "
+             "сторону — светлее фона, а не темнее, — а запас держится "
+             "тот же"),
+            ("декоративная · бумага", L_["hair"], L_["bg"], "к бумаге",
+             "под заголовком и рамка врезки. Не несёт ничего: заголовок "
+             "отделён кеглем, врезка отступом"),
+            ("декоративная · тёмное", D_["hair"], D_["bg"], "к тёмному",
+             "и здесь то же отношение к своему фону. Линейка задана "
+             "запасом, а не краской: краска у тем разная, работа одна")))
+
     # Три прежних пункта закрыты решениями заказчика: чистота знака ведётся
     # им самим, прописные сняты, кириллицу мы не рисуем. Открытым остаётся
     # то, что решения не закрыли.
+    # Цена стойки не пересчитывается здесь заново: её печатает сверка, и
+    # два расчёта одного числа — ровно тот способ разойтись, против
+    # которого сверка и заведена.
+    clm_spread = next((r["a"] for r in opened
+                       if r["what"] == "разброс зазора"), 0.0)
+
+    # Список открытого переписывается ВМЕСТЕ с решениями. Строка, которая
+    # осталась висеть после того, как вопрос решён, хуже, чем её отсутствие:
+    # она заставляет читателя гадать, какому месту документа верить.
     open_items = [
-        ("текстовая гарнитура", "Свой шрифт — марка: знак, литера, числа "
-         "марки. Текст набирается лицензионной гарнитурой. Требования к ней "
-         "выведены из знака отношениями и лежат в tools/pairing.py: рост "
-         "строчных к кегельной 0.565, ширина круглой к росту 1.222, вынос "
-         "вверх к росту 1.385, допуск десятая доля. Главный отсев — не "
-         "красота, а покрытие: казахская кириллица ә ғ қ ң ө ұ ү һ і есть "
-         "далеко не у всех, кто держит русский."),
-        ("пятёрка", "Цифры построены и замерены, tools/figures.py. У "
-         "пятёрки не решён стык стойки с чашей — нужен отдельный разбор, "
-         "как делались ляссе и уголки."),
-        ("мерка спутывания", "Пары 1/l, 1/i, 6/b не проходят порог "
-         "различимости силуэтом. Виноват и рисунок, и инструмент: у букв "
-         "отличие лежит в мелкой детали, а силуэт её почти не видит. "
-         "Чинить надо сперва инструмент."),
-        ("тёмная тема", "Фон и три производные краски выведены здесь под "
-         "этот документ. Для интерфейса их надо проверить на полосе, как "
-         "проверялась светлая."),
+        ("лицензия", f"{fam} идёт под SIL OFL — свободна и для веба, и для "
+         "приложения, и для печати. Это чтение лицензии, а не заключение: "
+         "проверить её обязан юрист заказчика, вместе с правом на "
+         "производные и на встраивание в файлы."),
+        ("цена стойки", "Уголки укорочены до "
+         f"{VERT:.2f} стороны. Зазор при этом перестал быть равным со всех "
+         f"четырёх сторон: разброс {clm_spread:.2f} против нуля при "
+         f"{VERT_FREE:.2f}. Решение принято сознательно, и строка держится "
+         "открытой, чтобы вернуться к ней, если разнобой полезет в глаза "
+         "на носителях."),
+        ("премиальные наборы", "Прогнаны десять свободных гарнитур. "
+         "Премиальные — TT Norms Pro, Circe, Graphik, Suisse Int'l — не "
+         "мерились ни одна: файлов на руках нет. Инструмент готов, "
+         "tools/pairing.py отвечает за минуту, как только пробные файлы "
+         "будут получены."),
+        ("мерка спутывания", "Она ранжирует, но не судит: калибровка на "
+         "парах с известным ответом не разошлась, потому что ответы "
+         "назначал я сам. Порога нет и не будет, пока нет данных от "
+         "читателей. Сейчас это порядок — за какой парой следить первой."),
+        ("страница целиком", "Собраны знак, палитра, набор, шкала и полоса. "
+         "Не собраны части страницы: поля ввода, кнопки, состояния, сетка "
+         "и ступени отступов. Их выводить тем же способом — из принятых "
+         "чисел, а не из вкуса."),
     ]
     open_html = "".join(f'<li><b>{esc(a)}</b><br>{esc(b)}</li>'
                         for a, b in open_items)
@@ -464,14 +645,14 @@ def build():
   <div class="body">
     <h2>Два лок-апа</h2>
     <p class="lede">Слово набрано в две строки с втяжкой по литере. Хвост
-    <em>q</em> срезан ласточкиным хвостом и читается как ляссе — вплетённая
+    <em class="ch">q</em> срезан ласточкиным хвостом и читается как ляссе — вплетённая
     в корешок закладка. Блок прихвачен двумя уголками по диагонали.</p>
     <figure>{fig_mark(ind, C, 380)}
       <figcaption>Логотип. Втяжка {ind:.1f}, интерлиньяж {LEAD:.0f},
       уголки {THICK:.1f}.</figcaption>
     </figure>
     <figure>{fig_icon(ind, C, 132)}
-      <figcaption>Литера. Из шести букв слова только <em>q</em> с ляссе
+      <figcaption>Литера. Из шести букв слова только <em class="ch">q</em> с ляссе
       принадлежит нам одним — остальные есть у всех.</figcaption>
     </figure>
   </div>
@@ -481,9 +662,9 @@ def build():
   <div class="aside">Построение</div>
   <div class="body">
     <h2>Откуда взялись числа</h2>
-    <p>Втяжка равна ширине буквы <em>a</em> — 65.6 — плюс оптическая
+    <p>Втяжка равна ширине буквы <em class="ch">a</em> — 65.6 — плюс оптическая
     поправка 1.0: по метрике строки становятся вровень, а глазу вторая
-    кажется сдвинутой влево, потому что под ней стоит круглая <em>q</em>.
+    кажется сдвинутой влево, потому что под ней стоит круглая <em class="ch">q</em>.
     Интерлиньяж выбран не по столкновению строк, а по просвету между их
     массами: {AIR:.0f} единиц воздуха.</p>
     <figure>{fig_construction(ind, P)}
@@ -498,7 +679,7 @@ def build():
   <div class="aside">Ляссе</div>
   <div class="body">
     <h2>Вырез — несущая деталь</h2>
-    <p>Хвост <em>q</em> — единственная часть знака, которая свисает под
+    <p>Хвост <em class="ch">q</em> — единственная часть знака, которая свисает под
     строку и у которой конец свободен. Только здесь можно сделать ляссе, и
     делается оно <strong>срезом самой буквы</strong>, а не наклейкой
     поверх.</p>
@@ -545,6 +726,116 @@ def build():
 </section>
 
 <section>
+  <div class="aside">Набор</div>
+  <div class="body">
+    <h2>Текст набирает {esc(fam)}</h2>
+    <p class="lede">Свой шрифт — это <strong>марка</strong>: знак и литера.
+    Текст справочника набирает лицензионная гарнитура. Кириллицу мы не
+    рисуем: справочник по казахстанскому праву идёт на русском и казахском,
+    и рисовать под это свою кириллицу дольше и хуже, чем взять готовую.</p>
+    <p>Гарнитуру выбирали не на вкус. Требования выведены из знака и заданы
+    <strong>отношениями</strong> — кегли на полосе другие, а пропорции
+    обязаны совпадать, иначе полоса распадается на два почерка. Кандидаты
+    разбирались по файлу: таблицы <code>head</code>, <code>hhea</code>,
+    <code>OS/2</code>, <code>cmap</code>, <code>hmtx</code>, <code>glyf</code>.</p>
+    <table><thead><tr><th>гарнитура</th><th class="num">рост/кегль</th>
+    <th class="num">ширина o</th><th class="num">вынос/рост</th>
+    <th class="num">средн.</th><th>чего нет</th></tr></thead><tbody>
+    {cand_html}</tbody></table>
+    <p>Главный отсев оказался не красотой, а <strong>покрытием</strong>:
+    казахские <em class="ch">ә ғ қ ң ө ұ ү һ і</em> есть далеко не у всех, кто держит
+    русский, и гарнитура без них не годится ни при каком отклонении. Sora,
+    названная первой, отпала ещё раньше — кириллицы в ней нет вовсе.</p>
+    <p>По числам ближе всех <strong>Montserrat</strong>, и отвергнута она
+    не числом: Montserrat стоит на каждом втором сайте, и премиальности
+    справочнику не прибавит. Довод не измеряется — он назван и принят
+    заказчиком. {esc(fam)} идёт следом, в четырёх процентах, и куда менее
+    заезжен.</p>
+
+    <h2>Шкала и интерлиньяж</h2>
+    <p>Шаг шкалы не назначен: две соседние ступени обязаны различаться, и
+    порог тот же, которым мерился уголок в аватаре — полтора пикселя. На
+    мелкой ступени разница <em>ростов</em> обязана быть не меньше, отсюда
+    шаг {TOK["step"]:.3f}. Кегль считается <strong>из роста</strong>: у
+    каждой гарнитуры своя доля роста в кегельной, и назначать кегль значило
+    бы получить у двух шрифтов разный видимый размер при одном числе.</p>
+    <table><thead><tr><th>роль</th><th class="num">рост, px</th>
+    <th class="num">кегль, px</th><th class="num">строка, px</th>
+    </tr></thead><tbody>{scale_html}</tbody></table>
+    <p>Интерлиньяж <strong>{TOK["lead"]}</strong> — это решение, а не
+    замер, и назвать его надо честно. Я пробовал вывести его тем же
+    растеканием краски, что вело весь проект: пол столкновения вышел
+    {TOK["lead_floor"]:.2f}, то есть далеко ниже всякого читаемого набора.
+    Растекание отвечает, где краска сомкнётся, а интерлиньяж полосы —
+    вопрос чтения. Пол остаётся границей, за которую нельзя, и не более.</p>
+  </div>
+</section>
+
+<section>
+  <div class="aside">Цифры</div>
+  <div class="body">
+    <h2>Цифры тоже её</h2>
+    <p class="lede">Число в справочнике живёт в тексте — «форма 910.00»,
+    «24&nbsp;038 МРП», колонка ставок — и внутри марки не встречается ни
+    разу. Значит цифра принадлежит гарнитуре по той же логике, по которой
+    ей принадлежит кириллица.</p>
+    <p>Свои цифры строились и остановлены. Пятёрка не сошлась в стыке
+    стойки с чашей, шестёрку пришлось разводить с <em class="ch">b</em> перебором
+    терминала, девятку переделывать поворотом — и каждая правка тянула
+    соседнюю. Разбор сохранён в <code>tools/figures.py</code>: понадобится
+    своя цифра для тиснения или для числа на обложке — начинать не с нуля.</p>
+    <p><strong>Посадка сошлась почти в точку.</strong> Рост цифры к росту
+    строчных: {seat["them"]["fig_x"]:.3f} у гарнитуры против
+    {seat["ours"]["fig_x"]:.3f} у наших, расхождение {dseat:.1f}&nbsp;%. Это
+    не удача — обе величины выведены из одного: цифра ростом с выносное
+    вверх.</p>
+    <p>Слабые пары гарнитуры замерены заранее, тем же инструментом, что
+    мерились свои. Не чтобы принять — они приняты вместе с гарнитурой, — а
+    чтобы не узнать о них от читателя. Порядок снизу вверх, худшие первыми:</p>
+    <table><thead><tr><th>пара</th><th class="num">различие</th>
+    </tr></thead><tbody>{fig_html}</tbody></table>
+    <p>Порога здесь нет и не будет, пока нет данных: он не откалибровался,
+    а назначать его значило бы судить буквы собственным мнением. Это
+    <strong>порядок</strong>, а не ворота — он говорит, за какой парой
+    следить, и не говорит, какая «прошла».</p>
+  </div>
+</section>
+
+<section>
+  <div class="aside">Полоса</div>
+  <div class="body">
+    <h2>Как это выглядит вместе</h2>
+    <p>Образец набран теми же токенами, что лежат в
+    <code>tokens/askqet-system.css</code>. Если {esc(fam)} не установлен и
+    сети нет, браузер подставит системный шрифт — пропорции поедут, числа
+    останутся.</p>
+    <div class="strip">
+      <p class="s-rub">Налоги · упрощёнка</p>
+      <h3 class="s-h">Форма 910.00 и сроки её сдачи</h3>
+      <hr class="s-hair">
+      <p class="s-t">Индивидуальный предприниматель на упрощённом режиме
+      сдаёт форму 910.00 дважды в год: до 15 августа и до 15 февраля.
+      Предельный доход за полугодие — 24&nbsp;038 МРП.</p>
+      <p class="s-t">Жеке кәсіпкер оңайлатылған режимде есеп тапсырады.
+      <a class="s-a" href="#">Сроки и штрафы за просрочку →</a></p>
+      <table class="s-tab"><tr><th>Форма</th><th>Периодичность</th>
+      <th class="num">Порог, МРП</th></tr>
+      <tr><td>910.00</td><td>дважды в год</td><td class="num">24 038</td></tr>
+      <tr><td>200.00</td><td>ежеквартально</td><td class="num">3 692</td></tr>
+      <tr><td>100.00</td><td>ежемесячно</td><td class="num">1 048</td></tr>
+      </table>
+    </div>
+    <h2>Две линейки, а не одна</h2>
+    <p>На знаке линеек нет вовсе, поэтому оснастка об это и не спотыкалась:
+    краска заводилась под марку, а работать ей на полосе. Линейка
+    <code>{esc(P["line"])}</code> давала к бумаге
+    {wcag(P["line"], P["paper"]):.2f} при графическом пороге {GRAPHIC:.1f}.
+    Углублять её одну было бы неверно — линейки делают две разные работы.</p>
+    <ul class="swatches">{rule_html}</ul>
+  </div>
+</section>
+
+<section>
   <div class="aside">Исполнения</div>
   <div class="body">
     <h2>Шесть разрешённых</h2>
@@ -584,6 +875,43 @@ def build():
     чтобы под ним осталось три пикселя чистой бумаги при рабочем росте
     строчных в шестнадцать. У бревиса дно на дюжину единиц ниже, чем у
     умлаута — от общей линии просвет выходил бы случайным.</p>
+  </div>
+</section>
+
+<section>
+  <div class="aside">Сверка</div>
+  <div class="body">
+    <h2>Система сверяется сама с собой</h2>
+    <p class="lede">Каждый модуль проверяет себя сам. Чего долго не делал
+    никто — не сверял модули <strong>между собой</strong>. А число живёт не
+    в одном месте: штрих стоит в начертании, в весах и в уголке; охранное
+    поле — в знаке, в производстве и в полях носителей; предел «жив от
+    {VER["counters"]["wmin"]:.0f}&nbsp;px» — в проверке и в этом документе.
+    Разойтись им ничего не мешает, и разойдясь они молчат.</p>
+    <p><code>tools/audit.py</code> сверяет их попарно. Первый прогон нашёл
+    четырнадцать расхождений, и все об одном: в проекте одновременно жили
+    две палитры, причём среди отставших оказались листы принятого — лист,
+    которым знак принимают, был нарисован не той краской, которой знак
+    печатают. Заведён единственный источник, <code>tools/brand.py</code>.</p>
+    <p>Второе расхождение нашлось не сверкой, а глазом, и потому сверка
+    выросла. Этот документ называл принятой гарнитуру, которой не было в
+    его же таблице кандидатов: таблица осталась от прежнего прогона по
+    шрифтам самой машины. Каждый модуль при этом проходил свою проверку —
+    противоречие лежало <strong>между</strong> набором и текстом. Теперь
+    сверяется и оно: принятая обязана быть в прогоне, покрытие у неё
+    полным, а документ — набран ею же и её интерлиньяжем.</p>
+    <p class="tally"><b>{len(AUD)}</b> сверок ·
+    <b>{st.get("СХОДИТСЯ", 0)}</b> сходится ·
+    <b>{st.get("РАСХОДИТСЯ", 0)}</b> расходится ·
+    <b>{st.get("ОТКРЫТО", 0)}</b> открыто ·
+    <b>{st.get("ЗАПИСЬ", 0)}</b> записей</p>
+    <p>«Запись» — это разборы прошлого на краске своего времени. Их не
+    переписывают задним числом: они помнят, что и на чём решалось.
+    «Открыто» — объявленная цена принятого решения, и строка держится на
+    виду, чтобы со временем не превратиться в «так было всегда».</p>
+    <table><thead><tr><th>что открыто</th><th class="num">сейчас</th>
+    <th class="num">было бы</th><th>чем объявлено</th>
+    </tr></thead><tbody>{open_rows}</tbody></table>
   </div>
 </section>
 

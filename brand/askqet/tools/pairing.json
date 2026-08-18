@@ -7,23 +7,116 @@
   "asc_x": 1.3846153846153846
  },
  "tolerance": 0.1,
+ "live": true,
  "candidates": [
   {
-   "name": "ipag",
+   "name": "Commissioner",
+   "file": "Commissioner-Regular",
+   "source": "кандидат",
    "fit": {
     "x_em": {
-     "value": 0.52587890625,
-     "off": -0.06959885817307686,
+     "value": 0.5401929260450161,
+     "off": -0.04427405392035602,
      "ok": true
     },
     "o_x": {
-     "value": 0.9507892293407614,
-     "off": -0.22210601479555847,
-     "ok": false
+     "value": 1.1845238095238095,
+     "off": -0.030874647792436732,
+     "ok": true
     },
     "asc_x": {
-     "value": 1.6731662024141132,
-     "off": 0.20839781285463732,
+     "value": 1.4662698412698412,
+     "off": 0.05897266313932976,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.04470712161737417,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Geologica",
+   "file": "Geologica-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.532258064516129,
+     "off": -0.05831265508684862,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.183838383838384,
+     "off": -0.03143543298177561,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.4545454545454546,
+     "off": 0.05050505050505056,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.04675104619122492,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Golos Text",
+   "file": "GolosText-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.6,
+     "off": 0.061538461538461584,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1111111111111112,
+     "off": -0.09093769307163241,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.2962962962962963,
+     "off": -0.06378600823045266,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.07208738761351556,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Jost",
+   "file": "Jost-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.47,
+     "off": -0.16846153846153844,
+     "ok": false
+    },
+    "o_x": {
+     "value": 1.1617021276595745,
+     "off": -0.04954634547957486,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.6595744680851063,
+     "off": 0.19858156028368795,
      "ok": false
     },
     "st_x": {
@@ -32,6 +125,225 @@
      "ok": null
     }
    },
+   "mean": 0.13886314807493375,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһі"
+   }
+  },
+  {
+   "name": "Manrope",
+   "file": "Manrope-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.578125,
+     "off": 0.02283653846153854,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0342342342342343,
+     "off": -0.15383497701045998,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.2972972972972974,
+     "off": -0.06306306306306299,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.07991152617835384,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңұ"
+   }
+  },
+  {
+   "name": "Montserrat",
+   "file": "Montserrat-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.5555555555555556,
+     "off": -0.017094017094016974,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1730769230769231,
+     "off": -0.04023998749293499,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.426923076923077,
+     "off": 0.030555555555555607,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.029296520047502522,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Onest",
+   "file": "Onest-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.5942028985507246,
+     "off": 0.051282051282051315,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1163227016885553,
+     "off": -0.08667379857384465,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.326454033771107,
+     "off": -0.042005420054200444,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.05998708997003213,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Rubik",
+   "file": "Rubik-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.5888888888888889,
+     "off": 0.04188034188034199,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0528301886792453,
+     "off": -0.13862058388787513,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.3396226415094339,
+     "off": -0.03249475890985328,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.0709985615593568,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Unbounded",
+   "file": "Unbounded-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.6203208556149733,
+     "off": 0.09749074454956823,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.3172413793103448,
+     "off": 0.07770903835163019,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.3275862068965518,
+     "off": -0.041187739463601436,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.07212917412159996,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһ"
+   }
+  },
+  {
+   "name": "Wix Madefor Text",
+   "file": "WixMadeforText-Regular",
+   "source": "кандидат",
+   "fit": {
+    "x_em": {
+     "value": 0.5557986870897156,
+     "off": -0.016663861302810817,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1830708661417322,
+     "off": -0.03206338224890952,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.4173228346456692,
+     "off": 0.02362204724409446,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.0241164302652716,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһ"
+   }
+  },
+  {
+   "name": "ipag",
+   "file": "ipag",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.6458333333333334,
+     "off": 0.1426282051282053,
+     "ok": false
+    },
+    "o_x": {
+     "value": 0.9175627240143369,
+     "off": -0.24929048202044488,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.3781362007168458,
+     "off": -0.004679410593389092,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.1321993659140131,
    "tabular": true,
    "missing": {
     "казахская_кириллица": "әғқңөұүһі",
@@ -40,21 +352,23 @@
   },
   {
    "name": "ipagp",
+   "file": "ipagp",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.5078125,
-     "off": -0.10156249999999993,
-     "ok": false
+     "value": 0.5559022360894436,
+     "off": -0.016480659226369015,
+     "ok": true
     },
     "o_x": {
-     "value": 1.189423076923077,
-     "off": -0.026866282400623477,
+     "value": 1.157156220767072,
+     "off": -0.053265606825676715,
      "ok": true
     },
     "asc_x": {
-     "value": 1.7326923076923078,
-     "off": 0.25138888888888894,
-     "ok": false
+     "value": 1.4349859681945745,
+     "off": 0.036378754807192694,
+     "ok": true
     },
     "st_x": {
      "value": null,
@@ -62,6 +376,7 @@
      "ok": null
     }
    },
+   "mean": 0.03537500695307947,
    "tabular": true,
    "missing": {
     "казахская_кириллица": "әғқңөұүһі",
@@ -69,256 +384,23 @@
    }
   },
   {
-   "name": "Loma",
+   "name": "Commissioner",
+   "file": "Commissioner-Regular",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.3262672811059908,
-     "off": -0.42275788727401625,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0725047080979284,
-     "off": -0.12252375627846558,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 2.2156308851224105,
-     "off": 0.6001778614772965,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {
-    "казахская_кириллица": "әғқңөұүһі",
-    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "казахская_латиница": "ğş"
-   }
-  },
-  {
-   "name": "unifont",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0,
-     "off": -0.1818439237644692,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "unifont_csur",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": null,
-   "missing": {
-    "казахская_кириллица": "әғқңөұүһі",
-    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "казахская_латиница": "äğıñöşü",
-    "цифры": "0123456789"
-   }
-  },
-  {
-   "name": "unifont_jp",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0,
-     "off": -0.1818439237644692,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "unifont_jp_sample",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0,
-     "off": -0.1818439237644692,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "unifont_sample",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0,
-     "off": -0.1818439237644692,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "unifont_upper",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": null,
-   "missing": {
-    "казахская_кириллица": "әғқңөұүһі",
-    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "казахская_латиница": "äğıñöşü",
-    "цифры": "0123456789"
-   }
-  },
-  {
-   "name": "unifont_upper_sample",
-   "fit": {
-    "x_em": {
-     "value": 0.5,
-     "off": -0.11538461538461532,
-     "ok": false
-    },
-    "o_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    },
-    "asc_x": {
-     "value": 1.75,
-     "off": 0.2638888888888889,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": null,
-   "missing": {
-    "казахская_кириллица": "әғқңөұүһі",
-    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "казахская_латиница": "äğıñöşü",
-    "цифры": "0123456789"
-   }
-  },
-  {
-   "name": "NimbusSans-Regular",
-   "fit": {
-    "x_em": {
-     "value": 0.516,
-     "off": -0.08707692307692298,
+     "value": 0.5401929260450161,
+     "off": -0.04427405392035602,
      "ok": true
     },
     "o_x": {
-     "value": 1.0775193798449612,
-     "off": -0.1184209721183041,
-     "ok": false
+     "value": 1.1845238095238095,
+     "off": -0.030874647792436732,
+     "ok": true
     },
     "asc_x": {
-     "value": 1.4127906976744187,
-     "off": 0.0203488372093024,
+     "value": 1.4662698412698412,
+     "off": 0.05897266313932976,
      "ok": true
     },
     "st_x": {
@@ -327,25 +409,88 @@
      "ok": null
     }
    },
-   "tabular": true,
+   "mean": 0.04470712161737417,
+   "tabular": false,
    "missing": {}
   },
   {
-   "name": "Sora-Regular",
+   "name": "Geologica",
+   "file": "Geologica-Regular",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.4238095238095238,
-     "off": -0.2501831501831501,
-     "ok": false
+     "value": 0.532258064516129,
+     "off": -0.05831265508684862,
+     "ok": true
     },
     "o_x": {
-     "value": 1.2659176029962547,
-     "off": 0.035718178904904134,
+     "value": 1.183838383838384,
+     "off": -0.03143543298177561,
      "ok": true
     },
     "asc_x": {
-     "value": 1.8164794007490637,
-     "off": 0.31190178942987934,
+     "value": 1.4545454545454546,
+     "off": 0.05050505050505056,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.04675104619122492,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Golos Text",
+   "file": "GolosText-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.6,
+     "off": 0.061538461538461584,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1111111111111112,
+     "off": -0.09093769307163241,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.2962962962962963,
+     "off": -0.06378600823045266,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.07208738761351556,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Jost",
+   "file": "Jost-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.47,
+     "off": -0.16846153846153844,
+     "ok": false
+    },
+    "o_x": {
+     "value": 1.1617021276595745,
+     "off": -0.04954634547957486,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.6595744680851063,
+     "off": 0.19858156028368795,
      "ok": false
     },
     "st_x": {
@@ -354,6 +499,161 @@
      "ok": null
     }
    },
+   "mean": 0.13886314807493375,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһі"
+   }
+  },
+  {
+   "name": "Manrope",
+   "file": "Manrope-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.578125,
+     "off": 0.02283653846153854,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0342342342342343,
+     "off": -0.15383497701045998,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.2972972972972974,
+     "off": -0.06306306306306299,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.07991152617835384,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңұ"
+   }
+  },
+  {
+   "name": "Montserrat",
+   "file": "Montserrat-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5555555555555556,
+     "off": -0.017094017094016974,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1730769230769231,
+     "off": -0.04023998749293499,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.426923076923077,
+     "off": 0.030555555555555607,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.029296520047502522,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Onest",
+   "file": "Onest-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5942028985507246,
+     "off": 0.051282051282051315,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1163227016885553,
+     "off": -0.08667379857384465,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.326454033771107,
+     "off": -0.042005420054200444,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.05998708997003213,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Rubik",
+   "file": "Rubik-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5888888888888889,
+     "off": 0.04188034188034199,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0528301886792453,
+     "off": -0.13862058388787513,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.3396226415094339,
+     "off": -0.03249475890985328,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.0709985615593568,
+   "tabular": false,
+   "missing": {}
+  },
+  {
+   "name": "Sora",
+   "file": "Sora-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5935483870967742,
+     "off": 0.0501240694789082,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.2246376811594204,
+     "off": 0.0019447600275704065,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.3224637681159421,
+     "off": -0.04488727858293066,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.032318702696469755,
    "tabular": false,
    "missing": {
     "казахская_кириллица": "әғқңөұүһі",
@@ -361,22 +661,24 @@
    }
   },
   {
-   "name": "fonts-japanese-gothic",
+   "name": "Unbounded",
+   "file": "Unbounded-Regular",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.52587890625,
-     "off": -0.06959885817307686,
+     "value": 0.6203208556149733,
+     "off": 0.09749074454956823,
      "ok": true
     },
     "o_x": {
-     "value": 0.9507892293407614,
-     "off": -0.22210601479555847,
-     "ok": false
+     "value": 1.3172413793103448,
+     "off": 0.07770903835163019,
+     "ok": true
     },
     "asc_x": {
-     "value": 1.6731662024141132,
-     "off": 0.20839781285463732,
-     "ok": false
+     "value": 1.3275862068965518,
+     "off": -0.041187739463601436,
+     "ok": true
     },
     "st_x": {
      "value": null,
@@ -384,6 +686,71 @@
      "ok": null
     }
    },
+   "mean": 0.07212917412159996,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһ"
+   }
+  },
+  {
+   "name": "Wix Madefor Text",
+   "file": "WixMadeforText-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5557986870897156,
+     "off": -0.016663861302810817,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1830708661417322,
+     "off": -0.03206338224890952,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.4173228346456692,
+     "off": 0.02362204724409446,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.0241164302652716,
+   "tabular": false,
+   "missing": {
+    "казахская_кириллица": "әғқңөұүһ"
+   }
+  },
+  {
+   "name": "fonts",
+   "file": "fonts-japanese-gothic",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.6458333333333334,
+     "off": 0.1426282051282053,
+     "ok": false
+    },
+    "o_x": {
+     "value": 0.9175627240143369,
+     "off": -0.24929048202044488,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.3781362007168458,
+     "off": -0.004679410593389092,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.1321993659140131,
    "tabular": true,
    "missing": {
     "казахская_кириллица": "әғқңөұүһі",
@@ -392,21 +759,23 @@
   },
   {
    "name": "FreeMono",
+   "file": "FreeMono",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.417,
-     "off": -0.2622307692307692,
-     "ok": false
+     "value": 0.5455696202531646,
+     "off": -0.0347614410905549,
+     "ok": true
     },
     "o_x": {
-     "value": 1.4388489208633093,
-     "off": 0.1772029873892529,
+     "value": 1.3921113689095128,
+     "off": 0.1389643752698805,
      "ok": false
     },
     "asc_x": {
-     "value": 1.9184652278177459,
-     "off": 0.38555822009059426,
-     "ok": false
+     "value": 1.4013921113689096,
+     "off": 0.012116524877545862,
+     "ok": true
     },
     "st_x": {
      "value": null,
@@ -414,26 +783,29 @@
      "ok": null
     }
    },
+   "mean": 0.06194744707932709,
    "tabular": true,
    "missing": {}
   },
   {
    "name": "FreeSans",
+   "file": "FreeSans",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.43666666666666665,
-     "off": -0.2274358974358974,
-     "ok": false
+     "value": 0.5691657866948258,
+     "off": 0.006985622613922575,
+     "ok": true
     },
     "o_x": {
-     "value": 1.0190839694656488,
-     "off": -0.1662302581874553,
+     "value": 0.9907235621521335,
+     "off": -0.1894334977555224,
      "ok": false
     },
     "asc_x": {
-     "value": 1.717557251908397,
-     "off": 0.24045801526717567,
-     "ok": false
+     "value": 1.3525046382189239,
+     "off": -0.023191094619666078,
+     "ok": true
     },
     "st_x": {
      "value": null,
@@ -441,133 +813,28 @@
      "ok": null
     }
    },
+   "mean": 0.07320340499637035,
    "tabular": true,
    "missing": {}
   },
   {
    "name": "FreeSerif",
+   "file": "FreeSerif",
+   "source": "система",
    "fit": {
     "x_em": {
-     "value": 0.37437603993344426,
-     "off": -0.33764239088698317,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0911111111111111,
-     "off": -0.10730081459634304,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 2.0,
-     "off": 0.4444444444444445,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "LiberationMono-Regular",
-   "fit": {
-    "x_em": {
-     "value": 0.4663793103448276,
-     "off": -0.17486737400530494,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.1358595194085028,
-     "off": -0.07068963244596359,
-     "ok": true
-    },
-    "asc_x": {
-     "value": 1.5757855822550833,
-     "off": 0.13806736496200459,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "LiberationSans-Regular",
-   "fit": {
-    "x_em": {
-     "value": 0.4729020979020979,
-     "off": -0.1633270575578267,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0526802218114601,
-     "off": -0.13874328019198753,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.7134935304990757,
-     "off": 0.2375231053604436,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "LiberationSerif-Regular",
-   "fit": {
-    "x_em": {
-     "value": 0.4144620811287478,
-     "off": -0.26672093338760006,
-     "ok": false
-    },
-    "o_x": {
-     "value": 1.0893617021276596,
-     "off": -0.10873210418597495,
-     "ok": false
-    },
-    "asc_x": {
-     "value": 1.9414893617021276,
-     "off": 0.4021867612293144,
-     "ok": false
-    },
-    "st_x": {
-     "value": null,
-     "off": null,
-     "ok": null
-    }
-   },
-   "tabular": true,
-   "missing": {}
-  },
-  {
-   "name": "opens___",
-   "fit": {
-    "x_em": {
-     "value": 0.5306122448979592,
-     "off": -0.061224489795918234,
+     "value": 0.5111111111111111,
+     "off": -0.09572649572649573,
      "ok": true
     },
     "o_x": {
-     "value": null,
-     "off": null,
-     "ok": null
+     "value": 1.067391304347826,
+     "off": -0.12670731862685738,
+     "ok": false
     },
     "asc_x": {
-     "value": 1.437246963562753,
-     "off": 0.038011695906432705,
+     "value": 1.4847826086956522,
+     "off": 0.07234299516908213,
      "ok": true
     },
     "st_x": {
@@ -576,12 +843,99 @@
      "ok": null
     }
    },
+   "mean": 0.09825893650747841,
    "tabular": true,
-   "missing": {
-    "казахская_кириллица": "әғқңөұүһі",
-    "русская": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-    "казахская_латиница": "äğıñöşü"
-   }
+   "missing": {}
+  },
+  {
+   "name": "LiberationMono",
+   "file": "LiberationMono-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5772655840754322,
+     "off": 0.021316033364226206,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.1152450090744102,
+     "off": -0.08755551933442166,
+     "ok": true
+    },
+    "asc_x": {
+     "value": 1.3466424682395643,
+     "off": -0.027424884049203502,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.04543214558261712,
+   "tabular": true,
+   "missing": {}
+  },
+  {
+   "name": "LiberationSans",
+   "file": "LiberationSans-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5772655840754322,
+     "off": 0.021316033364226206,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.0335753176043556,
+     "off": -0.1543740736549279,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.3466424682395643,
+     "off": -0.027424884049203502,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.06770499702278587,
+   "tabular": true,
+   "missing": {}
+  },
+  {
+   "name": "LiberationSerif",
+   "file": "LiberationSerif-Regular",
+   "source": "система",
+   "fit": {
+    "x_em": {
+     "value": 0.5196553581044696,
+     "off": -0.08060975104593832,
+     "ok": true
+    },
+    "o_x": {
+     "value": 1.061139896373057,
+     "off": -0.13182194604644198,
+     "ok": false
+    },
+    "asc_x": {
+     "value": 1.472538860103627,
+     "off": 0.06350028785261945,
+     "ok": true
+    },
+    "st_x": {
+     "value": null,
+     "off": null,
+     "ok": null
+    }
+   },
+   "mean": 0.09197732831499993,
+   "tabular": true,
+   "missing": {}
   }
  ]
 }

@@ -56,9 +56,13 @@ AskQet — текстовый шрифт: чем его выбирать, а н�
     Golos Text         0.600      1.111        1.296       7 %   полное
     ── ниже проходят по числам, но не по составу ──
     Wix Madefor        0.556      1.183        1.417       2 %   нет казахских
-    Sora               0.594      1.225        1.322       3 %   НЕТ кириллицы
+    Unbounded          0.620      1.317        1.328       7 %   нет казахских
     Manrope            0.578      1.034        1.297       8 %   нет ә ғ қ ң ұ
     Jost               0.470      1.162        1.660      14 %   нет казахских
+
+  SORA, названная заказчиком, отпала первой и не по числам: кириллицы в
+  ней нет вовсе. Она стоит в этой машине и потому идёт в прогоне
+  системных, а не кандидатов.
 
   MONTSERRAT ложится лучше всех: все три отношения в пределах четырёх
   процентов, покрытие полное. И характер тот же — геометрическая антиква
@@ -94,13 +98,21 @@ AskQet — текстовый шрифт: чем его выбирать, а н�
   его заказчику вместе с юристом.
   ВКУС. Числа отсеют неподходящих, но из подошедших выбирать всё равно
   глазом и на настоящем тексте справочника.
-  КАНДИДАТОВ Я НЕ ВИЖУ. В этой машине лежат только свободные гарнитуры
-  общего назначения. Они прогнаны как ОБРАЗЕЦ работы инструмента, а не
-  как рекомендация: премиальные наборы надо прогнать теми же числами,
-  когда файлы будут на руках.
+  КАНДИДАТОВ Я НЕ ПОКУПАЛ. Прогнанные десять — свободные лицензии,
+  скачанные файлы. Премиальные наборы гонятся теми же числами, когда
+  файлы будут на руках: положить в CAND и запустить заново.
+
+ОТКУДА БЕРУТСЯ ЧИСЛА ПРИ ПОВТОРНОМ ЗАПУСКЕ
+
+  Скачанные файлы лежат вне репозитория и переживают не всякий запуск.
+  Поэтому метрики кандидатов — не сами файлы, а вычисленные из них
+  числа — откладываются в tools/candidates.json. Есть файлы — числа
+  берутся из файлов и запись обновляется; нет файлов — берутся из
+  записи, и об этом печатается прямо. Документ не должен показывать
+  таблицу без той гарнитуры, которую сам же называет принятой.
 
 Запуск:  python3 tools/pairing.py
-Пишет:   logo/pairing/, tools/pairing.json
+Пишет:   logo/pairing/, tools/pairing.json, tools/candidates.json
 """
 
 import json
@@ -125,6 +137,15 @@ NEED = dict(казахская_кириллица=KAZ_CYR, русская=RUS,
             казахская_латиница=KAZ_LAT, цифры="0123456789")
 
 TOL = 0.10                     # допуск на отношение: десятая доля
+
+# Скачанные кандидаты. Каталог временный — числа из него откладываются в
+# RECORD, чтобы таблица пережила потерю файлов.
+CAND = ("/tmp/claude-0/-home-user-devcore-website/"
+        "0b519354-16c1-503d-a258-55d1d43b50a0/scratchpad/cand")
+RECORD = "tools/candidates.json"
+
+# Как гарнитура называется в вёрстке — из имени файла его не вывести.
+FAMILY = {"WixMadeforText": "Wix Madefor Text", "GolosText": "Golos Text"}
 
 
 # ── Разбор шрифтового файла ──────────────────────────────────────────────────
@@ -321,6 +342,21 @@ def tabular_ok(f):
     return f["adv_zero"] == f["adv_one"]
 
 
+def mean_off(F):
+    """Среднее отклонение по трём отношениям, что достаются из файла."""
+    v = [abs(F[k]["off"]) for k in ("x_em", "o_x", "asc_x")
+         if F[k]["off"] is not None]
+    return sum(v) / len(v) if v else None
+
+
+def row(name, f, want, source):
+    """Одна строка прогона. Ничего не досчитывается сверх файла."""
+    fam = FAMILY.get(name.split("-")[0], name.split("-")[0])
+    return dict(name=fam, file=name, source=source, raw=f, fit=fit(f, want),
+                tab=tabular_ok(f),
+                miss={k: "".join(v) for k, v in f["cover"].items() if v})
+
+
 def sheet(rows, want):
     """Наша строка и строки кандидатов — рядом, одним ростом строчных."""
     pad, gap, size = 26.0, 22.0, 30.0
@@ -339,7 +375,7 @@ def sheet(rows, want):
         o.append(f'<text x="{n(pad)}" y="{n(y - size - 6)}" {MONO} '
                  f'font-size="9" fill="{MUTED}">{r["name"]}</text>')
         o.append(f'<text x="{n(pad)}" y="{n(y)}" font-size="{n(px)}" '
-                 f'font-family="{r["family"]}" fill="{INK}">'
+                 f'font-family="{r["name"]}" fill="{INK}">'
                  f'askqet · 24 038 · сроки и штрафы</text>')
         W = max(W, pad * 2 + px * 17)
         y += gap + size
@@ -347,8 +383,8 @@ def sheet(rows, want):
                f'  {"".join(o)}\n', box=(W, y), title="AskQet — пара к знаку")
 
 
-if __name__ == "__main__":
-    want = ours()
+def scan_system(want):
+    """Что стоит в самой машине — образец работы инструмента."""
     roots = ["/usr/share/fonts/truetype", "/usr/share/fonts/opentype"]
     files = []
     for r in roots:
@@ -356,7 +392,7 @@ if __name__ == "__main__":
             for f in fn:
                 if f.lower().endswith((".ttf", ".otf")):
                     files.append(os.path.join(dp, f))
-    seen, rows = set(), []
+    seen, out = set(), []
     for p in sorted(files):
         name = os.path.basename(p).rsplit(".", 1)[0]
         fam = name.split("-")[0]
@@ -370,17 +406,55 @@ if __name__ == "__main__":
         if not f or not f["xh"]:
             continue
         seen.add(fam)
-        rows.append(dict(name=name, family=fam, path=p, raw=f,
-                         fit=fit(f, want), tab=tabular_ok(f),
-                         miss={k: "".join(v) for k, v in f["cover"].items()
-                               if v}))
-    rows = [r for r in rows if r["fit"] and r["fit"]["x_em"]["value"]]
-    write("logo/pairing/pairs.svg", sheet(rows[:6], want))
+        out.append(row(name, f, want, "система"))
+    return out
+
+
+def scan_cand(want):
+    """Скачанные кандидаты — из файлов, если есть, иначе из записи.
+
+    Файлы лежат вне репозитория, и терять из-за этого таблицу нельзя:
+    документ называет Commissioner принятым и обязан показывать его в
+    том же прогоне, где отвергнуты остальные.
+    """
+    rec_path = os.path.join(ROOT, RECORD)
+    raw, live = {}, False
+    if os.path.isdir(CAND):
+        for fn in sorted(os.listdir(CAND)):
+            if not fn.lower().endswith((".ttf", ".otf")):
+                continue
+            try:
+                f = read_font(os.path.join(CAND, fn))
+            except Exception:
+                continue
+            if f:
+                raw[fn.rsplit(".", 1)[0]] = f
+        live = bool(raw)
+    if live:
+        with open(rec_path, "w", encoding="utf-8") as fh:
+            json.dump(raw, fh, ensure_ascii=False, indent=1)
+    elif os.path.exists(rec_path):
+        with open(rec_path, encoding="utf-8") as fh:
+            raw = json.load(fh)
+    return [row(k, v, want, "кандидат") for k, v in sorted(raw.items())], live
+
+
+if __name__ == "__main__":
+    want = ours()
+    cands, live = scan_cand(want)
+    rows = [r for r in cands + scan_system(want)
+            if r["fit"] and r["fit"]["x_em"]["value"]]
+    # На листе можно показывать только то, что в машине СТОИТ: кандидаты
+    # скачаны в каталог, а не установлены, и подставились бы системным.
+    write("logo/pairing/pairs.svg",
+          sheet([r for r in rows if r["source"] == "система"][:6], want))
 
     with open(os.path.join(ROOT, "tools/pairing.json"), "w",
               encoding="utf-8") as f:
-        json.dump(dict(want=want, tolerance=TOL,
-                       candidates=[dict(name=r["name"], fit=r["fit"],
+        json.dump(dict(want=want, tolerance=TOL, live=live,
+                       candidates=[dict(name=r["name"], file=r["file"],
+                                        source=r["source"], fit=r["fit"],
+                                        mean=mean_off(r["fit"]),
                                         tabular=r["tab"], missing=r["miss"])
                                    for r in rows]),
                   f, ensure_ascii=False, indent=1)
@@ -402,21 +476,24 @@ if __name__ == "__main__":
     print("плюс табличные цифры одной ширины — иначе таблица ставок "
           "рассыпается.\n")
 
-    print("ОБРАЗЕЦ РАБОТЫ ИНСТРУМЕНТА — что нашлось в этой машине\n")
-    print("это НЕ рекомендация: здесь лежат свободные гарнитуры общего "
-          "назначения.\nПремиальные наборы гонятся теми же числами, когда "
-          "файлы будут на руках.\n")
-    print(f"{'гарнитура':<22}{'рост/кегль':>11}{'откл.':>8}"
-          f"{'ширина o':>10}{'откл.':>8}{'табл.':>7}   не хватает")
-    for r in rows:
+    cands = [r for r in rows if r["source"] == "кандидат"]
+    cands.sort(key=lambda r: (bool(r["miss"]), mean_off(r["fit"]) or 9))
+    print("ПРОГОН КАНДИДАТОВ — " + ("из файлов" if live else
+                                    "ИЗ ЗАПИСИ: файлов на месте нет") + "\n")
+    print("покрытие идёт первым отсевом, а не последним столбцом: "
+          "гарнитура без\nказахских букв не годится ни при каком "
+          "отклонении.\n")
+    print(f"{'гарнитура':<20}{'рост/кегль':>11}{'ширина o':>10}"
+          f"{'вынос/рост':>12}{'средн.':>8}{'табл.':>7}   не хватает")
+    print(f"{'НАШ ЗНАК':<20}{want['x_em']:>11.3f}{want['o_x']:>10.3f}"
+          f"{want['asc_x']:>12.3f}{'—':>8}{'—':>7}   —")
+    for r in cands:
         F = r["fit"]
-        xe, ox = F["x_em"], F["o_x"]
         miss = ", ".join(f"{k}: {v}" for k, v in r["miss"].items()) or "—"
-        print(f"{r['name'][:21]:<22}{xe['value']:>11.3f}"
-              f"{xe['off'] * 100:>7.0f}%"
-              + (f"{ox['value']:>10.3f}{ox['off'] * 100:>7.0f}%"
-                 if ox["value"] else f"{'—':>10}{'—':>8}")
-              + f"{('да' if r['tab'] else 'нет'):>7}   {miss[:38]}")
+        print(f"{r['name'][:19]:<20}{F['x_em']['value']:>11.3f}"
+              f"{F['o_x']['value']:>10.3f}{F['asc_x']['value']:>12.3f}"
+              f"{mean_off(F) * 100:>7.0f}%"
+              f"{('да' if r['tab'] else 'нет'):>7}   {miss[:36]}")
 
     print("\nчто НЕ проверяется здесь: штрих к росту — он лежит в контурах, "
           "а контуры\nэтот разбор не читает. Врать числом нельзя, поле "
