@@ -121,13 +121,29 @@ def css(tok):
             f"  --space-floor: {sp['floor']:.0f}px;"
             f"   /* просвет строк: ниже — «внутри блока» */\n"
             if sp else "")
+    # Части страницы — в ту же оснастку, тем же порядком. Поле, кнопка и
+    # состояния берут числа отсюда, а не из вёрстки на глаз.
+    pt = tok.get("parts") or {}
+    prows = (f"  --field-h: {pt['height']:.1f}px;"
+             f"   /* строка + две мелкие ступени */\n"
+             f"  --field-pad: {pt['pad_x']:.1f}px;\n"
+             f"  --border: {pt['border']:.0f}px;\n"
+             f"  --focus: {pt['focus']:.0f}px;"
+             f"   /* фокус читается формой, не краской */\n"
+             f"  --radius: {pt['radius']:.0f}px;"
+             f"   /* знак построен прямыми срезами */\n"
+             f"  --error: {pt['error']['light']['hex']};"
+             f"   /* цвет ВСПОМОГАТЕЛЬНЫЙ: несут слово и знак */\n"
+             if pt and pt.get("error", {}).get("light") else "")
+    derr = (f"    --error: {pt['error']['dark']['hex']};\n"
+            if pt and pt.get("error", {}).get("dark") else "")
     return (f"/* AskQet — система набора. Собрано tools/fixture.py,\n"
             f"   руками не правится: числа выводятся из знака и замеров. */\n"
             f":root {{\n"
             f"  --font: '{FAMILY}', system-ui, sans-serif;\n"
             f"  --lead: {tok['lead']};\n"
             f"  --lead-floor: {tok['lead_floor']};\n"
-            f"{rows}{srows}{mrow}"
+            f"{rows}{srows}{mrow}{prows}"
             f"  --paper: {L['bg']};\n  --ink: {L['ink']};\n"
             f"  --muted: {L['muted']};\n  --accent: {L['accent']};\n"
             f"  --rule: {L['rule']};        /* несущая: держит 3.0 */\n"
@@ -138,11 +154,13 @@ def css(tok):
             f"    --paper: {D['bg']};\n    --ink: {D['ink']};\n"
             f"    --muted: {D['muted']};\n    --accent: {D['accent']};\n"
             f"    --rule: {D['rule']};\n    --hair: {D['hair']};\n"
+            f"{derr}"
             f"  }}\n}}\n"
             f":root[data-theme='dark'] {{\n"
             f"  --paper: {D['bg']};\n  --ink: {D['ink']};\n"
             f"  --muted: {D['muted']};\n  --accent: {D['accent']};\n"
-            f"  --rule: {D['rule']};\n  --hair: {D['hair']};\n}}\n")
+            f"  --rule: {D['rule']};\n  --hair: {D['hair']};\n"
+            f"{derr.replace('    ', '  ')}}}\n")
 
 
 if __name__ == "__main__":
@@ -170,6 +188,10 @@ if __name__ == "__main__":
     # Ступени отступа и мера — из своего прогона, если он был. Считать их
     # здесь заново значило бы завести второй источник одного числа, а
     # против этого и заведена сверка.
+    pt_path = os.path.join(ROOT, "tools/parts.json")
+    if os.path.exists(pt_path):
+        with open(pt_path, encoding="utf-8") as fh:
+            tok["parts"] = json.load(fh)
     sp_path = os.path.join(ROOT, "tools/spacing.json")
     if os.path.exists(sp_path):
         with open(sp_path, encoding="utf-8") as fh:

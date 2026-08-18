@@ -36,6 +36,13 @@ from verify import (ASC, XH, DESC, ST, LEAD, AIR, ARM, TAIL,  # noqa: E402
 from color import parts, icon_parts, CVD  # noqa: E402
 from color2 import hex_of  # noqa: E402
 
+# Образец полосы показывается УЖАТЫМ: система набирает текст кеглем
+# 29.6 px, а руководство — 17 px, и натуральный образец рядом с текстом
+# документа выглядел бы вдвое крупнее его. Множитель один на кегли и на
+# части: демо обязано сохранять ПРОПОРЦИЮ, а настоящие числа стоят в
+# легенде рядом.
+DEMO_K = 0.62
+
 THICK = ST * 1.20
 GUARD = inner(THICK)
 TEXT, GRAPHIC = 4.5, 3.0
@@ -179,7 +186,7 @@ CSS = """
 :root {
   color-scheme: light dark;
   --paper:@paper@; --ink:@ink@; --muted:@muted@;
-  --rule:@rule@; --hair:@hair@; --seal:@accent@;
+  --rule:@rule@; --hair:@hair@; --seal:@accent@; --err:@error@;
   --sunk:@sunk@;
   /* Руководство набрано ТЕМ ЖЕ шрифтом, что описывает. Пока гарнитуры
      не было, тут стояла Georgia; оставить её теперь значило бы, что
@@ -193,11 +200,13 @@ CSS = """
   :root:not([data-theme="light"]) {
     --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
     --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
+    --err:@derror@;
   }
 }
 :root[data-theme="dark"] {
   --paper:@dbg@; --ink:@dink@; --muted:@dmuted@;
   --rule:@drule@; --hair:@dhair@; --seal:@daccent@; --sunk:@dsunk@;
+  --err:@derror@;
 }
 /* Образец полосы набирается ПРИНЯТЫМИ токенами, а не стилем документа:
    иначе он показывал бы не систему, а вёрстку руководства. Если сети нет
@@ -242,6 +251,47 @@ em.ch { font-style: normal }
 td.glyphs{font-family:'Commissioner',system-ui,sans-serif;
   font-size:1.5rem;line-height:1.1;letter-spacing:.04em}
 td.glyphs, td.glyphs + td { vertical-align:middle }
+/* Части страницы В ДЕМО берут числа из оснастки, а не из этой вёрстки:
+   демо обязано показывать систему, а не мою руку. Значения подставляются
+   сборкой из tools/parts.json. */
+.demo-cap{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin:1.6rem 0 .4rem}
+.strip .s-field{
+  box-sizing:border-box; height:@field-h@px; display:flex;
+  align-items:center; padding:0 @field-pad@px;
+  border:@border@px solid var(--rule); border-radius:@radius@px;
+  font-family:var(--f); font-size:@fs-body@px; color:var(--ink);
+  background:var(--paper); margin:0 0 .35rem;
+}
+/* Фокус — ФОРМОЙ. Рамка прирастает, и внутренний отступ уменьшается
+   ровно на прирост: иначе текст дёргается вбок в момент фокуса. */
+.strip .s-field.is-focus{
+  border-width:@focus@px; border-color:var(--ink);
+  padding:0 calc(@field-pad@px - (@focus@px - @border@px));
+}
+.strip .s-field.is-error{
+  border-width:@focus@px; border-color:var(--err);
+  padding:0 calc(@field-pad@px - (@focus@px - @border@px));
+}
+.strip .s-note{font-family:var(--mono);font-size:@fs-small@px;
+  color:var(--muted);margin:0 0 1.1rem}
+.strip .s-err{font-family:var(--f);font-size:@fs-small@px;
+  color:var(--err);margin:.2rem 0 0}
+.strip .s-err::before{content:'△ ';font-family:var(--mono)}
+.strip .s-btns{display:flex;flex-wrap:wrap;gap:.7rem;margin:0}
+.strip .s-btn{
+  box-sizing:border-box; height:@field-h@px; display:inline-flex;
+  align-items:center; padding:0 @field-pad@px; border-radius:@radius@px;
+  font-family:var(--f); font-size:@fs-body@px; font-weight:600;
+  border:@border@px solid var(--seal); background:var(--seal);
+  color:@paper@; white-space:nowrap;
+}
+.strip .s-btn.is-ghost{background:transparent;color:var(--seal)}
+.strip .s-btn.is-off{background:transparent;color:var(--muted);
+  border-color:var(--rule)}
+.strip .s-card{border:@border@px solid var(--rule);
+  border-radius:@radius@px;padding:@field-pad@px}
+.strip .s-card .s-rub{margin-bottom:.2rem}
 .tally{font-family:var(--mono);font-size:.92rem;letter-spacing:.02em;
   padding:.7rem 0;border-top:1px solid var(--rule);
   border-bottom:1px solid var(--rule)}
@@ -399,7 +449,8 @@ def build():
     TOK = load_tok()
     PAIR, FIG, AUD, CLM = (load("pairing"), load("figures_ready"),
                            load("audit"), load("clamps"))
-    SPC = load("spacing")
+    SPC, PRT = load("spacing"), load("parts")
+    body_size = next(x["size"] for x in TOK["scale"] if x["body"])
     P = json.load(open(os.path.join(ROOT, "tools/premium.json"),
                        encoding="utf-8"))["palette"]
     D = dark_world(P)
@@ -420,9 +471,20 @@ def build():
             rule=TOK["light"]["rule"], hair=TOK["light"]["hair"],
             drule=TOK["dark"]["rule"], dhair=TOK["dark"]["hair"],
             lead=str(TOK["lead"]),
-            **{"fs-small": f'{TOK["scale"][0]["size"]:.1f}',
-               "fs-body": f'{[x for x in TOK["scale"] if x["body"]][0]["size"] * 0.62:.1f}',
-               "fs-head": f'{TOK["scale"][-1]["size"] * 0.62:.1f}'}).items():
+            **{"fs-small": f'{TOK["scale"][0]["size"] * DEMO_K:.1f}',
+               "fs-body": f'{body_size * DEMO_K:.1f}',
+               "fs-head": f'{TOK["scale"][-1]["size"] * DEMO_K:.1f}',
+               # Части демо ужимаются ТЕМ ЖЕ множителем, что и кегли.
+               # Иначе поле в демо осталось бы натуральным при ужатом
+               # тексте, и образец показывал бы пропорцию, которой в
+               # системе нет. Настоящие числа стоят в легенде рядом.
+               "field-h": f'{PRT["height"] * DEMO_K:.1f}',
+               "field-pad": f'{PRT["pad_x"] * DEMO_K:.1f}',
+               "border": f'{PRT["border"]:.0f}',
+               "focus": f'{PRT["focus"]:.0f}',
+               "radius": f'{PRT["radius"]:.0f}',
+               "error": PRT["error"]["light"]["hex"],
+               "derror": PRT["error"]["dark"]["hex"]}).items():
         css = css.replace(f"@{k}@", v)
 
     # Исполнения пересчитаны на принятой палитре, а не перенесены с синего.
@@ -584,6 +646,49 @@ def build():
 
     L_ = TOK["light"]
     D_ = TOK["dark"]
+
+    # Легенда демо: каждый видимый кусок — против числа, которое им
+    # правит. Без неё образец остаётся картинкой: красиво и непонятно,
+    # что именно он доказывает.
+    legend = (
+        ("рубрика", f'--size-сноска · {[x for x in TOK["scale"] if x["role"] == "сноска"][0]["size"]:.1f} px',
+         "акцентом, вразрядку — тот же приём, что в знаке: рубрика идёт "
+         "впереди набора"),
+        ("заголовок", f'--size-заголовок · {[x for x in TOK["scale"] if x["role"] == "заголовок"][0]["size"]:.1f} px',
+         "ступень шкалы вверх от текста; шаг выведен из порога "
+         "различимости ростов"),
+        ("линейка под ним", f'--hair · {L_["hair"]}',
+         f'декоративная, {wcag(L_["hair"], L_["bg"]):.2f} к бумаге — она '
+         f'ничего не несёт, заголовок отделён кеглем'),
+        ("текст", f'--size-текст · {body_size:.1f} px / {TOK["lead"]}',
+         f'мера {SPC["measure"]["px"]:.0f} px — в неё ложится '
+         f'{SPC["measure"]["chars_ru"]:.0f} знаков по-русски'),
+        ("между абзацами", f'--space-05 · {SPC["steps"][1]["px"]:.1f} px',
+         f'первая ступень выше пола {SPC["floor"]} px — ниже него '
+         f'пустота читается как «внутри абзаца»'),
+        ("строки таблицы", f'--rule · {L_["rule"]}',
+         f'несущая, {wcag(L_["rule"], L_["bg"]):.2f} к бумаге при '
+         f'графическом пороге {GRAPHIC:.1f}'),
+        ("высота поля и кнопки", f'--field-h · {PRT["height"]:.1f} px',
+         f'строка {PRT["base"]:.1f} плюс две мелкие ступени — вышло ровно '
+         f'{PRT["height"] / PRT["base"]:.2f} строки'),
+        ("рамка", f'--border · {PRT["border"]:.0f} px',
+         "минимум устройства; порог держит краска, а не толщина"),
+        ("фокус", f'--focus · {PRT["focus"]:.0f} px',
+         f'прирост {PRT["focus"] - PRT["border"]:.0f} px — фокус читается '
+         f'ФОРМОЙ: у дальтоника краска не сработает'),
+        ("скругление", f'--radius · {PRT["radius"]:.0f}',
+         "знак построен прямыми срезами, и страница берёт то же"),
+        ("ошибка", f'--err · {PRT["error"]["light"]["hex"]} / '
+                   f'{PRT["error"]["dark"]["hex"]}',
+         f'{PRT["error"]["light"]["turn"]:.0f}° от акцента — ближайший тон, '
+         f'который держится и при дальтонизме; у каждой темы своя краска, '
+         f'как и у акцента'),
+    )
+    leg_html = "".join(
+        f'<tr><td>{esc(a_)}</td><td><code>{esc(b_)}</code></td>'
+        f'<td>{esc(c_)}</td></tr>' for a_, b_, c_ in legend)
+
     # Обе линейки показываются НА ОБЕИХ подложках, и запас считается каждой
     # к своему фону. Печатать на тёмной полосе светлые значения значило бы
     # выдавать краску одной темы за краску другой — ровно та подмена, из-за
@@ -640,11 +745,11 @@ def build():
          "парах с известным ответом не разошлась, потому что ответы "
          "назначал я сам. Порога нет и не будет, пока нет данных от "
          "читателей. Сейчас это порядок — за какой парой следить первой."),
-        ("части страницы", "Собраны знак, палитра, набор, шкала, полоса, "
-         "ступени отступа и мера строки. Не собраны сами части: поля "
-         "ввода, кнопки, состояния, таблица ставок и карточка формы. "
-         "Выводить их тем же способом — из принятых чисел, а не из "
-         "вкуса."),
+        ("остальные части", "Выведены поле, кнопка, три состояния, "
+         "таблица и карточка. Не выведены: список с выбором, "
+         "переключатель, всплывающая подсказка, постраничная навигация и "
+         "поведение полосы на узком экране. Числа для них уже есть — "
+         "брать их неоткуда, кроме принятых."),
         ("группировка", "Пол отступа замерен, а сам ряд ступеней — "
          "решение: инструмента, который отличал бы «полторы строки» от "
          "«двух» по тому, как читатель их группирует, у меня нет. "
@@ -863,13 +968,17 @@ def build():
 </section>
 
 <section>
-  <div class="aside">Полоса</div>
+  <div class="aside">Демо</div>
   <div class="body">
-    <h2>Как это выглядит вместе</h2>
-    <p>Образец набран теми же токенами, что лежат в
-    <code>tokens/askqet-system.css</code>. Если {esc(fam)} не установлен и
-    сети нет, браузер подставит системный шрифт — пропорции поедут, числа
-    останутся.</p>
+    <h2>Живое демо: страница справочника</h2>
+    <p class="lede">Это не картинка и не макет. Ниже — настоящая вёрстка,
+    набранная теми же токенами, что лежат в
+    <code>tokens/askqet-system.css</code>; ни одно число здесь не
+    поставлено на глаз. <strong>Что проверять:</strong> заголовок отделён
+    от текста кеглем, а не линейкой; абзацы разведены первой ступенью выше
+    пола; колонка держит меру; цифры в таблице стоят столбиком.</p>
+    <p class="demo-cap">Демо 1 · статья: рубрика, заголовок, текст на двух
+    языках, ссылка и таблица ставок</p>
     <div class="strip">
       <p class="s-rub">Налоги · упрощёнка</p>
       <h3 class="s-h">Форма 910.00 и сроки её сдачи</h3>
@@ -886,6 +995,42 @@ def build():
       <tr><td>100.00</td><td>ежемесячно</td><td class="num">1 048</td></tr>
       </table>
     </div>
+
+    <p class="demo-cap">Демо 2 · части страницы: поле поиска в трёх
+    состояниях, кнопки и карточка формы</p>
+    <div class="strip">
+      <p class="s-rub">Поиск по справочнику</p>
+      <div class="s-field">Форма 910.00</div>
+      <p class="s-note">обычное · рамка {PRT["border"]:.0f}&nbsp;px краской
+      несущей линейки</p>
+      <div class="s-field is-focus">Форма 910.00</div>
+      <p class="s-note">в фокусе · рамка {PRT["focus"]:.0f}&nbsp;px —
+      прирост {PRT["focus"] - PRT["border"]:.0f}&nbsp;px виден без цвета</p>
+      <div class="s-field is-error">Форма 910</div>
+      <p class="s-err">Такой формы нет. Проверьте номер: у упрощёнки это
+      910.00</p>
+      <p class="s-note">ошибка · слово и знак несут её, краска только
+      поддерживает — запас над порогом различимости всего
+      {PRT["margin"]["light"]:.3f}</p>
+      <hr class="s-hair">
+      <p class="s-btns"><span class="s-btn">Открыть форму</span>
+      <span class="s-btn is-ghost">Сравнить режимы</span>
+      <span class="s-btn is-off">Скачать (нет файла)</span></p>
+      <hr class="s-hair">
+      <div class="s-card">
+        <p class="s-rub">Форма 910.00</p>
+        <table class="s-tab"><tr><td>Периодичность</td>
+        <td class="num">дважды в год</td></tr>
+        <tr><td>Ближайший срок</td><td class="num">15 августа</td></tr>
+        <tr><td>Порог дохода</td><td class="num">24 038 МРП</td></tr></table>
+      </div>
+    </div>
+
+    <h2>Чем задана каждая деталь</h2>
+    <p>Легенда собирается из тех же прогонов, что и сами числа: разойтись
+    с демо ей нечем.</p>
+    <table><thead><tr><th>что видно</th><th>токен и число</th>
+    <th>откуда взялось</th></tr></thead><tbody>{leg_html}</tbody></table>
     <h2>Две линейки, а не одна</h2>
     <p>На знаке линеек нет вовсе, поэтому оснастка об это и не спотыкалась:
     краска заводилась под марку, а работать ей на полосе. Линейка
@@ -945,6 +1090,58 @@ def build():
     его строки считаются. В принятую меру ложится
     {sp_m["chars_ru"]:.0f} знаков по-русски и {sp_m["chars_kz"]:.0f}
     по-казахски.</p>
+  </div>
+</section>
+
+<section>
+  <div class="aside">Части</div>
+  <div class="body">
+    <h2>Поле, кнопка, состояния</h2>
+    <p class="lede">Соблазн здесь понятный: назначить высоту поля «сорок
+    восемь, как у всех», скругление «восемь, красиво» и цвет фокуса
+    «синий, привычно». Тогда система кончается ровно там, где начинается
+    страница, и всё выведенное до неё оказывается украшением при
+    назначенных числах.</p>
+    <p><strong>Высота выводится.</strong> Внутри поля стоит строка
+    текста — {PRT["base"]:.1f}&nbsp;px. Сверху и снизу нужен отступ, и он
+    уже принят: самая мелкая ступень, {PRT["inside"]:.1f}&nbsp;px, та, что
+    лежит ниже просвета и потому названа отступом внутри блока. Итого
+    <strong>{PRT["height"]:.1f}&nbsp;px</strong> — и число легло на
+    ступень ряда само, ровно {PRT["height"] / PRT["base"]:.2f} строки.
+    Это признак того, что ряд выбран верно.</p>
+    <p>Проверено вёрсткой, а не формулой: коробка строчных сидит с
+    перекосом {abs(PRT["seat"]["off"]):.2f}&nbsp;px — ниже порога
+    различимости. Норма платформ на палец, 44&nbsp;px, —
+    <em>заимствование</em>, и она только проверяется сверху: наша высота
+    пришла к своему числу сама и проходит с запасом.</p>
+    <p><strong>Рамка тонкая, работу делает цвет.</strong> Штрих знака к
+    росту строчных — четверть; перенести это отношение на поле значило бы
+    получить четырёхпиксельную раму вокруг каждого поля. Знак и интерфейс
+    живут на разной дистанции. Поэтому рамка — {PRT["border"]:.0f}&nbsp;px,
+    минимум устройства, а порог держит краска несущей линейки.
+    Скругления нет: знак построен прямыми срезами.</p>
+    <p><strong>Фокус — форма, а не краска.</strong> Обвести поле акцентом
+    мало: у дальтоника бордо и бумага сближаются, а при полной цветовой
+    слепоте разницы нет вовсе. Рамка прирастает на
+    {PRT["focus"] - PRT["border"]:.0f}&nbsp;px — ровно порог различимости,
+    и это видно без цвета.</p>
+    <p><strong>Ошибка против акцента — конфликт, разведённый замером.</strong>
+    Акцент марки бордо, и в ошибку просится он же: тогда одна краска
+    говорит и «важно», и «не так». Перебран весь круг тонов при двух
+    условиях — держать текстовый порог к своей бумаге и отстоять от
+    акцента <em>при любом дальтонизме</em>. Ближайший годный тон отстоит
+    на {PRT["error"]["light"]["turn"]:.0f}° —
+    <code>{PRT["error"]["light"]["hex"]}</code> на бумаге и
+    <code>{PRT["error"]["dark"]["hex"]}</code> на тёмном.</p>
+    <p>Первый перебор выбрал было бордо потемнее: разницу набирала одна
+    светлота, мерка её засчитывала, а глаз читает такую краску как «тот же
+    акцент, только темнее». Тон пришлось проверять отдельно — на светлоте
+    и хроме самого акцента.</p>
+    <p>И главное: запас над порогом всего
+    <strong>{PRT["margin"]["light"]:.3f}</strong>. Отсюда правило —
+    <strong>цвет ошибки вспомогательный</strong>. Несут ошибку слово и
+    знак, краска только поддерживает. То же, что с фокусом, и по той же
+    причине.</p>
   </div>
 </section>
 
