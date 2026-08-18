@@ -88,6 +88,7 @@ AskQet — сводная сверка: совпадает ли система �
 import json
 import os
 import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -354,6 +355,42 @@ if __name__ == "__main__":
         check("ДОКУМЕНТ", "гарнитура вшита", "askqet.html",
               "да" if "font/woff2;base64," in bare else "нет",
               "должна быть", "да")
+
+    # ── Токены обязаны ЧИТАТЬСЯ браузером, а не просто быть написаны ────
+    #
+    # Заведено после того, как ступени отступа получили имена вида
+    # «--space-три четверти». Пробел в имени свойства делает объявление
+    # недействительным, и браузер молча выбрасывает всю строку: в файле
+    # токен есть, в вёрстке его нет. Молча — самое опасное слово здесь,
+    # и потому токены теперь читаются обратно ИЗ БРАУЗЕРА.
+    tokcss = os.path.join(ROOT, "tokens/askqet-system.css")
+    if os.path.exists(tokcss):
+        js = ("const {chromium}=require('playwright');const fs=require('fs');"
+              "(async()=>{const css=fs.readFileSync(process.argv[2],'utf8');"
+              "const ns=[...css.matchAll(/^\\s*(--[^:]+):/gm)]"
+              ".map(m=>m[1].trim());"
+              "const b=await chromium.launch();const pg=await b.newPage();"
+              "await pg.setContent('<style>'+css+'</style><div id=t>x</div>');"
+              "const got=await pg.evaluate(n=>{const c="
+              "getComputedStyle(document.getElementById('t'));const o={};"
+              "for(const k of n)o[k]=c.getPropertyValue(k).trim();return o;},"
+              "ns);console.log(JSON.stringify({all:ns.length,"
+              "lost:ns.filter(k=>!got[k])}));await b.close();})();")
+        tmp = os.environ.get("TMPDIR", "/tmp")
+        jsp = os.path.join(tmp, "audtok.js")
+        with open(jsp, "w", encoding="utf-8") as fh:
+            fh.write(js)
+        env = dict(os.environ, NODE_PATH="/opt/node22/lib/node_modules")
+        rr = subprocess.run(["node", jsp, tokcss], capture_output=True,
+                            text=True, env=env, cwd=ROOT)
+        if rr.returncode == 0:
+            T = json.loads(rr.stdout.strip().splitlines()[-1])
+            check("ТОКЕНЫ", "теряется при разборе", "браузер прочитал",
+                  len(T["lost"]), "должно быть", 0, tol=0.0,
+                  note=", ".join(T["lost"])[:60])
+            check("ТОКЕНЫ", "объявлено", "tokens/askqet-system.css",
+                  T["all"], "браузер прочитал", T["all"] - len(T["lost"]),
+                  tol=0.0)
 
     # ── Замер не должен зависеть от краски ───────────────────────────────
     a = HG.measure()["ind"]["letter"]

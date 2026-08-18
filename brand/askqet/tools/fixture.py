@@ -110,13 +110,24 @@ def css(tok):
     S = tok["scale"]
     rows = "".join(f"  --x-{s['role']}: {s['x']:.1f}px;\n"
                    f"  --size-{s['role']}: {s['size']:.1f}px;\n" for s in S)
+    # Отступы идут В ТУ ЖЕ оснастку. Ступень, оставшаяся на своём листе,
+    # системой не становится: вёрстка возьмёт её на глаз, и весь отбор
+    # окажется напрасным.
+    sp = tok.get("space") or {}
+    srows = "".join(f"  --space-{k}: {v:.1f}px;"
+                    f"{'' if not c else '   /* ' + c + ' */'}\n"
+                    for k, v, c in sp.get("steps", []))
+    mrow = (f"  --measure: {sp['measure']:.0f}px;\n"
+            f"  --space-floor: {sp['floor']:.0f}px;"
+            f"   /* просвет строк: ниже — «внутри блока» */\n"
+            if sp else "")
     return (f"/* AskQet — система набора. Собрано tools/fixture.py,\n"
             f"   руками не правится: числа выводятся из знака и замеров. */\n"
             f":root {{\n"
             f"  --font: '{FAMILY}', system-ui, sans-serif;\n"
             f"  --lead: {tok['lead']};\n"
             f"  --lead-floor: {tok['lead_floor']};\n"
-            f"{rows}"
+            f"{rows}{srows}{mrow}"
             f"  --paper: {L['bg']};\n  --ink: {L['ink']};\n"
             f"  --muted: {L['muted']};\n  --accent: {L['accent']};\n"
             f"  --rule: {L['rule']};        /* несущая: держит 3.0 */\n"
@@ -156,6 +167,22 @@ if __name__ == "__main__":
     tok = dict(family=FAMILY, share=share, step=step, scale=sc,
                lead=S.BODY_LEAD, lead_floor=floor, light=light, dark=dark,
                checks=dict(light=check(light), dark=check(dark)))
+    # Ступени отступа и мера — из своего прогона, если он был. Считать их
+    # здесь заново значило бы завести второй источник одного числа, а
+    # против этого и заведена сверка.
+    sp_path = os.path.join(ROOT, "tools/spacing.json")
+    if os.path.exists(sp_path):
+        with open(sp_path, encoding="utf-8") as fh:
+            SP = json.load(fh)
+        tok["space"] = dict(
+            base=SP["base"], floor=SP["floor"],
+            measure=SP["measure"]["px"],
+            steps=[[r["slug"], r["px"],
+                    r["name"] + ("" if r["role"] == "разделяет"
+                                 else " · внутри блока")]
+                   for r in SP["steps"]],
+            inside=[r["name"] for r in SP["steps"]
+                    if r["role"] != "разделяет"])
     with open(os.path.join(ROOT, "tokens/askqet-system.json"), "w",
               encoding="utf-8") as f:
         json.dump(tok, f, ensure_ascii=False, indent=1)
