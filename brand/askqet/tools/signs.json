@@ -1,0 +1,88 @@
+{
+ "room": {
+  "counter": 27.560000000000002,
+  "letter": 27.560000000000002,
+  "gap": 11.939999999999998,
+  "st": 13.0,
+  "ok": true
+ },
+ "box": {
+  "?": {
+   "w": 51.91249499976857,
+   "h": 71.9996016780137,
+   "top": -71.9996016780137,
+   "bottom": 0.0,
+   "rings": 2
+  },
+  "§": {
+   "w": 34.65602324069019,
+   "h": 80.75770770967361,
+   "top": -72.77885385483681,
+   "bottom": 7.978853854836794,
+   "rings": 2
+  }
+ },
+ "open": 200.0,
+ "share": 0.62,
+ "wide": 1.15,
+ "s_wide": 1.28,
+ "drop": 0.1,
+ "survive": {
+  "a": {
+   "holes": 1,
+   "die": 28,
+   "seal": null,
+   "floor": 28
+  },
+  "s": {
+   "holes": 0,
+   "die": null,
+   "seal": 7,
+   "floor": 7
+  },
+  "k": {
+   "holes": 0,
+   "die": null,
+   "seal": null,
+   "floor": 41
+  },
+  "q": {
+   "holes": 1,
+   "die": 28,
+   "seal": null,
+   "floor": 28
+  },
+  "e": {
+   "holes": 1,
+   "die": 8,
+   "seal": 7,
+   "floor": 7
+  },
+  "t": {
+   "holes": 0,
+   "die": null,
+   "seal": null,
+   "floor": 41
+  },
+  "?": {
+   "holes": 0,
+   "die": null,
+   "seal": null,
+   "floor": 41
+  },
+  "§": {
+   "holes": 0,
+   "die": null,
+   "seal": null,
+   "floor": 41
+  }
+ },
+ "pair": {
+  "indent": 9.4516,
+  "lead": 94.77885385483681,
+  "air": 22.0,
+  "word_lead": 74.0,
+  "gap": 22.0
+ },
+ "lasse": false
+}

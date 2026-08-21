@@ -144,39 +144,66 @@ def inner(thick):
     return thick + GAP
 
 
-def geom(ind, sp=SP):
+# Две строки знака. Слово — принятый вариант; пара «вопрос-параграф» —
+# второй, и строится он ТЕМ ЖЕ кодом. Копия здесь была бы вторым
+# источником одного построения, а против этого заведена сверка.
+LINES = ("ask", "qet")
+
+
+def geom(ind, sp=SP, lines=LINES, band=None, lead=None):
     """Опорные линии знака: масса строчных и колонка выносных.
 
     Всё из контуров. Масса — полоса от верха круглых до низа круглых:
     именно от неё глаз отмеряет поле. Колонка — где по x стоят вынос k и
     свес q; это они прежде отталкивали уголок, и это они теперь говорят
     плечу, где кончиться.
+
+    Полоса массы задаётся снаружи для знаков, у которых её неоткуда
+    взять ростом строчных: у пары «?/§» обе фигуры ростом с выносное, и
+    полоса роста строчных к ним отношения не имеет.
     """
     ov = L.metrics(ST)["ov"]
-    r1, r2 = L.line_rings("ask", sp), L.line_rings("qet", sp)
+    lead = LEAD if lead is None else lead
+    r1, r2 = L.line_rings(lines[0], sp), L.line_rings(lines[1], sp)
     top = [(x, y + ASC) for r in r1 for x, y in r]
-    bot = [(x + ind, y + ASC + LEAD) for r in r2 for x, y in r]
+    bot = [(x + ind, y + ASC + lead) for r in r2 for x, y in r]
     pts = top + bot
     g = dict(x0=min(p[0] for p in pts), x1=max(p[0] for p in pts),
              y0=min(p[1] for p in pts), y1=max(p[1] for p in pts),
-             mass_y0=ASC - XH - ov, mass_y1=ASC + LEAD + ov,
-             base1=ASC + ov, xtop2=ASC + LEAD - XH - ov)
+             mass_y0=ASC - XH - ov, mass_y1=ASC + lead + ov,
+             base1=ASC + ov, xtop2=ASC + lead - XH - ov, lead=lead)
+    if band is not None:
+        g["mass_y0"], g["mass_y1"] = band(g, top, bot)
     out = ([p[0] for p in top if p[1] < g["mass_y0"] - 0.01]
            + [p[0] for p in bot if p[1] > g["mass_y1"] + 0.01])
     g["col"] = (min(out), max(out)) if out else None
     return g
 
 
-def frame(ind, thick=THICK, sp=SP):
+def frame(ind, thick=THICK, sp=SP, lines=LINES, band=None,
+          lead=None):
     """Коробка рамки и четыре плеча. ЕДИНСТВЕННОЕ место, где это считается.
 
     Раньше каждый модуль строил уголки сам, и сводная сверка показала, чем
     это кончается. Здесь считается один раз, а рисуют все отсюда.
     """
-    g = geom(ind, sp)
+    g = geom(ind, sp, lines, band, lead)
     p = thick + GAP
     x0, y0 = g["x0"] - p, g["mass_y0"] - p
     x1, y1 = g["x1"] + p, g["mass_y1"] + p
+    # Колонки может не быть вовсе: у пары «?/§» из полосы массы ничего не
+    # торчит. Тогда плечо остаётся долей габарита — то же объявленное
+    # исключение, что и у мелкого знака.
+    if g["col"] is None:
+        # Плечо считается от КОРОТКОЙ стороны, и одно на обе оси.
+        #
+        # Первый заход брал долю каждой стороны отдельно. У пары «?/§»
+        # коробка узкая и высокая — 52 на 175, — и плечи вышли 23 и 77:
+        # уголок перестал читаться уголком и стал двумя чертами разной
+        # длины. Уголок держится тем, что его плечи сравнимы.
+        arm = min(x1 - x0, y1 - y0) * ARM
+        return dict(x0=x0, y0=y0, x1=x1, y1=y1, thick=thick, g=g,
+                    ax_t=arm, ax_b=arm, ay_t=arm, ay_b=arm, simple=True)
     lo, hi = g["col"]
     return dict(x0=x0, y0=y0, x1=x1, y1=y1, thick=thick, g=g,
                 ax_t=(lo - GAP) - x0, ax_b=x1 - (hi + GAP),
@@ -228,19 +255,20 @@ def block(ind, sp=SP, color=INK):
     return body, x1, ASC + bot
 
 
-def mark(ind, thick=THICK, sp=SP, color=INK, corner=None):
+def mark(ind, thick=THICK, sp=SP, color=INK, corner=None,
+         lines=LINES, band=None, lead=None):
     """Знак целиком. Уголки берутся из frame(), а не строятся здесь."""
-    F = frame(ind, thick, sp)
+    F = frame(ind, thick, sp, lines, band, lead)
     X0, Y0, X1, Y1 = frame_box(F)
     c = color if corner is None else corner
-    b1, _ = L.line("ask", sp, 0.0, color)
-    b2, _ = L.line("qet", sp, 0.0, color)
+    b1, _ = L.line(lines[0], sp, 0.0, color)
+    b2, _ = L.line(lines[1], sp, 0.0, color)
     o = [f'<rect x="{n(r[0] - X0)}" y="{n(r[1] - Y0)}" '
          f'width="{n(r[2] - r[0])}" height="{n(r[3] - r[1])}" fill="{c}"/>'
          for r in clamp_rects(F)]
     o.append(f'<g transform="translate({n(-X0)},{n(ASC - Y0)})">{b1}</g>')
     o.append(f'<g transform="translate({n(ind - X0)},'
-             f'{n(ASC + LEAD - Y0)})">{b2}</g>')
+             f'{n(ASC + F["g"]["lead"] - Y0)})">{b2}</g>')
     return "".join(o), X1 - X0, Y1 - Y0
 
 
