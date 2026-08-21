@@ -260,12 +260,16 @@ def mark(ind, thick=THICK, sp=SP, color=INK, corner=None,
     """Знак целиком. Уголки берутся из frame(), а не строятся здесь."""
     F = frame(ind, thick, sp, lines, band, lead)
     X0, Y0, X1, Y1 = frame_box(F)
+    # corner=None — уголки краской знака; corner=False — БЕЗ УГОЛКОВ.
+    # Прежде False проваливался в ветку None и рисовал уголки чернилами:
+    # исполнение «без рамки» показывало рамку, только другого цвета.
     c = color if corner is None else corner
     b1, _ = L.line(lines[0], sp, 0.0, color)
     b2, _ = L.line(lines[1], sp, 0.0, color)
-    o = [f'<rect x="{n(r[0] - X0)}" y="{n(r[1] - Y0)}" '
-         f'width="{n(r[2] - r[0])}" height="{n(r[3] - r[1])}" fill="{c}"/>'
-         for r in clamp_rects(F)]
+    o = ([] if corner is False else
+         [f'<rect x="{n(r[0] - X0)}" y="{n(r[1] - Y0)}" '
+          f'width="{n(r[2] - r[0])}" height="{n(r[3] - r[1])}" fill="{c}"/>'
+          for r in clamp_rects(F)])
     o.append(f'<g transform="translate({n(-X0)},{n(ASC - Y0)})">{b1}</g>')
     o.append(f'<g transform="translate({n(ind - X0)},'
              f'{n(ASC + F["g"]["lead"] - Y0)})">{b2}</g>')
