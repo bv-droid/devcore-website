@@ -33,51 +33,91 @@
  "survive": {
   "a": {
    "holes": 1,
-   "die": 28,
+   "die": null,
    "seal": null,
-   "floor": 28
+   "floor": 40,
+   "capped": true,
+   "norm": 10.0,
+   "norm2": 13.333333333333334,
+   "steady": true,
+   "cap": true
   },
   "s": {
    "holes": 0,
    "die": null,
-   "seal": 7,
-   "floor": 7
+   "seal": 19,
+   "floor": 19,
+   "capped": false,
+   "norm": 4.75,
+   "norm2": 4.666666666666667,
+   "steady": true,
+   "cap": false
   },
   "k": {
    "holes": 0,
    "die": null,
    "seal": null,
-   "floor": 41
+   "floor": 40,
+   "capped": true,
+   "norm": 10.0,
+   "norm2": 13.333333333333334,
+   "steady": true,
+   "cap": true
   },
   "q": {
    "holes": 1,
-   "die": 28,
+   "die": null,
    "seal": null,
-   "floor": 28
+   "floor": 40,
+   "capped": true,
+   "norm": 10.0,
+   "norm2": 13.333333333333334,
+   "steady": true,
+   "cap": true
   },
   "e": {
    "holes": 1,
-   "die": 8,
-   "seal": 7,
-   "floor": 7
+   "die": 21,
+   "seal": 18,
+   "floor": 18,
+   "capped": false,
+   "norm": 4.5,
+   "norm2": 4.666666666666667,
+   "steady": true,
+   "cap": false
   },
   "t": {
    "holes": 0,
    "die": null,
    "seal": null,
-   "floor": 41
+   "floor": 40,
+   "capped": true,
+   "norm": 10.0,
+   "norm2": 13.333333333333334,
+   "steady": true,
+   "cap": true
   },
   "?": {
    "holes": 0,
    "die": null,
    "seal": null,
-   "floor": 41
+   "floor": 40,
+   "capped": true,
+   "norm": 10.0,
+   "norm2": 13.333333333333334,
+   "steady": true,
+   "cap": true
   },
   "§": {
    "holes": 0,
    "die": null,
-   "seal": null,
-   "floor": 41
+   "seal": 15,
+   "floor": 15,
+   "capped": false,
+   "norm": 3.75,
+   "norm2": 3.6666666666666665,
+   "steady": true,
+   "cap": false
   }
  },
  "pair": {
@@ -87,8 +127,8 @@
   "h": 80.75770770967361,
   "ratio": 1.0657984774587834,
   "clog": {
-   "?": 16,
-   "o": 19
+   "?": 39,
+   "o": 50
   },
   "column": {
    "indent": 4.046599999999998,
@@ -97,5 +137,11 @@
    "word_lead": 74.0
   }
  },
- "lasse": false
+ "lasse": false,
+ "cell": 400,
+ "norm": {
+  "word": 4.5,
+  "pair": 3.75,
+  "holds": false
+ }
 }

@@ -228,7 +228,53 @@ def register():
 register()
 
 
-CELL = 150                     # рост выносного в пикселях на плашке замера
+# Рост выносного в пикселях на плашке замера. Было 150, и этого НЕ
+# ХВАТАЛО: на сросшемся знаке ответ скакал между 6 и 12 от сдвига в
+# полпикселя — мерка мерила растр, а не форму. На 400 тот же перебор даёт
+# одно число при всех сдвигах. Устойчивость теперь проверяется прямо:
+# любой ответ снимается на ДВУХ разрешениях и обязан совпасть.
+CELL = 400
+CELL2 = 300                    # второе разрешение — для проверки устойчивости
+
+
+def steady(chars, sp=SP, tol=0.10):
+    """Замер на двух разрешениях, приведённый к росту знака.
+
+    Две ошибки подряд, и обе мои.
+
+    ПЕРВАЯ: плашка была 150 пикселей на вынос, и этого не хватало. На
+    сросшемся знаке ответ прыгал между 6 и 12 от сдвига меньше пикселя —
+    мерка мерила растр, а не форму.
+
+    ВТОРАЯ, и она важнее: шаги растекания идут В ПИКСЕЛЯХ, а форма — в
+    единицах шрифта. Значит само число шагов ПРОПОРЦИОНАЛЬНО разрешению:
+    на 400 знак держит 15 шагов, на 300 — 11, и это одна и та же форма, а
+    не расхождение. Сравнивать можно только приведённые величины — шагов
+    на сто пикселей роста, — и сравнивать только между знаками, снятыми
+    на одной плашке.
+
+    Здесь считается и то, и другое: приведённая величина на двух
+    разрешениях, и они обязаны сойтись в пределах допуска. Не сошлись —
+    ответ не годится ни принять, ни отвергнуть.
+    """
+    global CELL
+    keep = CELL
+    try:
+        a = survive(chars, sp)
+        CELL = CELL2
+        b = survive(chars, sp)
+    finally:
+        CELL = keep
+    out = {}
+    for ch in a:
+        na = a[ch]["floor"] * 100.0 / keep
+        nb = b[ch]["floor"] * 100.0 / CELL2
+        # Упёршееся в предел перебора — не замер, и устойчивость у него
+        # не спрашивается: там нечему сходиться.
+        cap = a[ch]["capped"] or b[ch]["capped"]
+        ok = cap or abs(na - nb) <= tol * max(na, nb)
+        out[ch] = dict(a[ch], norm=na, norm2=nb, steady=ok, cap=cap)
+    return out
 
 
 def survive(chars, sp=SP):
@@ -284,8 +330,10 @@ def survive(chars, sp=SP):
                 die = step
             if die is not None:
                 break
-        first = min(x for x in (die, seal, 41) if x is not None)
-        out[ch] = dict(holes=base, die=die, seal=seal, floor=first)
+        capped = die is None and seal is None
+        first = min([x for x in (die, seal) if x is not None] or [40])
+        out[ch] = dict(holes=base, die=die, seal=seal, floor=first,
+                       capped=capped)
         os.remove(os.path.join(ROOT, f"logo/signs/_{key}.svg"))
     return out
 
@@ -496,7 +544,10 @@ if __name__ == "__main__":
     R = check_room()
     # Живучесть считается ВМЕСТЕ со словом: одна пара чисел без другой
     # ничего не значит, вопрос ведь в том, кто умрёт первым.
-    S = survive("askqet" + QUESTION + SECTION)
+    # steady, а не survive: ответ снимается на двух разрешениях и
+    # приводится к росту знака. Сырое число шагов пропорционально
+    # разрешению плашки и само по себе ничего не значит.
+    S = steady("askqet" + QUESTION + SECTION)
     from verify import AIR, LEAD as W_LEAD
     r1 = L.line_rings(PAIR[0], SP)
     r2 = L.line_rings(PAIR[1], SP)
@@ -505,6 +556,8 @@ if __name__ == "__main__":
     PR = dict(fold="в строку", frame=False, w=rw, h=rh, ratio=rw / rh,
               clog=C, column=dict(indent=pair_indent(), lead=pair_lead(),
                                   air=AIR, word_lead=W_LEAD))
+    WORD = min(S[c]["norm"] for c in "askqet")
+    PAIRN = min(S[c]["norm"] for c in (QUESTION, SECTION))
     write("logo/signs/signs.svg", sheet())
     write("logo/signs/both.svg", both())
 
@@ -520,7 +573,9 @@ if __name__ == "__main__":
               encoding="utf-8") as f:
         json.dump(dict(room=R, box=box, open=Q_OPEN, share=G_SHARE,
                        wide=G_WIDE, s_wide=V.S_WIDE, drop=G_DROP,
-                       survive=S, pair=PR, lasse=False), f,
+                       survive=S, pair=PR, lasse=False, cell=CELL,
+                       norm=dict(word=WORD, pair=PAIRN,
+                                 holds=PAIRN >= WORD)), f,
                   ensure_ascii=False, indent=1)
 
     print("ВОПРОС И ПАРАГРАФ — нашим начертанием, а не гарнитурой\n")
